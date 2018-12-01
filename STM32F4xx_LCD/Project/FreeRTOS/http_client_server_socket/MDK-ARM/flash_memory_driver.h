@@ -4,6 +4,30 @@
 
 #include "stm32f4xx_flash.h"
 
+/** @defgroup FLASH_Sectors
+  * @{
+  */ 
+#define FLASH_Sector_0     ((uint16_t)0x0000) /*!< Sector Number 0 */
+#define FLASH_Sector_1     ((uint16_t)0x0008) /*!< Sector Number 1 */
+#define FLASH_Sector_2     ((uint16_t)0x0010) /*!< Sector Number 2 */
+#define FLASH_Sector_3     ((uint16_t)0x0018) /*!< Sector Number 3 */
+#define FLASH_Sector_4     ((uint16_t)0x0020) /*!< Sector Number 4 */
+#define FLASH_Sector_5     ((uint16_t)0x0028) /*!< Sector Number 5 */
+#define FLASH_Sector_6     ((uint16_t)0x0030) /*!< Sector Number 6 */
+#define FLASH_Sector_7     ((uint16_t)0x0038) /*!< Sector Number 7 */
+#define FLASH_Sector_8     ((uint16_t)0x0040) /*!< Sector Number 8 */
+#define FLASH_Sector_9     ((uint16_t)0x0048) /*!< Sector Number 9 */
+#define FLASH_Sector_10    ((uint16_t)0x0050) /*!< Sector Number 10 */
+#define FLASH_Sector_11    ((uint16_t)0x0058) /*!< Sector Number 11 */
+#define IS_FLASH_SECTOR(SECTOR) (((SECTOR) == FLASH_Sector_0) || ((SECTOR) == FLASH_Sector_1) ||\
+                                 ((SECTOR) == FLASH_Sector_2) || ((SECTOR) == FLASH_Sector_3) ||\
+                                 ((SECTOR) == FLASH_Sector_4) || ((SECTOR) == FLASH_Sector_5) ||\
+                                 ((SECTOR) == FLASH_Sector_6) || ((SECTOR) == FLASH_Sector_7) ||\
+                                 ((SECTOR) == FLASH_Sector_8) || ((SECTOR) == FLASH_Sector_9) ||\
+                                 ((SECTOR) == FLASH_Sector_10) || ((SECTOR) == FLASH_Sector_11))
+#define IS_FLASH_ADDRESS(ADDRESS) ((((ADDRESS) >= 0x08000000) && ((ADDRESS) < 0x080FFFFF)) ||\
+                                   (((ADDRESS) >= 0x1FFF7800) && ((ADDRESS) < 0x1FFF7A0F))) 
+
 
 #define ADDR_FLASH_POOL        ((uint32_t)0x08080000) //luu gia tri thiet lap ve pool trong water parameter
 
@@ -23,16 +47,16 @@
 
 #define	FLASH_USER_START_ADDR_DATA			ADDR_FLASH_SECTOR_8
 #define	FLASH_USER_END_ADDR_DATA				ADDR_FLASH_SECTOR_9
-#define	FLASH_ADDR_POOL_VOLUME					0x08080000	
-#define	FLASH_ADDR_FILTRATIONPERIOD			0x08080002
-#define	FLASH_ADDR_POOL_SELECT					0x08080004	
-#define	FLASH_ADDR_TEMP_SELECT					0x08080006	
-#define	FLASH_ADDR_WATER_HARDNESS_SELECT				0x08080008	
+#define	FLASH_ADDR_POOL_VOLUME					((uint32_t)0x08080000)
+#define	FLASH_ADDR_FILTRATIONPERIOD			((uint32_t)0x08080002)
+#define	FLASH_ADDR_POOL_SELECT					((uint32_t)0x08080004)
+#define	FLASH_ADDR_TEMP_SELECT					((uint32_t)0x08080006)
+#define	FLASH_ADDR_WATER_HARDNESS_SELECT				((uint32_t)0x08080008)	
 //#define	FLASH_USER_START_ADDR	
 //#define	FLASH_USER_START_ADDR	
 //#define	FLASH_USER_START_ADDR	
 
 
-uint16_t	SaveHalfWordDataToFlash(uint32_t Address, uint16_t data);
+uint16_t	SaveHalfWordDataToFlash(void);
 uint16_t	ReadDataFromFlash(uint32_t Address);
 uint16_t	ReadDataFromFlashForSelect(uint32_t Address);

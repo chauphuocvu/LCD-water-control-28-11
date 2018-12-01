@@ -36,3 +36,4 @@
 .\discover-more\flash_memory_driver.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\discover-more\flash_memory_driver.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h
 .\discover-more\flash_memory_driver.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
+.\discover-more\flash_memory_driver.o: ..\GUIlib\inc\uiappuser.h

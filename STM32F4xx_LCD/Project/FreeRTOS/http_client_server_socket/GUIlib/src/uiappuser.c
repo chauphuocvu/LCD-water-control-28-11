@@ -249,6 +249,12 @@ void ParametersScreen_Water(void)
 	DestroyPage(CurrentScreen);
 	Show_ParametersWaterScreen();
 }
+////////////////////////////////////////////////////////////
+void ParametersScreen_pH(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersRequireValuepHScreen();
+}
 
 
 
@@ -324,18 +330,14 @@ void ParametersFitrationPeriodScreen_PoolVolume(void)
 void ParametersWaterScreen_Back(void)
 {
 	DestroyPage(CurrentScreen);
-	SaveHalfWordDataToFlash(FLASH_ADDR_POOL_SELECT,PoolSelect);
-	SaveHalfWordDataToFlash(FLASH_ADDR_TEMP_SELECT,Temperature);
-	SaveHalfWordDataToFlash(FLASH_ADDR_WATER_HARDNESS_SELECT,WaterHardnessSelect);
+	SaveHalfWordDataToFlash();
 	Show_ParametersScreen();
 }
 ///////////////////////////////////////////////////////////////
 void ParametersWaterScreen_BackToStart(void)
 {
 	DestroyPage(CurrentScreen);
-	SaveHalfWordDataToFlash(FLASH_ADDR_POOL_SELECT,PoolSelect);
-	SaveHalfWordDataToFlash(FLASH_ADDR_TEMP_SELECT,Temperature);
-	SaveHalfWordDataToFlash(FLASH_ADDR_WATER_HARDNESS_SELECT,WaterHardnessSelect);
+	SaveHalfWordDataToFlash();
 	Show_StartScreen();
 }
 //////////////////////////////////////////////////////////////////
@@ -392,3 +394,140 @@ void ParametersWaterScreen_VeryHard(void)
 	UARTprintf("ParametersWaterScreen_VeryHard\r\n");
 	WaterHardnessSelect = VERY_HARD;
 }
+
+
+
+/* WarningMaximalSafetyScreen */
+void WarningMaximalSafetyScreen_OK(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersWaterScreen();
+}
+
+
+void WarningExtremeConditionScreen_OK(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersWaterScreen();
+}
+
+
+void WarningWaterHardnessScreen_OK(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersWaterScreen();
+}
+
+
+void WarningProbeCalibration62_78Screen_OK(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersWaterScreen();
+}
+
+
+void WarningProbeCalibrationScreen_OK(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersWaterScreen();
+}
+
+void WarningProbeCalibration70Screen_OK(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersWaterScreen();
+}
+
+void WarningProbeCalibrationRequiredValueScreen_OK(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersWaterScreen();
+}
+
+void WarningProbeCalibrationRequiredValueRedScreen_OK(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersWaterScreen();
+}
+
+
+void WarningProbeCalibrationRequiredValueImpossibleScreen_OK(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersWaterScreen();
+}
+
+void WarningTooRapidChangeScreen_CancelRestictions(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersWaterScreen();
+}
+
+
+
+
+/*ParametersRequireValuepH Screen */
+void ParametersRequireValuepHScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValuepHScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValuepHScreen_inc(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValuepHScreen_dec(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValuepHScreen_OK(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValuepHScreen_CLF(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersRequireValueCLFScreen();
+}
+
+
+
+
+/*ParametersRequireValueCLF Screen */
+void ParametersRequireValueCLFScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueCLFScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueCLFScreen_inc(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueCLFScreen_dec(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueCLFScreen_OK(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueCLFScreen_pH(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersRequireValuepHScreen();
+}
+

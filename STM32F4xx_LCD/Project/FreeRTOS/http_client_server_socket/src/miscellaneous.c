@@ -203,6 +203,58 @@ void Uint32ToUint8 (const uint32_t data,uint8_t *uint8tab)
 
 }
 
+/*Added by Chau Phuoc Vu 28/11/2018*/
+/**  
+ * @brief  
+ * @param  
+ * @retval None
+ */
+uint8_t* InttoString(uint32_t val, uint32_t base )
+{            
+	uint8_t* buf_start;
+	uint8_t* buf;
+	buf_start = buf;
+	for (;base > 1;base/=10)
+	{
+		switch((uint8_t)(val/base))
+		{
+			case 0:
+				*buf = (unsigned char)0x30;
+				break;
+			case 1:
+				*buf = (unsigned char)0x31;
+				break;
+			case 2:
+				*buf = (unsigned char)"2";
+				break;
+			case 3:
+				*buf = (unsigned char)"3";
+				break;
+			case 4:
+				*buf = (unsigned char)"4";
+				break;
+			case 5:
+				*buf = (unsigned char)0x35;
+				break;
+			case 6:
+				*buf = (unsigned char)"6";
+				break;
+			case 7:
+				*buf = (unsigned char)"7";
+				break;
+			case 8:
+				*buf = (unsigned char)"8";
+				break;
+			case 9:
+				*buf = (unsigned char)"9";
+				break;			
+		}
+		buf++;
+		val = val%base;
+	}
+	*buf = 0;
+	return buf_start;
+}
 /**
  * @}
  */

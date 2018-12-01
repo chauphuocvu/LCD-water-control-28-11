@@ -90,6 +90,7 @@ void ParametersScreen_Back(void);
 void ParametersScreen_BackToStart(void);
 void ParametersScreen_Pool(void);
 void ParametersScreen_Water(void);
+void ParametersScreen_pH(void);
 
 
 
@@ -121,6 +122,45 @@ void ParametersWaterScreen_More30oC(void);
 void ParametersWaterScreen_Soft(void);
 void ParametersWaterScreen_Hard(void);
 void ParametersWaterScreen_VeryHard(void);
+
+
+
+
+/* Warning Screen */
+void WarningMaximalSafetyScreen_OK(void);
+void WarningExtremeConditionScreen_OK(void);
+void WarningWaterHardnessScreen_OK(void);
+void WarningProbeCalibration62_78Screen_OK(void);
+void WarningProbeCalibrationScreen_OK(void);
+void WarningProbeCalibration70Screen_OK(void);
+void WarningProbeCalibrationRequiredValueScreen_OK(void);
+void WarningProbeCalibrationRequiredValueRedScreen_OK(void);
+void WarningProbeCalibrationRequiredValueImpossibleScreen_OK(void);
+void WarningTooRapidChangeScreen_CancelRestictions(void);
+
+
+
+/*ParametersRequireValuepH Screen */
+void ParametersRequireValuepHScreen_Back(void);
+void ParametersRequireValuepHScreen_BackToStart(void);
+void ParametersRequireValuepHScreen_inc(void);
+void ParametersRequireValuepHScreen_dec(void);
+void ParametersRequireValuepHScreen_OK(void);
+void ParametersRequireValuepHScreen_CLF(void);
+
+
+
+
+/*ParametersRequireValueCLF Screen */
+void ParametersRequireValueCLFScreen_Back(void);
+void ParametersRequireValueCLFScreen_BackToStart(void);
+void ParametersRequireValueCLFScreen_inc(void);
+void ParametersRequireValueCLFScreen_dec(void);
+void ParametersRequireValueCLFScreen_OK(void);
+void ParametersRequireValueCLFScreen_pH(void);
+
+
+
 #ifdef __cplusplus
 }
 #endif

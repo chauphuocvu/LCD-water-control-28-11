@@ -107,6 +107,19 @@ typedef enum
 #define VU_YELLOW						RGB565CONVERT(255,206,68)
 #define VU_BLUE							RGB565CONVERT(0,159,227)
 #define	NONE								1
+#define VU_GREEN						RGB565CONVERT(118,184,42)
+#define VU_RED							RGB565CONVERT(227,28,24)
+#define BLACK_WHITE					2
+#define WHITE_BLACK					3
+#define YELLOW_BLACK				4
+#define BLUE_BLACK					5
+#define WHITE_GREEN					6
+#define WHITE_RED						7
+#define WHITE_BLACK					3
+#define WHITE_BLACK					3
+#define WHITE_BLACK					3
+#define WHITE_BLACK					3
+#define WHITE_BLACK					3
 /** 
   * @brief LCD font 
   */ 

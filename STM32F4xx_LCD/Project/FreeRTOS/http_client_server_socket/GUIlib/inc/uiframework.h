@@ -40,6 +40,7 @@ extern GL_Page_TypeDef ParametersScreen;
 extern GL_Page_TypeDef ParametersPoolVolumeScreen;
 extern GL_Page_TypeDef ParametersFitrationPeriodScreen;
 extern GL_Page_TypeDef ParametersWaterScreen;
+extern GL_Page_TypeDef WarningMaximalSafetyScreen;
 
 
 
@@ -56,16 +57,18 @@ extern uint16_t		Screen;
 #define	ParametersPoolVolumeScreen_df			8
 #define	ParametersFitrationPeriodScreen_df			9
 #define	ParametersWaterScreen_df			10
-#define	StartScreen_df			1
-#define	StartScreen_df			1
-#define	StartScreen_df			1
-#define	StartScreen_df			1
-#define	StartScreen_df			1
-#define	StartScreen_df			1
-#define	StartScreen_df			1
-#define	StartScreen_df			1
-#define	StartScreen_df			1
-#define	StartScreen_df			1
+#define	WarningMaximalSafetyScreen_df			11
+#define	WarningExtremeConditionScreen_df			12
+#define	WarningProbeCalibration62_78Screen_df			13
+#define	WarningWaterHardnessScreen_df			14
+#define	WarningProbeCalibrationScreen_df			15
+#define	WarningProbeCalibration70Screen_df			16
+#define	WarningProbeCalibrationRequiredValueScreen_df			17
+#define	WarningProbeCalibrationRequiredValueRedScreen_df			18
+#define	WarningProbeCalibrationRequiredValueImpossibleScreen_df			19
+#define	WarningTooRapidChangeScreen_df			20
+#define ParametersRequireValuepHScreen_df		21
+#define ParametersRequireValueCLFScreen_df  22
 
 /*Added by chau phuoc vu 14/11/2018*/
 void DelayScreen_Decrement(void);
@@ -90,6 +93,18 @@ void Create_ParametersScreen(void);
 void Create_ParametersPoolVolumeScreen(void);
 void Create_ParametersFitrationPeriodScreen(void);
 void Create_ParametersWaterScreen(void);
+void Create_WarningMaximalSafetyScreen(void);
+void Create_WarningExtremeConditionScreen(void);
+void Create_WarningWaterHardnessScreen(void);
+void Create_WarningProbeCalibration62_78Screen(void);
+void Create_WarningProbeCalibrationScreen(void);
+void Create_WarningProbeCalibration70Screen(void);
+void Create_WarningProbeCalibrationRequiredValueScreen(void);
+void Create_WarningProbeCalibrationRequiredValueRedScreen(void);
+void Create_WarningProbeCalibrationRequiredValueImpossibleScreen(void);
+void Create_WarningTooRapidChangeScreen(void);
+void Create_ParametersRequireValuepHScreen(void);
+void Create_ParametersRequireValueCLFScreen(void);
 
 /*Show Screen*/
 void Show_HomeScreen(void);
@@ -103,6 +118,18 @@ void Show_ParametersScreen(void);
 void Show_ParametersPoolVolumeScreen(void);
 void Show_ParametersFitrationPeriodScreen(void);
 void Show_ParametersWaterScreen(void);
+void Show_WarningMaximalSafetyScreen(void);
+void Show_WarningExtremeConditionScreen(void);
+void Show_WarningWaterHardnessScreen(void);
+void Show_WarningProbeCalibration62_78Screen(void);
+void Show_WarningProbeCalibrationScreen(void);
+void Show_WarningProbeCalibration70Screen(void);
+void Show_WarningProbeCalibrationRequiredValueScreen(void);
+void Show_WarningProbeCalibrationrequiredValueRedScreen(void);
+void Show_WarningProbeCalibrationRequiredValueImpossibleScreen(void);
+void Show_WarningTooRapidChangeScreen(void);
+void Show_ParametersRequireValuepHScreen(void);
+void Show_ParametersRequireValueCLFScreen(void);
 
 #ifdef __cplusplus
 }

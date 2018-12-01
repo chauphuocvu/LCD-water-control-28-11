@@ -87,6 +87,11 @@ void CreateTask2(void * pvParameters);
 void vApplicationTickHook( void );
 uint16_t datar = 0;
 extern uint16_t		Screen;
+extern uint16_t PoolSelect;
+extern uint16_t Temperature;
+extern uint16_t WaterHardnessSelect;
+extern uint16_t PoolVolume;
+extern uint16_t FiltrationPeriod;
 /* Private functions ---------------------------------------------------------*/
 
 /**
@@ -109,15 +114,16 @@ int main(void)
 	GL_SetFont(GL_FONT_BIG);
 	TP_Init();
   readCalibrationValue();
-  GL_SetTextColor(BLUE);
-  GL_SetBackColor(MAGENTA);
 	/*Read value set before*/
 	PoolSelect = ReadDataFromFlashForSelect(FLASH_ADDR_POOL_SELECT);
 	Temperature = ReadDataFromFlashForSelect(FLASH_ADDR_TEMP_SELECT);
 	WaterHardnessSelect = ReadDataFromFlashForSelect(FLASH_ADDR_WATER_HARDNESS_SELECT);
 	PoolVolume = ReadDataFromFlashForSelect(FLASH_ADDR_POOL_VOLUME);
 	FiltrationPeriod = ReadDataFromFlashForSelect(FLASH_ADDR_FILTRATIONPERIOD);
-  Show_StartScreen();
+	
+	Show_ParametersRequireValueCLFScreen();
+//	Show_StartScreen();
+
 	
   /* Configure Ethernet (GPIOs, clocks, MAC, DMA) */ 
 //  ETH_BSP_Config();
@@ -194,34 +200,66 @@ void DisplayArgument(void)
 				LCD_SetFont(&Font16x24);
 				LCD_DisplayStringLine(120,100,(uint8_t *)"150");
 				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(70,165,(uint8_t *)"400 ml");	
+				LCD_DisplayStringLine(70,170,(uint8_t *)"400ml");	
 				LCD_DisplayStringLine(127,155,(uint8_t *)"ml");
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
 				LCD_DisplayStringLine(120,330,(uint8_t *)"150");
 				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(70,400,(uint8_t *)"200 ml");
+				LCD_DisplayStringLine(70,400,(uint8_t *)"200ml");
 				LCD_DisplayStringLine(127,385,(uint8_t *)"ml");
 				break;
 			case ParametersScreen_df:
 				break;
 			case ParametersPoolVolumeScreen_df:
-				LCD_SetColors(WHITE,VU_ORANGE);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(120,100,(uint8_t *)"15 m3");
+			case ParametersFitrationPeriodScreen_df:
 				LCD_SetColors(WHITE,VU_GRAY);
 				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(120,330,(uint8_t *)"06 h");
-				break;
-			case ParametersFitrationPeriodScreen_df:
-					LCD_SetColors(WHITE,VU_GRAY);
-					LCD_SetFont(&Font16x24);
-					LCD_DisplayStringLine(120,100,(uint8_t *)"15 m3");
-					LCD_SetColors(WHITE,VU_ORANGE);
-					LCD_SetFont(&Font16x24);
-					LCD_DisplayStringLine(120,330,(uint8_t *)"06 h");
+				LCD_DisplayStringLine(100,100,(uint8_t *)"15 m3");
+				LCD_SetColors(WHITE,VU_GRAY);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,330,(uint8_t *)"06 h");
 				break;
 			case ParametersWaterScreen_df:
+				break;
+			case WarningMaximalSafetyScreen_df:
+				LCD_SetColors(WHITE,VU_GREEN);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(150,195,(uint8_t *)"15");
+				break;
+			case WarningExtremeConditionScreen_df:
+				LCD_SetColors(WHITE,VU_RED);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(150,195,(uint8_t *)"15");
+				break;
+			case WarningWaterHardnessScreen_df:
+				break;
+			case WarningProbeCalibration62_78Screen_df:
+				break;
+			case WarningProbeCalibrationScreen_df:
+				break;
+			case WarningProbeCalibration70Screen_df:
+				break;
+			case WarningProbeCalibrationRequiredValueScreen_df:
+				break;
+			case WarningProbeCalibrationRequiredValueRedScreen_df:
+				break;
+			case WarningProbeCalibrationRequiredValueImpossibleScreen_df:
+				break;
+			case WarningTooRapidChangeScreen_df:
+				break;
+			case ParametersRequireValuepHScreen_df:
+			case ParametersRequireValueCLFScreen_df:
+				LCD_SetColors(WHITE,VU_YELLOW);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,100,(uint8_t *)"0,2");
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(110,165,(uint8_t *)"mg/l");
+				LCD_SetColors(WHITE,VU_BLUE);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
 				break;
 		}
 }

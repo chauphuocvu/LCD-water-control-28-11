@@ -3975,7 +3975,7 @@ static void CallPreEvents(GL_PageControls_TypeDef* pControl)
       pControl->SetObjVisible(pControl, pControl->objCoordinates);
 			GL_Delay(10);
       ((GL_NewRectControl_TypeDef*)(pTmp))->isObjectTouched = GL_FALSE;
-     // pControl->SetObjVisible(pControl, pControl->objCoordinates);
+      pControl->SetObjVisible(pControl, pControl->objCoordinates);
 		break;
     case GL_COMBOBOX:
       pTmpComboGrp = (GL_ComboBoxGrp_TypeDef*)(pControl->objPTR);
@@ -4438,48 +4438,117 @@ static GL_ErrStatus SetNewRectControlVisible(GL_PageControls_TypeDef* pTmp, GL_C
   pThis->Control_Visible = GL_TRUE;
 	if (pThis->isObjectTouched == GL_FALSE)
 	{
-			;
+		uint8_t i;
+		uint16_t Color;
+		uint16_t j;
+		if ((objCoordinates.MaxY - objCoordinates.MinY) <= 10)
+		{
+			j = 1;
+			UARTprintf("10\r\n");
+		}
+		else if ((objCoordinates.MaxY - objCoordinates.MinY) <= 30)
+		{
+			j = 5;
+			UARTprintf("30\r\n");
+		}
+		else if ((objCoordinates.MaxY - objCoordinates.MinY) <= 100)
+		{
+			j = 10;
+			UARTprintf("50\r\n");
+		}
+		switch(pThis->Color)
+		{
+			case WHITE_BLACK:
+			GL_SetTextColor(BLACK);
+			for (i = 0; i < j; i++)
+			{
+				GL_DrawRectangle(objCoordinates.MaxX, objCoordinates.MinX, objCoordinates.MaxY - i, objCoordinates.MinY + i);
+			}
+			GL_SetTextColor(WHITE);
+			GL_DrawRectangle(objCoordinates.MaxX, objCoordinates.MinX, objCoordinates.MaxY, objCoordinates.MinY);
+			break;
+			case YELLOW_BLACK:
+			GL_SetTextColor(BLACK);
+			for (i = 0; i < j; i++)
+			{
+				GL_DrawRectangle(objCoordinates.MaxX, objCoordinates.MinX, objCoordinates.MaxY - i, objCoordinates.MinY + i);
+			}
+			GL_SetTextColor(VU_YELLOW);
+			GL_DrawRectangle(objCoordinates.MaxX, objCoordinates.MinX, objCoordinates.MaxY, objCoordinates.MinY);
+			break;
+			case BLUE_BLACK:
+			GL_SetTextColor(BLACK);
+			for (i = 0; i < j; i++)
+			{
+				GL_DrawRectangle(objCoordinates.MaxX, objCoordinates.MinX, objCoordinates.MaxY - i, objCoordinates.MinY + i);
+			}
+			GL_SetTextColor(VU_BLUE);
+			GL_DrawRectangle(objCoordinates.MaxX, objCoordinates.MinX, objCoordinates.MaxY, objCoordinates.MinY);
+			break;
+			default:
+				break;				
+		}
 	}
 	else if (pThis->isObjectTouched == GL_TRUE)
 	{
 		uint8_t i;
 		uint16_t Color;
 		uint16_t j;
-//		switch (pThis->Color)
-//		{
-//			case BLACK:
-//				Color = WHITE;
-//			UARTprintf("WHITE\r\n");
-//				break;
-//			case WHITE:
-//				Color = BLACK;
-//			UARTprintf("BLACK\r\n");
-//				break;
-//			case NONE:
-//				UARTprintf("NONE\r\n");
-//				Color = NONE;
-//				break;
-//		}
-//		if ((objCoordinates.MaxY - objCoordinates.MinY) <= 10)
-//		{
-//			j = 1;
-//			UARTprintf("10\r\n");
-//		}
-//		else if ((objCoordinates.MaxY - objCoordinates.MinY) <= 30)
-//		{
-//			j = 5;
-//			UARTprintf("30\r\n");
-//		}
-//		else if ((objCoordinates.MaxY - objCoordinates.MinY) <= 50)
-//		{
-//			j = 10;
-//			UARTprintf("50\r\n");
-//		}
+		switch (pThis->Color)
+		{
+			case BLACK:
+				Color = WHITE;
+			UARTprintf("WHITE\r\n");
+				break;
+			case WHITE:
+				Color = BLACK;
+			UARTprintf("BLACK\r\n");
+				break;
+			case VU_GREEN:
+				Color = VU_RED;
+				break;
+			case VU_RED:
+				Color = VU_GREEN;
+				break;
+			case VU_BLUE:
+			case YELLOW_BLACK:
+				Color = VU_YELLOW;
+				break;
+			case VU_YELLOW:
+			case BLUE_BLACK:
+				Color = VU_BLUE;
+				break;
+			case NONE:
+				UARTprintf("NONE\r\n");
+				Color = NONE;
+				break;
+			case WHITE_BLACK:
+				Color = WHITE;
+				break;
+			default:
+				Color = BLACK;
+				break;
+		}
+		if ((objCoordinates.MaxY - objCoordinates.MinY) <= 10)
+		{
+			j = 2;
+			UARTprintf("10\r\n");
+		}
+		else if ((objCoordinates.MaxY - objCoordinates.MinY) <= 30)
+		{
+			j = 5;
+			UARTprintf("30\r\n");
+		}
+		else if ((objCoordinates.MaxY - objCoordinates.MinY) <= 100)
+		{
+			j = 10;
+			UARTprintf("50\r\n");
+		}
 		if (pThis->Color != NONE)
 		{
-//			GL_SetTextColor(Color);
+			GL_SetTextColor(Color);
 			UARTprintf("COLOR\r\n");
-			for (i = 0; i < 5; i++)
+			for (i = 0; i < j; i++)
 			{
 				GL_DrawRectangle(objCoordinates.MaxX, objCoordinates.MinX, objCoordinates.MaxY - i, objCoordinates.MinY + i);
 			}
