@@ -1,5 +1,5 @@
 Dependencies for Project 'Project', Target 'Discover-More': (DO NOT MODIFY !)
-F (..\src\main.c)(0x5C02476E)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\main.o --omf_browse .\discover-more\main.crf --depend .\discover-more\main.d)
+F (..\src\main.c)(0x5C07A224)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\main.o --omf_browse .\discover-more\main.crf --depend .\discover-more\main.d)
 I (..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h)(0x5BF91006)
 I (..\inc\stm32f4x7_eth_conf.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5BF91006)
@@ -79,17 +79,17 @@ I (..\inc\httpserver-socket.h)(0x5BF91006)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)
 I (..\inc\httpclient-socket.h)(0x5BF91006)
-I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C021AC6)
-I (..\STM32F4Discovery\fonts.h)(0x5BF91006)
+I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C078D9D)
+I (..\STM32F4Discovery\fonts.h)(0x5C0562A1)
 I (..\inc\SSD1963_Configuration.h)(0x5BF91006)
 I (..\inc\SSD1963_CMD.h)(0x5BF91006)
 I (..\STM32F4Discovery\stm32f4_discovery_tsc2046.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5BF996F3)
+I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
-I (..\GUIlib\inc\uiframework.h)(0x5C024280)
+I (..\GUIlib\inc\uiframework.h)(0x5C07A19A)
 I (..\Embedded_GUI_HAL\inc\LcdHal.h)(0x5BF91006)
-I (..\GUIlib\inc\uiappuser.h)(0x5C024280)
+I (..\GUIlib\inc\uiappuser.h)(0x5C07A16A)
 I (..\MDK-ARM\flash_memory_driver.h)(0x5BFE63FE)
 F (..\src\system_stm32f4xx.c)(0x5BF91006)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\system_stm32f4xx.o --omf_browse .\discover-more\system_stm32f4xx.crf --depend .\discover-more\system_stm32f4xx.d)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5BF91006)
@@ -182,7 +182,7 @@ I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\queue.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5BF996F3)
+I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/opt.h)(0x5BF91006)
@@ -582,12 +582,12 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5BF91
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
-I (..\GUIlib\inc\uiappuser.h)(0x5C024280)
+I (..\GUIlib\inc\uiappuser.h)(0x5C07A16A)
 F (.\flash_memory_driver.h)(0x5BFE63FE)()
 F (..\GUIlib\src\pictures.c)(0x5BF91006)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\pictures.o --omf_browse .\discover-more\pictures.crf --depend .\discover-more\pictures.d)
-F (..\GUIlib\src\uiappuser.c)(0x5C0242A8)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\uiappuser.o --omf_browse .\discover-more\uiappuser.crf --depend .\discover-more\uiappuser.d)
-I (..\GUIlib\inc\uiframework.h)(0x5C024280)
-I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5BF996F3)
+F (..\GUIlib\src\uiappuser.c)(0x5C07A16A)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\uiappuser.o --omf_browse .\discover-more\uiappuser.crf --depend .\discover-more\uiappuser.d)
+I (..\GUIlib\inc\uiframework.h)(0x5C07A19A)
+I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5BF91006)
@@ -634,20 +634,20 @@ I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\mpu_wrappers.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-I (..\GUIlib\inc\uiappuser.h)(0x5C024280)
+I (..\GUIlib\inc\uiappuser.h)(0x5C07A16A)
 I (..\Embedded_GUI_HAL\inc\LcdHal.h)(0x5BF91006)
-I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C021AC6)
+I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C078D9D)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\STM32F4Discovery\fonts.h)(0x5BF91006)
+I (..\STM32F4Discovery\fonts.h)(0x5C0562A1)
 I (..\inc\SSD1963_Configuration.h)(0x5BF91006)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (..\inc\SSD1963_CMD.h)(0x5BF91006)
 I (..\MDK-ARM\flash_memory_driver.h)(0x5BFE63FE)
-F (..\GUIlib\src\uiframework.c)(0x5C024D7A)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\uiframework.o --omf_browse .\discover-more\uiframework.crf --depend .\discover-more\uiframework.d)
-I (..\GUIlib\inc\uiframework.h)(0x5C024280)
-I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5BF996F3)
+F (..\GUIlib\src\uiframework.c)(0x5C07A5A6)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\uiframework.o --omf_browse .\discover-more\uiframework.crf --depend .\discover-more\uiframework.d)
+I (..\GUIlib\inc\uiframework.h)(0x5C07A19A)
+I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5BF91006)
@@ -694,12 +694,12 @@ I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\mpu_wrappers.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-I (..\GUIlib\inc\uiappuser.h)(0x5C024280)
+I (..\GUIlib\inc\uiappuser.h)(0x5C07A16A)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\float.h)(0x599EDB3C)
 I (..\Embedded_GUI_HAL\inc\LcdHal.h)(0x5BF91006)
-I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C021AC6)
+I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C078D9D)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\STM32F4Discovery\fonts.h)(0x5BF91006)
+I (..\STM32F4Discovery\fonts.h)(0x5C0562A1)
 I (..\inc\SSD1963_Configuration.h)(0x5BF91006)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)
@@ -756,16 +756,16 @@ I (..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F\portmacro.h)(0x5B
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\mpu_wrappers.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h)(0x5BF91006)
-I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C021AC6)
+I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C078D9D)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\STM32F4Discovery\fonts.h)(0x5BF91006)
+I (..\STM32F4Discovery\fonts.h)(0x5C0562A1)
 I (..\inc\SSD1963_Configuration.h)(0x5BF91006)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (..\inc\SSD1963_CMD.h)(0x5BF91006)
-I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5BF996F3)
-I (..\Embedded_GUI_Library\inc\gl_fonts.h)(0x5BF91006)
+I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
+I (..\Embedded_GUI_Library\inc\gl_fonts.h)(0x5C0560A3)
 F (..\Embedded_GUI_Library\src\cursor.c)(0x5BF91006)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\cursor.o --omf_browse .\discover-more\cursor.crf --depend .\discover-more\cursor.d)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EDB3C)
 I (..\Embedded_GUI_HAL\inc\LcdHal.h)(0x5BF91006)
@@ -814,23 +814,23 @@ I (..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F\portmacro.h)(0x5B
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\mpu_wrappers.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h)(0x5BF91006)
-I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C021AC6)
+I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C078D9D)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\STM32F4Discovery\fonts.h)(0x5BF91006)
+I (..\STM32F4Discovery\fonts.h)(0x5C0562A1)
 I (..\inc\SSD1963_Configuration.h)(0x5BF91006)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (..\inc\SSD1963_CMD.h)(0x5BF91006)
-I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5BF996F3)
+I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_Library\inc\cursor.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-F (..\Embedded_GUI_Library\src\gl_fonts.c)(0x5BF91006)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\gl_fonts.o --omf_browse .\discover-more\gl_fonts.crf --depend .\discover-more\gl_fonts.d)
-I (..\Embedded_GUI_Library\inc\gl_fonts.h)(0x5BF91006)
+F (..\Embedded_GUI_Library\src\gl_fonts.c)(0x5C06295B)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\gl_fonts.o --omf_browse .\discover-more\gl_fonts.crf --depend .\discover-more\gl_fonts.d)
+I (..\Embedded_GUI_Library\inc\gl_fonts.h)(0x5C0560A3)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
-F (..\Embedded_GUI_Library\src\graphicObject.c)(0x5C024DDF)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\graphicobject.o --omf_browse .\discover-more\graphicobject.crf --depend .\discover-more\graphicobject.d)
+F (..\Embedded_GUI_Library\src\graphicObject.c)(0x5C07A50C)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\graphicobject.o --omf_browse .\discover-more\graphicobject.crf --depend .\discover-more\graphicobject.d)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5BF996F3)
+I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5BF91006)
@@ -882,9 +882,9 @@ I (..\Embedded_GUI_HAL\inc\TscHal.h)(0x5BF91006)
 I (..\STM32F4Discovery\stm32f4_discovery_tsc2046.h)(0x5BF91006)
 I (..\Embedded_GUI_HAL\inc\JoyHal.h)(0x5BF91006)
 I (..\Embedded_GUI_HAL\inc\LcdHal.h)(0x5BF91006)
-I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C021AC6)
+I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C078D9D)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\STM32F4Discovery\fonts.h)(0x5BF91006)
+I (..\STM32F4Discovery\fonts.h)(0x5C0562A1)
 I (..\inc\SSD1963_Configuration.h)(0x5BF91006)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)
@@ -979,7 +979,7 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF9
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 F (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.c)(0x5BF91006)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\stm32f4_discovery_lcd_ssd1963.o --omf_browse .\discover-more\stm32f4_discovery_lcd_ssd1963.crf --depend .\discover-more\stm32f4_discovery_lcd_ssd1963.d)
-I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C021AC6)
+I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C078D9D)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5BF91006)
@@ -1015,14 +1015,14 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5BF91
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
-I (..\STM32F4Discovery\fonts.h)(0x5BF91006)
+I (..\STM32F4Discovery\fonts.h)(0x5C0562A1)
 I (..\inc\SSD1963_Configuration.h)(0x5BF91006)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
 I (..\inc\SSD1963_CMD.h)(0x5BF91006)
-F (..\STM32F4Discovery\fonts.c)(0x5BF91006)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\fonts.o --omf_browse .\discover-more\fonts.crf --depend .\discover-more\fonts.d)
-I (..\STM32F4Discovery\fonts.h)(0x5BF91006)
+F (..\STM32F4Discovery\fonts.c)(0x5C06295B)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\fonts.o --omf_browse .\discover-more\fonts.crf --depend .\discover-more\fonts.d)
+I (..\STM32F4Discovery\fonts.h)(0x5C0562A1)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
 F (..\STM32F4Discovery\stm32f4_discovery_tsc2046.c)(0x5BF91006)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\inc -I ..\src -I ..\..\..\..\Libraries\CMSIS\Include -I ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I ..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I ..\STM32F4Discovery -I ..\GUIlib\inc -I ..\Embedded_GUI_HAL\inc -I ..\Embedded_GUI_Library\inc -I ..\MDK-ARM-I.\RTE\_Discover-More-ID:\WINDOW\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-ID:\WINDOW\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD -D_LLONG_AVAILABLE-o .\discover-more\stm32f4_discovery_tsc2046.o --omf_browse .\discover-more\stm32f4_discovery_tsc2046.crf --depend .\discover-more\stm32f4_discovery_tsc2046.d)
 I (..\STM32F4Discovery\stm32f4_discovery_tsc2046.h)(0x5BF91006)
@@ -1061,7 +1061,7 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5BF996F3)
+I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h)(0x5BF91006)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stddef.h)(0x599EDB3C)
@@ -1073,9 +1073,9 @@ I (..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F\portmacro.h)(0x5B
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\mpu_wrappers.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h)(0x5BF91006)
-I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C021AC6)
+I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C078D9D)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\STM32F4Discovery\fonts.h)(0x5BF91006)
+I (..\STM32F4Discovery\fonts.h)(0x5C0562A1)
 I (..\inc\SSD1963_Configuration.h)(0x5BF91006)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (D:\WINDOW\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EDB3A)

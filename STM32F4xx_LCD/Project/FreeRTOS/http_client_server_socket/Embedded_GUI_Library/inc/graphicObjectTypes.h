@@ -48,7 +48,7 @@
 #define MAX_BUTTON_LABEL_LENGTH              16
 #define MAX_CHECKBOX_LABEL_LENGTH            25
 #define MAX_RADIO_OPTION_LABEL_LENGTH        12
-#define MAX_RADIO_OPTIONS                    3
+#define MAX_RADIO_OPTIONS                    10
 #define MAX_COMBO_OPTIONS                    10
 #define MAX_COMBO_LABEL_LENGTH               16
 #define MAX_SWITCH_LABEL_LENGTH              16

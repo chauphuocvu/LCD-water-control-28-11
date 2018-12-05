@@ -38,6 +38,8 @@ uint16_t Temperature;
 uint16_t WaterHardnessSelect;
 uint16_t PoolVolume;
 uint16_t FiltrationPeriod;
+float 	 Probe_pH;
+float 	 Probe_CLF;
 /* External variables ----------------------------------------------------------*/
 /* Private typedef -------------------------------------------------------------*/
 /* Private defines -------------------------------------------------------------*/
@@ -80,6 +82,8 @@ void SettingsScreen_Parameters(void)
 //////////////////////////////////////////////////////////////
 void SettingsScreen_Calibration(void)
 {
+	DestroyPage(CurrentScreen);
+	Show_CalibrationScreen();
 }
 //////////////////////////////////////////////////////////////
 void SettingsScreen_DosingTest(void)
@@ -107,6 +111,8 @@ void SettingsScreen_DosingTest(void)
 //////////////////////////////////////////////////////////////
 void SettingsScreen_TypeOfProbe(void)
 {
+	DestroyPage(CurrentScreen);
+	Show_TypeOfProbeScreen();
 }
 
 
@@ -422,26 +428,26 @@ void WarningWaterHardnessScreen_OK(void)
 void WarningProbeCalibration62_78Screen_OK(void)
 {
 	DestroyPage(CurrentScreen);
-	Show_ParametersWaterScreen();
+	Show_CalibrationpHProbeScreen();
 }
 
 
 void WarningProbeCalibrationScreen_OK(void)
 {
 	DestroyPage(CurrentScreen);
-	Show_ParametersWaterScreen();
+	Show_CalibrationpHProbeScreen();
 }
 
 void WarningProbeCalibration70Screen_OK(void)
 {
 	DestroyPage(CurrentScreen);
-	Show_ParametersWaterScreen();
+	Show_CalibrationpHProbeScreen();
 }
 
 void WarningProbeCalibrationRequiredValueScreen_OK(void)
 {
 	DestroyPage(CurrentScreen);
-	Show_ParametersWaterScreen();
+	Show_CalibrationCLFProbeScreen();
 }
 
 void WarningProbeCalibrationRequiredValueRedScreen_OK(void)
@@ -531,3 +537,368 @@ void ParametersRequireValueCLFScreen_pH(void)
 	Show_ParametersRequireValuepHScreen();
 }
 
+/*Calibration Screen */
+void CalibrationScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_SettingsScreen();
+}
+void CalibrationScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+void CalibrationScreen_CLFProbe(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_CalibrationCLFProbeScreen();
+	DestroyPage(CurrentScreen);
+	Show_WarningProbeCalibrationRequiredValueScreen();
+}
+void CalibrationScreen_pHProbe(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_CalibrationpHProbeScreen();
+	DestroyPage(CurrentScreen);
+	Show_WarningProbeCalibration70Screen();	
+}
+void CalibrationScreen_WaterThermometer(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_CalibrationWaterScreen();
+}
+void CalibrationScreen_AirThermometer(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_CalibrationAirScreen();
+}
+
+
+/*CalibrationpHProbe Screen */
+void CalibrationpHProbeScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_CalibrationScreen();
+}
+void CalibrationpHProbeScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+void CalibrationpHProbeScreen_inc(void)
+{
+	Probe_pH +=0.1;
+}
+void CalibrationpHProbeScreen_dec(void)
+{
+	Probe_pH -=0.1;
+}
+void CalibrationpHProbeScreen_OK(void)
+{
+
+}
+
+
+
+
+/*CalibrationCLFProbe Screen */
+void CalibrationCLFProbeScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_CalibrationScreen();
+}
+void CalibrationCLFProbeScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+void CalibrationCLFProbeScreen_inc(void)
+{
+	Probe_CLF +=0.1;
+}
+void CalibrationCLFProbeScreen_dec(void)
+{
+	Probe_CLF -=0.1;
+}
+void CalibrationCLFProbeScreen_OK(void)
+{
+
+}
+
+
+/*ParametersRequireValueRedoxpH_Redox Screen */
+void ParametersRequireValueRedoxpH_RedoxScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueRedoxpH_RedoxScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueRedoxpH_RedoxScreen_inc(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueRedoxpH_RedoxScreen_dec(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueRedoxpH_RedoxScreen_OK(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueRedoxpH_RedoxScreen_pH(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersRequireValueRedoxpH_pHScreen();
+}
+
+
+
+/*ParametersRequireValueRedoxpH_pH Screen */
+void ParametersRequireValueRedoxpH_pHScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueRedoxpH_pHScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueRedoxpH_pHScreen_inc(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueRedoxpH_pHScreen_dec(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueRedoxpH_pHScreen_OK(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueRedoxpH_pHScreen_Rodex(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersRequireValueRedoxpH_RodexScreen();
+}
+
+
+
+/*ParametersRequireValueDosepH_DoseHour Screen */
+void ParametersRequireValueDosepH_DoseHourScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseHourScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseHourScreen_inc(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseHourScreen_dec(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseHourScreen_OK(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseHourScreen_pH(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersRequireValueDosepH_DoseHour_pHScreen();
+}
+
+
+
+/*ParametersRequireValueDosepH_DoseHour_pH Screen */
+void ParametersRequireValueDosepH_DoseHour_pHScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseHour_pHScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseHour_pHScreen_inc(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseHour_pHScreen_dec(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseHour_pHScreen_OK(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseHour_pHScreen_Dose(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersRequireValueDosepH_DoseHourScreen();
+}
+
+
+
+/*ParametersRequireValueDosepH_DoseDay Screen */
+void ParametersRequireValueDosepH_DoseDayScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseDayScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseDayScreen_inc(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseDayScreen_dec(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseDayScreen_OK(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseDayScreen_pH(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersRequireValueDosepH_DoseDay_pHScreen();
+}
+
+
+
+/*ParametersRequireValueDosepH_DoseDay_pH Screen */
+void ParametersRequireValueDosepH_DoseDay_pHScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseDay_pHScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseDay_pHScreen_inc(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseDay_pHScreen_dec(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseDay_pHScreen_OK(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void ParametersRequireValueDosepH_DoseDay_pHScreen_Dose(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_ParametersRequireValueDosepH_DoseDayScreen();
+}
+
+
+/*CalibrationWater Screen */
+void CalibrationWaterScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_CalibrationScreen();
+}
+//////////////////////////////////////////////////////////////
+void CalibrationWaterScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+//////////////////////////////////////////////////////////////
+void CalibrationWaterScreen_inc(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void CalibrationWaterScreen_dec(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void CalibrationWaterScreen_OK(void)
+{
+}
+
+
+/*CalibrationAir Screen */
+void CalibrationAirScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_CalibrationScreen();
+}
+//////////////////////////////////////////////////////////////
+void CalibrationAirScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+//////////////////////////////////////////////////////////////
+void CalibrationAirScreen_inc(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void CalibrationAirScreen_dec(void)
+{
+}
+//////////////////////////////////////////////////////////////
+void CalibrationAirScreen_OK(void)
+{
+}
+
+
+/*TypeOfProbeScreen */
+void TypeOfProbeScreen_Back(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_SettingsScreen();
+}
+void TypeOfProbeScreen_BackToStart(void)
+{
+	DestroyPage(CurrentScreen);
+	Show_StartScreen();
+}
+void TypeOfProbeScreen_FreeChlorine(void)
+{
+	
+}
+void TypeOfProbeScreen_RedoxProbe(void)
+{
+	
+}
+void TypeOfProbeScreen_mlperhour(void)
+{
+	
+}
+void TypeOfProbeScreen_mlperday(void)
+{
+	
+}

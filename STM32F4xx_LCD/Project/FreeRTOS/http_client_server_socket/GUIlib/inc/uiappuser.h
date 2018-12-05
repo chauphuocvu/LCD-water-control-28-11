@@ -160,6 +160,126 @@ void ParametersRequireValueCLFScreen_OK(void);
 void ParametersRequireValueCLFScreen_pH(void);
 
 
+/*Calibration Screen */
+void CalibrationScreen_Back(void);
+void CalibrationScreen_BackToStart(void);
+void CalibrationScreen_CLFProbe(void);
+void CalibrationScreen_pHProbe(void);
+void CalibrationScreen_WaterThermometer(void);
+void CalibrationScreen_AirThermometer(void);
+
+
+
+/*CalibrationpHProbe Screen */
+void CalibrationpHProbeScreen_Back(void);
+void CalibrationpHProbeScreen_BackToStart(void);
+void CalibrationpHProbeScreen_inc(void);
+void CalibrationpHProbeScreen_dec(void);
+void CalibrationpHProbeScreen_OK(void);
+
+
+
+/*CalibrationCLFProbe Screen */
+void CalibrationCLFProbeScreen_Back(void);
+void CalibrationCLFProbeScreen_BackToStart(void);
+void CalibrationCLFProbeScreen_inc(void);
+void CalibrationCLFProbeScreen_dec(void);
+void CalibrationCLFProbeScreen_OK(void);
+
+
+
+
+/*ParametersRequireValueRedoxpH_Redox Screen */
+void ParametersRequireValueRedoxpH_RedoxScreen_Back(void);
+void ParametersRequireValueRedoxpH_RedoxScreen_BackToStart(void);
+void ParametersRequireValueRedoxpH_RedoxScreen_inc(void);
+void ParametersRequireValueRedoxpH_RedoxScreen_dec(void);
+void ParametersRequireValueRedoxpH_RedoxScreen_OK(void);
+void ParametersRequireValueRedoxpH_RedoxScreen_pH(void);
+
+
+
+
+/*ParametersRequireValueRedoxpH_pHScreen */
+void ParametersRequireValueRedoxpH_pHScreen_Back(void);
+void ParametersRequireValueRedoxpH_pHScreen_BackToStart(void);
+void ParametersRequireValueRedoxpH_pHScreen_inc(void);
+void ParametersRequireValueRedoxpH_pHScreen_dec(void);
+void ParametersRequireValueRedoxpH_pHScreen_OK(void);
+void ParametersRequireValueRedoxpH_pHScreen_Rodex(void);
+
+
+
+
+/*ParametersRequireValueDosepH_DoseHour Screen */
+void ParametersRequireValueDosepH_DoseHourScreen_Back(void);
+void ParametersRequireValueDosepH_DoseHourScreen_BackToStart(void);
+void ParametersRequireValueDosepH_DoseHourScreen_inc(void);
+void ParametersRequireValueDosepH_DoseHourScreen_dec(void);
+void ParametersRequireValueDosepH_DoseHourScreen_OK(void);
+void ParametersRequireValueDosepH_DoseHourScreen_pH(void);
+
+
+
+/*ParametersRequireValueDosepH_DoseHour_pH Screen */
+void ParametersRequireValueDosepH_DoseHour_pHScreen_Back(void);
+void ParametersRequireValueDosepH_DoseHour_pHScreen_BackToStart(void);
+void ParametersRequireValueDosepH_DoseHour_pHScreen_inc(void);
+void ParametersRequireValueDosepH_DoseHour_pHScreen_dec(void);
+void ParametersRequireValueDosepH_DoseHour_pHScreen_OK(void);
+void ParametersRequireValueDosepH_DoseHour_pHScreen_Dose(void);
+
+
+
+/*ParametersRequireValueDosepH_DoseDay Screen */
+void ParametersRequireValueDosepH_DoseDayScreen_Back(void);
+void ParametersRequireValueDosepH_DoseDayScreen_BackToStart(void);
+void ParametersRequireValueDosepH_DoseDayScreen_inc(void);
+void ParametersRequireValueDosepH_DoseDayScreen_dec(void);
+void ParametersRequireValueDosepH_DoseDayScreen_OK(void);
+void ParametersRequireValueDosepH_DoseDayScreen_pH(void);
+
+
+
+/*ParametersRequireValueDosepH_DoseDay_pH Screen */
+void ParametersRequireValueDosepH_DoseDay_pHScreen_Back(void);
+void ParametersRequireValueDosepH_DoseDay_pHScreen_BackToStart(void);
+void ParametersRequireValueDosepH_DoseDay_pHScreen_inc(void);
+void ParametersRequireValueDosepH_DoseDay_pHScreen_dec(void);
+void ParametersRequireValueDosepH_DoseDay_pHScreen_OK(void);
+void ParametersRequireValueDosepH_DoseDay_pHScreen_Dose(void);
+
+
+
+
+/*CalibrationWaterScreen */
+void CalibrationWaterScreen_Back(void);
+void CalibrationWaterScreen_BackToStart(void);
+void CalibrationWaterScreen_inc(void);
+void CalibrationWaterScreen_dec(void);
+void CalibrationWaterScreen_OK(void);
+
+
+
+/*TypeOfProbeScreen */
+void TypeOfProbeScreen_Back(void);
+void TypeOfProbeScreen_BackToStart(void);
+void TypeOfProbeScreen_FreeChlorine(void);
+void TypeOfProbeScreen_RedoxProbe(void);
+void TypeOfProbeScreen_mlperhour(void);
+void TypeOfProbeScreen_mlperday(void);
+
+
+
+
+/*CalibrationAirScreen */
+void CalibrationAirScreen_Back(void);
+void CalibrationAirScreen_BackToStart(void);
+void CalibrationAirScreen_inc(void);
+void CalibrationAirScreen_dec(void);
+void CalibrationAirScreen_OK(void);
+
+
 
 #ifdef __cplusplus
 }

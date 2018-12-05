@@ -69,7 +69,18 @@ extern uint16_t		Screen;
 #define	WarningTooRapidChangeScreen_df			20
 #define ParametersRequireValuepHScreen_df		21
 #define ParametersRequireValueCLFScreen_df  22
-
+#define CalibrationScreen_df  23
+#define CalibrationpHProbeScreen_df 24
+#define CalibrationCLFProbeScreen_df 25
+#define ParametersRequireValueRedoxpH_RedoxScreen_df 26
+#define ParametersRequireValueRedoxpH_pHScreen_df 27
+#define ParametersRequireValueDosepH_DoseHourScreen_df 28
+#define ParametersRequireValueDosepH_DoseHour_pHScreen_df 29
+#define ParametersRequireValueDosepH_DoseDayScreen_df 30
+#define ParametersRequireValueDosepH_DoseDay_pHScreen_df 31
+#define CalibrationWaterScreen_df   32
+#define CalibrationAirScreen_df    33
+#define TypeOfProbeScreen_df				34
 /*Added by chau phuoc vu 14/11/2018*/
 void DelayScreen_Decrement(void);
 void DelayScreen(uint16_t time);
@@ -105,6 +116,18 @@ void Create_WarningProbeCalibrationRequiredValueImpossibleScreen(void);
 void Create_WarningTooRapidChangeScreen(void);
 void Create_ParametersRequireValuepHScreen(void);
 void Create_ParametersRequireValueCLFScreen(void);
+void Create_CalibrationScreen(void);
+void Create_CalibrationpHProbeScreen(void);
+void Create_CalibrationCLFProbeScreen(void);
+void Create_ParametersRequireValueRedoxpH_RodexScreen(void);
+void Create_ParametersRequireValueRedoxpH_pHScreen(void);
+void Create_ParametersRequireValueDosepH_DoseHourScreen(void);
+void Create_ParametersRequireValueDosepH_DoseHour_pHScreen(void);
+void Create_ParametersRequireValueDosepH_DoseDayScreen(void);
+void Create_ParametersRequireValueDosepH_DoseDay_pHScreen(void);
+void Create_CalibrationWaterScreen(void);
+void Create_CalibrationAirScreen(void);
+void Create_TypeOfProbeScreen(void);
 
 /*Show Screen*/
 void Show_HomeScreen(void);
@@ -130,6 +153,19 @@ void Show_WarningProbeCalibrationRequiredValueImpossibleScreen(void);
 void Show_WarningTooRapidChangeScreen(void);
 void Show_ParametersRequireValuepHScreen(void);
 void Show_ParametersRequireValueCLFScreen(void);
+void Show_CalibrationScreen(void);
+void Show_CalibrationpHProbeScreen(void);
+void Show_CalibrationCLFProbeScreen(void);
+void Show_ParametersRequireValueRedoxpH_RodexScreen(void);
+void Show_ParametersRequireValueRedoxpH_pHScreen(void);
+void Show_ParametersRequireValueDosepH_DoseHourScreen(void);
+void Show_ParametersRequireValueDosepH_DoseHour_pHScreen(void);
+void Show_ParametersRequireValueDosepH_DoseDayScreen(void);
+void Show_ParametersRequireValueDosepH_DoseDay_pHScreen(void);
+void Show_CalibrationWaterScreen(void);
+void Show_CalibrationAirScreen(void);
+void Show_TypeOfProbeScreen(void);
+
 
 #ifdef __cplusplus
 }

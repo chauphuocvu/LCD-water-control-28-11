@@ -115,7 +115,7 @@ typedef enum
 #define BLUE_BLACK					5
 #define WHITE_GREEN					6
 #define WHITE_RED						7
-#define WHITE_BLACK					3
+#define GRAY_BLACK					8
 #define WHITE_BLACK					3
 #define WHITE_BLACK					3
 #define WHITE_BLACK					3

@@ -58,6 +58,11 @@ extern gl_sFONT GL_Font8x12;
 extern gl_sFONT GL_Font8x12_bold;
 extern gl_sFONT GL_Font8x8;
 extern gl_sFONT GL_Font36x48;
+extern gl_sFONT GL_Font17x24;
+extern gl_sFONT GL_Font14x20;
+extern gl_sFONT GL_Font11x16;
+extern gl_sFONT GL_Font7x12;
+extern gl_sFONT GL_Font5x8;
 /**
   * @}
   */

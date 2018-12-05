@@ -86,12 +86,14 @@ void DisplayArgument(void);
 void CreateTask2(void * pvParameters);
 void vApplicationTickHook( void );
 uint16_t datar = 0;
-extern uint16_t		Screen;
+extern uint16_t	Screen;
 extern uint16_t PoolSelect;
 extern uint16_t Temperature;
 extern uint16_t WaterHardnessSelect;
 extern uint16_t PoolVolume;
 extern uint16_t FiltrationPeriod;
+extern float 	 Probe_pH;
+extern float 	 Probe_CLF;
 /* Private functions ---------------------------------------------------------*/
 
 /**
@@ -121,8 +123,8 @@ int main(void)
 	PoolVolume = ReadDataFromFlashForSelect(FLASH_ADDR_POOL_VOLUME);
 	FiltrationPeriod = ReadDataFromFlashForSelect(FLASH_ADDR_FILTRATIONPERIOD);
 	
-	Show_ParametersRequireValueCLFScreen();
-//	Show_StartScreen();
+
+	Show_TypeOfProbeScreen();
 
 	
   /* Configure Ethernet (GPIOs, clocks, MAC, DMA) */ 
@@ -250,16 +252,85 @@ void DisplayArgument(void)
 				break;
 			case ParametersRequireValuepHScreen_df:
 			case ParametersRequireValueCLFScreen_df:
-				LCD_SetColors(WHITE,VU_YELLOW);
+				LCD_SetColors(BLACK,VU_YELLOW);
 				LCD_SetFont(&Font16x24);
 				LCD_DisplayStringLine(100,100,(uint8_t *)"0,2");
 				LCD_SetFont(&Font12x12);
 				LCD_DisplayStringLine(110,165,(uint8_t *)"mg/l");
-				LCD_SetColors(WHITE,VU_BLUE);
+				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
 				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
 				LCD_SetFont(&Font12x12);
 				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
+				break;
+			case CalibrationScreen_df:
+				break;
+			case CalibrationpHProbeScreen_df:
+				LCD_SetColors(BLACK,VU_BLUE);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
+				break;
+			case CalibrationCLFProbeScreen_df:
+				LCD_SetColors(BLACK,VU_YELLOW);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(110,395,(uint8_t *)"mg/h");
+				break;
+			case ParametersRequireValueRedoxpH_RedoxScreen_df:
+			case ParametersRequireValueRedoxpH_pHScreen_df:
+				LCD_SetColors(BLACK,VU_YELLOW);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,100,(uint8_t *)"650");
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(110,165,(uint8_t *)"mV");
+				LCD_SetColors(BLACK,VU_BLUE);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
+				break;
+			case ParametersRequireValueDosepH_DoseHourScreen_df:
+			case ParametersRequireValueDosepH_DoseHour_pHScreen_df:
+				LCD_SetColors(BLACK,VU_YELLOW);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,120,(uint8_t *)"5");
+				LCD_SetColors(BLACK,VU_BLUE);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,330,(uint8_t *)"6,8");
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
+				break;
+			case ParametersRequireValueDosepH_DoseDayScreen_df:
+			case ParametersRequireValueDosepH_DoseDay_pHScreen_df:
+				LCD_SetColors(BLACK,VU_GRAY);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,120,(uint8_t *)"5");
+				LCD_SetColors(BLACK,VU_BLUE);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,330,(uint8_t *)"6,8");
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
+				break;
+			case CalibrationWaterScreen_df:
+				LCD_SetColors(WHITE,VU_GRAY);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,330,(uint8_t *)"28");
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(110,395,(uint8_t *)"oC");
+				break;
+			case CalibrationAirScreen_df:
+				LCD_SetColors(WHITE,VU_GRAY);
+				LCD_SetFont(&Font16x24);
+				LCD_DisplayStringLine(100,330,(uint8_t *)"30");
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(110,395,(uint8_t *)"oC");
+				break;
+			case TypeOfProbeScreen_df:
+				break;
+			default :
 				break;
 		}
 }

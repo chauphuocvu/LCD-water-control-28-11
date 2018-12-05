@@ -586,7 +586,7 @@ GL_PageControls_TypeDef* AddRadioOption (GL_RadioButtonGrp_TypeDef* pThis, const
   GL_RadioOption_TypeDef *pOptionObj = NULL;
   GL_PageControls_TypeDef* pPageControlObj = NULL;
 
-  if (!pThis || pThis->RadioOptionCount == 3)
+  if (!pThis || pThis->RadioOptionCount == MAX_RADIO_OPTIONS)
   {
     return GL_ERROR;
   }
@@ -3973,7 +3973,7 @@ static void CallPreEvents(GL_PageControls_TypeDef* pControl)
 		UARTprintf("CallPreEvents Newrect\r\n");
       ((GL_NewRectControl_TypeDef*)(pTmp))->isObjectTouched = GL_TRUE;
       pControl->SetObjVisible(pControl, pControl->objCoordinates);
-			GL_Delay(10);
+			GL_Delay(5);
       ((GL_NewRectControl_TypeDef*)(pTmp))->isObjectTouched = GL_FALSE;
       pControl->SetObjVisible(pControl, pControl->objCoordinates);
 		break;
@@ -4485,6 +4485,15 @@ static GL_ErrStatus SetNewRectControlVisible(GL_PageControls_TypeDef* pTmp, GL_C
 			GL_SetTextColor(VU_BLUE);
 			GL_DrawRectangle(objCoordinates.MaxX, objCoordinates.MinX, objCoordinates.MaxY, objCoordinates.MinY);
 			break;
+			case GRAY_BLACK:
+			GL_SetTextColor(BLACK);
+			for (i = 0; i < j; i++)
+			{
+				GL_DrawRectangle(objCoordinates.MaxX, objCoordinates.MinX, objCoordinates.MaxY - i, objCoordinates.MinY + i);
+			}
+			GL_SetTextColor(VU_GRAY);
+			GL_DrawRectangle(objCoordinates.MaxX, objCoordinates.MinX, objCoordinates.MaxY, objCoordinates.MinY);
+			break;
 			default:
 				break;				
 		}
@@ -4517,6 +4526,9 @@ static GL_ErrStatus SetNewRectControlVisible(GL_PageControls_TypeDef* pTmp, GL_C
 			case VU_YELLOW:
 			case BLUE_BLACK:
 				Color = VU_BLUE;
+				break;
+			case GRAY_BLACK:
+				Color = VU_GRAY;
 				break;
 			case NONE:
 				UARTprintf("NONE\r\n");

@@ -69,6 +69,12 @@ extern sFONT Font8x12;
 extern sFONT Font8x8;
 extern sFONT Font36x48;
 extern sFONT Font8x12_bold;
+extern sFONT Font17x24;
+extern sFONT Font14x20;
+extern sFONT Font11x16;
+extern sFONT Font7x12;
+extern sFONT Font5x8;
+
 /**
   * @}
   */ 

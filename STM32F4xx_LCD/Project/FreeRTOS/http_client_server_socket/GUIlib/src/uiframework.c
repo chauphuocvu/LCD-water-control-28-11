@@ -389,7 +389,7 @@ void Create_ParametersScreen(void)
 	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,ParametersScreen_BackToStart);
 	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,210,80,BLACK,ParametersScreen_Pool);
 	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,210,80,BLACK,ParametersScreen_Water);
-	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,80,VU_BLUE,ParametersScreen_pH);
+	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,80,NONE,ParametersScreen_pH);
 	Create_PageObj( &ParametersScreen ); 
 	AddPageControlObj(250,240,DesignButton01,&ParametersScreen);
 	AddPageControlObj(20,240,DesignButton02,&ParametersScreen);
@@ -1002,7 +1002,7 @@ void Show_ParametersRequireValuepHScreen(void)
 	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetBackColor(VU_YELLOW);
-	LCD_SetFont(&Font16x24);
+	LCD_SetTextColor(BLACK);
 	LCD_DisplayStringLine(70,30,(uint8_t *)"CLF");
 	LCD_SetBackColor(VU_BLUE);
 	LCD_DisplayStringLine(70,260,(uint8_t *)"pH");
@@ -1065,7 +1065,7 @@ void Show_ParametersRequireValueCLFScreen(void)
 	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetBackColor(VU_YELLOW);
-	LCD_SetFont(&Font16x24);
+	LCD_SetTextColor(BLACK);
 	LCD_DisplayStringLine(70,30,(uint8_t *)"CLF");
 	LCD_DrawFullRect(95,140,60,20,BLACK);
 	LCD_SetBackColor(VU_BLUE);
@@ -1090,6 +1090,775 @@ void Show_ParametersRequireValueCLFScreen(void)
 	Screen = ParametersRequireValueCLFScreen_df;
 	CurrentScreen = &ParametersRequireValueCLFScreen;
 }
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef CalibrationScreen;
+void Create_CalibrationScreen(void)
+{
+	GL_PageControls_TypeDef* SettingsDesignButton01= NewRectControl(1,210,30,WHITE,CalibrationScreen_Back);
+	GL_PageControls_TypeDef* SettingsDesignButton02= NewRectControl(2,210,30,WHITE,CalibrationScreen_BackToStart);
+	GL_PageControls_TypeDef* SettingsDesignButton03= NewRectControl(3,210,80,NONE,CalibrationScreen_CLFProbe);
+	GL_PageControls_TypeDef* SettingsDesignButton04= NewRectControl(4,210,80,NONE,CalibrationScreen_pHProbe);
+	GL_PageControls_TypeDef* SettingsDesignButton05= NewRectControl(5,210,80,BLACK,CalibrationScreen_WaterThermometer);
+	GL_PageControls_TypeDef* SettingsDesignButton06= NewRectControl(6,210,80,BLACK,CalibrationScreen_AirThermometer);
+	Create_PageObj( &CalibrationScreen ); 
+	AddPageControlObj(250,240,SettingsDesignButton01,&CalibrationScreen);
+	AddPageControlObj(20,240,SettingsDesignButton02,&CalibrationScreen);
+	AddPageControlObj(20,60,SettingsDesignButton03,&CalibrationScreen);
+	AddPageControlObj(250,60,SettingsDesignButton04,&CalibrationScreen);
+	AddPageControlObj(20,150,SettingsDesignButton05,&CalibrationScreen);
+	AddPageControlObj(250,150,SettingsDesignButton06,&CalibrationScreen);
+	
+}
+////////////////////////////////////////
+void Show_CalibrationScreen(void)
+{
+	UARTprintf("Create_CalibrationScreen\r\n");
+	Create_CalibrationScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,345,(uint8_t *)"CALIBRATION");;
+	LCD_DrawFullRect(20,60,210,80,VU_YELLOW);
+	LCD_DrawFullRect(250,60,210,80,VU_BLUE);
+	LCD_DrawRect(20,150,80,210);
+	LCD_DrawRect(250,150,80,210);
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetFont(&Font12x12);
+	LCD_SetColors(BLACK,VU_YELLOW);
+	LCD_DisplayStringLineInRect(20,60,210,50,(uint8_t *)"CLF PROBE");
+	LCD_DisplayStringLineInRect(20,85,210,50,(uint8_t *)"CALIBRATION");
+	LCD_SetColors(BLACK,VU_BLUE);
+	LCD_DisplayStringLineInRect(250,60,210,50,(uint8_t *)"pH PROBE");
+	LCD_DisplayStringLineInRect(250,85,210,50,(uint8_t *)"CALIBRATION");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_DisplayStringLineInRect(20,150,210,50,(uint8_t *)"WATER");
+	LCD_DisplayStringLineInRect(20,175,210,50,(uint8_t *)"THERMOMETER");
+	LCD_DisplayStringLineInRect(250,150,210,50,(uint8_t *)"AIR");
+	LCD_DisplayStringLineInRect(250,175,210,50,(uint8_t *)"THERMOMETER");
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");
+	CalibrationScreen.ShowPage(&CalibrationScreen,GL_TRUE);
+	Screen = CalibrationScreen_df;
+	CurrentScreen = &CalibrationScreen;
+}
+
+
+
+
+
+
+
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef CalibrationpHProbeScreen;
+void Create_CalibrationpHProbeScreen(void)
+{
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,CalibrationpHProbeScreen_Back);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,CalibrationpHProbeScreen_BackToStart);
+	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,100,60,BLUE_BLACK,CalibrationpHProbeScreen_inc);
+	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,100,60,BLUE_BLACK,CalibrationpHProbeScreen_dec);
+	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,60,BLUE_BLACK,CalibrationpHProbeScreen_OK);
+	Create_PageObj( &CalibrationpHProbeScreen ); 
+	AddPageControlObj(250,240,DesignButton01,&CalibrationpHProbeScreen);
+	AddPageControlObj(20,240,DesignButton02,&CalibrationpHProbeScreen);
+	AddPageControlObj(20,170,DesignButton03,&CalibrationpHProbeScreen);
+	AddPageControlObj(130,170,DesignButton04,&CalibrationpHProbeScreen);
+	AddPageControlObj(250,170,DesignButton05,&CalibrationpHProbeScreen);
+}
+////////////////////////////////////////
+void Show_CalibrationpHProbeScreen(void)
+{
+	UARTprintf("Show_CalibrationpHProbeScreen\r\n");
+	Create_CalibrationpHProbeScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,230,(uint8_t *)"pH CALIBRATION PROBE");
+	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font8x12_bold);
+	LCD_DisplayStringLine(70,30,(uint8_t *)"Calibration");
+	LCD_DisplayStringLine(90,30,(uint8_t *)"recommended by");
+	LCD_DisplayStringLine(110,30,(uint8_t *)"using buffer pH 7,0.");
+	LCD_SetBackColor(VU_BLUE);
+	LCD_SetTextColor(BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(70,260,(uint8_t *)"pH");
+	LCD_DrawFullRect(325,140,60,20,BLACK);
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetTextColor(VU_BLUE);
+	LCD_DrawRect(20,170,60,100);
+	LCD_DrawRect(130,170,60,100);
+	LCD_DrawRect(250,170,60,210);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_DisplayStringLineInRect(20,170,100,60,(uint8_t *)"+");
+	LCD_DisplayStringLineInRect(130,170,100,60,(uint8_t *)"-");
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"OK");
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(BLACK,WHITE);
+	CalibrationpHProbeScreen.ShowPage(&CalibrationpHProbeScreen,GL_TRUE);
+	Screen = CalibrationpHProbeScreen_df;
+	CurrentScreen = &CalibrationpHProbeScreen;
+}
+
+
+
+
+
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef CalibrationCLFProbeScreen;
+void Create_CalibrationCLFProbeScreen(void)
+{
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,CalibrationCLFProbeScreen_Back);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,CalibrationCLFProbeScreen_BackToStart);
+	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,100,60,YELLOW_BLACK,CalibrationCLFProbeScreen_inc);
+	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,100,60,YELLOW_BLACK,CalibrationCLFProbeScreen_dec);
+	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,60,YELLOW_BLACK,CalibrationCLFProbeScreen_OK);
+	Create_PageObj( &CalibrationCLFProbeScreen ); 
+	AddPageControlObj(250,240,DesignButton01,&CalibrationCLFProbeScreen);
+	AddPageControlObj(20,240,DesignButton02,&CalibrationCLFProbeScreen);
+	AddPageControlObj(20,170,DesignButton03,&CalibrationCLFProbeScreen);
+	AddPageControlObj(130,170,DesignButton04,&CalibrationCLFProbeScreen);
+	AddPageControlObj(250,170,DesignButton05,&CalibrationCLFProbeScreen);
+}
+////////////////////////////////////////
+void Show_CalibrationCLFProbeScreen(void)
+{
+	UARTprintf("Show_CalibrationCLFProbeScreen\r\n");
+	Create_CalibrationCLFProbeScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,215,(uint8_t *)"CLF CALIBRATION PROBE");
+	LCD_DrawFullRect(250,60,210,100,VU_YELLOW);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font8x12_bold);
+	LCD_DisplayStringLine(70,30,(uint8_t *)"The chlorine content in");
+	LCD_DisplayStringLine(90,30,(uint8_t *)"pool water must be greater");
+	LCD_DisplayStringLine(110,30,(uint8_t *)"than \"required value\".");
+	LCD_SetBackColor(VU_YELLOW);
+	LCD_SetTextColor(BLACK);
+	LCD_DisplayStringLine(70,260,(uint8_t *)"CLF");
+	LCD_DrawFullRect(325,140,60,20,BLACK);
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetTextColor(VU_YELLOW);
+	LCD_DrawRect(20,170,60,100);
+	LCD_DrawRect(130,170,60,100);
+	LCD_DrawRect(250,170,60,210);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_DisplayStringLineInRect(20,170,100,60,(uint8_t *)"+");
+	LCD_DisplayStringLineInRect(130,170,100,60,(uint8_t *)"-");
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"OK");
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(BLACK,WHITE);
+	CalibrationCLFProbeScreen.ShowPage(&CalibrationCLFProbeScreen,GL_TRUE);
+	Screen = CalibrationCLFProbeScreen_df;
+	CurrentScreen = &CalibrationCLFProbeScreen;
+}
+
+
+
+
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef ParametersRequireValueRedoxpH_RedoxScreen;
+void Create_ParametersRequireValueRedoxpH_RodexScreen(void)
+{
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,ParametersRequireValueRedoxpH_RedoxScreen_Back);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,ParametersRequireValueRedoxpH_RedoxScreen_BackToStart);
+	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,100,60,YELLOW_BLACK,ParametersRequireValueRedoxpH_RedoxScreen_inc);
+	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,100,60,YELLOW_BLACK,ParametersRequireValueRedoxpH_RedoxScreen_dec);
+	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,60,YELLOW_BLACK,ParametersRequireValueRedoxpH_RedoxScreen_OK);
+	GL_PageControls_TypeDef* DesignButton06= NewRectControl(6,210,100,NONE,ParametersRequireValueRedoxpH_RedoxScreen_pH);
+	Create_PageObj( &ParametersRequireValueRedoxpH_RedoxScreen ); 
+	AddPageControlObj(250,240,DesignButton01,&ParametersRequireValueRedoxpH_RedoxScreen);
+	AddPageControlObj(20,240,DesignButton02,&ParametersRequireValueRedoxpH_RedoxScreen);
+	AddPageControlObj(20,170,DesignButton03,&ParametersRequireValueRedoxpH_RedoxScreen);
+	AddPageControlObj(130,170,DesignButton04,&ParametersRequireValueRedoxpH_RedoxScreen);
+	AddPageControlObj(250,170,DesignButton05,&ParametersRequireValueRedoxpH_RedoxScreen);
+	AddPageControlObj(250,60,DesignButton06,&ParametersRequireValueRedoxpH_RedoxScreen);	
+}
+////////////////////////////////////////
+void Show_ParametersRequireValueRedoxpH_RodexScreen(void)
+{
+	UARTprintf("Show_ParametersRequireValueRedoxpH_RodexScreen\r\n");
+	Create_ParametersRequireValueRedoxpH_RodexScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
+	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
+	LCD_SetBackColor(VU_YELLOW);
+	LCD_SetTextColor(BLACK);
+	LCD_DisplayStringLine(70,30,(uint8_t *)"REDOX");
+	LCD_DrawFullRect(95,140,60,20,BLACK);
+	LCD_SetBackColor(VU_BLUE);
+	LCD_DisplayStringLine(70,260,(uint8_t *)"pH");
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetTextColor(VU_YELLOW);
+	LCD_DrawRect(20,170,60,100);
+	LCD_DrawRect(130,170,60,100);
+	LCD_DrawRect(250,170,60,210);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_DisplayStringLineInRect(20,170,100,60,(uint8_t *)"+");
+	LCD_DisplayStringLineInRect(130,170,100,60,(uint8_t *)"-");
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"OK");
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(BLACK,WHITE);
+	ParametersRequireValueRedoxpH_RedoxScreen.ShowPage(&ParametersRequireValueRedoxpH_RedoxScreen,GL_TRUE);
+	Screen = ParametersRequireValueRedoxpH_RedoxScreen_df;
+	CurrentScreen = &ParametersRequireValueRedoxpH_RedoxScreen;
+}
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef ParametersRequireValueRedoxpH_pHScreen;
+void Create_ParametersRequireValueRedoxpH_pHScreen(void)
+{
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,ParametersRequireValueRedoxpH_pHScreen_Back);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,ParametersRequireValueRedoxpH_pHScreen_BackToStart);
+	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,100,60,BLUE_BLACK,ParametersRequireValueRedoxpH_pHScreen_inc);
+	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,100,60,BLUE_BLACK,ParametersRequireValueRedoxpH_pHScreen_dec);
+	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,60,BLUE_BLACK,ParametersRequireValueRedoxpH_pHScreen_OK);
+	GL_PageControls_TypeDef* DesignButton06= NewRectControl(6,210,100,NONE,ParametersRequireValueRedoxpH_pHScreen_Rodex);
+	Create_PageObj( &ParametersRequireValueRedoxpH_pHScreen ); 
+	AddPageControlObj(250,240,DesignButton01,&ParametersRequireValueRedoxpH_pHScreen);
+	AddPageControlObj(20,240,DesignButton02,&ParametersRequireValueRedoxpH_pHScreen);
+	AddPageControlObj(20,170,DesignButton03,&ParametersRequireValueRedoxpH_pHScreen);
+	AddPageControlObj(130,170,DesignButton04,&ParametersRequireValueRedoxpH_pHScreen);
+	AddPageControlObj(250,170,DesignButton05,&ParametersRequireValueRedoxpH_pHScreen);
+	AddPageControlObj(20,60,DesignButton06,&ParametersRequireValueRedoxpH_pHScreen);	
+}
+////////////////////////////////////////
+void Show_ParametersRequireValueRedoxpH_pHScreen(void)
+{
+	UARTprintf("Show_ParametersRequireValueRedoxpH_pHScreen\r\n");
+	Create_ParametersRequireValueRedoxpH_pHScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
+	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
+	LCD_SetBackColor(VU_YELLOW);
+	LCD_SetTextColor(BLACK);
+	LCD_DisplayStringLine(70,30,(uint8_t *)"REDOX");
+	LCD_SetBackColor(VU_BLUE);
+	LCD_DisplayStringLine(70,260,(uint8_t *)"pH");
+	LCD_DrawFullRect(325,140,60,20,BLACK);
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetTextColor(VU_BLUE);
+	LCD_DrawRect(20,170,60,100);
+	LCD_DrawRect(130,170,60,100);
+	LCD_DrawRect(250,170,60,210);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_DisplayStringLineInRect(20,170,100,60,(uint8_t *)"+");
+	LCD_DisplayStringLineInRect(130,170,100,60,(uint8_t *)"-");
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"OK");
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(BLACK,WHITE);
+	ParametersRequireValueRedoxpH_pHScreen.ShowPage(&ParametersRequireValueRedoxpH_pHScreen,GL_TRUE);
+	Screen = ParametersRequireValueRedoxpH_pHScreen_df;
+	CurrentScreen = &ParametersRequireValueRedoxpH_pHScreen;
+}
+
+
+
+
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef ParametersRequireValueDosepH_DoseHourScreen;
+void Create_ParametersRequireValueDosepH_DoseHourScreen(void)
+{
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,ParametersRequireValueDosepH_DoseHourScreen_Back);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,ParametersRequireValueDosepH_DoseHourScreen_BackToStart);
+	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,100,60,YELLOW_BLACK,ParametersRequireValueDosepH_DoseHourScreen_inc);
+	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,100,60,YELLOW_BLACK,ParametersRequireValueDosepH_DoseHourScreen_dec);
+	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,60,YELLOW_BLACK,ParametersRequireValueDosepH_DoseHourScreen_OK);
+	GL_PageControls_TypeDef* DesignButton06= NewRectControl(6,210,100,NONE,ParametersRequireValueDosepH_DoseHourScreen_pH);
+	Create_PageObj( &ParametersRequireValueDosepH_DoseHourScreen ); 
+	AddPageControlObj(250,240,DesignButton01,&ParametersRequireValueDosepH_DoseHourScreen);
+	AddPageControlObj(20,240,DesignButton02,&ParametersRequireValueDosepH_DoseHourScreen);
+	AddPageControlObj(20,170,DesignButton03,&ParametersRequireValueDosepH_DoseHourScreen);
+	AddPageControlObj(130,170,DesignButton04,&ParametersRequireValueDosepH_DoseHourScreen);
+	AddPageControlObj(250,170,DesignButton05,&ParametersRequireValueDosepH_DoseHourScreen);
+	AddPageControlObj(250,60,DesignButton06,&ParametersRequireValueDosepH_DoseHourScreen);	
+}
+////////////////////////////////////////
+void Show_ParametersRequireValueDosepH_DoseHourScreen(void)
+{
+	UARTprintf("Show_ParametersRequireValueDosepH_DoseHourScreen\r\n");
+	Create_ParametersRequireValueDosepH_DoseHourScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
+	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
+	LCD_SetBackColor(VU_YELLOW);
+	LCD_SetTextColor(BLACK);
+	LCD_DisplayStringLine(70,30,(uint8_t *)"DOSE");
+	LCD_DisplayStringLine(70,120,(uint8_t *)"ml/m3hour");
+	LCD_DrawFullRect(95,140,60,20,BLACK);
+	LCD_SetBackColor(VU_BLUE);
+	LCD_DisplayStringLine(70,260,(uint8_t *)"pH");
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetTextColor(VU_YELLOW);
+	LCD_DrawRect(20,170,60,100);
+	LCD_DrawRect(130,170,60,100);
+	LCD_DrawRect(250,170,60,210);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_DisplayStringLineInRect(20,170,100,60,(uint8_t *)"+");
+	LCD_DisplayStringLineInRect(130,170,100,60,(uint8_t *)"-");
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"OK");
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(BLACK,WHITE);
+	ParametersRequireValueDosepH_DoseHourScreen.ShowPage(&ParametersRequireValueDosepH_DoseHourScreen,GL_TRUE);
+	Screen = ParametersRequireValueDosepH_DoseHourScreen_df;
+	CurrentScreen = &ParametersRequireValueDosepH_DoseHourScreen;
+}
+
+
+
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef ParametersRequireValueDosepH_DoseHour_pHScreen;
+void Create_ParametersRequireValueDosepH_DoseHour_pHScreen(void)
+{
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,ParametersRequireValueDosepH_DoseHour_pHScreen_Back);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,ParametersRequireValueDosepH_DoseHour_pHScreen_BackToStart);
+	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,100,60,BLUE_BLACK,ParametersRequireValueDosepH_DoseHour_pHScreen_inc);
+	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,100,60,BLUE_BLACK,ParametersRequireValueDosepH_DoseHour_pHScreen_dec);
+	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,60,BLUE_BLACK,ParametersRequireValueDosepH_DoseHour_pHScreen_OK);
+	GL_PageControls_TypeDef* DesignButton06= NewRectControl(6,210,100,NONE,ParametersRequireValueDosepH_DoseHour_pHScreen_Dose);
+	Create_PageObj( &ParametersRequireValueDosepH_DoseHour_pHScreen ); 
+	AddPageControlObj(250,240,DesignButton01,&ParametersRequireValueDosepH_DoseHour_pHScreen);
+	AddPageControlObj(20,240,DesignButton02,&ParametersRequireValueDosepH_DoseHour_pHScreen);
+	AddPageControlObj(20,170,DesignButton03,&ParametersRequireValueDosepH_DoseHour_pHScreen);
+	AddPageControlObj(130,170,DesignButton04,&ParametersRequireValueDosepH_DoseHour_pHScreen);
+	AddPageControlObj(250,170,DesignButton05,&ParametersRequireValueDosepH_DoseHour_pHScreen);
+	AddPageControlObj(20,60,DesignButton06,&ParametersRequireValueDosepH_DoseHour_pHScreen);	
+}
+////////////////////////////////////////
+void Show_ParametersRequireValueDosepH_DoseHour_pHScreen(void)
+{
+	UARTprintf("Show_ParametersRequireValueDosepH_DoseHour_pHScreen\r\n");
+	Create_ParametersRequireValueDosepH_DoseHour_pHScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
+	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
+	LCD_SetBackColor(VU_YELLOW);
+	LCD_SetTextColor(BLACK);
+	LCD_DisplayStringLine(70,30,(uint8_t *)"DOSE");
+	LCD_DisplayStringLine(70,120,(uint8_t *)"ml/m3hour");
+	LCD_SetBackColor(VU_BLUE);
+	LCD_DisplayStringLine(70,260,(uint8_t *)"pH");
+	LCD_DrawFullRect(325,140,60,20,BLACK);
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetTextColor(VU_BLUE);
+	LCD_DrawRect(20,170,60,100);
+	LCD_DrawRect(130,170,60,100);
+	LCD_DrawRect(250,170,60,210);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_DisplayStringLineInRect(20,170,100,60,(uint8_t *)"+");
+	LCD_DisplayStringLineInRect(130,170,100,60,(uint8_t *)"-");
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"OK");
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(BLACK,WHITE);
+	ParametersRequireValueDosepH_DoseHour_pHScreen.ShowPage(&ParametersRequireValueDosepH_DoseHour_pHScreen,GL_TRUE);
+	Screen = ParametersRequireValueDosepH_DoseHour_pHScreen_df;
+	CurrentScreen = &ParametersRequireValueDosepH_DoseHour_pHScreen;
+}
+
+
+
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef ParametersRequireValueDosepH_DoseDayScreen;
+void Create_ParametersRequireValueDosepH_DoseDayScreen(void)
+{
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,ParametersRequireValueDosepH_DoseDayScreen_Back);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,ParametersRequireValueDosepH_DoseDayScreen_BackToStart);
+	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,100,60,GRAY_BLACK,ParametersRequireValueDosepH_DoseDayScreen_inc);
+	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,100,60,GRAY_BLACK,ParametersRequireValueDosepH_DoseDayScreen_dec);
+	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,60,GRAY_BLACK,ParametersRequireValueDosepH_DoseDayScreen_OK);
+	GL_PageControls_TypeDef* DesignButton06= NewRectControl(6,210,100,NONE,ParametersRequireValueDosepH_DoseDayScreen_pH);
+	Create_PageObj( &ParametersRequireValueDosepH_DoseDayScreen ); 
+	AddPageControlObj(250,240,DesignButton01,&ParametersRequireValueDosepH_DoseDayScreen);
+	AddPageControlObj(20,240,DesignButton02,&ParametersRequireValueDosepH_DoseDayScreen);
+	AddPageControlObj(20,170,DesignButton03,&ParametersRequireValueDosepH_DoseDayScreen);
+	AddPageControlObj(130,170,DesignButton04,&ParametersRequireValueDosepH_DoseDayScreen);
+	AddPageControlObj(250,170,DesignButton05,&ParametersRequireValueDosepH_DoseDayScreen);
+	AddPageControlObj(250,60,DesignButton06,&ParametersRequireValueDosepH_DoseDayScreen);	
+}
+////////////////////////////////////////
+void Show_ParametersRequireValueDosepH_DoseDayScreen(void)
+{
+	UARTprintf("Show_ParametersRequireValueDosepH_DoseDayScreen\r\n");
+	Create_ParametersRequireValueDosepH_DoseDayScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DrawFullRect(20,60,210,100,VU_GRAY);
+	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
+	LCD_SetBackColor(VU_GRAY);
+	LCD_SetTextColor(BLACK);
+	LCD_DisplayStringLine(70,30,(uint8_t *)"DOSE");
+	LCD_DisplayStringLine(70,130,(uint8_t *)"ml/m3day");
+	LCD_DrawFullRect(95,140,60,20,BLACK);
+	LCD_SetBackColor(VU_BLUE);
+	LCD_DisplayStringLine(70,260,(uint8_t *)"pH");
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetTextColor(VU_GRAY);
+	LCD_DrawRect(20,170,60,100);
+	LCD_DrawRect(130,170,60,100);
+	LCD_DrawRect(250,170,60,210);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_DisplayStringLineInRect(20,170,100,60,(uint8_t *)"+");
+	LCD_DisplayStringLineInRect(130,170,100,60,(uint8_t *)"-");
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"OK");
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(BLACK,WHITE);
+	ParametersRequireValueDosepH_DoseDayScreen.ShowPage(&ParametersRequireValueDosepH_DoseDayScreen,GL_TRUE);
+	Screen = ParametersRequireValueDosepH_DoseDayScreen_df;
+	CurrentScreen = &ParametersRequireValueDosepH_DoseDayScreen;
+
+}
+
+
+
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef ParametersRequireValueDosepH_DoseDay_pHScreen;
+void Create_ParametersRequireValueDosepH_DoseDay_pHScreen(void)
+{
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,ParametersRequireValueDosepH_DoseDay_pHScreen_Back);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,ParametersRequireValueDosepH_DoseDay_pHScreen_BackToStart);
+	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,100,60,BLUE_BLACK,ParametersRequireValueDosepH_DoseDay_pHScreen_inc);
+	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,100,60,BLUE_BLACK,ParametersRequireValueDosepH_DoseDay_pHScreen_dec);
+	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,60,BLUE_BLACK,ParametersRequireValueDosepH_DoseDay_pHScreen_OK);
+	GL_PageControls_TypeDef* DesignButton06= NewRectControl(6,210,100,NONE,ParametersRequireValueDosepH_DoseDay_pHScreen_Dose);
+	Create_PageObj( &ParametersRequireValueDosepH_DoseDay_pHScreen ); 
+	AddPageControlObj(250,240,DesignButton01,&ParametersRequireValueDosepH_DoseDay_pHScreen);
+	AddPageControlObj(20,240,DesignButton02,&ParametersRequireValueDosepH_DoseDay_pHScreen);
+	AddPageControlObj(20,170,DesignButton03,&ParametersRequireValueDosepH_DoseDay_pHScreen);
+	AddPageControlObj(130,170,DesignButton04,&ParametersRequireValueDosepH_DoseDay_pHScreen);
+	AddPageControlObj(250,170,DesignButton05,&ParametersRequireValueDosepH_DoseDay_pHScreen);
+	AddPageControlObj(20,60,DesignButton06,&ParametersRequireValueDosepH_DoseDay_pHScreen);	
+}
+////////////////////////////////////////
+void Show_ParametersRequireValueDosepH_DoseDay_pHScreen(void)
+{
+	UARTprintf("Show_ParametersRequireValueDosepH_DoseDay_pHScreen\r\n");
+	Create_ParametersRequireValueDosepH_DoseDay_pHScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DrawFullRect(20,60,210,100,VU_GRAY);
+	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
+	LCD_SetBackColor(VU_GRAY);
+	LCD_SetTextColor(BLACK);
+	LCD_DisplayStringLine(70,30,(uint8_t *)"DOSE");
+	LCD_DisplayStringLine(70,130,(uint8_t *)"ml/m3day");
+	LCD_SetBackColor(VU_BLUE);
+	LCD_DisplayStringLine(70,260,(uint8_t *)"pH");
+	LCD_DrawFullRect(325,140,60,20,BLACK);
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetTextColor(VU_BLUE);
+	LCD_DrawRect(20,170,60,100);
+	LCD_DrawRect(130,170,60,100);
+	LCD_DrawRect(250,170,60,210);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_DisplayStringLineInRect(20,170,100,60,(uint8_t *)"+");
+	LCD_DisplayStringLineInRect(130,170,100,60,(uint8_t *)"-");
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"OK");
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(BLACK,WHITE);
+	ParametersRequireValueDosepH_DoseDay_pHScreen.ShowPage(&ParametersRequireValueDosepH_DoseDay_pHScreen,GL_TRUE);
+	Screen = ParametersRequireValueDosepH_DoseDay_pHScreen_df;
+	CurrentScreen = &ParametersRequireValueDosepH_DoseDay_pHScreen;
+}
+
+
+
+
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef CalibrationWaterScreen;
+void Create_CalibrationWaterScreen(void)
+{
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,CalibrationWaterScreen_Back);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,CalibrationWaterScreen_BackToStart);
+	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,100,60,GRAY_BLACK,CalibrationWaterScreen_inc);
+	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,100,60,GRAY_BLACK,CalibrationWaterScreen_dec);
+	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,60,GRAY_BLACK,CalibrationWaterScreen_OK);
+	Create_PageObj( &CalibrationWaterScreen ); 
+	AddPageControlObj(250,240,DesignButton01,&CalibrationWaterScreen);
+	AddPageControlObj(20,240,DesignButton02,&CalibrationWaterScreen);
+	AddPageControlObj(20,170,DesignButton03,&CalibrationWaterScreen);
+	AddPageControlObj(130,170,DesignButton04,&CalibrationWaterScreen);
+	AddPageControlObj(250,170,DesignButton05,&CalibrationWaterScreen);
+}
+////////////////////////////////////////
+void Show_CalibrationWaterScreen(void)
+{
+	UARTprintf("Show_CalibrationWaterScreen\r\n");
+	Create_CalibrationWaterScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,335,(uint8_t *)"CALIBRATION");
+	LCD_DrawFullRect(250,60,210,100,VU_GRAY);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font8x12_bold);
+	LCD_DisplayStringLine(70,30,(uint8_t *)"Thermometer calibration");
+	LCD_DisplayStringLine(90,30,(uint8_t *)"range is 5 - 50 oC");
+	LCD_SetBackColor(VU_GRAY);
+	LCD_SetTextColor(WHITE);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(70,260,(uint8_t *)"TEMP.WATER");
+	LCD_DrawFullRect(325,140,60,20,BLACK);
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetTextColor(VU_GRAY);
+	LCD_DrawRect(20,170,60,100);
+	LCD_DrawRect(130,170,60,100);
+	LCD_DrawRect(250,170,60,210);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_DisplayStringLineInRect(20,170,100,60,(uint8_t *)"+");
+	LCD_DisplayStringLineInRect(130,170,100,60,(uint8_t *)"-");
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"OK");
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(BLACK,WHITE);
+	CalibrationWaterScreen.ShowPage(&CalibrationWaterScreen,GL_TRUE);
+	Screen = CalibrationWaterScreen_df;
+	CurrentScreen = &CalibrationWaterScreen;
+}
+
+
+
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef CalibrationAirScreen;
+void Create_CalibrationAirScreen(void)
+{
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,CalibrationAirScreen_Back);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,CalibrationAirScreen_BackToStart);
+	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,100,60,GRAY_BLACK,CalibrationAirScreen_inc);
+	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,100,60,GRAY_BLACK,CalibrationAirScreen_dec);
+	GL_PageControls_TypeDef* DesignButton05= NewRectControl(5,210,60,GRAY_BLACK,CalibrationAirScreen_OK);
+	Create_PageObj( &CalibrationAirScreen ); 
+	AddPageControlObj(250,240,DesignButton01,&CalibrationAirScreen);
+	AddPageControlObj(20,240,DesignButton02,&CalibrationAirScreen);
+	AddPageControlObj(20,170,DesignButton03,&CalibrationAirScreen);
+	AddPageControlObj(130,170,DesignButton04,&CalibrationAirScreen);
+	AddPageControlObj(250,170,DesignButton05,&CalibrationAirScreen);
+}
+////////////////////////////////////////
+void Show_CalibrationAirScreen(void)
+{
+	UARTprintf("Show_CalibrationAirScreen\r\n");
+	Create_CalibrationAirScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,335,(uint8_t *)"CALIBRATION");
+	LCD_DrawFullRect(250,60,210,100,VU_GRAY);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font8x12_bold);
+	LCD_DisplayStringLine(70,30,(uint8_t *)"Thermometer calibration");
+	LCD_DisplayStringLine(90,30,(uint8_t *)"range is 5 - 50 oC");
+	LCD_SetBackColor(VU_GRAY);
+	LCD_SetTextColor(WHITE);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(70,260,(uint8_t *)"TEMP.AIR");
+	LCD_DrawFullRect(325,140,60,20,BLACK);
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetTextColor(VU_GRAY);
+	LCD_DrawRect(20,170,60,100);
+	LCD_DrawRect(130,170,60,100);
+	LCD_DrawRect(250,170,60,210);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(WHITE,BLACK);
+	LCD_DisplayStringLineInRect(20,170,100,60,(uint8_t *)"+");
+	LCD_DisplayStringLineInRect(130,170,100,60,(uint8_t *)"-");
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"OK");
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(BLACK,WHITE);
+	CalibrationAirScreen.ShowPage(&CalibrationAirScreen,GL_TRUE);
+	Screen = CalibrationAirScreen_df;
+	CurrentScreen = &CalibrationAirScreen;
+}
+
+
+
+
+
+
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef TypeOfProbeScreen;
+void Create_TypeOfProbeScreen(void)
+{
+	GL_RadioButtonGrp_TypeDef* TypeOfProbe=NewRadioButtonGrp(1);
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(4,210,30,WHITE,TypeOfProbeScreen_Back);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(5,210,30,WHITE,TypeOfProbeScreen_BackToStart);
+	GL_PageControls_TypeDef* CheckBox1= RADIO_BUTTON_ADD(TypeOfProbe,(const uint8_t *)"",TypeOfProbeScreen_FreeChlorine);
+	GL_PageControls_TypeDef* CheckBox2= RADIO_BUTTON_ADD(TypeOfProbe,(const uint8_t *)"",TypeOfProbeScreen_RedoxProbe);
+	GL_PageControls_TypeDef* CheckBox3= RADIO_BUTTON_ADD(TypeOfProbe,(const uint8_t *)"",TypeOfProbeScreen_mlperhour);
+	GL_PageControls_TypeDef* CheckBox4= RADIO_BUTTON_ADD(TypeOfProbe,(const uint8_t *)"",TypeOfProbeScreen_mlperday);
+	Create_PageObj( &TypeOfProbeScreen ); 
+	AddPageControlObj(250,240,DesignButton01,&TypeOfProbeScreen);
+	AddPageControlObj(20,240,DesignButton02,&TypeOfProbeScreen);
+	AddPageControlObj(20,65,CheckBox1,&TypeOfProbeScreen);
+	AddPageControlObj(20,110,CheckBox2,&TypeOfProbeScreen);
+	AddPageControlObj(20,155,CheckBox3,&TypeOfProbeScreen);
+	AddPageControlObj(20,200,CheckBox4,&TypeOfProbeScreen);
+	((GL_RadioOption_TypeDef*)(TypeOfProbe->RadioOptions[1]->objPTR))->IsChecked = GL_TRUE;
+}
+////////////////////////////////////////
+void Show_TypeOfProbeScreen(void)
+{
+	UARTprintf("Create_TypeOfProbeScreen\r\n");
+	Create_TypeOfProbeScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,185,(uint8_t *)"CHOOSE THE TYPE OF PROBE");
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_DrawFullRect(250,240,210,30,WHITE);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font8x12_bold);
+	LCD_DisplayStringLine(65,45,(uint8_t *)"CHOOSE THE TYPE OF PROBE");
+	LCD_DisplayStringLine(110,45,(uint8_t *)"CHOOSE THE TYPE OF PROBE");
+	LCD_DisplayStringLine(155,45,(uint8_t *)"CHOOSE THE TYPE OF PROBE");
+	LCD_DisplayStringLine(200,45,(uint8_t *)"CHOOSE THE TYPE OF PROBE");
+	TypeOfProbeScreen.ShowPage(&TypeOfProbeScreen,GL_TRUE);
+	Screen = TypeOfProbeScreen_df;
+	CurrentScreen = &TypeOfProbeScreen;
+}
+
+
+
+
 
 /******************* (C) COPYRIGHT 2017 STMicroelectronics *****END OF FILE****/ 
 /*Added by chau phuoc vu 14/11/2018*/
