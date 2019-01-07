@@ -32,11 +32,24 @@ typedef enum {StartStart, StartStop,
 extern DosingTest Dosingtest_Flag ;
 /* Exported constants ----------------------------------------------------------*/
 /* Exported macros -------------------------------------------------------------*/
-extern uint16_t PoolSelect;
-extern uint16_t Temperature;
-extern uint16_t WaterHardnessSelect;
-extern uint16_t PoolVolume;
-extern uint16_t FiltrationPeriod;
+extern uint8_t		PoolSelect;
+extern uint8_t 		Temperature;
+extern uint8_t 		WaterHardnessSelect;
+extern uint8_t 		TypeofProbe;
+extern uint8_t   	RequireValueDosepH_DoseHour;
+extern uint8_t 		RequireValueDosepH_DoseDay;
+extern uint16_t 	PoolVolume;
+extern uint16_t 	FiltrationPeriod;
+extern uint16_t 	CalibrationAir;
+extern uint16_t 	CalibrationWater;
+extern uint16_t 	RequireValueRedoxpH_Redox;
+extern double 	 	RequireValueDosepH_DoseHour_pH;
+extern double	 		RequireValueDosepH_DoseDay_pH;
+extern double 	 	Probe_pH;
+extern double 	 	Probe_CLF;
+extern double 	 	RequireValuepH;
+extern double 	 	RequireValueCLF;
+extern double 	 	RequireValueRedoxpH_pH;
 
 /* Exported functions ----------------------------------------------------------*/
  

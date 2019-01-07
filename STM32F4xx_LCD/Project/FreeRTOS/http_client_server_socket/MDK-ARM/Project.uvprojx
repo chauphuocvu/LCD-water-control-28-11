@@ -441,6 +441,16 @@
               <FileType>5</FileType>
               <FilePath>.\flash_memory_driver.h</FilePath>
             </File>
+            <File>
+              <FileName>DisplayNumber.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\DisplayNumber.c</FilePath>
+            </File>
+            <File>
+              <FileName>DisplayNumber.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\DisplayNumber.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

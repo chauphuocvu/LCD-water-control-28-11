@@ -676,7 +676,6 @@ void Show_WarningMaximalSafetyScreen(void)
 	LCD_SetFont(&Font8x12_bold);
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningMaximalSafetyScreen.ShowPage(&WarningMaximalSafetyScreen,GL_TRUE);
-	Screen = WarningMaximalSafetyScreen_df;
 	CurrentScreen = &WarningMaximalSafetyScreen;
 }
 
@@ -711,7 +710,6 @@ void Show_WarningExtremeConditionScreen(void)
 	LCD_SetFont(&Font8x12_bold);
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningExtremeConditionScreen.ShowPage(&WarningExtremeConditionScreen,GL_TRUE);
-	Screen = WarningExtremeConditionScreen_df;
 	CurrentScreen = &WarningExtremeConditionScreen;
 }
 
@@ -742,7 +740,6 @@ void Show_WarningWaterHardnessScreen(void)
 	LCD_SetColors(WHITE,VU_GREEN);
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningWaterHardnessScreen.ShowPage(&WarningWaterHardnessScreen,GL_TRUE);
-	Screen = WarningWaterHardnessScreen_df;
 	CurrentScreen = &WarningWaterHardnessScreen;
 }
 
@@ -773,7 +770,6 @@ void Show_WarningProbeCalibration62_78Screen(void)
 	LCD_SetColors(WHITE,VU_RED);
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibration62_78Screen.ShowPage(&WarningProbeCalibration62_78Screen,GL_TRUE);
-	Screen = WarningProbeCalibration62_78Screen_df;
 	CurrentScreen = &WarningProbeCalibration62_78Screen;
 }
 
@@ -804,7 +800,6 @@ void Show_WarningProbeCalibrationScreen(void)
 	LCD_SetColors(WHITE,VU_RED);
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibrationScreen.ShowPage(&WarningProbeCalibrationScreen,GL_TRUE);
-	Screen = WarningProbeCalibrationScreen_df;
 	CurrentScreen = &WarningProbeCalibrationScreen;
 }
 
@@ -834,7 +829,6 @@ void Show_WarningProbeCalibration70Screen(void)
 	LCD_SetColors(WHITE,VU_GREEN);
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibration70Screen.ShowPage(&WarningProbeCalibration70Screen,GL_TRUE);
-	Screen = WarningProbeCalibration70Screen_df;
 	CurrentScreen = &WarningProbeCalibration70Screen;
 }
 
@@ -866,7 +860,6 @@ void Show_WarningProbeCalibrationRequiredValueScreen(void)
 	LCD_SetColors(WHITE,VU_GREEN);
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibrationRequiredValueScreen.ShowPage(&WarningProbeCalibrationRequiredValueScreen,GL_TRUE);
-	Screen = WarningProbeCalibrationRequiredValueScreen_df;
 	CurrentScreen = &WarningProbeCalibrationRequiredValueScreen;
 }
 
@@ -898,7 +891,6 @@ void Show_WarningProbeCalibrationrequiredValueRedScreen(void)
 	LCD_SetColors(WHITE,VU_RED);
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibrationRequiredValueRedScreen.ShowPage(&WarningProbeCalibrationRequiredValueRedScreen,GL_TRUE);
-	Screen = WarningProbeCalibrationRequiredValueRedScreen_df;
 	CurrentScreen = &WarningProbeCalibrationRequiredValueRedScreen;
 }
 
@@ -930,7 +922,6 @@ void Show_WarningProbeCalibrationRequiredValueImpossibleScreen(void)
 	LCD_SetColors(WHITE,VU_RED);
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibrationRequiredValueImpossibleScreen.ShowPage(&WarningProbeCalibrationRequiredValueImpossibleScreen,GL_TRUE);
-	Screen = WarningProbeCalibrationRequiredValueImpossibleScreen_df;
 	CurrentScreen = &WarningProbeCalibrationRequiredValueImpossibleScreen;
 }
 
@@ -961,7 +952,6 @@ void Show_WarningTooRapidChangeScreen(void)
 	LCD_SetColors(WHITE,VU_RED);
 	LCD_DisplayStringLineInRect(160,170,200,30,(uint8_t *)"CANCEL RESTRICTIONS");
 	WarningTooRapidChangeScreen.ShowPage(&WarningTooRapidChangeScreen,GL_TRUE);
-	Screen = WarningTooRapidChangeScreen_df;
 	CurrentScreen = &WarningTooRapidChangeScreen;
 }
 
@@ -1825,7 +1815,7 @@ void Create_TypeOfProbeScreen(void)
 	AddPageControlObj(20,110,CheckBox2,&TypeOfProbeScreen);
 	AddPageControlObj(20,155,CheckBox3,&TypeOfProbeScreen);
 	AddPageControlObj(20,200,CheckBox4,&TypeOfProbeScreen);
-	((GL_RadioOption_TypeDef*)(TypeOfProbe->RadioOptions[1]->objPTR))->IsChecked = GL_TRUE;
+	((GL_RadioOption_TypeDef*)(TypeOfProbe->RadioOptions[TypeofProbe]->objPTR))->IsChecked = GL_TRUE;
 }
 ////////////////////////////////////////
 void Show_TypeOfProbeScreen(void)
@@ -1847,10 +1837,10 @@ void Show_TypeOfProbeScreen(void)
 	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font8x12_bold);
-	LCD_DisplayStringLine(65,45,(uint8_t *)"CHOOSE THE TYPE OF PROBE");
-	LCD_DisplayStringLine(110,45,(uint8_t *)"CHOOSE THE TYPE OF PROBE");
-	LCD_DisplayStringLine(155,45,(uint8_t *)"CHOOSE THE TYPE OF PROBE");
-	LCD_DisplayStringLine(200,45,(uint8_t *)"CHOOSE THE TYPE OF PROBE");
+	LCD_DisplayStringLine(70,45,(uint8_t *)"free chlorine probe CLF");
+	LCD_DisplayStringLine(115,45,(uint8_t *)"redox probe RX");
+	LCD_DisplayStringLine(160,45,(uint8_t *)"time dosing ml/m3 per hour");
+	LCD_DisplayStringLine(205,45,(uint8_t *)"time dosing ml/m3 per day");
 	TypeOfProbeScreen.ShowPage(&TypeOfProbeScreen,GL_TRUE);
 	Screen = TypeOfProbeScreen_df;
 	CurrentScreen = &TypeOfProbeScreen;

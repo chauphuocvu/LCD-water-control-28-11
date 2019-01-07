@@ -6,38 +6,6 @@
   * @date    31-October-2011
   * @brief   Main program body
   ******************************************************************************
-  * @attention
-  *
-  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
-  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
-  * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
-  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
-  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
-  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
-  *
-  * <h2><center>&copy; Portions COPYRIGHT 2011 STMicroelectronics</center></h2>
-  ******************************************************************************
-  */
-/**
-  ******************************************************************************
-  * <h2><center>&copy; Portions COPYRIGHT 2012 Embest Tech. Co., Ltd.</center></h2>
-  * @file    main.c
-  * @author  CMP Team
-  * @version V1.0.0
-  * @date    28-December-2012
-  * @brief   Main program body      
-  *          Modified to support the STM32F4DISCOVERY, STM32F4DIS-BB and
-  *          STM32F4DIS-LCD modules. 
-  ******************************************************************************
-  * @attention
-  *
-  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
-  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
-  * TIME. AS A RESULT, Embest SHALL NOT BE HELD LIABLE FOR ANY DIRECT, INDIRECT
-  * OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING FROM THE CONTENT
-  * OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE CODING INFORMATION
-  * CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
-  ******************************************************************************
   */  
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4x7_eth.h"
@@ -58,6 +26,7 @@
 /////////////////////////////////////
 #include "uiappuser.h"
 #include "flash_memory_driver.h"
+#include "DisplayNumber.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -80,20 +49,28 @@
 /* Private function prototypes -----------------------------------------------*/
 void GPIO_Config(void);
 void MyTask(void * pvParameters);
-void vApplicationStackOverflowHook( TaskHandle_t xTask,
-                                    signed char *pcTaskName );
-void DisplayArgument(void);
-void CreateTask2(void * pvParameters);
+void vApplicationStackOverflowHook( TaskHandle_t xTask, signed char *pcTaskName );
+void ReadSavedValue(void);
 void vApplicationTickHook( void );
-uint16_t datar = 0;
-extern uint16_t	Screen;
-extern uint16_t PoolSelect;
-extern uint16_t Temperature;
-extern uint16_t WaterHardnessSelect;
-extern uint16_t PoolVolume;
-extern uint16_t FiltrationPeriod;
-extern float 	 Probe_pH;
-extern float 	 Probe_CLF;
+extern uint8_t		PoolSelect;
+extern uint8_t 		Temperature;
+extern uint8_t 		WaterHardnessSelect;
+extern uint8_t 		TypeofProbe;
+extern uint8_t   	RequireValueDosepH_DoseHour;
+extern uint8_t 		RequireValueDosepH_DoseDay;
+extern uint16_t 	PoolVolume;
+extern uint16_t 	FiltrationPeriod;
+extern uint16_t 	CalibrationAir;
+extern uint16_t 	CalibrationWater;
+extern uint16_t 	RequireValueRedoxpH_Redox;
+extern double 	 	RequireValueDosepH_DoseHour_pH;
+extern double	 		RequireValueDosepH_DoseDay_pH;
+extern double 	 	Probe_pH;
+extern double 	 	Probe_CLF;
+extern double 	 	RequireValuepH;
+extern double 	 	RequireValueCLF;
+extern double 	 	RequireValueRedoxpH_pH;
+
 /* Private functions ---------------------------------------------------------*/
 
 /**
@@ -113,19 +90,11 @@ int main(void)
 	UARTstdio_Configuration(USART1,115200);
   GPIO_Config();
 	STM324xG_LCD_Init();
-	GL_SetFont(GL_FONT_BIG);
 	TP_Init();
   readCalibrationValue();
 	/*Read value set before*/
-	PoolSelect = ReadDataFromFlashForSelect(FLASH_ADDR_POOL_SELECT);
-	Temperature = ReadDataFromFlashForSelect(FLASH_ADDR_TEMP_SELECT);
-	WaterHardnessSelect = ReadDataFromFlashForSelect(FLASH_ADDR_WATER_HARDNESS_SELECT);
-	PoolVolume = ReadDataFromFlashForSelect(FLASH_ADDR_POOL_VOLUME);
-	FiltrationPeriod = ReadDataFromFlashForSelect(FLASH_ADDR_FILTRATIONPERIOD);
-	
-
-	Show_TypeOfProbeScreen();
-
+	ReadSavedValue();	
+	Show_StartScreen();
 	
   /* Configure Ethernet (GPIOs, clocks, MAC, DMA) */ 
 //  ETH_BSP_Config();
@@ -144,10 +113,7 @@ int main(void)
   xTaskCreate(LwIP_DHCP_task, "DHCPClient", configMINIMAL_STACK_SIZE * 2, NULL,DHCP_TASK_PRIO, NULL);
 #endif
     
-  /* Start toogleLed4 task : Toggle LED4  every 250ms */
-//	xTaskCreate(CreateTask1, "CreateTask1", configMINIMAL_STACK_SIZE*10, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(MyTask, "MyTask", configMINIMAL_STACK_SIZE*20, NULL, LED_TASK_PRIO, NULL);
- // xTaskCreate(DisplayArgument, "DisplayArgument", configMINIMAL_STACK_SIZE*10, NULL, LED_TASK_PRIO, NULL);
 
 	/* Start scheduler */
   vTaskStartScheduler();
@@ -168,177 +134,29 @@ void MyTask(void * pvParameters)
 		ProcessInputData();
 		/* Time out calculate for power saving mode */
     TimeOutCalculate();	
-//		touch_done = 0;
-		DisplayArgument();
+		DisplayNumber();
   }
 }
-void DisplayArgument(void)
+void ReadSavedValue(void)
 {
-		//UARTprintf("co chay Switch case\r\n");
-		switch(Screen)
-		{
-			case StartScreen_df:
-				LCD_SetColors(WHITE,BLACK);
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(20,130,(uint8_t *)"00:00:01");
-				LCD_SetColors(BLACK,VU_YELLOW);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(130,100,(uint8_t *)"0.5");//hien thi Chlorine
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(80,170,(uint8_t *)"0.5");	
-				LCD_SetColors(BLACK,VU_BLUE);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(130,330,(uint8_t *)"0.5");//hien thi pH
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(80,400,(uint8_t *)"0.5");		
-				break;
-			case SettingsScreen_df:
-				break;
-			case DosingTestStartStartScreen_df:
-			case DosingTestStopStartScreen_df:
-			case DosingTestStopStopScreen_df:
-			case DosingTestStartStopScreen_df:
-				LCD_SetColors(BLACK,VU_YELLOW);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(120,100,(uint8_t *)"150");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(70,170,(uint8_t *)"400ml");	
-				LCD_DisplayStringLine(127,155,(uint8_t *)"ml");
-				LCD_SetColors(BLACK,VU_BLUE);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(120,330,(uint8_t *)"150");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(70,400,(uint8_t *)"200ml");
-				LCD_DisplayStringLine(127,385,(uint8_t *)"ml");
-				break;
-			case ParametersScreen_df:
-				break;
-			case ParametersPoolVolumeScreen_df:
-			case ParametersFitrationPeriodScreen_df:
-				LCD_SetColors(WHITE,VU_GRAY);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,100,(uint8_t *)"15 m3");
-				LCD_SetColors(WHITE,VU_GRAY);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,330,(uint8_t *)"06 h");
-				break;
-			case ParametersWaterScreen_df:
-				break;
-			case WarningMaximalSafetyScreen_df:
-				LCD_SetColors(WHITE,VU_GREEN);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(150,195,(uint8_t *)"15");
-				break;
-			case WarningExtremeConditionScreen_df:
-				LCD_SetColors(WHITE,VU_RED);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(150,195,(uint8_t *)"15");
-				break;
-			case WarningWaterHardnessScreen_df:
-				break;
-			case WarningProbeCalibration62_78Screen_df:
-				break;
-			case WarningProbeCalibrationScreen_df:
-				break;
-			case WarningProbeCalibration70Screen_df:
-				break;
-			case WarningProbeCalibrationRequiredValueScreen_df:
-				break;
-			case WarningProbeCalibrationRequiredValueRedScreen_df:
-				break;
-			case WarningProbeCalibrationRequiredValueImpossibleScreen_df:
-				break;
-			case WarningTooRapidChangeScreen_df:
-				break;
-			case ParametersRequireValuepHScreen_df:
-			case ParametersRequireValueCLFScreen_df:
-				LCD_SetColors(BLACK,VU_YELLOW);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,100,(uint8_t *)"0,2");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(110,165,(uint8_t *)"mg/l");
-				LCD_SetColors(BLACK,VU_BLUE);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
-				break;
-			case CalibrationScreen_df:
-				break;
-			case CalibrationpHProbeScreen_df:
-				LCD_SetColors(BLACK,VU_BLUE);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
-				break;
-			case CalibrationCLFProbeScreen_df:
-				LCD_SetColors(BLACK,VU_YELLOW);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(110,395,(uint8_t *)"mg/h");
-				break;
-			case ParametersRequireValueRedoxpH_RedoxScreen_df:
-			case ParametersRequireValueRedoxpH_pHScreen_df:
-				LCD_SetColors(BLACK,VU_YELLOW);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,100,(uint8_t *)"650");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(110,165,(uint8_t *)"mV");
-				LCD_SetColors(BLACK,VU_BLUE);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
-				break;
-			case ParametersRequireValueDosepH_DoseHourScreen_df:
-			case ParametersRequireValueDosepH_DoseHour_pHScreen_df:
-				LCD_SetColors(BLACK,VU_YELLOW);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,120,(uint8_t *)"5");
-				LCD_SetColors(BLACK,VU_BLUE);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,330,(uint8_t *)"6,8");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
-				break;
-			case ParametersRequireValueDosepH_DoseDayScreen_df:
-			case ParametersRequireValueDosepH_DoseDay_pHScreen_df:
-				LCD_SetColors(BLACK,VU_GRAY);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,120,(uint8_t *)"5");
-				LCD_SetColors(BLACK,VU_BLUE);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,330,(uint8_t *)"6,8");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
-				break;
-			case CalibrationWaterScreen_df:
-				LCD_SetColors(WHITE,VU_GRAY);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,330,(uint8_t *)"28");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(110,395,(uint8_t *)"oC");
-				break;
-			case CalibrationAirScreen_df:
-				LCD_SetColors(WHITE,VU_GRAY);
-				LCD_SetFont(&Font16x24);
-				LCD_DisplayStringLine(100,330,(uint8_t *)"30");
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(110,395,(uint8_t *)"oC");
-				break;
-			case TypeOfProbeScreen_df:
-				break;
-			default :
-				break;
-		}
-}
-void CreateTask2(void * pvParameters)
-{
-  for ( ;; ) {
-	
-  }
+	PoolSelect = ReadDataFromFlashForSelect(FLASH_ADDR_POOL_SELECT);
+	Temperature = ReadDataFromFlashForSelect(FLASH_ADDR_TEMP_SELECT);
+	TypeofProbe  = ReadDataFromFlashForSelect(FLASH_ADDR_TYPE_OF_PROBE);
+	WaterHardnessSelect = ReadDataFromFlashForSelect(FLASH_ADDR_WATER_HARDNESS_SELECT);
+	RequireValueDosepH_DoseHour =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEHOUR);
+	RequireValueDosepH_DoseDay =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY);
+	CalibrationAir =	ReadDataFromFlash(FLASH_ADDR_CALIBRATION_AIR);
+	CalibrationWater =	ReadDataFromFlash(FLASH_ADDR_CALIBRATION_WATER);
+	RequireValueRedoxpH_Redox =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_REDOX);
+	RequireValueDosepH_DoseHour_pH =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_DOSEHOUR_PH);
+	RequireValueDosepH_DoseDay_pH =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY_PH);
+	Probe_pH =	ReadDataFromFlash(FLASH_ADDR_CALIBRATION_PROBE_PH);
+	Probe_CLF =	ReadDataFromFlash(FLASH_ADDR_CALIBRATION_PROBE_CLF);
+	RequireValuepH =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_PH);
+	RequireValueCLF =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_CLF);
+	RequireValueRedoxpH_pH =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_REDOX_PH);
+	PoolVolume = ReadDataFromFlash(FLASH_ADDR_POOL_VOLUME);
+	FiltrationPeriod = ReadDataFromFlash(FLASH_ADDR_FILTRATIONPERIOD);
 }
 /**
   * @brief  Initializes the LCD and LEDs resources.
