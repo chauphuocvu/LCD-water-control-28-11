@@ -2,7 +2,7 @@
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\STM32F4Discovery\stm32f4_discovery_tsc2046.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4.h
-.\discover-more\stm32f4_discovery_tsc2046.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\stm32f4_discovery_tsc2046.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmFunc.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4_simd.h
@@ -39,7 +39,7 @@
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\Embedded_GUI_Library\inc\graphicObjectTypes.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\Embedded_GUI_HAL\inc\stm32HAL.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h
-.\discover-more\stm32f4_discovery_tsc2046.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\stm32f4_discovery_tsc2046.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\inc\FreeRTOSConfig.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\projdefs.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\portable.h
@@ -53,5 +53,5 @@
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\STM32F4Discovery\fonts.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\inc\SSD1963_Configuration.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\inc\stm32f4xx_uartstdio.h
-.\discover-more\stm32f4_discovery_tsc2046.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\discover-more\stm32f4_discovery_tsc2046.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\discover-more\stm32f4_discovery_tsc2046.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\discover-more\stm32f4_discovery_tsc2046.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

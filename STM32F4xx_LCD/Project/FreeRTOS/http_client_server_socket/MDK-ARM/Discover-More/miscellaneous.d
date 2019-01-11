@@ -1,6 +1,6 @@
 .\discover-more\miscellaneous.o: ..\src\miscellaneous.c
 .\discover-more\miscellaneous.o: ..\inc\miscellaneous.h
-.\discover-more\miscellaneous.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\miscellaneous.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\miscellaneous.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\miscellaneous.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4.h
 .\discover-more\miscellaneous.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
@@ -40,5 +40,5 @@
 .\discover-more\miscellaneous.o: ..\STM32F4Discovery\fonts.h
 .\discover-more\miscellaneous.o: ..\inc\SSD1963_Configuration.h
 .\discover-more\miscellaneous.o: ..\inc\stm32f4xx_uartstdio.h
-.\discover-more\miscellaneous.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\discover-more\miscellaneous.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\discover-more\miscellaneous.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\discover-more\miscellaneous.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

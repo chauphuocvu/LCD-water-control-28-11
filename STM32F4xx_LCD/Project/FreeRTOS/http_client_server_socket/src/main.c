@@ -43,15 +43,14 @@
 
 //ReaderConfigStruct					ReaderConfig;
 
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
+
 
 /* Private function prototypes -----------------------------------------------*/
 void GPIO_Config(void);
 void MyTask(void * pvParameters);
 void vApplicationStackOverflowHook( TaskHandle_t xTask, signed char *pcTaskName );
-void ReadSavedValue(void);
 void vApplicationTickHook( void );
+extern uint8_t 		Languages_Choose;
 extern uint8_t		PoolSelect;
 extern uint8_t 		Temperature;
 extern uint8_t 		WaterHardnessSelect;
@@ -63,13 +62,21 @@ extern uint16_t 	FiltrationPeriod;
 extern uint16_t 	CalibrationAir;
 extern uint16_t 	CalibrationWater;
 extern uint16_t 	RequireValueRedoxpH_Redox;
-extern double 	 	RequireValueDosepH_DoseHour_pH;
-extern double	 		RequireValueDosepH_DoseDay_pH;
-extern double 	 	Probe_pH;
-extern double 	 	Probe_CLF;
-extern double 	 	RequireValuepH;
-extern double 	 	RequireValueCLF;
-extern double 	 	RequireValueRedoxpH_pH;
+extern float 	 	Probe_pH;
+extern float 	 	Probe_CLF;
+extern float 	 	RequireValuepH;
+extern float 	 	RequireValueCLF;
+extern uint8_t   	RequireValueDosepH_DoseHour_Display;
+extern uint8_t 		RequireValueDosepH_DoseDay_Display;
+extern uint16_t 	PoolVolume_Display;
+extern uint16_t 	FiltrationPeriod_Display;
+extern uint16_t 	CalibrationAir_Display;
+extern uint16_t 	CalibrationWater_Display;
+extern uint16_t 	RequireValueRedoxpH_Redox_Display;
+extern float 	 	Probe_pH_Display;
+extern float 	 	Probe_CLF_Display;
+extern float 	 	RequireValuepH_Display;
+extern float 	 	RequireValueCLF_Display;
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -137,27 +144,6 @@ void MyTask(void * pvParameters)
 		DisplayNumber();
   }
 }
-void ReadSavedValue(void)
-{
-	PoolSelect = ReadDataFromFlashForSelect(FLASH_ADDR_POOL_SELECT);
-	Temperature = ReadDataFromFlashForSelect(FLASH_ADDR_TEMP_SELECT);
-	TypeofProbe  = ReadDataFromFlashForSelect(FLASH_ADDR_TYPE_OF_PROBE);
-	WaterHardnessSelect = ReadDataFromFlashForSelect(FLASH_ADDR_WATER_HARDNESS_SELECT);
-	RequireValueDosepH_DoseHour =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEHOUR);
-	RequireValueDosepH_DoseDay =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY);
-	CalibrationAir =	ReadDataFromFlash(FLASH_ADDR_CALIBRATION_AIR);
-	CalibrationWater =	ReadDataFromFlash(FLASH_ADDR_CALIBRATION_WATER);
-	RequireValueRedoxpH_Redox =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_REDOX);
-	RequireValueDosepH_DoseHour_pH =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_DOSEHOUR_PH);
-	RequireValueDosepH_DoseDay_pH =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY_PH);
-	Probe_pH =	ReadDataFromFlash(FLASH_ADDR_CALIBRATION_PROBE_PH);
-	Probe_CLF =	ReadDataFromFlash(FLASH_ADDR_CALIBRATION_PROBE_CLF);
-	RequireValuepH =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_PH);
-	RequireValueCLF =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_CLF);
-	RequireValueRedoxpH_pH =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_REDOX_PH);
-	PoolVolume = ReadDataFromFlash(FLASH_ADDR_POOL_VOLUME);
-	FiltrationPeriod = ReadDataFromFlash(FLASH_ADDR_FILTRATIONPERIOD);
-}
 /**
   * @brief  Initializes the LCD and LEDs resources.
   * @param  None
@@ -216,6 +202,5 @@ void vApplicationStackOverflowHook( TaskHandle_t xTask,
 void vApplicationTickHook( void )
 {
 	TimingDelay_Decrement();
-	DelayScreen_Decrement();
 }
 /*********** Portions COPYRIGHT 2012 Embest Tech. Co., Ltd.*****END OF FILE****/

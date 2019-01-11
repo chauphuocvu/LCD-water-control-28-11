@@ -5,7 +5,7 @@
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/arch.h
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cc.h
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cpu.h
-.\discover-more\dhcp.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\discover-more\dhcp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/stats.h
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/mem.h
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/memp.h
@@ -21,8 +21,8 @@
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h
-.\discover-more\dhcp.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\discover-more\dhcp.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\dhcp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\dhcp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\dhcp.o: ..\inc\FreeRTOSConfig.h
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\projdefs.h
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\portable.h
@@ -37,4 +37,4 @@
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/autoip.h
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif/etharp.h
 .\discover-more\dhcp.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/dns.h
-.\discover-more\dhcp.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\discover-more\dhcp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

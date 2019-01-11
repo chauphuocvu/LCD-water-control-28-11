@@ -367,7 +367,7 @@ Coordinate * Ptr;
   LCD_SetBackColor(WHITE);
   LCD_SetTextColor(BLACK);
   LCD_Clear(WHITE);
-  LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), LCD_Width - 25, "Run Calibration.", LCD_FALSE);
+//  LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), LCD_Width - 25, "Run Calibration.", LCD_FALSE);
 
   touch_done = 0;
 
@@ -601,7 +601,7 @@ DelayUS(50000);
 	matrix.Divider = d;
   LCD_Clear(WHITE);
 	saveCalibrationData();
-  LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), 1 * (LCD_Width / 11), "Calibration done!", LCD_FALSE);
+//  LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), 1 * (LCD_Width / 11), "Calibration done!", LCD_FALSE);
 
 
 	DelayUS(50000);
@@ -738,8 +738,8 @@ uint32_t	readCalibrationValue()
   }
 	else
 	{
-		LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), 1 * (LCD_Width / 11), "Touch screen to ", LCD_TRUE);
-		LCD_DisplayAdjStringLine(5 * (LCD_Height / 7), 1 * (LCD_Width / 11), "start calibrating!", LCD_TRUE);
+//		LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), 1 * (LCD_Width / 11), (uint8_t *)"Touch screen to ", LCD_TRUE);
+//		LCD_DisplayAdjStringLine(5 * (LCD_Height / 7), 1 * (LCD_Width / 11), "start calibrating!", LCD_TRUE);
 		while (i < 10000)
 		{
 			Ptr=Read_tsc2046();

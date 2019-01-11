@@ -3,7 +3,7 @@
 .\discover-more\images.o: ..\Embedded_GUI_HAL\inc\stm32HAL.h
 .\discover-more\images.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\images.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4.h
-.\discover-more\images.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\images.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\images.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
 .\discover-more\images.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmFunc.h
 .\discover-more\images.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4_simd.h
@@ -37,7 +37,7 @@
 .\discover-more\images.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h
 .\discover-more\images.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
 .\discover-more\images.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h
-.\discover-more\images.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\images.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\discover-more\images.o: ..\inc\FreeRTOSConfig.h
 .\discover-more\images.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\projdefs.h
 .\discover-more\images.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\portable.h

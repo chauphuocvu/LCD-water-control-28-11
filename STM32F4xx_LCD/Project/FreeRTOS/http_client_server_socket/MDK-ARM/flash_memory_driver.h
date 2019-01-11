@@ -3,6 +3,7 @@
 */
 
 #include "stm32f4xx_flash.h"
+#include "uiappuser.h"
 
 /** @defgroup FLASH_Sectors
   * @{
@@ -60,16 +61,16 @@
 #define FLASH_ADDR_REQUIRE_VALUE_CLF								((uint32_t)0x08080040)
 #define FLASH_ADDR_REQUIRE_VALUE_REDOX							((uint32_t)0x08080050)
 #define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEHOUR 		((uint32_t)0x08080052)
-#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_PH					((uint32_t)0x08080054)
-#define FLASH_ADDR_REQUIRE_VALUE_DOSEHOUR_PH				((uint32_t)0x08080056)
-#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY			((uint32_t)0x08080058)
-#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY_PH 	((uint32_t)0x0808005A)
-#define FLASH_ADDR_REQUIRE_VALUE_REDOX_PH						((uint32_t)0x08080060)
+#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY			((uint32_t)0x08080054)
+#define	FLASH_ADDR_LANGUAGE													((uint32_t)0x08080060)
 
 
 
 
-uint16_t	SaveHalfWordDataToFlash(uint32_t Address, uint16_t data);
-uint16_t	SaveDoubleWordDataToFlash(uint32_t Address, double data);
 uint16_t	ReadDataFromFlash(uint32_t Address);
+uint32_t	Read32bitDataFromFlash(uint32_t Address);
 uint16_t	ReadDataFromFlashForSelect(uint32_t Address);
+/********************Write data for new chip*****************************/
+void ReadSavedValue(void);
+/****************************************************************/
+uint16_t	SaveDataToFlash(void);

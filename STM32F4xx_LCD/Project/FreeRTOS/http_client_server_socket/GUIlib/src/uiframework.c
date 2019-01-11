@@ -76,12 +76,41 @@ void Show_StartScreen(void)
 	LCD_SetFont(&Font12x12);
 	LCD_DisplayStringLine(20,290,(uint8_t *)"CHAU PHUOC VU");
 	LCD_DisplayStringLine(250,20,(uint8_t *)"BACH KHOA");
-	LCD_DrawFullRect(20,60,210,160,VU_YELLOW);
 	LCD_DrawFullRect(250,60,210,160,VU_BLUE);
-	LCD_SetColors(BLACK,VU_YELLOW);
-	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(80,30,(uint8_t *)"CHLORINE");
-	LCD_DisplayStringLine(160,175,(uint8_t *)"mg/l");
+// chon man hinh startscreen theo cai dat tu type of probe
+	switch(TypeofProbe)
+	{
+		case FREECHLORINE:
+				LCD_DrawFullRect(20,60,210,160,VU_YELLOW);
+				LCD_SetColors(BLACK,VU_YELLOW);
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(80,30,(uint8_t *)"CHLORINE");
+				LCD_DisplayStringLine(160,175,(uint8_t *)"mg/l");
+			break;
+		case REDOXPROBE:
+				LCD_DrawFullRect(20,60,210,160,VU_YELLOW);
+				LCD_SetColors(BLACK,VU_YELLOW);
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(80,30,(uint8_t *)"REDOX");
+				LCD_DisplayStringLine(160,175,(uint8_t *)"mV");
+			break;
+		case MLPERHOUR:
+				LCD_DrawFullRect(20,60,210,160,VU_YELLOW);
+				LCD_SetColors(BLACK,VU_YELLOW);
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(80,30,(uint8_t *)"DOSE");
+				LCD_DisplayAdjStringLine(80,130,(uint8_t *)"ml/m3hour",LCD_FALSE);
+			break;
+		case MLPERDAY:
+				LCD_DrawFullRect(20,60,210,160,VU_GRAY);
+				LCD_SetColors(BLACK,VU_GRAY);
+				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(80,30,(uint8_t *)"DOSE");
+				LCD_DisplayStringLine(80,130,(uint8_t *)"ml/m3day");
+			break;
+		default:
+			break;
+	}
 	LCD_SetColors(BLACK,VU_BLUE);
 	LCD_SetFont(&Font12x12);
 	LCD_DisplayStringLine(80,260,(uint8_t *)"PH--");
@@ -94,20 +123,21 @@ void Show_StartScreen(void)
 GL_Page_TypeDef SettingsScreen;
 void Create_SettingsScreen(void)
 {
-	GL_PageControls_TypeDef* SettingsDesignButton01= NewRectControl(1,210,30,WHITE,SettingsScreen_Language);
-	GL_PageControls_TypeDef* SettingsDesignButton02= NewRectControl(2,210,30,WHITE,SettingsScreen_BackToStart);
+	GL_PageControls_TypeDef* SettingsDesignButton01= NewRectControl(1,130,30,WHITE_BLACK,SettingsScreen_Language);
+	GL_PageControls_TypeDef* SettingsDesignButton02= NewRectControl(2,160,30,WHITE,SettingsScreen_BackToStart);
 	GL_PageControls_TypeDef* SettingsDesignButton03= NewRectControl(3,210,80,BLACK,SettingsScreen_Parameters);
 	GL_PageControls_TypeDef* SettingsDesignButton04= NewRectControl(4,210,80,BLACK,SettingsScreen_Calibration);
 	GL_PageControls_TypeDef* SettingsDesignButton05= NewRectControl(5,210,80,BLACK,SettingsScreen_DosingTest);
 	GL_PageControls_TypeDef* SettingsDesignButton06= NewRectControl(6,210,80,BLACK,SettingsScreen_TypeOfProbe);
+	GL_PageControls_TypeDef* SettingsDesignButton07= NewRectControl(7,130,30,WHITE_BLACK,SettingsScreen_SaveData);
 	Create_PageObj( &SettingsScreen ); 
-	AddPageControlObj(250,240,SettingsDesignButton01,&SettingsScreen);
+	AddPageControlObj(330,240,SettingsDesignButton01,&SettingsScreen);
 	AddPageControlObj(20,240,SettingsDesignButton02,&SettingsScreen);
 	AddPageControlObj(20,60,SettingsDesignButton03,&SettingsScreen);
 	AddPageControlObj(250,60,SettingsDesignButton04,&SettingsScreen);
 	AddPageControlObj(20,150,SettingsDesignButton05,&SettingsScreen);
 	AddPageControlObj(250,150,SettingsDesignButton06,&SettingsScreen);
-	
+	AddPageControlObj(190,240,SettingsDesignButton07,&SettingsScreen);
 }
 ////////////////////////////////////////
 void Show_SettingsScreen(void)
@@ -126,17 +156,19 @@ void Show_SettingsScreen(void)
 	LCD_DrawRect(250,60,80,210);
 	LCD_DrawRect(20,150,80,210);
 	LCD_DrawRect(250,150,80,210);
-	LCD_DrawFullRect(20,240,210,30,WHITE);
-	LCD_DrawRect(250,240,30,210);
+	LCD_DrawFullRect(20,240,160,30,WHITE);
+	LCD_DrawRect(190,240,30,130);
+	LCD_DrawRect(330,240,30,130);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
 	LCD_DisplayStringLineInRect(20,60,210,80,(uint8_t *)"PARAMETERS");
 	LCD_DisplayStringLineInRect(250,60,210,80,(uint8_t *)"CALIBRATION");
 	LCD_DisplayStringLineInRect(20,150,210,80,(uint8_t *)"DOSING TEST");
 	LCD_DisplayStringLineInRect(250,150,210,80,(uint8_t *)"TYPE OF PROBE");
-	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"LANGUAGES");
+	LCD_DisplayStringLineInRect(190,240,130,30,(uint8_t *)"SAVE DATA");
+	LCD_DisplayStringLineInRect(330,240,130,30,(uint8_t *)"LANGUAGES");
 	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");
+	LCD_DisplayStringLineInRect(20,240,160,30,(uint8_t *)"BACK TO START");
 	SettingsScreen.ShowPage(&SettingsScreen,GL_TRUE);
 	Screen = SettingsScreen_df;
 	CurrentScreen = &SettingsScreen;
@@ -616,7 +648,7 @@ void Show_ParametersWaterScreen(void)
 	LCD_SetFont(&Font12x12);
 	LCD_DisplayStringLine(20,280,(uint8_t *)"WATER PARAMETERS");
 	LCD_SetFont(&Font8x12_bold);
-	LCD_DisplayStringLine(55,30,(uint8_t *)"POOL");
+	LCD_DisplayStringLine(65,30,(uint8_t *)"POOL");
 	LCD_DisplayStringLine(120,30,(uint8_t *)"AVERAGE");
 	LCD_DisplayStringLine(135,30,(uint8_t *)"WATER");
 	LCD_DisplayStringLine(150,30,(uint8_t *)"TEMPERATURE");
@@ -677,6 +709,7 @@ void Show_WarningMaximalSafetyScreen(void)
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningMaximalSafetyScreen.ShowPage(&WarningMaximalSafetyScreen,GL_TRUE);
 	CurrentScreen = &WarningMaximalSafetyScreen;
+	Screen = WarningMaximalSafetyScreen_df;
 }
 
 
@@ -711,6 +744,7 @@ void Show_WarningExtremeConditionScreen(void)
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningExtremeConditionScreen.ShowPage(&WarningExtremeConditionScreen,GL_TRUE);
 	CurrentScreen = &WarningExtremeConditionScreen;
+	Screen = WarningExtremeConditionScreen_df;
 }
 
 
@@ -741,6 +775,7 @@ void Show_WarningWaterHardnessScreen(void)
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningWaterHardnessScreen.ShowPage(&WarningWaterHardnessScreen,GL_TRUE);
 	CurrentScreen = &WarningWaterHardnessScreen;
+	Screen = WarningWaterHardnessScreen_df;
 }
 
 
@@ -771,6 +806,7 @@ void Show_WarningProbeCalibration62_78Screen(void)
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibration62_78Screen.ShowPage(&WarningProbeCalibration62_78Screen,GL_TRUE);
 	CurrentScreen = &WarningProbeCalibration62_78Screen;
+	Screen = WarningProbeCalibration62_78Screen_df;
 }
 
 
@@ -801,6 +837,7 @@ void Show_WarningProbeCalibrationScreen(void)
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibrationScreen.ShowPage(&WarningProbeCalibrationScreen,GL_TRUE);
 	CurrentScreen = &WarningProbeCalibrationScreen;
+	Screen = WarningProbeCalibrationScreen_df;
 }
 
 
@@ -830,6 +867,7 @@ void Show_WarningProbeCalibration70Screen(void)
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibration70Screen.ShowPage(&WarningProbeCalibration70Screen,GL_TRUE);
 	CurrentScreen = &WarningProbeCalibration70Screen;
+	Screen = WarningProbeCalibration70Screen_df;
 }
 
 
@@ -861,6 +899,7 @@ void Show_WarningProbeCalibrationRequiredValueScreen(void)
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibrationRequiredValueScreen.ShowPage(&WarningProbeCalibrationRequiredValueScreen,GL_TRUE);
 	CurrentScreen = &WarningProbeCalibrationRequiredValueScreen;
+	Screen = WarningProbeCalibrationRequiredValueScreen_df;
 }
 
 
@@ -892,6 +931,7 @@ void Show_WarningProbeCalibrationrequiredValueRedScreen(void)
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibrationRequiredValueRedScreen.ShowPage(&WarningProbeCalibrationRequiredValueRedScreen,GL_TRUE);
 	CurrentScreen = &WarningProbeCalibrationRequiredValueRedScreen;
+	Screen = WarningProbeCalibrationRequiredValueRedScreen_df;
 }
 
 
@@ -923,6 +963,7 @@ void Show_WarningProbeCalibrationRequiredValueImpossibleScreen(void)
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
 	WarningProbeCalibrationRequiredValueImpossibleScreen.ShowPage(&WarningProbeCalibrationRequiredValueImpossibleScreen,GL_TRUE);
 	CurrentScreen = &WarningProbeCalibrationRequiredValueImpossibleScreen;
+	Screen = WarningProbeCalibrationRequiredValueImpossibleScreen_df;
 }
 
 
@@ -953,6 +994,7 @@ void Show_WarningTooRapidChangeScreen(void)
 	LCD_DisplayStringLineInRect(160,170,200,30,(uint8_t *)"CANCEL RESTRICTIONS");
 	WarningTooRapidChangeScreen.ShowPage(&WarningTooRapidChangeScreen,GL_TRUE);
 	CurrentScreen = &WarningTooRapidChangeScreen;
+	Screen = WarningTooRapidChangeScreen_df;
 }
 
 
@@ -1848,18 +1890,47 @@ void Show_TypeOfProbeScreen(void)
 
 
 
+/*Giao dien tu thiet ke*/
+GL_Page_TypeDef LanguagesScreen;
+void Create_LanguagesScreen(void)
+{
+	GL_RadioButtonGrp_TypeDef* Languages=NewRadioButtonGrp(1);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(5,210,30,WHITE,LanguagesScreen_BackToStart);
+	GL_PageControls_TypeDef* CheckBox1= RADIO_BUTTON_ADD(Languages,(const uint8_t *)"",LanguagesScreen_Vietnamese);
+	GL_PageControls_TypeDef* CheckBox2= RADIO_BUTTON_ADD(Languages,(const uint8_t *)"",LanguagesScreen_English);	
+	Create_PageObj( &LanguagesScreen ); 
+	AddPageControlObj(20,240,DesignButton02,&LanguagesScreen);
+	AddPageControlObj(20,65,CheckBox1,&LanguagesScreen);
+	AddPageControlObj(20,110,CheckBox2,&LanguagesScreen);
+	((GL_RadioOption_TypeDef*)(Languages->RadioOptions[Languages_Choose]->objPTR))->IsChecked = GL_TRUE;
+}
+////////////////////////////////////////
+void Show_LanguagesScreen(void)
+{
+	UARTprintf("Show_LanguagesScreen\r\n");
+	Create_LanguagesScreen();
+	LCD_Clear(BLACK);
+	LCD_DrawFullRect(20,12,90,28,WHITE);
+	LCD_SetFont(&Font16x24);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font12x12);
+	LCD_DisplayStringLine(20,280,(uint8_t *)"CHOOSE LANGUASES");
+	LCD_DrawFullRect(20,240,210,30,WHITE);
+	LCD_SetColors(BLACK,WHITE);
+	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	
+	LCD_SetColors(WHITE,BLACK);
+	LCD_SetFont(&Font8x12_bold);
+	LCD_DisplayStringLine(70,45,(uint8_t *)"VietNamese");
+	LCD_DisplayStringLine(115,45,(uint8_t *)"English");
+	LanguagesScreen.ShowPage(&LanguagesScreen,GL_TRUE);
+	Screen = LanguagesScreen_df;
+	CurrentScreen = &LanguagesScreen;
+}
+
+
+
 
 
 /******************* (C) COPYRIGHT 2017 STMicroelectronics *****END OF FILE****/ 
-/*Added by chau phuoc vu 14/11/2018*/
-void DelayScreen_Decrement(void)
-{
-	if (delayscreen != 0)
-		delayscreen--;
-	else ;
-}
-void DelayScreen(uint16_t time)
-{
-	delayscreen = time;
-	while(delayscreen != 0);
-}

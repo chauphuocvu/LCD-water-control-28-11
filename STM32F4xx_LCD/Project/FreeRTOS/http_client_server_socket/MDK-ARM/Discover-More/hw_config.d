@@ -2,7 +2,7 @@
 .\discover-more\hw_config.o: ..\inc\hw_config.h
 .\discover-more\hw_config.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\hw_config.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4.h
-.\discover-more\hw_config.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\hw_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\hw_config.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
 .\discover-more\hw_config.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmFunc.h
 .\discover-more\hw_config.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4_simd.h
@@ -35,5 +35,5 @@
 .\discover-more\hw_config.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\discover-more\hw_config.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h
 .\discover-more\hw_config.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
-.\discover-more\hw_config.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\discover-more\hw_config.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\discover-more\hw_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\discover-more\hw_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

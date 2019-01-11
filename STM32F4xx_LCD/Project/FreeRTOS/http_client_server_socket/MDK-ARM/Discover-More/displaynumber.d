@@ -4,7 +4,7 @@
 .\discover-more\displaynumber.o: ..\STM32F4Discovery\stm32f4_discovery_user.h
 .\discover-more\displaynumber.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\displaynumber.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4.h
-.\discover-more\displaynumber.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\displaynumber.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\displaynumber.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
 .\discover-more\displaynumber.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmFunc.h
 .\discover-more\displaynumber.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4_simd.h
@@ -40,13 +40,13 @@
 .\discover-more\displaynumber.o: ..\STM32F4Discovery\fonts.h
 .\discover-more\displaynumber.o: ..\inc\SSD1963_Configuration.h
 .\discover-more\displaynumber.o: ..\inc\stm32f4xx_uartstdio.h
-.\discover-more\displaynumber.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\discover-more\displaynumber.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\discover-more\displaynumber.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\discover-more\displaynumber.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\discover-more\displaynumber.o: ..\GUIlib\inc\uiframework.h
 .\discover-more\displaynumber.o: ..\Embedded_GUI_Library\inc\graphicObjectTypes.h
 .\discover-more\displaynumber.o: ..\Embedded_GUI_HAL\inc\stm32HAL.h
 .\discover-more\displaynumber.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h
-.\discover-more\displaynumber.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\displaynumber.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\discover-more\displaynumber.o: ..\inc\FreeRTOSConfig.h
 .\discover-more\displaynumber.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\projdefs.h
 .\discover-more\displaynumber.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\portable.h
@@ -56,3 +56,4 @@
 .\discover-more\displaynumber.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h
 .\discover-more\displaynumber.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h
 .\discover-more\displaynumber.o: ..\Embedded_GUI_Library\inc\graphicObject.h
+.\discover-more\displaynumber.o: ..\GUIlib\inc\uiappuser.h

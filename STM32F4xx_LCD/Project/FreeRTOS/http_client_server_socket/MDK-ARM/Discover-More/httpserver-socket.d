@@ -5,9 +5,9 @@
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/arch.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cc.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cpu.h
-.\discover-more\httpserver-socket.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\discover-more\httpserver-socket.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api.h
-.\discover-more\httpserver-socket.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\httpserver-socket.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netbuf.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/pbuf.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/err.h
@@ -16,7 +16,7 @@
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h
-.\discover-more\httpserver-socket.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\httpserver-socket.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\httpserver-socket.o: ..\inc\FreeRTOSConfig.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\projdefs.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\portable.h
@@ -30,10 +30,10 @@
 .\discover-more\httpserver-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sockets.h
 .\discover-more\httpserver-socket.o: ..\inc\fs.h
 .\discover-more\httpserver-socket.o: ..\inc\fsdata.h
-.\discover-more\httpserver-socket.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\discover-more\httpserver-socket.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\discover-more\httpserver-socket.o: ..\inc\httpserver-socket.h
 .\discover-more\httpserver-socket.o: ..\inc\stm32f4xx_uartstdio.h
-.\discover-more\httpserver-socket.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\discover-more\httpserver-socket.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h

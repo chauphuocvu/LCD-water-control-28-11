@@ -4,7 +4,7 @@
 .\discover-more\uiappuser.o: ..\Embedded_GUI_HAL\inc\stm32HAL.h
 .\discover-more\uiappuser.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\uiappuser.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4.h
-.\discover-more\uiappuser.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\uiappuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\uiappuser.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
 .\discover-more\uiappuser.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmFunc.h
 .\discover-more\uiappuser.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4_simd.h
@@ -38,7 +38,7 @@
 .\discover-more\uiappuser.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h
 .\discover-more\uiappuser.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
 .\discover-more\uiappuser.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h
-.\discover-more\uiappuser.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\uiappuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\discover-more\uiappuser.o: ..\inc\FreeRTOSConfig.h
 .\discover-more\uiappuser.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\projdefs.h
 .\discover-more\uiappuser.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\portable.h
@@ -55,7 +55,7 @@
 .\discover-more\uiappuser.o: ..\STM32F4Discovery\fonts.h
 .\discover-more\uiappuser.o: ..\inc\SSD1963_Configuration.h
 .\discover-more\uiappuser.o: ..\inc\stm32f4xx_uartstdio.h
-.\discover-more\uiappuser.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\discover-more\uiappuser.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\discover-more\uiappuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\discover-more\uiappuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\discover-more\uiappuser.o: ..\inc\SSD1963_CMD.h
 .\discover-more\uiappuser.o: ..\MDK-ARM\flash_memory_driver.h

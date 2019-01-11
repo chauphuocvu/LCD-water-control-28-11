@@ -1,7 +1,7 @@
 .\discover-more\croutine.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\croutine.c
 .\discover-more\croutine.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h
-.\discover-more\croutine.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
-.\discover-more\croutine.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\croutine.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\croutine.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\croutine.o: ..\inc\FreeRTOSConfig.h
 .\discover-more\croutine.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\projdefs.h
 .\discover-more\croutine.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\portable.h

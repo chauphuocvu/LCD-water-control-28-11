@@ -2,7 +2,7 @@
 .\discover-more\stm32f4xx_it.o: ..\inc\stm32f4xx_it.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4.h
-.\discover-more\stm32f4xx_it.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmFunc.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4_simd.h
@@ -44,7 +44,7 @@
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h
 .\discover-more\stm32f4xx_it.o: ..\inc\stm32f4x7_eth_conf.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h
-.\discover-more\stm32f4xx_it.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\discover-more\stm32f4xx_it.o: ..\inc\FreeRTOSConfig.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\projdefs.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\portable.h
@@ -64,7 +64,7 @@
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/arch.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cc.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cpu.h
-.\discover-more\stm32f4xx_it.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\discover-more\stm32f4xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/err.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h
 .\discover-more\stm32f4xx_it.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\semphr.h

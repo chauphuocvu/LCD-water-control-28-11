@@ -47,44 +47,45 @@ extern GL_Page_TypeDef WarningMaximalSafetyScreen;
 /*Added by Chau Phuoc Vu 23/11/2018*/
 extern uint16_t		Screen;
 
-#define	StartScreen_df			1
-#define	SettingsScreen_df			2
-#define	DosingTestStartStartScreen_df			3
-#define	DosingTestStopStartScreen_df			4
-#define	DosingTestStopStopScreen_df			5
-#define	DosingTestStartStopScreen_df			6
-#define	ParametersScreen_df			7
-#define	ParametersPoolVolumeScreen_df			8
-#define	ParametersFitrationPeriodScreen_df			9
-#define	ParametersWaterScreen_df			10
-#define	WarningMaximalSafetyScreen_df			11
-#define	WarningExtremeConditionScreen_df			12
-#define	WarningProbeCalibration62_78Screen_df			13
-#define	WarningWaterHardnessScreen_df			14
-#define	WarningProbeCalibrationScreen_df			15
-#define	WarningProbeCalibration70Screen_df			16
-#define	WarningProbeCalibrationRequiredValueScreen_df			17
-#define	WarningProbeCalibrationRequiredValueRedScreen_df			18
+#define	StartScreen_df																							1
+#define	SettingsScreen_df																						2
+#define	DosingTestStartStartScreen_df																3
+#define	DosingTestStopStartScreen_df																4
+#define	DosingTestStopStopScreen_df																	5
+#define	DosingTestStartStopScreen_df																6
+#define	ParametersScreen_df																					7
+#define	ParametersPoolVolumeScreen_df																8
+#define	ParametersFitrationPeriodScreen_df													9
+#define	ParametersWaterScreen_df																		10
+#define	WarningMaximalSafetyScreen_df																11
+#define	WarningExtremeConditionScreen_df														12
+#define	WarningProbeCalibration62_78Screen_df												13
+#define	WarningWaterHardnessScreen_df																14
+#define	WarningProbeCalibrationScreen_df														15
+#define	WarningProbeCalibration70Screen_df													16
+#define	WarningProbeCalibrationRequiredValueScreen_df								17
+#define	WarningProbeCalibrationRequiredValueRedScreen_df						18
 #define	WarningProbeCalibrationRequiredValueImpossibleScreen_df			19
-#define	WarningTooRapidChangeScreen_df			20
-#define ParametersRequireValuepHScreen_df		21
-#define ParametersRequireValueCLFScreen_df  22
-#define CalibrationScreen_df  23
-#define CalibrationpHProbeScreen_df 24
-#define CalibrationCLFProbeScreen_df 25
-#define ParametersRequireValueRedoxpH_RedoxScreen_df 26
-#define ParametersRequireValueRedoxpH_pHScreen_df 27
-#define ParametersRequireValueDosepH_DoseHourScreen_df 28
-#define ParametersRequireValueDosepH_DoseHour_pHScreen_df 29
-#define ParametersRequireValueDosepH_DoseDayScreen_df 30
-#define ParametersRequireValueDosepH_DoseDay_pHScreen_df 31
-#define CalibrationWaterScreen_df   32
-#define CalibrationAirScreen_df    33
-#define TypeOfProbeScreen_df				34
+#define	WarningTooRapidChangeScreen_df															20
+#define ParametersRequireValuepHScreen_df														21
+#define ParametersRequireValueCLFScreen_df 													22
+#define CalibrationScreen_df 																				23
+#define CalibrationpHProbeScreen_df																	24
+#define CalibrationCLFProbeScreen_df 																25
+#define ParametersRequireValueRedoxpH_RedoxScreen_df 								26
+#define ParametersRequireValueRedoxpH_pHScreen_df 									27
+#define ParametersRequireValueDosepH_DoseHourScreen_df							28
+#define ParametersRequireValueDosepH_DoseHour_pHScreen_df						29
+#define ParametersRequireValueDosepH_DoseDayScreen_df								30
+#define ParametersRequireValueDosepH_DoseDay_pHScreen_df						31
+#define CalibrationWaterScreen_df  																	32
+#define CalibrationAirScreen_df    																	33
+#define TypeOfProbeScreen_df																				34
+#define LanguagesScreen_df																					35
+
+
 /*Added by chau phuoc vu 14/11/2018*/
-void DelayScreen_Decrement(void);
 void DelayScreen(uint16_t time);
-static uint16_t delayscreen = 0;
 /* Exported constants ----------------------------------------------------------*/
 
 #define DesignLabel01Color 					65535
@@ -128,6 +129,7 @@ void Create_ParametersRequireValueDosepH_DoseDay_pHScreen(void);
 void Create_CalibrationWaterScreen(void);
 void Create_CalibrationAirScreen(void);
 void Create_TypeOfProbeScreen(void);
+void Create_LanguagesScreen(void);
 
 /*Show Screen*/
 void Show_HomeScreen(void);
@@ -165,7 +167,7 @@ void Show_ParametersRequireValueDosepH_DoseDay_pHScreen(void);
 void Show_CalibrationWaterScreen(void);
 void Show_CalibrationAirScreen(void);
 void Show_TypeOfProbeScreen(void);
-
+void Show_LanguagesScreen(void);
 
 #ifdef __cplusplus
 }

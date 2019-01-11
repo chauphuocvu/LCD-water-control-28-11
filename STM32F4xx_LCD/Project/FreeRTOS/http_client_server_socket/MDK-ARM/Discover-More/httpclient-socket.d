@@ -5,9 +5,9 @@
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/arch.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cc.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/cpu.h
-.\discover-more\httpclient-socket.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\discover-more\httpclient-socket.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api.h
-.\discover-more\httpclient-socket.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\httpclient-socket.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netbuf.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/pbuf.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/err.h
@@ -16,7 +16,7 @@
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sys.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\arch/sys_arch.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h
-.\discover-more\httpclient-socket.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\httpclient-socket.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\httpclient-socket.o: ..\inc\FreeRTOSConfig.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\projdefs.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\portable.h
@@ -30,7 +30,7 @@
 .\discover-more\httpclient-socket.o: ..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sockets.h
 .\discover-more\httpclient-socket.o: ..\inc\fs.h
 .\discover-more\httpclient-socket.o: ..\inc\fsdata.h
-.\discover-more\httpclient-socket.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\discover-more\httpclient-socket.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\discover-more\httpclient-socket.o: ..\STM32F4Discovery\stm32f4_discovery_user.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\httpclient-socket.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4.h

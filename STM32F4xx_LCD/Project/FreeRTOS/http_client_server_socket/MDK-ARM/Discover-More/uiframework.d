@@ -4,7 +4,7 @@
 .\discover-more\uiframework.o: ..\Embedded_GUI_HAL\inc\stm32HAL.h
 .\discover-more\uiframework.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\uiframework.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4.h
-.\discover-more\uiframework.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\uiframework.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\uiframework.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
 .\discover-more\uiframework.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmFunc.h
 .\discover-more\uiframework.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4_simd.h
@@ -38,7 +38,7 @@
 .\discover-more\uiframework.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h
 .\discover-more\uiframework.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
 .\discover-more\uiframework.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h
-.\discover-more\uiframework.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\discover-more\uiframework.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\discover-more\uiframework.o: ..\inc\FreeRTOSConfig.h
 .\discover-more\uiframework.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\projdefs.h
 .\discover-more\uiframework.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\portable.h
@@ -49,15 +49,15 @@
 .\discover-more\uiframework.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h
 .\discover-more\uiframework.o: ..\Embedded_GUI_Library\inc\graphicObject.h
 .\discover-more\uiframework.o: ..\GUIlib\inc\uiappuser.h
-.\discover-more\uiframework.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+.\discover-more\uiframework.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
 .\discover-more\uiframework.o: ..\Embedded_GUI_HAL\inc\LcdHal.h
 .\discover-more\uiframework.o: ..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h
 .\discover-more\uiframework.o: ..\STM32F4Discovery\stm32f4_discovery_user.h
 .\discover-more\uiframework.o: ..\STM32F4Discovery\fonts.h
 .\discover-more\uiframework.o: ..\inc\SSD1963_Configuration.h
 .\discover-more\uiframework.o: ..\inc\stm32f4xx_uartstdio.h
-.\discover-more\uiframework.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\discover-more\uiframework.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\discover-more\uiframework.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\discover-more\uiframework.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\discover-more\uiframework.o: ..\inc\SSD1963_CMD.h
 .\discover-more\uiframework.o: ..\Embedded_GUI_HAL\inc\TscHal.h
 .\discover-more\uiframework.o: ..\STM32F4Discovery\stm32f4_discovery_tsc2046.h

@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp
+--cpu Cortex-M4.fp
 ".\discover-more\main.o"
 ".\discover-more\system_stm32f4xx.o"
 ".\discover-more\stm32f4xx_it.o"
@@ -11,6 +11,7 @@
 ".\discover-more\hw_config.o"
 ".\discover-more\flash_memory_driver.o"
 ".\discover-more\displaynumber.o"
+".\discover-more\adc.o"
 ".\discover-more\pictures.o"
 ".\discover-more\uiappuser.o"
 ".\discover-more\uiframework.o"
@@ -81,6 +82,6 @@
 ".\discover-more\heap_2.o"
 ".\discover-more\startup_stm32f4xx.o"
 --strict --scatter ".\Discover-More\Project.sct"
---summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Discover-More\Project.map" -o .\Discover-More\Project.axf

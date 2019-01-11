@@ -32,6 +32,7 @@ typedef enum {StartStart, StartStop,
 extern DosingTest Dosingtest_Flag ;
 /* Exported constants ----------------------------------------------------------*/
 /* Exported macros -------------------------------------------------------------*/
+extern uint8_t 		Languages_Choose;
 extern uint8_t		PoolSelect;
 extern uint8_t 		Temperature;
 extern uint8_t 		WaterHardnessSelect;
@@ -43,15 +44,40 @@ extern uint16_t 	FiltrationPeriod;
 extern uint16_t 	CalibrationAir;
 extern uint16_t 	CalibrationWater;
 extern uint16_t 	RequireValueRedoxpH_Redox;
-extern double 	 	RequireValueDosepH_DoseHour_pH;
-extern double	 		RequireValueDosepH_DoseDay_pH;
-extern double 	 	Probe_pH;
-extern double 	 	Probe_CLF;
-extern double 	 	RequireValuepH;
-extern double 	 	RequireValueCLF;
-extern double 	 	RequireValueRedoxpH_pH;
+extern float 	 	Probe_pH;
+extern float 	 	Probe_CLF;
+extern float 	 	RequireValuepH;
+extern float 	 	RequireValueCLF;
+extern uint8_t   	RequireValueDosepH_DoseHour_Display;
+extern uint8_t 		RequireValueDosepH_DoseDay_Display;
+extern uint16_t 	PoolVolume_Display;
+extern uint16_t 	FiltrationPeriod_Display;
+extern uint16_t 	CalibrationAir_Display;
+extern uint16_t 	CalibrationWater_Display;
+extern uint16_t 	RequireValueRedoxpH_Redox_Display;
+extern float 	 	Probe_pH_Display;
+extern float 	 	Probe_CLF_Display;
+extern float 	 	RequireValuepH_Display;
+extern float 	 	RequireValueCLF_Display;
 
-/* Exported functions ----------------------------------------------------------*/
+/* Define ----------------------------------------------------------*/
+ #define INDOOR								0
+#define OUTDOOR								1
+#define EXTREME_CONDITION			2
+#define LESS20oC							0
+#define MIDDLE_20oC_30oC			1
+#define MORE30oC							2
+#define SOFT									0
+#define HARD									1
+#define VERY_HARD							2
+#define FREECHLORINE					0
+#define REDOXPROBE						1
+#define MLPERHOUR							2
+#define MLPERDAY							3
+#define ENGLISH								0
+#define VIETNAMESE						1 
+ 
+ 
  
 /* Control command*/
 /*Start Screen */
@@ -63,6 +89,7 @@ void SettingsScreen_Parameters(void);
 void SettingsScreen_Calibration(void);
 void SettingsScreen_DosingTest(void);
 void SettingsScreen_TypeOfProbe(void);
+void SettingsScreen_SaveData(void);
 							
 							
 							
@@ -291,6 +318,13 @@ void CalibrationAirScreen_BackToStart(void);
 void CalibrationAirScreen_inc(void);
 void CalibrationAirScreen_dec(void);
 void CalibrationAirScreen_OK(void);
+
+
+
+/*LanguagesScreen */
+void LanguagesScreen_BackToStart(void);
+void LanguagesScreen_Vietnamese(void);
+void LanguagesScreen_English(void);
 
 
 

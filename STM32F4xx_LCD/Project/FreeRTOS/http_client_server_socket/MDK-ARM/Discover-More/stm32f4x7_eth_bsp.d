@@ -3,7 +3,7 @@
 .\discover-more\stm32f4x7_eth_bsp.o: ..\inc\stm32f4x7_eth_conf.h
 .\discover-more\stm32f4x7_eth_bsp.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 .\discover-more\stm32f4x7_eth_bsp.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4.h
-.\discover-more\stm32f4x7_eth_bsp.o: D:\WINDOW\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\discover-more\stm32f4x7_eth_bsp.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\discover-more\stm32f4x7_eth_bsp.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h
 .\discover-more\stm32f4x7_eth_bsp.o: ..\..\..\..\Libraries\CMSIS\Include\core_cmFunc.h
 .\discover-more\stm32f4x7_eth_bsp.o: ..\..\..\..\Libraries\CMSIS\Include\core_cm4_simd.h

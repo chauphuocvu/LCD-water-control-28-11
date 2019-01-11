@@ -68,7 +68,7 @@ extern __IO uint16_t GL_BackColor;
 #define COMBOBOX_SIZE                   22
 #define CHECKBOX_SIZE                   20
 #define PAGE_MAX_NUM                    50
-#define TIMEOUT                         10000000
+#define TIMEOUT                         50000
 
 /**
   * @}
@@ -1968,7 +1968,7 @@ static GL_ErrStatus SetLabelVisible(GL_PageControls_TypeDef* pTmp, GL_Coordinate
   */
 static GL_ErrStatus SetButtonVisible(GL_PageControls_TypeDef* pTmp, GL_Coordinate_TypeDef objCoordinates)
 {
-//  uint16_t btn_length = 0;
+  uint16_t btn_length = 0;
   uint32_t LabelLength = 0;
   GL_Button_TypeDef* pThis = (GL_Button_TypeDef*)(pTmp->objPTR);
 #ifndef USE_2D_OBJECTS
@@ -2450,7 +2450,7 @@ static GL_ErrStatus SetCheckboxVisible(GL_PageControls_TypeDef* pTmp, GL_Coordin
 #ifndef USE_2D_OBJECTS
   uint8_t* ptrBitmap;
 #endif
-//  uint8_t n = 0;
+  uint8_t n = 0;
   uint32_t label_length = 0;
   GL_Checkbox_TypeDef* pThis = (GL_Checkbox_TypeDef*)(pTmp->objPTR);
 
@@ -4132,6 +4132,7 @@ void ProcessInputData(void)
     {
       GL_BackLightSwitch(GL_ON);
       vu8_gSleepState = 0;
+			GL_Delay(1000);
     }
     else if ((vu8_gTouchEnable == 1) && (vu8_gSleepState == 0))
     {
