@@ -1968,7 +1968,7 @@ static GL_ErrStatus SetLabelVisible(GL_PageControls_TypeDef* pTmp, GL_Coordinate
   */
 static GL_ErrStatus SetButtonVisible(GL_PageControls_TypeDef* pTmp, GL_Coordinate_TypeDef objCoordinates)
 {
-  uint16_t btn_length = 0;
+//  uint16_t btn_length = 0;
   uint32_t LabelLength = 0;
   GL_Button_TypeDef* pThis = (GL_Button_TypeDef*)(pTmp->objPTR);
 #ifndef USE_2D_OBJECTS
@@ -2450,7 +2450,7 @@ static GL_ErrStatus SetCheckboxVisible(GL_PageControls_TypeDef* pTmp, GL_Coordin
 #ifndef USE_2D_OBJECTS
   uint8_t* ptrBitmap;
 #endif
-  uint8_t n = 0;
+//  uint8_t n = 0;
   uint32_t label_length = 0;
   GL_Checkbox_TypeDef* pThis = (GL_Checkbox_TypeDef*)(pTmp->objPTR);
 

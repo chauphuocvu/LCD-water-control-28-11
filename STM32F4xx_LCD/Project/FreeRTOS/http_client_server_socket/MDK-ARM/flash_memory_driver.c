@@ -63,13 +63,21 @@ void ReadSavedValue(void)
 	RequireValueRedoxpH_Redox =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_REDOX);
 	
 	vu_mydata.intdata = Read32bitDataFromFlash(FLASH_ADDR_CALIBRATION_PROBE_PH);
-	Probe_pH =	vu_mydata.floatdata;
+	if (vu_mydata.intdata == 0xFFFFFFFF)
+		Probe_pH = 6.2;
+	else Probe_pH =	vu_mydata.floatdata;
 	vu_mydata.intdata =	Read32bitDataFromFlash(FLASH_ADDR_CALIBRATION_PROBE_CLF);
-	Probe_CLF = vu_mydata.floatdata;
+	if (vu_mydata.intdata == 0xFFFFFFFF)
+		Probe_CLF = 0.5;
+	else Probe_CLF =	vu_mydata.floatdata;
 	vu_mydata.intdata =	Read32bitDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_PH);
-	RequireValuepH =	vu_mydata.floatdata;
+	if (vu_mydata.intdata == 0xFFFFFFFF)
+		RequireValuepH = 6.2;
+	else RequireValuepH =	vu_mydata.floatdata;
 	vu_mydata.intdata =	Read32bitDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_CLF);
-	RequireValueCLF =	vu_mydata.floatdata;
+	if (vu_mydata.intdata == 0xFFFFFFFF)
+		RequireValueCLF = 0.5;
+	else RequireValueCLF =	vu_mydata.floatdata;
 	
 	
 	PoolVolume = ReadDataFromFlash(FLASH_ADDR_POOL_VOLUME);

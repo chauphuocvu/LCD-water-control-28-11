@@ -36,3 +36,6 @@
 .\discover-more\adc.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\discover-more\adc.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h
 .\discover-more\adc.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
+.\discover-more\adc.o: ..\inc\stm32f4xx_uartstdio.h
+.\discover-more\adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\discover-more\adc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

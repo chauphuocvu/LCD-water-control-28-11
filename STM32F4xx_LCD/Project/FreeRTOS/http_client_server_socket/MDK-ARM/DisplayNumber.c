@@ -6,7 +6,6 @@
 ////////////////////////////////////////////////////////////////////////
 void DisplayNumber(void)
 {
-		//UARTprintf("co chay Switch case\r\n");
 		switch(Screen)
 		{
 			case StartScreen_df:
@@ -19,10 +18,8 @@ void DisplayNumber(void)
 				case FREECHLORINE:
 					LCD_SetColors(BLACK,VU_YELLOW);
 					LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(130,100,(uint8_t *)"0.5");//hien thi Chlorine
 					DisplayDoubleNumber(130, 100, RequireValueCLF_Display, 1, 1, None);
 					LCD_SetFont(&Font12x12);
-//				LCD_DisplayStringLine(80,170,(uint8_t *)"0.5");	
 					DisplayDoubleNumber(80, 170, RequireValueCLF_Display, 1, 1, None);
 					break;
 				case REDOXPROBE:
@@ -47,10 +44,8 @@ void DisplayNumber(void)
 			}
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(130,330,(uint8_t *)"0.5");//hien thi pH
 				DisplayDoubleNumber(130, 330, RequireValuepH_Display, 1, 1, None);
 				LCD_SetFont(&Font12x12);
-//				LCD_DisplayStringLine(80,400,(uint8_t *)"0.5");		
 				DisplayDoubleNumber(80, 400, RequireValuepH_Display, 1, 1, None);
 				break;
 /*****************************************************************************************/
@@ -61,142 +56,114 @@ void DisplayNumber(void)
 				LCD_SetColors(BLACK,VU_YELLOW);
 				LCD_SetFont(&Font16x24);
 				DisplayIntegerNumber(120,85,150,3,ml);
-//				LCD_DisplayStringLine(120,100,(uint8_t *)"150");
 				LCD_SetFont(&Font12x12);
 				DisplayIntegerNumber(70,155,400,3,ml);
-//				LCD_DisplayStringLine(70,170,(uint8_t *)"400ml");	
-//				LCD_DisplayStringLine(127,155,(uint8_t *)"ml");
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
 				DisplayIntegerNumber(120,315,150,3,ml);
-//				LCD_DisplayStringLine(120, 330,(uint8_t *)"150");
 				LCD_SetFont(&Font12x12);
 				DisplayIntegerNumber(70, 385, 200,3,ml);
-//				LCD_DisplayStringLine(70,400,(uint8_t *)"200ml");
-//				LCD_DisplayStringLine(127,385,(uint8_t *)"ml");
-				break;
+			break;
 /*****************************************************************************************/
 			case ParametersPoolVolumeScreen_df:
 			case ParametersFitrationPeriodScreen_df:
 				LCD_SetColors(WHITE,VU_GRAY);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,100,(uint8_t *)"15 m3");
-				DisplayIntegerNumber(100,85,PoolVolume_Display,3,m3);
+				DisplayIntegerNumber(100,105,PoolVolume_Display,2,m3);
 				LCD_SetColors(WHITE,VU_GRAY);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,330,(uint8_t *)"06 h");
 				DisplayIntegerNumber(100, 315, FiltrationPeriod_Display,2,h);
-				break;
+			break;
 /*****************************************************************************************/
 			case WarningMaximalSafetyScreen_df:
 				LCD_SetColors(WHITE,VU_GREEN);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(150,195,(uint8_t *)"15");
 				DisplayIntegerNumber(150,195,15,2,None);
-				break;
+			break;
 /*****************************************************************************************/
 			case WarningExtremeConditionScreen_df:
 				LCD_SetColors(WHITE,VU_RED);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(150,195,(uint8_t *)"15");
-				DisplayIntegerNumber(150,195,15,2,None);
-				break;
+				DisplayIntegerNumber(150,195,20,2,None);
+			break;
 /*****************************************************************************************/
 			case ParametersRequireValuepHScreen_df:
 			case ParametersRequireValueCLFScreen_df:
 				LCD_SetColors(BLACK,VU_YELLOW);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,100,(uint8_t *)"0,2");
 				DisplayDoubleNumber(100, 100, RequireValueCLF_Display, 1, 1, None);
 				LCD_SetFont(&Font12x12);
 				LCD_DisplayStringLine(110,165,(uint8_t *)"mg/l");
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
 				DisplayDoubleNumber(100, 330, RequireValuepH_Display, 1, 1, None);
 				LCD_SetFont(&Font12x12);
 				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
-				break;
+			break;
 /*****************************************************************************************/
 			case CalibrationpHProbeScreen_df:
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
 				DisplayDoubleNumber(100, 330, Probe_pH_Display, 1, 1, None);
 				LCD_SetFont(&Font12x12);
 				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
-				break;
+			break;
 /*****************************************************************************************/
 			case CalibrationCLFProbeScreen_df:
 				LCD_SetColors(BLACK,VU_YELLOW);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
 				DisplayDoubleNumber(100, 330, Probe_CLF_Display, 1, 1, None);
 				LCD_SetFont(&Font12x12);
 				LCD_DisplayStringLine(110,395,(uint8_t *)"mg/h");
-				break;
+			break;
 /*****************************************************************************************/
 			case ParametersRequireValueRedoxpH_RedoxScreen_df:
 			case ParametersRequireValueRedoxpH_pHScreen_df:
 				LCD_SetColors(BLACK,VU_YELLOW);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,100,(uint8_t *)"650");
-//				LCD_SetFont(&Font12x12);
-//				LCD_DisplayStringLine(110,165,(uint8_t *)"mV");
-				DisplayIntegerNumber(100,100,650,3,mV);
+				DisplayIntegerNumber(100,100,RequireValueRedoxpH_Redox_Display,3,mV);
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,330,(uint8_t *)"7,0");
 				DisplayDoubleNumber(100, 330, RequireValuepH_Display, 1, 1, None);
-				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
-				break;
+//				LCD_SetFont(&Font12x12);
+				LCD_DisplayStringLine(100,395,(uint8_t *)"pH");
+			break;
 /*****************************************************************************************/
 			case ParametersRequireValueDosepH_DoseHourScreen_df:
 			case ParametersRequireValueDosepH_DoseHour_pHScreen_df:
 				LCD_SetColors(BLACK,VU_YELLOW);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,120,(uint8_t *)"5");
 				DisplayIntegerNumber(100,100,5,2,None);
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,330,(uint8_t *)"6,8");
 				DisplayDoubleNumber(100, 330, RequireValuepH_Display, 1, 1, None);
 				LCD_SetFont(&Font12x12);
 				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
-				break;
+			break;
 /*****************************************************************************************/
 			case ParametersRequireValueDosepH_DoseDayScreen_df:
 			case ParametersRequireValueDosepH_DoseDay_pHScreen_df:
 				LCD_SetColors(BLACK,VU_GRAY);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,120,(uint8_t *)"5");
 				DisplayIntegerNumber(100,100,5,2,None);
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,330,(uint8_t *)"6,8");
 				DisplayDoubleNumber(100, 330, RequireValuepH_Display, 1, 1, None);
 				LCD_SetFont(&Font12x12);
 				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
-				break;
+			break;
 /*****************************************************************************************/
 			case CalibrationWaterScreen_df:
 				LCD_SetColors(WHITE,VU_GRAY);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,330,(uint8_t *)"28");
-//				LCD_SetFont(&Font12x12);
-//				LCD_DisplayStringLine(110,395,(uint8_t *)"oC");
 				DisplayIntegerNumber(100,330,CalibrationWater_Display,2,oC);
-				break;
+			break;
 /*****************************************************************************************/
 			case CalibrationAirScreen_df:
 				LCD_SetColors(WHITE,VU_GRAY);
 				LCD_SetFont(&Font16x24);
-//				LCD_DisplayStringLine(100,330,(uint8_t *)"30");
-//				LCD_SetFont(&Font12x12);
-//				LCD_DisplayStringLine(110,395,(uint8_t *)"oC");
 				DisplayIntegerNumber(100,330,CalibrationAir_Display,2,oC);
-				break;
+			break;
 /*****************************************************************************************/
 			case CalibrationScreen_df:
 			case TypeOfProbeScreen_df:
@@ -211,9 +178,9 @@ void DisplayNumber(void)
 			case SettingsScreen_df:
 			case ParametersScreen_df:
 			case ParametersWaterScreen_df:
-				break;
+			break;
 			default :
-				break;
+			break;
 		}
 }
 
@@ -228,7 +195,7 @@ void DisplayIntegerNumber(uint16_t line, uint16_t column, uint16_t value, uint8_
 		case oC:
 		case mV:
 			j = 4;
-			break;
+		break;
 		case mgl:
 		case mgh:
 			j = 6;
@@ -250,40 +217,40 @@ void DisplayIntegerNumber(uint16_t line, uint16_t column, uint16_t value, uint8_
 			string[quantity + j - 2] = 'l';
 			string[quantity + j - 3] = 'm';
 			string[quantity + j - 4] = ' ';
-			break;
+		break;
 		case m3:
 			string[quantity + j - 2] = '3';
 			string[quantity + j - 3] = 'm';
 			string[quantity + j - 4] = ' ';
-			break;
+		break;
 		case oC:
 			string[quantity + j - 2] = 'C';
 			string[quantity + j - 3] = 'o';
 			string[quantity + j - 4] = ' ';
-			break;
+		break;
 		case mV:
 			string[quantity + j - 2] = 'V';
 			string[quantity + j - 3] = 'm';
 			string[quantity + j - 4] = ' ';
-			break;
+		break;
 		case mgl:
 			string[quantity + j - 2] = 'l';
 			string[quantity + j - 3] = '/';
 			string[quantity + j - 4] = 'g';
 			string[quantity + j - 5] = 'm';
 			string[quantity + j - 6] = ' ';
-			break;
+		break;
 		case mgh:
 			string[quantity + j - 2] = 'h';
 			string[quantity + j - 3] = '/';
 			string[quantity + j - 4] = 'g';
 			string[quantity + j - 5] = 'm';
 			string[quantity + j - 6] = ' ';
-			break;
+		break;
 		case h:
 			string[quantity + j - 2] = 'h';
 			string[quantity + j - 3] = ' ';
-			break;
+		break;
 		case None:
 		break;
 		default:
@@ -308,35 +275,24 @@ void DisplayDoubleNumber(uint16_t line, uint16_t column, double value, uint8_t n
 	{
 		case pH:
 			j = 4;
-			break;
+		break;
 		case None:
 			j = 1;
-			break;
+		break;
 		default:
-			break;
+		break;
 	}
 	char string[natural + decimal + 1 + j];
-	string[natural + decimal + j] = 0;
-	string[natural] = '.';
 	switch(unit)
 	{
 		case pH:
-			string[natural + decimal + j - 1] = 'H';
-			string[natural + decimal + j - 2] = 'p';
-			string[natural + decimal + j - 3] = ' ';
-			break;
+			sprintf((char *)string,"%1.1f pH",value);
+		break;
 		case None:
-			break;
+			sprintf((char *)string,"%1.1f",value);
+		break;
 		default:
-			break;
-	}
-	for (int k = 0; k < natural; k++)
-	{
-		string[k] = ((int)value%power(10,(natural - k)))/power(10,(natural - k - 1)) + 48;
-	}
-	for (int k = 0; k < decimal; k++)
-	{
-		string[natural + 1 + k] = (int)(value*power(10,k + 1))%10 + 48;
+		break;
 	}
 	LCD_DisplayStringLine(line,column,(uint8_t *)string);
 }
@@ -360,3 +316,4 @@ uint16_t power(uint16_t number, uint16_t n)
 	}
 	return val;
 }
+

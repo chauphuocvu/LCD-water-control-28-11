@@ -92,3 +92,5 @@
 .\discover-more\main.o: ..\GUIlib\inc\uiappuser.h
 .\discover-more\main.o: ..\MDK-ARM\flash_memory_driver.h
 .\discover-more\main.o: ..\MDK-ARM\DisplayNumber.h
+.\discover-more\main.o: ..\MDK-ARM\ADC.h
+.\discover-more\main.o: ..\MDK-ARM\Actuator.h

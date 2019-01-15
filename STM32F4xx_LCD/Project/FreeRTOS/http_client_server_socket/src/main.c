@@ -20,13 +20,13 @@
 #include "stm32f4_discovery_LCD_SSD1963.h"
 #include "SSD1963_CMD.h"
 #include "stm32f4_discovery_tsc2046.h"
-//#include "rfid_reader.h"
 #include "uiframework.h"
 #include "LcdHal.h"
-/////////////////////////////////////
 #include "uiappuser.h"
 #include "flash_memory_driver.h"
 #include "DisplayNumber.h"
+#include "ADC.h"
+#include "Actuator.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -41,15 +41,17 @@
 #define DHCP_TASK_PRIO   ( tskIDLE_PRIORITY + 2 )      
 #define LED_TASK_PRIO    ( tskIDLE_PRIORITY + 1 )
 
-//ReaderConfigStruct					ReaderConfig;
 
 
 
 /* Private function prototypes -----------------------------------------------*/
 void GPIO_Config(void);
-void MyTask(void * pvParameters);
+void LCDTask(void * pvParameters);
 void vApplicationStackOverflowHook( TaskHandle_t xTask, signed char *pcTaskName );
 void vApplicationTickHook( void );
+
+
+/* Extern variable -----------------------------------------------*/
 extern uint8_t 		Languages_Choose;
 extern uint8_t		PoolSelect;
 extern uint8_t 		Temperature;
@@ -62,10 +64,10 @@ extern uint16_t 	FiltrationPeriod;
 extern uint16_t 	CalibrationAir;
 extern uint16_t 	CalibrationWater;
 extern uint16_t 	RequireValueRedoxpH_Redox;
-extern float 	 	Probe_pH;
-extern float 	 	Probe_CLF;
-extern float 	 	RequireValuepH;
-extern float 	 	RequireValueCLF;
+extern float 	 		Probe_pH;
+extern float 	 		Probe_CLF;
+extern float 	 		RequireValuepH;
+extern float 	 		RequireValueCLF;
 extern uint8_t   	RequireValueDosepH_DoseHour_Display;
 extern uint8_t 		RequireValueDosepH_DoseDay_Display;
 extern uint16_t 	PoolVolume_Display;
@@ -73,10 +75,10 @@ extern uint16_t 	FiltrationPeriod_Display;
 extern uint16_t 	CalibrationAir_Display;
 extern uint16_t 	CalibrationWater_Display;
 extern uint16_t 	RequireValueRedoxpH_Redox_Display;
-extern float 	 	Probe_pH_Display;
-extern float 	 	Probe_CLF_Display;
-extern float 	 	RequireValuepH_Display;
-extern float 	 	RequireValueCLF_Display;
+extern float 	 		Probe_pH_Display;
+extern float 	 		Probe_CLF_Display;
+extern float 	 		RequireValuepH_Display;
+extern float 	 		RequireValueCLF_Display;
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -98,6 +100,9 @@ int main(void)
   GPIO_Config();
 	STM324xG_LCD_Init();
 	TP_Init();
+	ActuatorConfig();
+	ADC_Config();
+
   readCalibrationValue();
 	/*Read value set before*/
 	ReadSavedValue();	
@@ -120,7 +125,7 @@ int main(void)
   xTaskCreate(LwIP_DHCP_task, "DHCPClient", configMINIMAL_STACK_SIZE * 2, NULL,DHCP_TASK_PRIO, NULL);
 #endif
     
-	xTaskCreate(MyTask, "MyTask", configMINIMAL_STACK_SIZE*20, NULL, LED_TASK_PRIO, NULL);
+	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*20, NULL, LED_TASK_PRIO, NULL);
 
 	/* Start scheduler */
   vTaskStartScheduler();
@@ -133,7 +138,7 @@ int main(void)
   * @param  pvParameters not used
   * @retval None
   */
-void MyTask(void * pvParameters)
+void LCDTask(void * pvParameters)
 {
   for ( ;; ) {
 		
@@ -142,7 +147,9 @@ void MyTask(void * pvParameters)
 		/* Time out calculate for power saving mode */
     TimeOutCalculate();	
 		DisplayNumber();
-  }
+//		GetMiliVoltage(RedoxSensor);
+//		vTaskDelay(50);
+}
 }
 /**
   * @brief  Initializes the LCD and LEDs resources.

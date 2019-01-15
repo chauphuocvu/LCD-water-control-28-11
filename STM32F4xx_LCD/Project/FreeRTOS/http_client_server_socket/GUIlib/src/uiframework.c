@@ -33,17 +33,6 @@ uint16_t		Screen = 0;
   * @{
   */
 
-/** @defgroup UI_Framework
-  * @brief This file contains functions to configure the screens and controls
-  * @{
-  */
-
-/* External variables ----------------------------------------------------------*/
-/* Private typedef -------------------------------------------------------------*/
-/* Private defines -------------------------------------------------------------*/
-/* Private macros --------------------------------------------------------------*/
-/* Private variables -----------------------------------------------------------*/
-
 void Show_HomeScreen(void)
 {
 	Show_StartScreen();
@@ -61,7 +50,6 @@ void Create_StartScreen(void)
 ///////////////////////////////
 void Show_StartScreen(void)
 {
-	UARTprintf("Create_StartScreen\r\n");
 	Create_StartScreen();
 	LCD_Clear(BLACK);
 	/*VE CAC NUT DIEU KHIEN*/
@@ -142,7 +130,6 @@ void Create_SettingsScreen(void)
 ////////////////////////////////////////
 void Show_SettingsScreen(void)
 {
-	UARTprintf("Create_SettingsScreen\r\n");
 	Create_SettingsScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -196,7 +183,6 @@ void Create_DosingTestStartStartScreen(void)
 ////////////////////////////////////////
 void Show_DosingTestStartStartScreen(void)
 {
-	UARTprintf("Create_DosingTestStartStartScreen\r\n");
 	Create_DosingTestStartStartScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -254,7 +240,6 @@ void Create_DosingTestStopStartScreen(void)
 ////////////////////////////////////////
 void Show_DosingTestStopStartScreen(void)
 {
-	UARTprintf("Create_DosingTestStopStartScreen\r\n");
 	Create_DosingTestStopStartScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -313,7 +298,6 @@ void Create_DosingTestStopStopScreen(void)
 ////////////////////////////////////////
 void Show_DosingTestStopStopScreen(void)
 {
-	UARTprintf("Create_DosingTestStopStopScreen\r\n");
 	Create_DosingTestStopStopScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -372,7 +356,6 @@ void Create_DosingTestStartStopScreen(void)
 ////////////////////////////////////////
 void Show_DosingTestStartStopScreen(void)
 {
-	UARTprintf("Create_DosingTestStartStopScreen\r\n");
 	Create_DosingTestStartStopScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -433,7 +416,6 @@ void Create_ParametersScreen(void)
 ////////////////////////////////////////
 void Show_ParametersScreen(void)
 {
-	UARTprintf("Create_ParametersScreen\r\n");
 	Create_ParametersScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -491,7 +473,6 @@ void Create_ParametersPoolVolumeScreen(void)
 ////////////////////////////////////////
 void Show_ParametersPoolVolumeScreen(void)
 {
-	UARTprintf("Create_ParametersVolumeScreen\r\n");
 	Create_ParametersPoolVolumeScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -554,7 +535,6 @@ void Create_ParametersFitrationPeriodScreen(void)
 ////////////////////////////////////////
 void Show_ParametersFitrationPeriodScreen(void)
 {
-	UARTprintf("Create_ParametersFitrationPeriodScreen\r\n");
 	Create_ParametersFitrationPeriodScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -637,7 +617,6 @@ void Create_ParametersWaterScreen(void)
 ////////////////////////////////////////
 void Show_ParametersWaterScreen(void)
 {
-	UARTprintf("Create_ParametersWaterScreen\r\n");
 	Create_ParametersWaterScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -691,7 +670,6 @@ void Create_WarningMaximalSafetyScreen(void)
 ////////////////////////////////////////
 void Show_WarningMaximalSafetyScreen(void)
 {
-	UARTprintf("Show_WarningMaximalSafetyScreen\r\n");
 	Create_WarningMaximalSafetyScreen();
 	LCD_DrawFullRect(100,50,280,172,VU_GREEN);
 	LCD_SetColors(WHITE,VU_GREEN);
@@ -726,7 +704,6 @@ void Create_WarningExtremeConditionScreen(void)
 ////////////////////////////////////////
 void Show_WarningExtremeConditionScreen(void)
 {
-	UARTprintf("Show_WarningExtremeConditionScreen\r\n");
 	Create_WarningExtremeConditionScreen();
 	LCD_DrawFullRect(100,50,280,172,VU_RED);
 	LCD_SetColors(WHITE,VU_RED);
@@ -760,7 +737,6 @@ void Create_WarningWaterHardnessScreen(void)
 ////////////////////////////////////////
 void Show_WarningWaterHardnessScreen(void)
 {
-	UARTprintf("Show_WarningWaterHardnessScreen\r\n");
 	Create_WarningWaterHardnessScreen();
 	LCD_DrawFullRect(100,50,280,172,VU_GREEN);
 	LCD_SetColors(WHITE,VU_GREEN);
@@ -791,7 +767,6 @@ void Create_WarningProbeCalibration62_78Screen(void)
 ////////////////////////////////////////
 void Show_WarningProbeCalibration62_78Screen(void)
 {
-	UARTprintf("Show_WarningProbeCalibration62_78Screen\r\n");
 	Create_WarningProbeCalibration62_78Screen();
 	LCD_DrawFullRect(100,50,280,172,VU_RED);
 	LCD_SetColors(WHITE,VU_RED);
@@ -822,7 +797,6 @@ void Create_WarningProbeCalibrationScreen(void)
 ////////////////////////////////////////
 void Show_WarningProbeCalibrationScreen(void)
 {
-	UARTprintf("Show_WarningProbeCalibrationScreen\r\n");
 	Create_WarningProbeCalibrationScreen();
 	LCD_DrawFullRect(100,50,280,172,VU_RED);
 	LCD_SetColors(WHITE,VU_RED);
@@ -853,7 +827,6 @@ void Create_WarningProbeCalibration70Screen(void)
 ////////////////////////////////////////
 void Show_WarningProbeCalibration70Screen(void)
 {
-	UARTprintf("Show_WarningProbeCalibration70Screen\r\n");
 	Create_WarningProbeCalibration70Screen();
 	LCD_DrawFullRect(100,50,280,172,VU_GREEN);
 	LCD_SetColors(WHITE,VU_GREEN);
@@ -884,7 +857,6 @@ void Create_WarningProbeCalibrationRequiredValueScreen(void)
 ////////////////////////////////////////
 void Show_WarningProbeCalibrationRequiredValueScreen(void)
 {
-	UARTprintf("Show_WarningProbeCalibrationRequiredValueScreen\r\n");
 	Create_WarningProbeCalibrationRequiredValueScreen();
 	LCD_DrawFullRect(100,50,280,172,VU_GREEN);
 	LCD_SetColors(WHITE,VU_GREEN);
@@ -916,7 +888,6 @@ void Create_WarningProbeCalibrationRequiredValueRedScreen(void)
 ////////////////////////////////////////
 void Show_WarningProbeCalibrationrequiredValueRedScreen(void)
 {
-	UARTprintf("Show_WarningProbeCalibrationRequiredValueRedScreen\r\n");
 	Create_WarningProbeCalibrationRequiredValueRedScreen();
 	LCD_DrawFullRect(100,50,280,172,VU_RED);
 	LCD_SetColors(WHITE,VU_RED);
@@ -947,7 +918,6 @@ void Create_WarningProbeCalibrationRequiredValueImpossibleScreen(void)
 ////////////////////////////////////////
 void Show_WarningProbeCalibrationRequiredValueImpossibleScreen(void)
 {
-	UARTprintf("Show_WarningProbeCalibrationRequiredValueImpossibleScreen\r\n");
 	Create_WarningProbeCalibrationRequiredValueImpossibleScreen();
 	LCD_DrawFullRect(100,50,280,172,VU_RED);
 	LCD_SetColors(WHITE,VU_RED);
@@ -979,7 +949,6 @@ void Create_WarningTooRapidChangeScreen(void)
 ////////////////////////////////////////
 void Show_WarningTooRapidChangeScreen(void)
 {
-	UARTprintf("Show_WarningTooRapidChangeScreen\r\n");
 	Create_WarningTooRapidChangeScreen();
 	LCD_DrawFullRect(100,50,280,172,VU_RED);
 	LCD_SetColors(WHITE,VU_RED);
@@ -1021,7 +990,6 @@ void Create_ParametersRequireValuepHScreen(void)
 ////////////////////////////////////////
 void Show_ParametersRequireValuepHScreen(void)
 {
-	UARTprintf("Show_ParametersRequireValuepHScreen\r\n");
 	Create_ParametersRequireValuepHScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1084,7 +1052,6 @@ void Create_ParametersRequireValueCLFScreen(void)
 ////////////////////////////////////////
 void Show_ParametersRequireValueCLFScreen(void)
 {
-	UARTprintf("Show_ParametersRequireValueCLFScreen\r\n");
 	Create_ParametersRequireValueCLFScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1146,7 +1113,6 @@ void Create_CalibrationScreen(void)
 ////////////////////////////////////////
 void Show_CalibrationScreen(void)
 {
-	UARTprintf("Create_CalibrationScreen\r\n");
 	Create_CalibrationScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1209,7 +1175,6 @@ void Create_CalibrationpHProbeScreen(void)
 ////////////////////////////////////////
 void Show_CalibrationpHProbeScreen(void)
 {
-	UARTprintf("Show_CalibrationpHProbeScreen\r\n");
 	Create_CalibrationpHProbeScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1276,7 +1241,6 @@ void Create_CalibrationCLFProbeScreen(void)
 ////////////////////////////////////////
 void Show_CalibrationCLFProbeScreen(void)
 {
-	UARTprintf("Show_CalibrationCLFProbeScreen\r\n");
 	Create_CalibrationCLFProbeScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1343,7 +1307,6 @@ void Create_ParametersRequireValueRedoxpH_RodexScreen(void)
 ////////////////////////////////////////
 void Show_ParametersRequireValueRedoxpH_RodexScreen(void)
 {
-	UARTprintf("Show_ParametersRequireValueRedoxpH_RodexScreen\r\n");
 	Create_ParametersRequireValueRedoxpH_RodexScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1404,7 +1367,6 @@ void Create_ParametersRequireValueRedoxpH_pHScreen(void)
 ////////////////////////////////////////
 void Show_ParametersRequireValueRedoxpH_pHScreen(void)
 {
-	UARTprintf("Show_ParametersRequireValueRedoxpH_pHScreen\r\n");
 	Create_ParametersRequireValueRedoxpH_pHScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1469,7 +1431,6 @@ void Create_ParametersRequireValueDosepH_DoseHourScreen(void)
 ////////////////////////////////////////
 void Show_ParametersRequireValueDosepH_DoseHourScreen(void)
 {
-	UARTprintf("Show_ParametersRequireValueDosepH_DoseHourScreen\r\n");
 	Create_ParametersRequireValueDosepH_DoseHourScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1534,7 +1495,6 @@ void Create_ParametersRequireValueDosepH_DoseHour_pHScreen(void)
 ////////////////////////////////////////
 void Show_ParametersRequireValueDosepH_DoseHour_pHScreen(void)
 {
-	UARTprintf("Show_ParametersRequireValueDosepH_DoseHour_pHScreen\r\n");
 	Create_ParametersRequireValueDosepH_DoseHour_pHScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1599,7 +1559,6 @@ void Create_ParametersRequireValueDosepH_DoseDayScreen(void)
 ////////////////////////////////////////
 void Show_ParametersRequireValueDosepH_DoseDayScreen(void)
 {
-	UARTprintf("Show_ParametersRequireValueDosepH_DoseDayScreen\r\n");
 	Create_ParametersRequireValueDosepH_DoseDayScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1665,7 +1624,6 @@ void Create_ParametersRequireValueDosepH_DoseDay_pHScreen(void)
 ////////////////////////////////////////
 void Show_ParametersRequireValueDosepH_DoseDay_pHScreen(void)
 {
-	UARTprintf("Show_ParametersRequireValueDosepH_DoseDay_pHScreen\r\n");
 	Create_ParametersRequireValueDosepH_DoseDay_pHScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1729,7 +1687,6 @@ void Create_CalibrationWaterScreen(void)
 ////////////////////////////////////////
 void Show_CalibrationWaterScreen(void)
 {
-	UARTprintf("Show_CalibrationWaterScreen\r\n");
 	Create_CalibrationWaterScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1793,7 +1750,6 @@ void Create_CalibrationAirScreen(void)
 ////////////////////////////////////////
 void Show_CalibrationAirScreen(void)
 {
-	UARTprintf("Show_CalibrationAirScreen\r\n");
 	Create_CalibrationAirScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1862,7 +1818,6 @@ void Create_TypeOfProbeScreen(void)
 ////////////////////////////////////////
 void Show_TypeOfProbeScreen(void)
 {
-	UARTprintf("Create_TypeOfProbeScreen\r\n");
 	Create_TypeOfProbeScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);
@@ -1907,7 +1862,6 @@ void Create_LanguagesScreen(void)
 ////////////////////////////////////////
 void Show_LanguagesScreen(void)
 {
-	UARTprintf("Show_LanguagesScreen\r\n");
 	Create_LanguagesScreen();
 	LCD_Clear(BLACK);
 	LCD_DrawFullRect(20,12,90,28,WHITE);

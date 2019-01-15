@@ -12,6 +12,7 @@
 ".\discover-more\flash_memory_driver.o"
 ".\discover-more\displaynumber.o"
 ".\discover-more\adc.o"
+".\discover-more\actuator.o"
 ".\discover-more\pictures.o"
 ".\discover-more\uiappuser.o"
 ".\discover-more\uiframework.o"

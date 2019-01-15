@@ -31,7 +31,8 @@ typedef enum {StartStart, StartStop,
 							StopStart,  StopStop} DosingTest;
 extern DosingTest Dosingtest_Flag ;
 /* Exported constants ----------------------------------------------------------*/
-/* Exported macros -------------------------------------------------------------*/
+
+/* Extern variable -------------------------------------------------------------*/
 extern uint8_t 		Languages_Choose;
 extern uint8_t		PoolSelect;
 extern uint8_t 		Temperature;
@@ -44,10 +45,10 @@ extern uint16_t 	FiltrationPeriod;
 extern uint16_t 	CalibrationAir;
 extern uint16_t 	CalibrationWater;
 extern uint16_t 	RequireValueRedoxpH_Redox;
-extern float 	 	Probe_pH;
-extern float 	 	Probe_CLF;
-extern float 	 	RequireValuepH;
-extern float 	 	RequireValueCLF;
+extern float 	 		Probe_pH;
+extern float 	 		Probe_CLF;
+extern float 	 		RequireValuepH;
+extern float 	 		RequireValueCLF;
 extern uint8_t   	RequireValueDosepH_DoseHour_Display;
 extern uint8_t 		RequireValueDosepH_DoseDay_Display;
 extern uint16_t 	PoolVolume_Display;
@@ -55,13 +56,13 @@ extern uint16_t 	FiltrationPeriod_Display;
 extern uint16_t 	CalibrationAir_Display;
 extern uint16_t 	CalibrationWater_Display;
 extern uint16_t 	RequireValueRedoxpH_Redox_Display;
-extern float 	 	Probe_pH_Display;
-extern float 	 	Probe_CLF_Display;
-extern float 	 	RequireValuepH_Display;
-extern float 	 	RequireValueCLF_Display;
+extern float 	 		Probe_pH_Display;
+extern float 	 		Probe_CLF_Display;
+extern float 	 		RequireValuepH_Display;
+extern float 	 		RequireValueCLF_Display;
 
 /* Define ----------------------------------------------------------*/
- #define INDOOR								0
+#define INDOOR								0
 #define OUTDOOR								1
 #define EXTREME_CONDITION			2
 #define LESS20oC							0

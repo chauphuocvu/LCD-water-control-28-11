@@ -51,15 +51,15 @@ float 	 		RequireValuepH;
 float 	 		RequireValueCLF;
 uint8_t   	RequireValueDosepH_DoseHour_Display;
 uint8_t 		RequireValueDosepH_DoseDay_Display;
-uint16_t 	PoolVolume_Display;
-uint16_t 	FiltrationPeriod_Display;
-uint16_t 	CalibrationAir_Display;
-uint16_t 	CalibrationWater_Display;
-uint16_t 	RequireValueRedoxpH_Redox_Display;
-float 	 	Probe_pH_Display;
-float 	 	Probe_CLF_Display;
-float 	 	RequireValuepH_Display;
-float 	 	RequireValueCLF_Display;
+uint16_t 		PoolVolume_Display;
+uint16_t 		FiltrationPeriod_Display;
+uint16_t 		CalibrationAir_Display;
+uint16_t 		CalibrationWater_Display;
+uint16_t 		RequireValueRedoxpH_Redox_Display;
+float 	 		Probe_pH_Display;
+float 		 	Probe_CLF_Display;
+float 		 	RequireValuepH_Display;
+float 		 	RequireValueCLF_Display;
 	 
 
 /*Start Screen */
@@ -309,14 +309,18 @@ void ParametersPoolVolumeScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersPoolVolumeScreen_inc(void)
 {
-	PoolVolume_Display +=1;
+		PoolVolume_Display +=1;
+	if (PoolVolume_Display > 99)
+		PoolVolume_Display = 99;
 }
 //////////////////////////////////////////////////////////////
 void ParametersPoolVolumeScreen_dec(void)
 {
-	if (PoolVolume == 0);
+	if (PoolVolume_Display == 0)
+		PoolVolume_Display = 0;
 	else
 		PoolVolume_Display -=1;
+	
 }
 //////////////////////////////////////////////////////////////
 void ParametersPoolVolumeScreen_OK(void)
@@ -347,12 +351,15 @@ void ParametersFitrationPeriodScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////////
 void ParametersFitrationPeriodScreen_inc(void)
 {
-	FiltrationPeriod_Display +=1;
+		FiltrationPeriod_Display +=1;
+	if (FiltrationPeriod_Display > 24)
+		FiltrationPeriod_Display = 24;
 }
 	///////////////////////////////////////////////////////////////
 void ParametersFitrationPeriodScreen_dec(void)
-{
-	if (FiltrationPeriod_Display == 0);
+{	
+	if (FiltrationPeriod_Display == 6)
+		FiltrationPeriod_Display = 6;
 	else
 		FiltrationPeriod_Display -=1;
 }
@@ -386,55 +393,50 @@ void ParametersWaterScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////////
 void ParametersWaterScreen_Indoor(void)
 {
-	UARTprintf("ParametersWaterScreen_Indoor\r\n");
 	PoolSelect = INDOOR;
 }
 //////////////////////////////////////////////////////////////////
 void ParametersWaterScreen_Outdoor(void)
 {
-	UARTprintf("ParametersWaterScreen_Outdoor\r\n");
 	PoolSelect = OUTDOOR;
 }
 //////////////////////////////////////////////////////////////////
 void ParametersWaterScreen_ExtremeCondition(void)
 {
-	UARTprintf("ParametersWaterScreen_ExtremeCondition\r\n");
 	PoolSelect = EXTREME_CONDITION;
+	DestroyPage(CurrentScreen);
+	Show_WarningExtremeConditionScreen();
 }
 //////////////////////////////////////////////////////////////////
 void ParametersWaterScreen_Less20oC(void)
 {
-	UARTprintf("ParametersWaterScreen_Less20oC\r\n");
 	Temperature = LESS20oC;
 }
 //////////////////////////////////////////////////////////////////
 void ParametersWaterScreen_20oC_30oC(void)
 {
-	UARTprintf("ParametersWaterScreen_20oC_30oC\r\n");
 	Temperature = MIDDLE_20oC_30oC;
 }
 //////////////////////////////////////////////////////////////////
 void ParametersWaterScreen_More30oC(void)
 {
-	UARTprintf("ParametersWaterScreen_More30oC\r\n");
 	Temperature = MORE30oC;
 }
 //////////////////////////////////////////////////////////////////
 void ParametersWaterScreen_Soft(void)
 {
-	UARTprintf("ParametersWaterScreen_Soft\r\n");
 	WaterHardnessSelect = SOFT;
+	DestroyPage(CurrentScreen);
+	Show_WarningWaterHardnessScreen();
 }
 //////////////////////////////////////////////////////////////////
 void ParametersWaterScreen_Hard(void)
 {
-	UARTprintf("ParametersWaterScreen_Hard\r\n");
 	WaterHardnessSelect = HARD;
 }
 //////////////////////////////////////////////////////////////////
 void ParametersWaterScreen_VeryHard(void)
 {
-	UARTprintf("ParametersWaterScreen_VeryHard\r\n");
 	WaterHardnessSelect = VERY_HARD;
 }
 
@@ -490,7 +492,7 @@ void WarningProbeCalibrationRequiredValueScreen_OK(void)
 void WarningProbeCalibrationRequiredValueRedScreen_OK(void)
 {
 	DestroyPage(CurrentScreen);
-	Show_ParametersWaterScreen();
+	Show_CalibrationCLFProbeScreen();
 }
 
 
@@ -524,14 +526,18 @@ void ParametersRequireValuepHScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValuepHScreen_inc(void)
 {
-	RequireValuepH_Display +=0.1;
+		RequireValuepH_Display +=(float)0.1;
+	if(RequireValuepH_Display > 7.8)
+		RequireValuepH_Display = 7.8;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValuepHScreen_dec(void)
 {
-	if (RequireValuepH_Display == 0);
+	if(RequireValuepH_Display < 6.2)
+		RequireValuepH_Display = 6.2;
 	else
-		RequireValuepH_Display -=0.1;
+		RequireValuepH_Display -=(float)0.1;
+	
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValuepHScreen_OK(void)
@@ -563,14 +569,17 @@ void ParametersRequireValueCLFScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueCLFScreen_inc(void)
 {
-	RequireValueCLF_Display +=0.1;
+		RequireValueCLF_Display +=(float)0.1;
+	if(RequireValueCLF_Display > 1.2)
+		RequireValueCLF_Display = 1.2;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueCLFScreen_dec(void)
-{
-	if (RequireValueCLF_Display == 0);
+{	
+	if(RequireValueCLF_Display < 0.5)
+		RequireValueCLF_Display = 0.5;
 	else
-		RequireValueCLF_Display -=0.1;
+		RequireValueCLF_Display -=(float)0.1;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueCLFScreen_OK(void)
@@ -634,13 +643,23 @@ void CalibrationpHProbeScreen_BackToStart(void)
 }
 void CalibrationpHProbeScreen_inc(void)
 {
-	Probe_pH_Display +=0.1;
+		Probe_pH_Display +=0.1;
+	if(Probe_pH_Display > 7.8)
+	{
+		DestroyPage(CurrentScreen);
+		Show_WarningProbeCalibration62_78Screen();
+		Probe_pH_Display = 7.8;
+	}
 }
 void CalibrationpHProbeScreen_dec(void)
 {
-	if(Probe_pH_Display == 0);
-	else
-		Probe_pH_Display -=0.1;
+		Probe_pH_Display -=(float)0.1;
+	if(Probe_pH_Display < 6.2)
+	{
+		DestroyPage(CurrentScreen);
+		Show_WarningProbeCalibration62_78Screen();
+		Probe_pH_Display = 6.2;
+	}
 }
 void CalibrationpHProbeScreen_OK(void)
 {
@@ -663,13 +682,21 @@ void CalibrationCLFProbeScreen_BackToStart(void)
 }
 void CalibrationCLFProbeScreen_inc(void)
 {
-	Probe_CLF_Display +=0.1;
+	Probe_CLF_Display +=(float)0.1;
+	if (Probe_CLF_Display > 1.2)
+		Probe_CLF_Display = 1.2;
 }
 void CalibrationCLFProbeScreen_dec(void)
 {
-	if(Probe_CLF_Display == 0);
+	if(Probe_CLF_Display == RequireValueCLF)
+	{
+		DestroyPage(CurrentScreen);
+		Show_WarningProbeCalibrationrequiredValueRedScreen();
+	}
+	else if (Probe_CLF_Display < 0.5)
+		Probe_CLF_Display = 0.5;
 	else
-		Probe_CLF_Display -=0.1;
+		Probe_CLF_Display -=(float)0.1;
 }
 void CalibrationCLFProbeScreen_OK(void)
 {
@@ -692,14 +719,16 @@ void ParametersRequireValueRedoxpH_RedoxScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueRedoxpH_RedoxScreen_inc(void)
 {
-	RequireValueRedoxpH_Redox_Display +=10;
+		RequireValueRedoxpH_Redox_Display +=10;
+	if(RequireValueRedoxpH_Redox_Display > 990)
+		RequireValueRedoxpH_Redox_Display = 990;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueRedoxpH_RedoxScreen_dec(void)
 {
-	if(RequireValueRedoxpH_Redox_Display == 0);
-	else
 		RequireValueRedoxpH_Redox_Display -=10;
+	if(RequireValueRedoxpH_Redox_Display < 10)
+		RequireValueRedoxpH_Redox_Display = 10;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueRedoxpH_RedoxScreen_OK(void)
@@ -730,14 +759,18 @@ void ParametersRequireValueRedoxpH_pHScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueRedoxpH_pHScreen_inc(void)
 {
-	RequireValuepH_Display +=0.1;
+		RequireValuepH_Display +=(float)0.1;
+	if(RequireValuepH_Display > 7.8)
+		RequireValuepH_Display = 7.8;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueRedoxpH_pHScreen_dec(void)
 {
-	if(RequireValuepH_Display == 0);
+	if(RequireValuepH_Display < 6.2)
+		RequireValuepH_Display = 6.2;
 	else
-		RequireValuepH_Display -=0.1;
+		RequireValuepH_Display -=(float)0.1;
+	
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueRedoxpH_pHScreen_OK(void)
@@ -768,14 +801,18 @@ void ParametersRequireValueDosepH_DoseHourScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHourScreen_inc(void)
 {
-	RequireValueDosepH_DoseHour_Display +=1;
+		RequireValueDosepH_DoseHour_Display +=1;
+	if(RequireValueDosepH_DoseHour_Display > 20)
+		RequireValueDosepH_DoseHour_Display = 20;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHourScreen_dec(void)
 {
-	if(RequireValueDosepH_DoseHour_Display == 0);
+	if(RequireValueDosepH_DoseHour_Display == 0)
+		RequireValueDosepH_DoseHour_Display = 0;
 	else
 		RequireValueDosepH_DoseHour_Display -=1;
+	
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHourScreen_OK(void)
@@ -806,14 +843,17 @@ void ParametersRequireValueDosepH_DoseHour_pHScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHour_pHScreen_inc(void)
 {
-	RequireValuepH_Display +=0.1;
+		RequireValuepH_Display +=(float)0.1;
+	if(RequireValuepH_Display > 7.8)
+		RequireValuepH_Display = 7.8;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHour_pHScreen_dec(void)
 {
-	if(RequireValuepH_Display == 0);
+	if(RequireValuepH_Display < 6.2)
+		RequireValuepH_Display = 6.2;
 	else
-		RequireValuepH_Display -=0.1;
+		RequireValuepH_Display -=(float)0.1;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHour_pHScreen_OK(void)
@@ -844,14 +884,17 @@ void ParametersRequireValueDosepH_DoseDayScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDayScreen_inc(void)
 {
-	RequireValueDosepH_DoseDay_Display +=0.1;
+		RequireValueDosepH_DoseDay_Display +=1;
+	if(RequireValueDosepH_DoseDay_Display > 30)
+		RequireValueDosepH_DoseDay_Display = 30;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDayScreen_dec(void)
 {
-	if(RequireValueDosepH_DoseDay_Display == 0);
+	if(RequireValueDosepH_DoseDay_Display == 0)
+		RequireValueDosepH_DoseDay_Display = 0;
 	else
-		RequireValueDosepH_DoseDay_Display -=0.1;
+		RequireValueDosepH_DoseDay_Display -=1;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDayScreen_OK(void)
@@ -882,14 +925,16 @@ void ParametersRequireValueDosepH_DoseDay_pHScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDay_pHScreen_inc(void)
 {
-	RequireValuepH_Display +=0.1;
+		RequireValuepH_Display +=(float)0.1;
+	if(RequireValuepH_Display > 7.8)
+		RequireValuepH_Display = 7.8;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDay_pHScreen_dec(void)
 {
-	if(RequireValuepH_Display == 0);
-	else
-		RequireValuepH_Display -=0.1;
+		RequireValuepH_Display -=(float)0.1;
+	if(RequireValuepH_Display < 6.2)
+		RequireValuepH_Display = 6.2;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDay_pHScreen_OK(void)
@@ -919,13 +964,16 @@ void CalibrationWaterScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void CalibrationWaterScreen_inc(void)
 {
-	CalibrationWater_Display +=1;
+		CalibrationWater_Display +=1;
+	if(CalibrationWater_Display < 40)
+		CalibrationWater_Display = 40;
 }
 //////////////////////////////////////////////////////////////
 void CalibrationWaterScreen_dec(void)
 {
-	if(CalibrationWater_Display == 0);
-	else
+	if(CalibrationWater_Display == 0)
+		CalibrationWater_Display = 0;
+	else 
 		CalibrationWater_Display -=1;
 }
 //////////////////////////////////////////////////////////////
@@ -950,14 +998,18 @@ void CalibrationAirScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void CalibrationAirScreen_inc(void)
 {
-	CalibrationAir_Display +=1; 
+		CalibrationAir_Display +=1;
+	if(CalibrationAir_Display > 40)
+		CalibrationAir_Display = 40;	
 }
 //////////////////////////////////////////////////////////////
 void CalibrationAirScreen_dec(void)
 {
-	if(CalibrationAir_Display == 0);
+	if(CalibrationAir_Display == 0)
+		CalibrationAir_Display = 0;
 	else
 		CalibrationAir_Display -=1;
+	
 }
 //////////////////////////////////////////////////////////////
 void CalibrationAirScreen_OK(void)
