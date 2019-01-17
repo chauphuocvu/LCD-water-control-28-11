@@ -24,8 +24,10 @@
 #include "LcdHal.h"
 #include "TscHal.h"
 #include "pictures.h"
+#include "images.h"
 
 
+extern uint8_t DosingTest_Flag;
 GL_Page_TypeDef *CurrentScreen;
 uint16_t		Screen = 0;
 
@@ -56,13 +58,10 @@ void Show_StartScreen(void)
 	LCD_DrawFullRect(250,240,210,32,WHITE);//ve nut button
 	LCD_SetFont(&Font12x12);
 	LCD_DisplayStringLineInRect(250,240,210,32,(uint8_t *)"SETTINGS");
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,290,(uint8_t *)"CHAU PHUOC VU");
+	LCD_DisplayStringLine(20,300,(uint8_t *)"CHAU PHUOC VU");
 	LCD_DisplayStringLine(250,20,(uint8_t *)"BACH KHOA");
 	LCD_DrawFullRect(250,60,210,160,VU_BLUE);
 // chon man hinh startscreen theo cai dat tu type of probe
@@ -132,13 +131,10 @@ void Show_SettingsScreen(void)
 {
 	Create_SettingsScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,380,(uint8_t *)"SETTINGS");;
+	LCD_DisplayStringLine(20,370,(uint8_t *)"SETTINGS");;
 	LCD_DrawRect(20,60,80,210);
 	LCD_DrawRect(250,60,80,210);
 	LCD_DrawRect(20,150,80,210);
@@ -167,31 +163,31 @@ void Show_SettingsScreen(void)
 
 
 /*Giao dien tu thiet ke*/
-GL_Page_TypeDef DosingTestStartStartScreen;
-void Create_DosingTestStartStartScreen(void)
+GL_Page_TypeDef DosingTestScreen;
+void Create_DosingTestScreen(void)
 {
-	GL_PageControls_TypeDef* DosingTestStartStartDesignButton01= NewRectControl(1,210,30,WHITE,DosingTestStartStartScreen_Back);
-	GL_PageControls_TypeDef* DosingTestStartStartDesignButton02= NewRectControl(2,210,30,WHITE,DosingTestStartStartScreen_BackToStart);
-	GL_PageControls_TypeDef* DosingTestStartStartDesignButton03= NewRectControl(3,210,60,VU_BLUE,DosingTestStartStartScreen_StartDisinf);
-	GL_PageControls_TypeDef* DosingTestStartStartDesignButton04= NewRectControl(4,210,60,VU_YELLOW,DosingTestStartStartScreen_StartPh);
-	Create_PageObj( &DosingTestStartStartScreen ); 
-	AddPageControlObj(250,240,DosingTestStartStartDesignButton01,&DosingTestStartStartScreen);
-	AddPageControlObj(20,240,DosingTestStartStartDesignButton02,&DosingTestStartStartScreen);
-	AddPageControlObj(20,170,DosingTestStartStartDesignButton03,&DosingTestStartStartScreen);
-	AddPageControlObj(250,170,DosingTestStartStartDesignButton04,&DosingTestStartStartScreen);	
+	GL_PageControls_TypeDef* DosingTestDesignButton01= NewRectControl(1,210,30,WHITE,DosingTestScreen_Back);
+	GL_PageControls_TypeDef* DosingTestDesignButton02= NewRectControl(2,210,30,WHITE,DosingTestScreen_BackToStart);
+	GL_PageControls_TypeDef* DosingTestDesignButton03= NewRectControl(3,210,60,VU_BLUE,DosingTestScreen_StartDisinf);
+	GL_PageControls_TypeDef* DosingTestDesignButton04= NewRectControl(4,210,60,VU_YELLOW,DosingTestScreen_StartPh);
+	Create_PageObj( &DosingTestScreen ); 
+	AddPageControlObj(250,240,DosingTestDesignButton01,&DosingTestScreen);
+	AddPageControlObj(20,240,DosingTestDesignButton02,&DosingTestScreen);
+	AddPageControlObj(20,170,DosingTestDesignButton03,&DosingTestScreen);
+	AddPageControlObj(250,170,DosingTestDesignButton04,&DosingTestScreen);	
 }
 ////////////////////////////////////////
-void Show_DosingTestStartStartScreen(void)
+void Show_DosingTestScreen(void)
 {
-	Create_DosingTestStartStartScreen();
+	if (DosingTest_Flag == START_START)
+	{
+	Create_DosingTestScreen();
+	}
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,340,(uint8_t *)"DOSING TEST");
+	LCD_DisplayStringLine(20,330,(uint8_t *)"DOSING TEST");
 	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetColors(BLACK,VU_YELLOW);
@@ -208,187 +204,33 @@ void Show_DosingTestStartStartScreen(void)
 	LCD_DrawRect(250,170,60,210);
 	LCD_SetFont(&Font12x12);
 	LCD_SetColors(WHITE,BLACK);
-	LCD_DisplayStringLineInRect(20,170,210,60,(uint8_t *)"START");
-	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"START");
+	switch(DosingTest_Flag)
+	{
+		case START_START :
+			LCD_DisplayStringLineInRect(20,170,210,60,(uint8_t *)"START");
+			LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"START");
+		break;
+		case START_STOP :
+			LCD_DisplayStringLineInRect(20,170,210,60,(uint8_t *)"START");
+			LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"STOP");
+		break;
+		case STOP_STOP :
+			LCD_DisplayStringLineInRect(20,170,210,60,(uint8_t *)"STOP");
+			LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"STOP");
+		break;
+		case STOP_START :
+			LCD_DisplayStringLineInRect(20,170,210,60,(uint8_t *)"STOP");
+			LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"START");
+		break;
+		default:
+		break;
+	}
 	LCD_SetColors(BLACK,WHITE);
 	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
 	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");
-	DosingTestStartStartScreen.ShowPage(&DosingTestStartStartScreen,GL_TRUE);
-	Screen = DosingTestStartStartScreen_df;
-	CurrentScreen = &DosingTestStartStartScreen;
-}
-
-
-
-
-
-
-/*Giao dien tu thiet ke*/
-GL_Page_TypeDef DosingTestStopStartScreen;
-void Create_DosingTestStopStartScreen(void)
-{	
-	GL_PageControls_TypeDef* DosingTestStopStartDesignButton01= NewRectControl(1,210,30,WHITE,DosingTestStopStartScreen_Back);
-	GL_PageControls_TypeDef* DosingTestStopStartDesignButton02= NewRectControl(2,210,30,WHITE,DosingTestStopStartScreen_BackToStart);
-	GL_PageControls_TypeDef* DosingTestStopStartDesignButton03= NewRectControl(3,210,60,VU_BLUE,DosingTestStopStartScreen_StopDisinf);
-	GL_PageControls_TypeDef* DosingTestStopStartDesignButton04= NewRectControl(4,210,60,VU_YELLOW,DosingTestStopStartScreen_StartPh);
-	Create_PageObj( &DosingTestStopStartScreen ); 
-	AddPageControlObj(250,240,DosingTestStopStartDesignButton01,&DosingTestStopStartScreen);
-	AddPageControlObj(20,240,DosingTestStopStartDesignButton02,&DosingTestStopStartScreen);
-	AddPageControlObj(20,170,DosingTestStopStartDesignButton03,&DosingTestStopStartScreen);
-	AddPageControlObj(250,170,DosingTestStopStartDesignButton04,&DosingTestStopStartScreen);	
-}
-////////////////////////////////////////
-void Show_DosingTestStopStartScreen(void)
-{
-	Create_DosingTestStopStartScreen();
-	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
-	LCD_SetColors(WHITE,BLACK);
-	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,340,(uint8_t *)"DOSING TEST");
-	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
-	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
-	LCD_SetColors(BLACK,VU_YELLOW);
-	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(70,30,(uint8_t *)"DISINF.");
-	LCD_SetColors(BLACK,VU_BLUE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(70,260,(uint8_t *)"pH");
-	LCD_DrawFullRect(20,240,210,30,WHITE);
-	LCD_DrawFullRect(250,240,210,30,WHITE);
-	LCD_SetTextColor(VU_YELLOW);
-	LCD_DrawRect(20,170,60,210);
-	LCD_SetTextColor(VU_BLUE);
-	LCD_DrawRect(250,170,60,210);
-	LCD_SetFont(&Font12x12);
-	LCD_SetColors(WHITE,BLACK);
-	LCD_DisplayStringLineInRect(20,170,210,60,(uint8_t *)"STOP");
-	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"START");
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
-	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");
-	DosingTestStopStartScreen.ShowPage(&DosingTestStopStartScreen,GL_TRUE);
-	Screen = DosingTestStopStartScreen_df;
-	CurrentScreen = &DosingTestStopStartScreen;
-}
-
-
-
-
-
-
-/*Giao dien tu thiet ke*/
-GL_Page_TypeDef DosingTestStopStopScreen;
-void Create_DosingTestStopStopScreen(void)
-{
-	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,DosingTestStopStopScreen_Back);
-	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,DosingTestStopStopScreen_BackToStart);
-	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,210,60,VU_BLUE,DosingTestStopStopScreen_StopDisinf);
-	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,210,60,VU_YELLOW,DosingTestStopStopScreen_StopPh);
-	Create_PageObj( &DosingTestStopStopScreen ); 
-	AddPageControlObj(250,240,DesignButton01,&DosingTestStopStopScreen);
-	AddPageControlObj(20,240,DesignButton02,&DosingTestStopStopScreen);
-	AddPageControlObj(20,170,DesignButton03,&DosingTestStopStopScreen);
-	AddPageControlObj(250,170,DesignButton04,&DosingTestStopStopScreen);	
-}
-////////////////////////////////////////
-void Show_DosingTestStopStopScreen(void)
-{
-	Create_DosingTestStopStopScreen();
-	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
-	LCD_SetColors(WHITE,BLACK);
-	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,340,(uint8_t *)"DOSING TEST");
-	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
-	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
-	LCD_SetColors(BLACK,VU_YELLOW);
-	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(70,30,(uint8_t *)"DISINF.");
-	LCD_SetColors(BLACK,VU_BLUE);
-	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(70,260,(uint8_t *)"pH");	
-	LCD_DrawFullRect(20,240,210,30,WHITE);
-	LCD_DrawFullRect(250,240,210,30,WHITE);
-	LCD_SetTextColor(VU_YELLOW);
-	LCD_DrawRect(20,170,60,210);
-	LCD_SetTextColor(VU_BLUE);
-	LCD_DrawRect(250,170,60,210);
-	LCD_SetFont(&Font12x12);
-	LCD_SetColors(WHITE,BLACK);
-	LCD_DisplayStringLineInRect(20,170,210,60,(uint8_t *)"STOP");
-	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"STOP");
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
-	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");
-	DosingTestStopStopScreen.ShowPage(&DosingTestStopStopScreen,GL_TRUE);
-	Screen = DosingTestStopStopScreen_df;
-	CurrentScreen = &DosingTestStopStopScreen;
-}
-
-
-
-
-
-
-/*Giao dien tu thiet ke*/
-GL_Page_TypeDef DosingTestStartStopScreen;
-void Create_DosingTestStartStopScreen(void)
-{
-	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,210,30,WHITE,DosingTestStartStopScreen_Back);
-	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,210,30,WHITE,DosingTestStartStopScreen_BackToStart);
-	GL_PageControls_TypeDef* DesignButton03= NewRectControl(3,210,60,VU_BLUE,DosingTestStartStopScreen_StartDisinf);
-	GL_PageControls_TypeDef* DesignButton04= NewRectControl(4,210,60,VU_YELLOW,DosingTestStartStopScreen_StopPh);
-	Create_PageObj( &DosingTestStartStopScreen ); 
-	AddPageControlObj(250,240,DesignButton01,&DosingTestStartStopScreen);
-	AddPageControlObj(20,240,DesignButton02,&DosingTestStartStopScreen);
-	AddPageControlObj(20,170,DesignButton03,&DosingTestStartStopScreen);
-	AddPageControlObj(250,170,DesignButton04,&DosingTestStartStopScreen);
-	
-}
-////////////////////////////////////////
-void Show_DosingTestStartStopScreen(void)
-{
-	Create_DosingTestStartStopScreen();
-	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
-	LCD_SetColors(WHITE,BLACK);
-	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,340,(uint8_t *)"DOSING TEST");
-	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
-	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
-	LCD_SetColors(BLACK,VU_YELLOW);
-	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(70,30,(uint8_t *)"DISINF.");
-	LCD_SetColors(BLACK,VU_BLUE);
-	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(70,260,(uint8_t *)"pH");	
-	LCD_DrawFullRect(20,240,210,30,WHITE);
-	LCD_DrawFullRect(250,240,210,30,WHITE);
-	LCD_SetTextColor(VU_YELLOW);
-	LCD_DrawRect(20,170,60,210);
-	LCD_SetTextColor(VU_BLUE);
-	LCD_DrawRect(250,170,60,210);
-	LCD_SetFont(&Font12x12);
-	LCD_SetColors(WHITE,BLACK);
-	LCD_DisplayStringLineInRect(20,170,210,60,(uint8_t *)"START");
-	LCD_DisplayStringLineInRect(250,170,210,60,(uint8_t *)"STOP");
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"BACK");
-	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");
-	DosingTestStartStopScreen.ShowPage(&DosingTestStartStopScreen,GL_TRUE);
-	Screen = DosingTestStartStopScreen_df;
-	CurrentScreen = &DosingTestStartStopScreen;
+	DosingTestScreen.ShowPage(&DosingTestScreen,GL_TRUE);
+	Screen = DosingTestScreen_df;
+	CurrentScreen = &DosingTestScreen;
 }
 
 
@@ -411,20 +253,16 @@ void Create_ParametersScreen(void)
 	AddPageControlObj(20,60,DesignButton03,&ParametersScreen);
 	AddPageControlObj(250,60,DesignButton04,&ParametersScreen);
 	AddPageControlObj(250,150,DesignButton05,&ParametersScreen);
-	
 }
 ////////////////////////////////////////
 void Show_ParametersScreen(void)
 {
 	Create_ParametersScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,355,(uint8_t *)"PARAMETERS");
+	LCD_DisplayStringLine(20,340,(uint8_t *)"PARAMETERS");
 	LCD_DrawRect(20,60,80,210);
 	LCD_DrawRect(250,60,80,210);
 	LCD_DrawFullRect(20,150,210,80,VU_YELLOW);
@@ -475,13 +313,10 @@ void Show_ParametersPoolVolumeScreen(void)
 {
 	Create_ParametersPoolVolumeScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,290,(uint8_t *)"POOL PARAMETERS");
+	LCD_DisplayStringLine(20,280,(uint8_t *)"POOL PARAMETERS");
 	LCD_DrawFullRect(20,60,210,100,VU_GRAY);
 	LCD_DrawFullRect(250,60,210,100,VU_GRAY);
 	LCD_SetBackColor(VU_GRAY);
@@ -537,13 +372,10 @@ void Show_ParametersFitrationPeriodScreen(void)
 {
 	Create_ParametersFitrationPeriodScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,290,(uint8_t *)"POOL PARAMETERS");
+	LCD_DisplayStringLine(20,280,(uint8_t *)"POOL PARAMETERS");
 	LCD_DrawFullRect(20,60,210,100,VU_GRAY);
 	LCD_DrawFullRect(250,60,210,100,VU_GRAY);
 	LCD_DrawFullRect(325,140,60,20,BLACK);
@@ -607,9 +439,6 @@ void Create_ParametersWaterScreen(void)
 	AddPageControlObj(270,205,CheckBoxSoft,&ParametersWaterScreen);
 	AddPageControlObj(340,205,CheckBoxHard,&ParametersWaterScreen);
 	AddPageControlObj(410,205,CheckBoxVeryHard,&ParametersWaterScreen);
-//  GL_RadioOption_TypeDef* pTmp = (GL_RadioOption_TypeDef*)(ParametersWaterScreen);
-//	pTmp->IsChecked = GL_TRUE;
-//	(Pool->RadioOptionCount) = 0;
 	((GL_RadioOption_TypeDef*)(Pool->RadioOptions[PoolSelect]->objPTR))->IsChecked = GL_TRUE;
 	((GL_RadioOption_TypeDef*)(AverageWaterTemperature->RadioOptions[Temperature]->objPTR))->IsChecked = GL_TRUE;
 	((GL_RadioOption_TypeDef*)(WaterHardness->RadioOptions[WaterHardnessSelect]->objPTR))->IsChecked = GL_TRUE;
@@ -619,13 +448,10 @@ void Show_ParametersWaterScreen(void)
 {
 	Create_ParametersWaterScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,280,(uint8_t *)"WATER PARAMETERS");
+	LCD_DisplayStringLine(20,270,(uint8_t *)"WATER PARAMETERS");
 	LCD_SetFont(&Font8x12_bold);
 	LCD_DisplayStringLine(65,30,(uint8_t *)"POOL");
 	LCD_DisplayStringLine(120,30,(uint8_t *)"AVERAGE");
@@ -992,13 +818,10 @@ void Show_ParametersRequireValuepHScreen(void)
 {
 	Create_ParametersRequireValuepHScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DisplayStringLine(20,280,(uint8_t *)"REQUIRED VALUES");
 	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetBackColor(VU_YELLOW);
@@ -1054,13 +877,10 @@ void Show_ParametersRequireValueCLFScreen(void)
 {
 	Create_ParametersRequireValueCLFScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DisplayStringLine(20,280,(uint8_t *)"REQUIRED VALUES");
 	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetBackColor(VU_YELLOW);
@@ -1108,20 +928,16 @@ void Create_CalibrationScreen(void)
 	AddPageControlObj(250,60,SettingsDesignButton04,&CalibrationScreen);
 	AddPageControlObj(20,150,SettingsDesignButton05,&CalibrationScreen);
 	AddPageControlObj(250,150,SettingsDesignButton06,&CalibrationScreen);
-	
 }
 ////////////////////////////////////////
 void Show_CalibrationScreen(void)
 {
 	Create_CalibrationScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,345,(uint8_t *)"CALIBRATION");;
+	LCD_DisplayStringLine(20,330,(uint8_t *)"CALIBRATION");;
 	LCD_DrawFullRect(20,60,210,80,VU_YELLOW);
 	LCD_DrawFullRect(250,60,210,80,VU_BLUE);
 	LCD_DrawRect(20,150,80,210);
@@ -1177,13 +993,10 @@ void Show_CalibrationpHProbeScreen(void)
 {
 	Create_CalibrationpHProbeScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,230,(uint8_t *)"pH CALIBRATION PROBE");
+	LCD_DisplayStringLine(20,220,(uint8_t *)"pH CALIBRATION PROBE");
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font8x12_bold);
@@ -1243,13 +1056,10 @@ void Show_CalibrationCLFProbeScreen(void)
 {
 	Create_CalibrationCLFProbeScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,215,(uint8_t *)"CLF CALIBRATION PROBE");
+	LCD_DisplayStringLine(20,210,(uint8_t *)"CLF CALIBRATION PROBE");
 	LCD_DrawFullRect(250,60,210,100,VU_YELLOW);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font8x12_bold);
@@ -1309,13 +1119,10 @@ void Show_ParametersRequireValueRedoxpH_RodexScreen(void)
 {
 	Create_ParametersRequireValueRedoxpH_RodexScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DisplayStringLine(20,280,(uint8_t *)"REQUIRED VALUES");
 	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetBackColor(VU_YELLOW);
@@ -1369,13 +1176,10 @@ void Show_ParametersRequireValueRedoxpH_pHScreen(void)
 {
 	Create_ParametersRequireValueRedoxpH_pHScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DisplayStringLine(20,280,(uint8_t *)"REQUIRED VALUES");
 	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetBackColor(VU_YELLOW);
@@ -1433,13 +1237,10 @@ void Show_ParametersRequireValueDosepH_DoseHourScreen(void)
 {
 	Create_ParametersRequireValueDosepH_DoseHourScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DisplayStringLine(20,280,(uint8_t *)"REQUIRED VALUES");
 	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetBackColor(VU_YELLOW);
@@ -1497,13 +1298,10 @@ void Show_ParametersRequireValueDosepH_DoseHour_pHScreen(void)
 {
 	Create_ParametersRequireValueDosepH_DoseHour_pHScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DisplayStringLine(20,280,(uint8_t *)"REQUIRED VALUES");
 	LCD_DrawFullRect(20,60,210,100,VU_YELLOW);
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetBackColor(VU_YELLOW);
@@ -1561,13 +1359,10 @@ void Show_ParametersRequireValueDosepH_DoseDayScreen(void)
 {
 	Create_ParametersRequireValueDosepH_DoseDayScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DisplayStringLine(20,280,(uint8_t *)"REQUIRED VALUES");
 	LCD_DrawFullRect(20,60,210,100,VU_GRAY);
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetBackColor(VU_GRAY);
@@ -1596,7 +1391,6 @@ void Show_ParametersRequireValueDosepH_DoseDayScreen(void)
 	ParametersRequireValueDosepH_DoseDayScreen.ShowPage(&ParametersRequireValueDosepH_DoseDayScreen,GL_TRUE);
 	Screen = ParametersRequireValueDosepH_DoseDayScreen_df;
 	CurrentScreen = &ParametersRequireValueDosepH_DoseDayScreen;
-
 }
 
 
@@ -1626,13 +1420,10 @@ void Show_ParametersRequireValueDosepH_DoseDay_pHScreen(void)
 {
 	Create_ParametersRequireValueDosepH_DoseDay_pHScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,290,(uint8_t *)"REQUIRED VALUES");
+	LCD_DisplayStringLine(20,280,(uint8_t *)"REQUIRED VALUES");
 	LCD_DrawFullRect(20,60,210,100,VU_GRAY);
 	LCD_DrawFullRect(250,60,210,100,VU_BLUE);
 	LCD_SetBackColor(VU_GRAY);
@@ -1689,13 +1480,10 @@ void Show_CalibrationWaterScreen(void)
 {
 	Create_CalibrationWaterScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,335,(uint8_t *)"CALIBRATION");
+	LCD_DisplayStringLine(20,330,(uint8_t *)"CALIBRATION");
 	LCD_DrawFullRect(250,60,210,100,VU_GRAY);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font8x12_bold);
@@ -1752,13 +1540,10 @@ void Show_CalibrationAirScreen(void)
 {
 	Create_CalibrationAirScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,335,(uint8_t *)"CALIBRATION");
+	LCD_DisplayStringLine(20,330,(uint8_t *)"CALIBRATION");
 	LCD_DrawFullRect(250,60,210,100,VU_GRAY);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font8x12_bold);
@@ -1820,13 +1605,10 @@ void Show_TypeOfProbeScreen(void)
 {
 	Create_TypeOfProbeScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,185,(uint8_t *)"CHOOSE THE TYPE OF PROBE");
+	LCD_DisplayStringLine(20,180,(uint8_t *)"CHOOSE THE TYPE OF PROBE");
 	LCD_DrawFullRect(20,240,210,30,WHITE);
 	LCD_DrawFullRect(250,240,210,30,WHITE);
 	LCD_SetColors(BLACK,WHITE);
@@ -1864,13 +1646,10 @@ void Show_LanguagesScreen(void)
 {
 	Create_LanguagesScreen();
 	LCD_Clear(BLACK);
-	LCD_DrawFullRect(20,12,90,28,WHITE);
-	LCD_SetFont(&Font16x24);
-	LCD_SetColors(BLACK,WHITE);
-	LCD_DisplayStringLine(14,20,(uint8_t *)"TITLE");
+	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLine(20,280,(uint8_t *)"CHOOSE LANGUASES");
+	LCD_DisplayStringLine(20,270,(uint8_t *)"CHOOSE LANGUASES");
 	LCD_DrawFullRect(20,240,210,30,WHITE);
 	LCD_SetColors(BLACK,WHITE);
 	LCD_DisplayStringLineInRect(20,240,210,30,(uint8_t *)"BACK TO START");	

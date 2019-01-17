@@ -59,6 +59,6 @@ uint32_t GetMiliVoltage(uint8_t Sensor)
   while (!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC));
 	//Convert to mili Voltage
 	ADC1ConvertedmV = ADC_GetConversionValue(ADC1)*3300/4095;
-	UARTprintf("%d",ADC1ConvertedmV);
+	UARTprintf("%d\r\n",ADC1ConvertedmV);
 	return ADC1ConvertedmV;
 }

@@ -186,7 +186,7 @@ void LCD_DrawCircle(uint16_t Xpos, uint16_t Ypos, uint16_t Radius);
 //void LCD_DrawFullCircle(uint16_t Xpos, uint16_t Ypos, uint16_t Radius,uint16_t color);
 void LCD_DrawFullCircle(uint16_t Xpos, uint16_t Ypos, uint16_t Radius);
 void LCD_DrawMonoBMP(const uint8_t *Pict, uint16_t Xpos_Init, uint16_t Ypos_Init, uint16_t Height, uint16_t Width);
-//void LCD_DrawColorBMP(uint8_t* ptrBitmap, uint16_t Xpos_Init, uint16_t Ypos_Init);
+void LCDSD_DrawColorBMP(uint8_t* ptrBitmap, uint16_t Xpos_Init, uint16_t Ypos_Init);
 
 void LCD_DrawUniLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
 void LCD_PolyLine(pPoint Points, uint16_t PointCount);

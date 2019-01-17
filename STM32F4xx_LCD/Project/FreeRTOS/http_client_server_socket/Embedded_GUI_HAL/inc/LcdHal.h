@@ -81,6 +81,7 @@ typedef enum
   _180_degree,
   _270_degree
 }LCD_Direction_TypeDef;
+extern LCD_Direction_TypeDef LCD_Direction;
 
 /** 
   * @brief  GL_BusType enumeration definition  

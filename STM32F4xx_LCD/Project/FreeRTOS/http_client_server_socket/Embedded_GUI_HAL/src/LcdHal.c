@@ -253,9 +253,7 @@ void GL_LCD_DisplayChar(uint16_t Line, uint16_t Column, uint8_t Ascii, GL_bool T
   */
 void GL_SetDisplayWindow(uint16_t Xpos, uint16_t Ypos, uint16_t Height, uint16_t Width)
 {
-//	LCD_SetArea((Ypos-Width+1), (Xpos-Height+1), Ypos, Xpos);
 	LCD_SetArea((Ypos - Width +1), (Xpos - Height +1), Ypos, Xpos);
-  //LCD_SetDisplayWindow(Xpos, Ypos, Height, Width);
 }
 
 /**
@@ -729,7 +727,6 @@ void LCD_Change_Direction(LCD_Direction_TypeDef Direction)
     /* AM=1 (address is updated in vertical writing direction) */
 		LCD_WriteCmd(CMD_SET_ADDR_MODE);
 		LCD_WriteRAM(0x08);
-//    LCD_WriteReg(R3, 0x1018);
   }
   else if (LCD_Direction == _90_degree)
   {
@@ -738,7 +735,6 @@ void LCD_Change_Direction(LCD_Direction_TypeDef Direction)
     /* AM=0 (address is updated in orizontal writing direction) */
 		LCD_WriteCmd(CMD_SET_ADDR_MODE);
 		LCD_WriteRAM(0x68);
-//    LCD_WriteReg(R3, 0x1030);
   }
   else if (LCD_Direction == _180_degree)
   {
@@ -746,8 +742,7 @@ void LCD_Change_Direction(LCD_Direction_TypeDef Direction)
     /* I/D=10 (Horizontal : decrement, Vertical : increment) */
     /* AM=1 (address is updated in vertical writing direction) */
 		LCD_WriteCmd(CMD_SET_ADDR_MODE);
-		LCD_WriteRAM(0xC8);
-//    LCD_WriteReg(R3, 0x1028);
+		LCD_WriteRAM(0x88);
   }
   else if (LCD_Direction == _270_degree)
   {
@@ -756,7 +751,6 @@ void LCD_Change_Direction(LCD_Direction_TypeDef Direction)
     /* AM=0 (address is updated in orizontal writing direction) */
 		LCD_WriteCmd(CMD_SET_ADDR_MODE);
 		LCD_WriteRAM(0xA8);
-//    LCD_WriteReg(R3, 0x1000);
   }
 }
 

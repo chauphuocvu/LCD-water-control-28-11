@@ -88,8 +88,8 @@
 .\discover-more\main.o: ..\Embedded_GUI_Library\inc\graphicObjectTypes.h
 .\discover-more\main.o: ..\Embedded_GUI_HAL\inc\stm32HAL.h
 .\discover-more\main.o: ..\GUIlib\inc\uiframework.h
-.\discover-more\main.o: ..\Embedded_GUI_HAL\inc\LcdHal.h
 .\discover-more\main.o: ..\GUIlib\inc\uiappuser.h
+.\discover-more\main.o: ..\Embedded_GUI_HAL\inc\LcdHal.h
 .\discover-more\main.o: ..\MDK-ARM\flash_memory_driver.h
 .\discover-more\main.o: ..\MDK-ARM\DisplayNumber.h
 .\discover-more\main.o: ..\MDK-ARM\ADC.h

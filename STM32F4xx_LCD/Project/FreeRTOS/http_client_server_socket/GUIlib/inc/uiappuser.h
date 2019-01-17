@@ -26,11 +26,6 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stdint.h"
-/* Exported types --------------------------------------------------------------*/
-typedef enum {StartStart, StartStop,
-							StopStart,  StopStop} DosingTest;
-extern DosingTest Dosingtest_Flag ;
-/* Exported constants ----------------------------------------------------------*/
 
 /* Extern variable -------------------------------------------------------------*/
 extern uint8_t 		Languages_Choose;
@@ -77,10 +72,12 @@ extern float 	 		RequireValueCLF_Display;
 #define MLPERDAY							3
 #define ENGLISH								0
 #define VIETNAMESE						1 
+#define START_START						0
+#define START_STOP						1
+#define STOP_START						2
+#define STOP_STOP							3
  
  
- 
-/* Control command*/
 /*Start Screen */
 void StartScreen_Setting(void);
 /*Settings Screen */
@@ -94,35 +91,11 @@ void SettingsScreen_SaveData(void);
 							
 							
 							
-/*DosingTestStartStart Screen */
-void DosingTestStartStartScreen_Back(void);
-void DosingTestStartStartScreen_BackToStart(void);
-void DosingTestStartStartScreen_StartDisinf(void);
-void DosingTestStartStartScreen_StartPh(void);
-
-
-
-/*DosingTestStopStart Screen */
-void DosingTestStopStartScreen_Back(void);
-void DosingTestStopStartScreen_BackToStart(void);
-void DosingTestStopStartScreen_StopDisinf(void);
-void DosingTestStopStartScreen_StartPh(void);
-
-
-
-/*DosingTestStopStop Screen */
-void DosingTestStopStopScreen_Back(void);
-void DosingTestStopStopScreen_BackToStart(void);
-void DosingTestStopStopScreen_StopDisinf(void);
-void DosingTestStopStopScreen_StopPh(void);
-
-
-
-/*DosingTestStartStop Screen */
-void DosingTestStartStopScreen_Back(void);
-void DosingTestStartStopScreen_BackToStart(void);
-void DosingTestStartStopScreen_StartDisinf(void);
-void DosingTestStartStopScreen_StopPh(void);
+/*DosingTest Screen */
+void DosingTestScreen_Back(void);
+void DosingTestScreen_BackToStart(void);
+void DosingTestScreen_StartDisinf(void);
+void DosingTestScreen_StartPh(void);
 
 
 

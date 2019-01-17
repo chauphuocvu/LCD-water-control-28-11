@@ -47,6 +47,7 @@
 /* Private function prototypes -----------------------------------------------*/
 void GPIO_Config(void);
 void LCDTask(void * pvParameters);
+void ActuatorTask(void * pvParameters);
 void vApplicationStackOverflowHook( TaskHandle_t xTask, signed char *pcTaskName );
 void vApplicationTickHook( void );
 
@@ -125,7 +126,8 @@ int main(void)
   xTaskCreate(LwIP_DHCP_task, "DHCPClient", configMINIMAL_STACK_SIZE * 2, NULL,DHCP_TASK_PRIO, NULL);
 #endif
     
-	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*20, NULL, LED_TASK_PRIO, NULL);
+	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
+	xTaskCreate(ActuatorTask, "ActuatorTask", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
 
 	/* Start scheduler */
   vTaskStartScheduler();
@@ -140,15 +142,46 @@ int main(void)
   */
 void LCDTask(void * pvParameters)
 {
-  for ( ;; ) {
-		
+  for ( ;; ) {		
 		getTouchPoint();
 		ProcessInputData();
 		/* Time out calculate for power saving mode */
     TimeOutCalculate();	
 		DisplayNumber();
-//		GetMiliVoltage(RedoxSensor);
-//		vTaskDelay(50);
+}
+}
+
+/**
+  * @brief  My task
+  * @param  pvParameters not used
+  * @retval None
+  */
+void ActuatorTask(void * pvParameters)
+{
+  for ( ;; ) {	
+//Control Pump pH and Clo
+	switch(DosingTest_Flag)
+	{
+		case START_START :
+			ControlActuator(ON,GPIOA, PUMP_RX);
+			ControlActuator(ON,GPIOA, PUMP_PH);
+		break;
+		case START_STOP	 :
+			ControlActuator(ON,GPIOA, PUMP_RX);
+			ControlActuator(OFF,GPIOA, PUMP_PH);
+		break;
+		case STOP_START	 :
+			ControlActuator(OFF,GPIOA, PUMP_RX);
+			ControlActuator(ON,GPIOA, PUMP_PH);
+		break;
+		case STOP_STOP	 :
+			ControlActuator(OFF,GPIOA, PUMP_RX);
+			ControlActuator(OFF,GPIOA, PUMP_PH);
+		break;
+		default :
+		break;			
+	}
+		
 }
 }
 /**

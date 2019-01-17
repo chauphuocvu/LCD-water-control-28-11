@@ -27,32 +27,21 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "graphicObjectTypes.h"
 #include "graphicObject.h"
+#include "uiappuser.h"
 
 /* Exported types --------------------------------------------------------------*/
 extern GL_Page_TypeDef *CurrentScreen;
-extern GL_Page_TypeDef StartScreen;
-extern GL_Page_TypeDef SettingsScreen;
-extern GL_Page_TypeDef DosingTestStartStartScreen;
-extern GL_Page_TypeDef DosingTestStopStartScreen;
-extern GL_Page_TypeDef DosingTestStopStopScreen;
-extern GL_Page_TypeDef DosingTestStartStopScreen;
-extern GL_Page_TypeDef ParametersScreen;
-extern GL_Page_TypeDef ParametersPoolVolumeScreen;
-extern GL_Page_TypeDef ParametersFitrationPeriodScreen;
-extern GL_Page_TypeDef ParametersWaterScreen;
-extern GL_Page_TypeDef WarningMaximalSafetyScreen;
-
-
+extern uint8_t DosingTest_Flag;
 
 /*Added by Chau Phuoc Vu 23/11/2018*/
 extern uint16_t		Screen;
 
 #define	StartScreen_df																							1
 #define	SettingsScreen_df																						2
-#define	DosingTestStartStartScreen_df																3
-#define	DosingTestStopStartScreen_df																4
-#define	DosingTestStopStopScreen_df																	5
-#define	DosingTestStartStopScreen_df																6
+#define	DosingTestScreen_df																					3
+#define CalibrationAirScreen_df    																	4
+#define TypeOfProbeScreen_df																				5
+#define LanguagesScreen_df																					6
 #define	ParametersScreen_df																					7
 #define	ParametersPoolVolumeScreen_df																8
 #define	ParametersFitrationPeriodScreen_df													9
@@ -79,9 +68,6 @@ extern uint16_t		Screen;
 #define ParametersRequireValueDosepH_DoseDayScreen_df								30
 #define ParametersRequireValueDosepH_DoseDay_pHScreen_df						31
 #define CalibrationWaterScreen_df  																	32
-#define CalibrationAirScreen_df    																	33
-#define TypeOfProbeScreen_df																				34
-#define LanguagesScreen_df																					35
 
 
 /*Added by chau phuoc vu 14/11/2018*/
@@ -97,10 +83,7 @@ void DelayScreen(uint16_t time);
 void Create_StartScreen(void);
 void Create_SettingsScreen(void);
 /*Create DosingTest Screen*/
-void Create_DosingTestStartStartScreen(void);
-void Create_DosingTestStopStartScreen(void);
-void Create_DosingTestStopStopScreen(void);
-void Create_DosingTestStartStopScreen(void);
+void Create_DosingTestScreen(void);
 void Create_ParametersScreen(void);
 void Create_ParametersPoolVolumeScreen(void);
 void Create_ParametersFitrationPeriodScreen(void);
@@ -135,10 +118,7 @@ void Create_LanguagesScreen(void);
 void Show_HomeScreen(void);
 void Show_StartScreen(void);
 void Show_SettingsScreen(void);
-void Show_DosingTestStartStartScreen(void);
-void Show_DosingTestStopStartScreen(void);
-void Show_DosingTestStopStopScreen(void);
-void Show_DosingTestStartStopScreen(void);
+void Show_DosingTestScreen(void);
 void Show_ParametersScreen(void);
 void Show_ParametersPoolVolumeScreen(void);
 void Show_ParametersFitrationPeriodScreen(void);

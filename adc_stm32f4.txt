@@ -1,0 +1,56 @@
+void ADC_Configuration(void)
+{
+  ADC_InitTypeDef       ADC_InitStructure;
+  ADC_CommonInitTypeDef ADC_CommonInitStructure;
+  GPIO_InitTypeDef      GPIO_InitStructure;
+
+  /* Enable ADC1, GPIOA, GPIOB, GPIOC Clocks **********************************/
+ RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1,ENABLE);
+ RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA | RCC_AHB1Periph_GPIOB | RCC_AHB1Periph_GPIOC, ENABLE);
+
+  /* Configure ADC1 Pins as analog input **************************************/
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AN; 
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;
+  GPIO_Init(GPIOA,&GPIO_InitStructure);
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;
+  GPIO_Init(GPIOB,&GPIO_InitStructure);
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_5;
+  GPIO_Init(GPIOC,&GPIO_InitStructure);
+
+  /* ADC Common Init **********************************************************/
+  ADC_CommonInitStructure.ADC_Mode = ADC_Mode_Independent;
+  ADC_CommonInitStructure.ADC_Prescaler = ADC_Prescaler_Div2;
+  ADC_CommonInitStructure.ADC_DMAAccessMode = ADC_DMAAccessMode_Disabled;
+  ADC_CommonInitStructure.ADC_TwoSamplingDelay = ADC_TwoSamplingDelay_5Cycles;
+  ADC_CommonInit(&ADC_CommonInitStructure);
+
+  /* ADC1 Init ****************************************************************/
+  ADC_DeInit();
+  ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;//data converted will be shifted to right
+  ADC_InitStructure.ADC_Resolution = ADC_Resolution_12b;//Input voltage is converted into a 12bit number giving a maximum value of 4096
+  ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;//Single Conversion Mode
+  ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_T1_CC1;// conversion is synchronous with TIM1 and CC1 (actually I'm not sure about this one :/)
+  ADC_InitStructure.ADC_ExternalTrigConvEdge = ADC_ExternalTrigConvEdge_None;//no trigger for conversion
+  ADC_InitStructure.ADC_NbrOfConversion = 1;
+  ADC_InitStructure.ADC_ScanConvMode = DISABLE;
+  ADC_Init(ADC1,&ADC_InitStructure);//Initialize ADC with the previous configuration
+	
+  /* Enable ADC1 */
+  ADC_Cmd(ADC1,ENABLE);
+}
+
+
+u16 readADC1(u8 channel)
+{
+  ADC_RegularChannelConfig(ADC1, channel, 1, ADC_SampleTime_3Cycles);
+  /* Start Software conversion */
+  ADC_SoftwareStartConv(ADC1);
+  /* Wait until conversion completion */
+  while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC));
+	/* Clear End of Conversion Flag */
+	ADC_ClearFlag(ADC1, ADC_FLAG_EOC);
+  // Get the conversion value
+  return ADC_GetConversionValue(ADC1);
+}

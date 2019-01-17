@@ -49,10 +49,7 @@ void DisplayNumber(void)
 				DisplayDoubleNumber(80, 400, RequireValuepH_Display, 1, 1, None);
 				break;
 /*****************************************************************************************/
-			case DosingTestStartStartScreen_df:
-			case DosingTestStopStartScreen_df:
-			case DosingTestStopStopScreen_df:
-			case DosingTestStartStopScreen_df:
+			case DosingTestScreen_df:
 				LCD_SetColors(BLACK,VU_YELLOW);
 				LCD_SetFont(&Font16x24);
 				DisplayIntegerNumber(120,85,150,3,ml);

@@ -2,6 +2,7 @@
 #include "fonts.h"
 #include "SSD1963_CMD.h"
 #include "SSD1963_Configuration.h"
+#include "LcdHal.h"
 
 
 /** @defgroup STM324xG_EVAL_LCD_Private_Defines
@@ -1033,21 +1034,21 @@ void BmpBuffer32BitRead(uint32_t* ptr32BitBuffer, uint8_t* ptrBitmap)
 }
 
 
-//void LCD_DrawColorBMP(uint8_t* ptrBitmap, uint16_t Xpos_Init, uint16_t Ypos_Init)
-//{
-//	uint32_t uDataAddr = 0, uBmpSize = 0;
-//	uint32_t	width,height;
-//  uint16_t uBmpData;
-//	uint8_t		*startDataPtr;
-//	uint8_t		*DataPtr;
-//	int32_t		i,j;
-//	
-//  BmpBuffer32BitRead(&uBmpSize,  ptrBitmap + 2);
-//  BmpBuffer32BitRead(&uDataAddr, ptrBitmap + 10);
-//	BmpBuffer32BitRead(&width,  ptrBitmap + 0x12);
-//	BmpBuffer32BitRead(&height, ptrBitmap + 0x16);
-//	startDataPtr = ptrBitmap + uDataAddr;
-//  
+void LCDSD_DrawColorBMP(uint8_t* ptrBitmap, uint16_t Xpos_Init, uint16_t Ypos_Init)
+{
+	uint32_t uDataAddr = 0, uBmpSize = 0;
+	uint32_t	width,height;
+  uint16_t uBmpData;
+	uint8_t		*startDataPtr;
+	uint8_t		*DataPtr;
+	int32_t		i,j;
+	
+  BmpBuffer32BitRead(&uBmpSize,  ptrBitmap + 2);
+  BmpBuffer32BitRead(&uDataAddr, ptrBitmap + 10);
+	BmpBuffer32BitRead(&width,  ptrBitmap + 0x12);
+	BmpBuffer32BitRead(&height, ptrBitmap + 0x16);
+	startDataPtr = ptrBitmap + uDataAddr;
+  
 //  LCD_SetArea(Xpos_Init,Ypos_Init,Xpos_Init+width - 1,Ypos_Init+height - 1);
 //	LCD_WriteCmd(CMD_WR_MEMSTART);
 //	for(i=height-1;i>=0;i--)
@@ -1060,7 +1061,54 @@ void BmpBuffer32BitRead(uint32_t* ptr32BitBuffer, uint8_t* ptrBitmap)
 //			DataPtr +=2;
 //		}
 //	}
-//}
+	/*******************************************************************/
+  if (LCD_Direction == _0_degree)
+  {
+		LCD_SetArea(Xpos_Init,Ypos_Init,Xpos_Init+width - 1,Ypos_Init+height - 1);
+    LCD_WriteCmd(CMD_SET_ADDR_MODE);
+		LCD_WriteRAM(0x08);
+  }
+  else if (LCD_Direction == _90_degree)
+  {
+		LCD_SetArea(Xpos_Init + width - 1,Ypos_Init,Ypos_Init+height - 1,Xpos_Init+width - 1);
+    /* Set GRAM write direction and BGR = 1 */
+    /* I/D=01 (Horizontal : increment, Vertical : decrement) */
+    /* AM=0 (address is updated in horizontal writing direction) */
+		LCD_WriteCmd(CMD_SET_ADDR_MODE);
+		LCD_WriteRAM(0x58);
+//    LCD_WriteCmd(0x1010);
+  }
+  else if (LCD_Direction == _180_degree)
+  {
+		LCD_SetArea(Xpos_Init,Ypos_Init,Xpos_Init+width - 1,Ypos_Init+height - 1);
+		LCD_WriteCmd(CMD_SET_ADDR_MODE);
+    LCD_WriteRAM(0x88);
+  }
+  else if (LCD_Direction == _270_degree)
+  {
+		LCD_SetArea(Xpos_Init,Ypos_Init + height - 1,Ypos_Init+height - 1,Xpos_Init+width - 1);
+    /* Set GRAM write direction and BGR = 1 */
+    /* I/D=10 (Horizontal : decrement, Vertical : increment) */
+    /* AM=0 (address is updated in horizontal writing direction) */
+    LCD_WriteCmd(0x1020);
+  }
+
+//  LCD_SetCursor(Xpos_Init, Ypos_Init);
+
+	LCD_WriteCmd(CMD_WR_MEMSTART);
+	for(i=height-1;i>=0;i--)
+	{
+		DataPtr = startDataPtr + 2*i*width;
+		for(j=0;j<width;j++)
+		{
+			uBmpData = (uint16_t)(*(DataPtr)) | (uint16_t)((*(DataPtr + 1)) << 8);
+			LCD_WriteRAM( uBmpData );
+			DataPtr +=2;
+		}
+	}
+//  LCD_Change_Direction(LCD_Direction);
+//  GL_SetDisplayWindow(LCD_Height - 1, LCD_Width - 1, LCD_Height, LCD_Width);
+}
 
 /**
   * @brief  Displays a full rectangle.
@@ -1427,21 +1475,5 @@ void LCD_DisplayStringLineInRect(uint16_t Xpos, uint16_t Ypos, uint16_t Width, u
     ptr++;
   }
 }
-
-/**
-  * @}
-  */ 
-  
-/**
-  * @}
-  */ 
-
-/**
-  * @}
-  */ 
-  
-/**
-  * @}
-  */  
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

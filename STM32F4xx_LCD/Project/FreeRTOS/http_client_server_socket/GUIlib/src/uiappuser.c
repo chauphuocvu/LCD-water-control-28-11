@@ -23,16 +23,10 @@
 #include "LcdHal.h"
 #include "stm32f4xx_uartstdio.h"
 #include "flash_memory_driver.h"
-/** @addtogroup Embedded_GUI_Example
-  * @{
-  */
 
-/** @defgroup User_Functions
-  * @brief Contains event handlers for controls to execute the user code
-  * @{
-  */
 
-DosingTest DosingTest_Flag = StartStart;
+
+uint8_t 		DosingTest_Flag = START_START;
 uint8_t 		Languages_Choose;
 uint8_t 		PoolSelect;
 uint8_t 		Temperature;
@@ -95,25 +89,11 @@ void SettingsScreen_Calibration(void)
 //////////////////////////////////////////////////////////////
 void SettingsScreen_DosingTest(void)
 {
-	switch (DosingTest_Flag)
-	{
-		case StartStart:
 			DestroyPage(CurrentScreen);
-			Show_DosingTestStartStartScreen();		
-		break;
-		case StartStop:
-			DestroyPage(CurrentScreen);
-			Show_DosingTestStartStopScreen();		
-		break;
-		case StopStart:
-			DestroyPage(CurrentScreen);			
-			Show_DosingTestStopStartScreen();	
-		break;
-		case StopStop :
-			DestroyPage(CurrentScreen);
-			Show_DosingTestStopStopScreen();	
-		break;
-	}	
+	if (DosingTest_Flag != START_START)
+		Create_DosingTestScreen();
+	else;
+	Show_DosingTestScreen();		
 }
 //////////////////////////////////////////////////////////////
 void SettingsScreen_TypeOfProbe(void)
@@ -132,108 +112,63 @@ void SettingsScreen_SaveData(void)
 
 
 /*DosingTest Screen */
-void DosingTestStartStartScreen_Back(void)
+void DosingTestScreen_Back(void)
 {
 	DestroyPage(CurrentScreen);
 	Show_SettingsScreen();
-	DosingTest_Flag = StartStart;
 }
 //////////////////////////////////////////////////////////////
-void DosingTestStartStartScreen_BackToStart(void)
+void DosingTestScreen_BackToStart(void)
 {
 	DestroyPage(CurrentScreen);
 	Show_StartScreen();
-	DosingTest_Flag = StartStart;
 }
 //////////////////////////////////////////////////////////////
-void DosingTestStartStartScreen_StartDisinf(void)
+void DosingTestScreen_StartDisinf(void)
 {
-	DestroyPage(CurrentScreen);
-	Show_DosingTestStopStartScreen();
+		switch (DosingTest_Flag)
+	{
+		case START_START:
+			DosingTest_Flag = STOP_START;
+		break;
+		case START_STOP:
+			DosingTest_Flag = STOP_STOP;	
+		break;
+		case STOP_START:
+			DestroyPage(CurrentScreen);
+			DosingTest_Flag = START_START;	
+		break;
+		case STOP_STOP :
+			DosingTest_Flag = START_STOP;	
+		break;
+		default:
+		break;
+	}	
+	Show_DosingTestScreen();
+
 }
 //////////////////////////////////////////////////////////////
-void DosingTestStartStartScreen_StartPh(void)
+void DosingTestScreen_StartPh(void)
 {	
-	DestroyPage(CurrentScreen);
-	Show_DosingTestStartStopScreen();
-}
-/*DosingTestStopStart Screen */
-void DosingTestStopStartScreen_Back(void)
-{
-	DestroyPage(CurrentScreen);
-	Show_SettingsScreen();
-	DosingTest_Flag = StopStart;
-}
-//////////////////////////////////////////////////////////////
-void DosingTestStopStartScreen_BackToStart(void)
-{	
-	DestroyPage(CurrentScreen);
-	Show_StartScreen();
-	DosingTest_Flag = StartStart;
-}
-//////////////////////////////////////////////////////////////
-void DosingTestStopStartScreen_StopDisinf(void)
-{
-	DestroyPage(CurrentScreen);
-	Show_DosingTestStartStartScreen();
-}
-//////////////////////////////////////////////////////////////
-void DosingTestStopStartScreen_StartPh(void)
-{
-	DestroyPage(CurrentScreen);
-	Show_DosingTestStopStopScreen();
-}
-/*DosingTestStopStop Screen */
-void DosingTestStopStopScreen_Back(void)
-{
-	DestroyPage(CurrentScreen);
-	Show_SettingsScreen();
-	DosingTest_Flag = StopStop;
-}
-//////////////////////////////////////////////////////////////
-void DosingTestStopStopScreen_BackToStart(void)
-{
-	DestroyPage(CurrentScreen);
-	Show_StartScreen();
-	DosingTest_Flag = StartStart;
-}
-//////////////////////////////////////////////////////////////
-void DosingTestStopStopScreen_StopDisinf(void)
-{
-	DestroyPage(CurrentScreen);
-	Show_DosingTestStartStopScreen();
-}
-//////////////////////////////////////////////////////////////
-void DosingTestStopStopScreen_StopPh(void)
-{
-	DestroyPage(CurrentScreen);
-	Show_DosingTestStopStartScreen();
-}
-/*DosingTestStartStop Screen */
-void DosingTestStartStopScreen_Back(void)
-{
-	DestroyPage(CurrentScreen);
-	Show_SettingsScreen();
-	DosingTest_Flag = StartStop;
-}
-//////////////////////////////////////////////////////////////
-void DosingTestStartStopScreen_BackToStart(void)
-{
-	DestroyPage(CurrentScreen);
-	Show_StartScreen();
-	DosingTest_Flag = StartStart;
-}
-//////////////////////////////////////////////////////////////
-void DosingTestStartStopScreen_StartDisinf(void)
-{
-	DestroyPage(CurrentScreen);
-	Show_DosingTestStopStartScreen();
-}
-//////////////////////////////////////////////////////////////
-void DosingTestStartStopScreen_StopPh(void)
-{
-	DestroyPage(CurrentScreen);
-	Show_DosingTestStartStartScreen();
+		switch (DosingTest_Flag)
+	{
+		case START_START:
+			DosingTest_Flag = START_STOP;
+		break;
+		case START_STOP:
+			DestroyPage(CurrentScreen);
+			DosingTest_Flag = START_START;	
+		break;
+		case STOP_START:
+			DosingTest_Flag = STOP_STOP;	
+		break;
+		case STOP_STOP :
+			DosingTest_Flag = STOP_START;	
+		break;
+		default:
+		break;
+	}	
+	Show_DosingTestScreen();
 }
 
 
@@ -527,14 +462,14 @@ void ParametersRequireValuepHScreen_BackToStart(void)
 void ParametersRequireValuepHScreen_inc(void)
 {
 		RequireValuepH_Display +=(float)0.1;
-	if(RequireValuepH_Display > 7.8)
-		RequireValuepH_Display = 7.8;
+	if(RequireValuepH_Display > (float)7.6)
+		RequireValuepH_Display = 7.6;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValuepHScreen_dec(void)
 {
-	if(RequireValuepH_Display < 6.2)
-		RequireValuepH_Display = 6.2;
+	if(RequireValuepH_Display < (float)6.5)
+		RequireValuepH_Display = 6.5;
 	else
 		RequireValuepH_Display -=(float)0.1;
 	
@@ -570,13 +505,13 @@ void ParametersRequireValueCLFScreen_BackToStart(void)
 void ParametersRequireValueCLFScreen_inc(void)
 {
 		RequireValueCLF_Display +=(float)0.1;
-	if(RequireValueCLF_Display > 1.2)
+	if(RequireValueCLF_Display > (float)1.2)
 		RequireValueCLF_Display = 1.2;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueCLFScreen_dec(void)
 {	
-	if(RequireValueCLF_Display < 0.5)
+	if(RequireValueCLF_Display < (float)0.5)
 		RequireValueCLF_Display = 0.5;
 	else
 		RequireValueCLF_Display -=(float)0.1;
@@ -643,8 +578,8 @@ void CalibrationpHProbeScreen_BackToStart(void)
 }
 void CalibrationpHProbeScreen_inc(void)
 {
-		Probe_pH_Display +=0.1;
-	if(Probe_pH_Display > 7.8)
+		Probe_pH_Display +=(float)0.1;
+	if(Probe_pH_Display > (float)7.8)
 	{
 		DestroyPage(CurrentScreen);
 		Show_WarningProbeCalibration62_78Screen();
@@ -654,7 +589,7 @@ void CalibrationpHProbeScreen_inc(void)
 void CalibrationpHProbeScreen_dec(void)
 {
 		Probe_pH_Display -=(float)0.1;
-	if(Probe_pH_Display < 6.2)
+	if(Probe_pH_Display < (float)6.2)
 	{
 		DestroyPage(CurrentScreen);
 		Show_WarningProbeCalibration62_78Screen();
@@ -683,7 +618,7 @@ void CalibrationCLFProbeScreen_BackToStart(void)
 void CalibrationCLFProbeScreen_inc(void)
 {
 	Probe_CLF_Display +=(float)0.1;
-	if (Probe_CLF_Display > 1.2)
+	if (Probe_CLF_Display > (float)1.2)
 		Probe_CLF_Display = 1.2;
 }
 void CalibrationCLFProbeScreen_dec(void)
@@ -693,7 +628,7 @@ void CalibrationCLFProbeScreen_dec(void)
 		DestroyPage(CurrentScreen);
 		Show_WarningProbeCalibrationrequiredValueRedScreen();
 	}
-	else if (Probe_CLF_Display < 0.5)
+	else if (Probe_CLF_Display < (float)0.5)
 		Probe_CLF_Display = 0.5;
 	else
 		Probe_CLF_Display -=(float)0.1;
@@ -760,13 +695,13 @@ void ParametersRequireValueRedoxpH_pHScreen_BackToStart(void)
 void ParametersRequireValueRedoxpH_pHScreen_inc(void)
 {
 		RequireValuepH_Display +=(float)0.1;
-	if(RequireValuepH_Display > 7.8)
+	if(RequireValuepH_Display > (float)7.8)
 		RequireValuepH_Display = 7.8;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueRedoxpH_pHScreen_dec(void)
 {
-	if(RequireValuepH_Display < 6.2)
+	if(RequireValuepH_Display < (float)6.2)
 		RequireValuepH_Display = 6.2;
 	else
 		RequireValuepH_Display -=(float)0.1;
@@ -844,13 +779,13 @@ void ParametersRequireValueDosepH_DoseHour_pHScreen_BackToStart(void)
 void ParametersRequireValueDosepH_DoseHour_pHScreen_inc(void)
 {
 		RequireValuepH_Display +=(float)0.1;
-	if(RequireValuepH_Display > 7.8)
+	if(RequireValuepH_Display > (float)7.8)
 		RequireValuepH_Display = 7.8;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHour_pHScreen_dec(void)
 {
-	if(RequireValuepH_Display < 6.2)
+	if(RequireValuepH_Display < (float)6.2)
 		RequireValuepH_Display = 6.2;
 	else
 		RequireValuepH_Display -=(float)0.1;
@@ -926,14 +861,14 @@ void ParametersRequireValueDosepH_DoseDay_pHScreen_BackToStart(void)
 void ParametersRequireValueDosepH_DoseDay_pHScreen_inc(void)
 {
 		RequireValuepH_Display +=(float)0.1;
-	if(RequireValuepH_Display > 7.8)
+	if(RequireValuepH_Display > (float)7.8)
 		RequireValuepH_Display = 7.8;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDay_pHScreen_dec(void)
 {
 		RequireValuepH_Display -=(float)0.1;
-	if(RequireValuepH_Display < 6.2)
+	if(RequireValuepH_Display < (float)6.2)
 		RequireValuepH_Display = 6.2;
 }
 //////////////////////////////////////////////////////////////
