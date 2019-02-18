@@ -12,26 +12,26 @@
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
         <TargetCommonOption>
-          <Device>STM32F407VETx</Device>
+          <Device>STM32F407VE</Device>
           <Vendor>STMicroelectronics</Vendor>
           <PackID>Keil.STM32F4xx_DFP.2.13.0</PackID>
           <PackURL>http://www.keil.com/pack</PackURL>
-          <Cpu>IROM(0x08000000,0x00080000) IRAM(0x20000000,0x00020000) IRAM2(0x10000000,0x00010000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
+          <Cpu>IRAM(0x20000000,0x00020000) IRAM2(0x10000000,0x00010000) IROM(0x08000000,0x00080000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_512 -FS08000000 -FL080000 -FP0($$Device:STM32F407VETx$CMSIS/Flash/STM32F4xx_512.FLM))</FlashDriverDll>
-          <DeviceId>0</DeviceId>
-          <RegisterFile>$$Device:STM32F407VETx$Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h</RegisterFile>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_512 -FS08000000 -FL080000 -FP0($$Device:STM32F407VE$CMSIS\Flash\STM32F4xx_512.FLM))</FlashDriverDll>
+          <DeviceId>6106</DeviceId>
+          <RegisterFile>$$Device:STM32F407VE$Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
           <Linker></Linker>
           <OHString></OHString>
           <InfinionOptionDll></InfinionOptionDll>
-          <SLE66CMisc></SLE66CMisc>
+          <SLE66CMisc>-DSTM32F40_41xxx</SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:STM32F407VETx$CMSIS/SVD/STM32F40x.svd</SFDFile>
+          <SFDFile>$$Device:STM32F407VE$CMSIS\SVD\STM32F40x.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -106,11 +106,11 @@
         </CommonProperty>
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
-          <SimDllArguments> -REMAP -MPU</SimDllArguments>
+          <SimDllArguments>-MPU -REMAP</SimDllArguments>
           <SimDlgDll>DCM.DLL</SimDlgDll>
           <SimDlgDllArguments>-pCM4</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
-          <TargetDllArguments> -MPU</TargetDllArguments>
+          <TargetDllArguments>-MPU</TargetDllArguments>
           <TargetDlgDll>TCM.DLL</TargetDlgDll>
           <TargetDlgDllArguments>-pCM4</TargetDlgDllArguments>
         </DllOption>
@@ -171,11 +171,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4100</DriverSelection>
+            <DriverSelection>4101</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
-          <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash2>STLink\ST-LINKIII-KEIL_SWO.dll</Flash2>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -228,7 +228,7 @@
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <RoSelD>3</RoSelD>
-            <RwSelD>3</RwSelD>
+            <RwSelD>4</RwSelD>
             <CodeSel>0</CodeSel>
             <OptFeed>0</OptFeed>
             <NoZi1>0</NoZi1>
@@ -363,9 +363,9 @@
             <useXO>0</useXO>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>STM32F4XX,USE_STDPERIPH_DRIVER,USE_STM32F4_BRD,_LLONG_AVAILABLE</Define>
+              <Define>STM32F4XX,USE_STDPERIPH_DRIVER,USE_STM32F4_BRD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\inc;..\src;..\..\..\..\Libraries\CMSIS\Include;..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc;..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7;..\..\..\..\Utilities\lwip_v1.3.2\src\include;..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4;..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip;..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif;..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS;..\..\..\..\Utilities\FreeRTOSv9.0.0\include;..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F;..\STM32F4Discovery;..\GUIlib\inc;..\Embedded_GUI_HAL\inc;..\Embedded_GUI_Library\inc;..\MDK-ARM</IncludePath>
+              <IncludePath>..\inc;..\src;..\..\..\..\Libraries\CMSIS\Include;..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc;..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7;..\..\..\..\Utilities\lwip_v1.3.2\src\include;..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4;..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip;..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif;..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS;..\..\..\..\Utilities\FreeRTOSv9.0.0\include;..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F;..\STM32F4Discovery;..\GUIlib\inc;..\Embedded_GUI_HAL\inc;..\Embedded_GUI_Library\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -457,36 +457,6 @@
               <FileName>hw_config.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src\hw_config.c</FilePath>
-            </File>
-            <File>
-              <FileName>flash_memory_driver.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\flash_memory_driver.c</FilePath>
-            </File>
-            <File>
-              <FileName>flash_memory_driver.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\flash_memory_driver.h</FilePath>
-            </File>
-            <File>
-              <FileName>DisplayNumber.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\DisplayNumber.c</FilePath>
-            </File>
-            <File>
-              <FileName>DisplayNumber.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\DisplayNumber.h</FilePath>
-            </File>
-            <File>
-              <FileName>ADC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ADC.c</FilePath>
-            </File>
-            <File>
-              <FileName>Actuator.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Actuator.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -900,39 +870,14 @@
   <RTE>
     <apis/>
     <components>
-      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="3.40.0" condition="CMSIS Core">
-        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="4.2.0"/>
+      <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM" Cversion="5.1.2" condition="ARMv6_7_8-M Device">
+        <package name="CMSIS" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="ARM" version="5.4.0"/>
         <targetInfos>
           <targetInfo name="Discover-More"/>
         </targetInfos>
       </component>
     </components>
-    <files>
-      <file attr="config" category="source" condition="STM32F407xx_ARMCC" name="Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f407xx.s" version="2.6.2">
-        <instance index="0" removed="1">RTE\Device\STM32F407VETx\startup_stm32f407xx.s</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="2.6.2" condition="STM32F4 CMSIS"/>
-        <package name="STM32F4xx_DFP" schemaVersion="1.3" url="http://www.keil.com/pack" vendor="Keil" version="2.13.0"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="source" name="Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c" version="2.6.2">
-        <instance index="0" removed="1">RTE\Device\STM32F407VETx\system_stm32f4xx.c</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="2.6.2" condition="STM32F4 CMSIS"/>
-        <package name="STM32F4xx_DFP" schemaVersion="1.3" url="http://www.keil.com/pack" vendor="Keil" version="2.13.0"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="source" condition="STM32F407xx_ARMCC" name="Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f407xx.s" version="2.6.2">
-        <instance index="0" removed="1">RTE\Device\STM32F407VGTx\startup_stm32f407xx.s</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="2.6.2" condition="STM32F4 CMSIS"/>
-        <package name="STM32F4xx_DFP" schemaVersion="1.3" url="http://www.keil.com/pack" vendor="Keil" version="2.13.0"/>
-        <targetInfos/>
-      </file>
-      <file attr="config" category="source" name="Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c" version="2.6.2">
-        <instance index="0" removed="1">RTE\Device\STM32F407VGTx\system_stm32f4xx.c</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="2.6.2" condition="STM32F4 CMSIS"/>
-        <package name="STM32F4xx_DFP" schemaVersion="1.3" url="http://www.keil.com/pack" vendor="Keil" version="2.13.0"/>
-        <targetInfos/>
-      </file>
-    </files>
+    <files/>
   </RTE>
 
 </Project>

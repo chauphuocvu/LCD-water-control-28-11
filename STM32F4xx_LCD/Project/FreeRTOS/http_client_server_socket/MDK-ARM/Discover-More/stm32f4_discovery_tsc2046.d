@@ -52,6 +52,3 @@
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\STM32F4Discovery\stm32f4_discovery_user.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\STM32F4Discovery\fonts.h
 .\discover-more\stm32f4_discovery_tsc2046.o: ..\inc\SSD1963_Configuration.h
-.\discover-more\stm32f4_discovery_tsc2046.o: ..\inc\stm32f4xx_uartstdio.h
-.\discover-more\stm32f4_discovery_tsc2046.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\discover-more\stm32f4_discovery_tsc2046.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

@@ -635,7 +635,7 @@ again:
                 }
 								case 'f':
 								{
-									fValue = va_arg(vaArgP, double);
+									fValue = va_arg(vaArgP, float);
 									ulValue = (long) fValue;
 									ucStart =1;
 									goto convertfloat;

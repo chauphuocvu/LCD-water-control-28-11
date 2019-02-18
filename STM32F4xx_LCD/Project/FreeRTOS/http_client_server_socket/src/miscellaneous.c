@@ -19,7 +19,7 @@
   */ 
 
 #include "miscellaneous.h"
-#include "stm32f4_discovery_LCD_SSD1963.h"
+
 
 /** @addtogroup MISC
  * 	@{
@@ -203,53 +203,6 @@ void Uint32ToUint8 (const uint32_t data,uint8_t *uint8tab)
 
 }
 
-/*Added by Chau Phuoc Vu 28/11/2018*/
-/**  
- * @brief  
- * @param  
- * @retval None
- */
-	uint8_t* ArgumenttoString(uint32_t val )
-{            
-//	int PH_value = 14 * ADC_value / 4096;
-//			
-//			int PH_value_r = (14 * ADC_value) % 4096;
-//			float PH_value_r_float = (float)PH_value_r / (float)4096;
-//			PH_value_r = (int)(PH_value_r_float * 10);
-//			char array[6] = {(PH_value / 10) + 48, (PH_value % 10) + 48, ',', PH_value_r + 48, 'p', 'H'};
-//			char* string = array;
-static	uint8_t *string;
-		if (val < 10)
-		{
-			char array[2] = {'0',(val + 48)};
-			string = (uint8_t *)array; 
-			return string;
-		}
-		else if (val < 100)
-		{
-			char array[2] = {(val/10) + 48 ,(val%10) + 48};
-			string = (uint8_t *)array; 
-			return string;
-		}
-		else if (val < 1000)
-		{
-			char array[4] = {(val/100) + 48 ,((val%100)/10) + 48 ,((val%100)%10) + 48,'\0'};
-			string = (uint8_t *)array; 
-			return string;
-		}
-		else if (val < 10000)
-		{
-			char array[4] = {(val/1000) + 48 ,((val%1000)/100) + 48 ,(((val%1000)%100)/10) + 48 ,(((val%1000)%100)%10) + 48};
-			string = (uint8_t *)array; 
-			return string;
-		}
-		else 
-		{
-			char array[5] = {(val/10000) + 48 ,((val%10000)/1000) + 48 ,(((val%10000)%1000)/10) + 48 ,(((val%10000)%1000)%100) + 48 , (((val%10000)%1000)%100)%10 + 48};
-			string = (uint8_t *)array; 
-			return string;
-		}
-}
 /**
  * @}
  */

@@ -48,15 +48,15 @@
 #define MAX_BUTTON_LABEL_LENGTH              16
 #define MAX_CHECKBOX_LABEL_LENGTH            25
 #define MAX_RADIO_OPTION_LABEL_LENGTH        12
-#define MAX_RADIO_OPTIONS                    10
+#define MAX_RADIO_OPTIONS                     3
 #define MAX_COMBO_OPTIONS                    10
 #define MAX_COMBO_LABEL_LENGTH               16
 #define MAX_SWITCH_LABEL_LENGTH              16
 #define MAX_SLIDE_LABEL_LENGTH               16
 #define MAX_HIST_LABEL_LENGTH                 7
 #define MAX_GRAPH_LABEL_LENGTH                7
-#define MAX_HIST_POINTS                      500
-#define MAX_GRAPH_POINTS                    1000
+#define MAX_HIST_POINTS                      50
+#define MAX_GRAPH_POINTS                    100
 #define HIST_MARGIN_LENGTH                   20
 #define GRAPH_MARGIN_LENGTH                  18
 
@@ -126,9 +126,7 @@ typedef enum{
     GL_COMBOBOX = 7,
     GL_SLIDEBAR = 8,
     GL_HISTOGRAM = 9,
-    GL_GRAPH_CHART = 10,
-	/*Added by Chau Phuoc Vu 9/11/2018*/
-		GL_NEWRECTCONTROL = 11
+    GL_GRAPH_CHART = 10
 }GL_ObjType;
 
 /** 
@@ -309,7 +307,7 @@ struct GL_IconObj
   uint16_t             ID;
   const uint8_t*       ImagePTR;
   uint16_t             ImageWidth;
-  uint16_t              ImageHeight;
+  uint8_t              ImageHeight;
   GL_bool              isObjectTouched;
   GL_bool              Control_Visible;
   void                 (*EventHandler)(void);
@@ -353,7 +351,7 @@ struct GL_HistogramObj
   uint8_t       label_X[MAX_HIST_LABEL_LENGTH];
   uint8_t       label_Y[MAX_HIST_LABEL_LENGTH];
   int16_t       points[MAX_HIST_POINTS];
-  uint16_t       n_points;
+  uint8_t       n_points;
   GL_bool       Control_Visible;
 };
 
@@ -369,7 +367,7 @@ struct GL_GraphChartObj
   uint8_t       label_X[MAX_GRAPH_LABEL_LENGTH];
   uint8_t       label_Y[MAX_GRAPH_LABEL_LENGTH];
   int16_t       points[MAX_GRAPH_POINTS];
-  uint16_t       n_points;
+  uint8_t       n_points;
   GL_bool       Background;
   GL_bool       Control_Visible;
 };
@@ -404,24 +402,7 @@ struct GL_PageObj
 /**
   * @}
   */
-/* Forward declaration for circular typedefs */
-typedef struct GL_NewRectControlObj GL_NewRectControl_TypeDef;
-
-/** 
-  * @brief  GL_ButtonObj struct definition  
-  */
-struct GL_NewRectControlObj
-{
-  uint16_t          ID;
-	uint16_t 					Width;
-	uint16_t 					Height;
-	uint16_t					Color;
-  GL_bool           isObjectTouched;
-  GL_bool           Control_Visible;
-  void              (*EventHandler)(void);
-};   
-
-
+   
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */ 
 

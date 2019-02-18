@@ -104,7 +104,7 @@ void LwIP_Init(void)
   sprintf((char*)iptxt, "  %d.%d.%d.%d", iptab[3], iptab[2], iptab[1], iptab[0]); 
 
   DBG("  Static IP address   \r\n");
-//  UARTprintf((const char *)iptxt);
+//  UARTprintf(iptxt);
 //#endif
 #endif
 

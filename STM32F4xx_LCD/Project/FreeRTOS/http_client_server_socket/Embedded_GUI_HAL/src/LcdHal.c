@@ -26,7 +26,6 @@
 #include <stdlib.h>
 #include "LcdHal.h"
 #include "gl_fonts.h"
-#include "stm32f4_discovery_LCD_SSD1963.h"
 
 
 /** @addtogroup Embedded_GUI_Library
@@ -190,13 +189,13 @@ void GL_DisplayAdjStringLine(uint16_t Line, uint16_t Column, uint8_t *ptr, GL_bo
   { /* Display one character on LCD */
     GL_LCD_DisplayChar(Line, Column, *ptr, Transparent_Flag);
     /* Decrement the column position by GL_FontWidth */
-   /* if ( *ptr == 'A' || *ptr == 'G' || *ptr == 'M' || *ptr == 'O' || *ptr == 'Q' || *ptr == 'X' || *ptr == 'm')
-//     Column -= (GL_FontWidth);
+    if ( *ptr == 'A' || *ptr == 'G' || *ptr == 'M' || *ptr == 'O' || *ptr == 'Q' || *ptr == 'X' || *ptr == 'm')
+//      Column -= (GL_FontWidth);
 			Column += (GL_FontWidth);
 		else if ( *ptr == 'i' || *ptr == 'I' || *ptr == 'l')
 			Column += (GL_FontWidth - 5);
-    else*/
-      Column += (GL_FontWidth);
+    else
+      Column += (GL_FontWidth - 1);
     /* Point on the next character */
     ptr++;
     /* Increment the character counter */
@@ -253,7 +252,9 @@ void GL_LCD_DisplayChar(uint16_t Line, uint16_t Column, uint8_t Ascii, GL_bool T
   */
 void GL_SetDisplayWindow(uint16_t Xpos, uint16_t Ypos, uint16_t Height, uint16_t Width)
 {
+//	LCD_SetArea((Ypos-Width+1), (Xpos-Height+1), Ypos, Xpos);
 	LCD_SetArea((Ypos - Width +1), (Xpos - Height +1), Ypos, Xpos);
+  //LCD_SetDisplayWindow(Xpos, Ypos, Height, Width);
 }
 
 /**
@@ -280,7 +281,7 @@ void GL_DrawLine(uint16_t Xpos, uint16_t Ypos, uint16_t Length, uint8_t Directio
   * @param  Width: display rectangle width.
   * @retval None
   */
-void GL_LCD_DrawRect(uint16_t Xpos, uint16_t Ypos, uint16_t Height, uint16_t Width)
+void GL_LCD_DrawRect(uint8_t Xpos, uint16_t Ypos, uint8_t Height, uint16_t Width)
 {
 	LCD_DrawRect(Xpos, Ypos,  Width, Height);
 //  GL_DrawLine(Xpos, Ypos, Width, Horizontal);
@@ -297,7 +298,7 @@ void GL_LCD_DrawRect(uint16_t Xpos, uint16_t Ypos, uint16_t Height, uint16_t Wid
   * @param  Radius: the radius size of the circle
   * @retval None
   */
-void GL_LCD_DrawCircle(uint16_t Xpos, uint16_t Ypos, uint16_t Radius)
+void GL_LCD_DrawCircle(uint8_t Xpos, uint16_t Ypos, uint16_t Radius)
 {
 	LCD_DrawCircle(Xpos, Ypos, Radius);
 //  int32_t  D;/* Decision Variable */
@@ -566,7 +567,7 @@ uint16_t LCD_GetPixel(uint16_t Xpos, uint16_t Ypos)
   * @param  c: pointer to the character data.
   * @retval None
   */
-void GL_LCD_DrawChar(uint16_t Xpos, uint16_t Ypos, const uint16_t *c) /* 16bit char */
+void GL_LCD_DrawChar(uint8_t Xpos, uint16_t Ypos, const uint16_t *c) /* 16bit char */
 {
 //	LCD_DrawChar(Xpos, Ypos, (uint16_t*)c);
   uint32_t line_index = 0, pixel_index = 0;
@@ -727,6 +728,7 @@ void LCD_Change_Direction(LCD_Direction_TypeDef Direction)
     /* AM=1 (address is updated in vertical writing direction) */
 		LCD_WriteCmd(CMD_SET_ADDR_MODE);
 		LCD_WriteRAM(0x08);
+//    LCD_WriteReg(R3, 0x1018);
   }
   else if (LCD_Direction == _90_degree)
   {
@@ -735,6 +737,7 @@ void LCD_Change_Direction(LCD_Direction_TypeDef Direction)
     /* AM=0 (address is updated in orizontal writing direction) */
 		LCD_WriteCmd(CMD_SET_ADDR_MODE);
 		LCD_WriteRAM(0x68);
+//    LCD_WriteReg(R3, 0x1030);
   }
   else if (LCD_Direction == _180_degree)
   {
@@ -742,7 +745,8 @@ void LCD_Change_Direction(LCD_Direction_TypeDef Direction)
     /* I/D=10 (Horizontal : decrement, Vertical : increment) */
     /* AM=1 (address is updated in vertical writing direction) */
 		LCD_WriteCmd(CMD_SET_ADDR_MODE);
-		LCD_WriteRAM(0x88);
+		LCD_WriteRAM(0xC8);
+//    LCD_WriteReg(R3, 0x1028);
   }
   else if (LCD_Direction == _270_degree)
   {
@@ -751,6 +755,7 @@ void LCD_Change_Direction(LCD_Direction_TypeDef Direction)
     /* AM=0 (address is updated in orizontal writing direction) */
 		LCD_WriteCmd(CMD_SET_ADDR_MODE);
 		LCD_WriteRAM(0xA8);
+//    LCD_WriteReg(R3, 0x1000);
   }
 }
 
