@@ -33,8 +33,6 @@
 /* Exported functions ------------------------------------------------------- */
 void http_server_socket_init(void);
 void DynWebPage(int conn);
-void DynWebPageByThanh(int conn);
-void DynWebPageSettingByThanh(int conn);
 
 #endif /* __HTTPSERVER_SOCKET_H__ */
 

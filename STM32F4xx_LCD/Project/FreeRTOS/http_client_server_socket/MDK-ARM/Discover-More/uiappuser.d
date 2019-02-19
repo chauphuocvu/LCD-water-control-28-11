@@ -54,4 +54,8 @@
 .\discover-more\uiappuser.o: ..\STM32F4Discovery\stm32f4_discovery_user.h
 .\discover-more\uiappuser.o: ..\STM32F4Discovery\fonts.h
 .\discover-more\uiappuser.o: ..\inc\SSD1963_Configuration.h
+.\discover-more\uiappuser.o: ..\inc\stm32f4xx_uartstdio.h
+.\discover-more\uiappuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\discover-more\uiappuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\discover-more\uiappuser.o: ..\inc\SSD1963_CMD.h
+.\discover-more\uiappuser.o: ..\MDK-ARM\flash_memory_driver.h

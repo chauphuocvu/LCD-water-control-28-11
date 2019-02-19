@@ -72,7 +72,7 @@ extern const uint8_t SlidebarLeft[210];        /*!< Slidebar Left part bitmap ta
 extern const uint8_t SlidebarRight[210];       /*!< PSlidebar Right centre part bitmap table */
 extern const uint8_t SlidebarCentral[210];     /*!< Slidebar Central part bitmap table */
 extern const uint8_t SlidebarCursor[306];      /*!< Slidebar Cursor part bitmap table */
-extern const uint8_t image_data_facebook[2048];
+extern const uint8_t logobk[14083]; 
 /**
   * @}
   */

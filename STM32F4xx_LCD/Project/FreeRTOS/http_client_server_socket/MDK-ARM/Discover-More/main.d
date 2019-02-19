@@ -1,5 +1,4 @@
 .\discover-more\main.o: ..\src\main.c
-.\discover-more\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\discover-more\main.o: ..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h
 .\discover-more\main.o: ..\inc\stm32f4x7_eth_conf.h
 .\discover-more\main.o: ..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
@@ -89,4 +88,9 @@
 .\discover-more\main.o: ..\Embedded_GUI_Library\inc\graphicObjectTypes.h
 .\discover-more\main.o: ..\Embedded_GUI_HAL\inc\stm32HAL.h
 .\discover-more\main.o: ..\GUIlib\inc\uiframework.h
+.\discover-more\main.o: ..\GUIlib\inc\uiappuser.h
 .\discover-more\main.o: ..\Embedded_GUI_HAL\inc\LcdHal.h
+.\discover-more\main.o: ..\MDK-ARM\flash_memory_driver.h
+.\discover-more\main.o: ..\MDK-ARM\DisplayNumber.h
+.\discover-more\main.o: ..\MDK-ARM\ADC.h
+.\discover-more\main.o: ..\MDK-ARM\Actuator.h

@@ -12,6 +12,7 @@
 #include "SSD1963_Configuration.h"
 //#include "graphicObjectTypes.h"
 //#include "graphicObject.h"
+#include "stm32f4xx_uartstdio.h"
 
 	 
 /** @defgroup STM3210E_EVAL_LCD_Private_TypesDefinitions
@@ -100,7 +101,25 @@ typedef enum
 #define GRAY4               RGB565CONVERT(96,   96,     96)
 #define GRAY5               RGB565CONVERT(64,   64,     64)
 #define GRAY6	            	RGB565CONVERT(32,   32,     32)
-
+/*Added by chau phuoc vu 14/11/2018*/
+#define VU_ORANGE						RGB565CONVERT(246,138,30)
+#define VU_GRAY 						RGB565CONVERT(87,87,86)
+#define VU_YELLOW						RGB565CONVERT(255,206,68)
+#define VU_BLUE							RGB565CONVERT(0,159,227)
+#define	NONE								1
+#define VU_GREEN						RGB565CONVERT(118,184,42)
+#define VU_RED							RGB565CONVERT(227,28,24)
+#define BLACK_WHITE					2
+#define WHITE_BLACK					3
+#define YELLOW_BLACK				4
+#define BLUE_BLACK					5
+#define WHITE_GREEN					6
+#define WHITE_RED						7
+#define GRAY_BLACK					8
+#define WHITE_BLACK					3
+#define WHITE_BLACK					3
+#define WHITE_BLACK					3
+#define WHITE_BLACK					3
 /** 
   * @brief LCD font 
   */ 
@@ -167,7 +186,7 @@ void LCD_DrawCircle(uint16_t Xpos, uint16_t Ypos, uint16_t Radius);
 //void LCD_DrawFullCircle(uint16_t Xpos, uint16_t Ypos, uint16_t Radius,uint16_t color);
 void LCD_DrawFullCircle(uint16_t Xpos, uint16_t Ypos, uint16_t Radius);
 void LCD_DrawMonoBMP(const uint8_t *Pict, uint16_t Xpos_Init, uint16_t Ypos_Init, uint16_t Height, uint16_t Width);
-//void LCD_DrawColorBMP(uint8_t* ptrBitmap, uint16_t Xpos_Init, uint16_t Ypos_Init);
+void LCDSD_DrawColorBMP(uint8_t* ptrBitmap, uint16_t Xpos_Init, uint16_t Ypos_Init);
 
 void LCD_DrawUniLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
 void LCD_PolyLine(pPoint Points, uint16_t PointCount);
@@ -175,6 +194,8 @@ void LCD_PolyLineRelative(pPoint Points, uint16_t PointCount);
 void LCD_ClosedPolyLine(pPoint Points, uint16_t PointCount);
 void LCD_ClosedPolyLineRelative(pPoint Points, uint16_t PointCount);
 void LCD_FillPolyLine(pPoint Points, uint16_t PointCount);
+/*Added by Chau Phuoc Vu 9/11/2018*/
+void LCD_DisplayStringLineInRect(uint16_t Xpos, uint16_t Ypos, uint16_t Width, uint16_t Height, uint8_t *ptr);
 /**
   * @}
   */ 

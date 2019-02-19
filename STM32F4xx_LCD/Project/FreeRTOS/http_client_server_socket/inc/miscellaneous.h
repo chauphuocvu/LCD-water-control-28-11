@@ -51,6 +51,7 @@
 //#define TRUE	 				1
 //#define FALSE			 		0 
 
+
 #ifndef errchk
 #define errchk(fCall) if (status = (fCall), status != CR95HF_SUCCESS_CODE) \
 	{goto Error;} else
@@ -66,7 +67,8 @@ uint16_t Uint8ToUint16 (const uint8_t *data);
 void Uint16ToUint8 (const uint16_t data,uint8_t *uint8tab);
 uint32_t Uint8ToUint32 (const uint8_t *data);
 void Uint32ToUint8 (const uint32_t data,uint8_t *uint8tab);
-
+/*Added by Chau Phuoc Vu 28/11/2018*/
+uint8_t* ArgumenttoString(uint32_t val);
 /**
   * @}
   */

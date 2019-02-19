@@ -15,8 +15,8 @@ union	data
 	float	floatdata;
 }mydata;
 
-#define FLASH_USER_START_ADDR   ADDR_FLASH_SECTOR_6   /* Start @ of user Flash area */
-#define FLASH_USER_END_ADDR     ADDR_FLASH_SECTOR_7   /* End @ of user Flash area */
+#define FLASH_USER_START_ADDR   ADDR_FLASH_SECTOR_10   /* Start @ of user Flash area */
+#define FLASH_USER_END_ADDR     ADDR_FLASH_SECTOR_11  /* End @ of user Flash area */
 
 /* Base address of the Flash sectors */
 #define ADDR_FLASH_SECTOR_0     ((uint32_t)0x08000000) /* Base @ of Sector 0, 16 Kbytes */
@@ -144,12 +144,12 @@ void TP_Init(void)
 	WR_CMD(REFOFF); 
 		
 } 
-
+int i;
 static int RD_AD(void)  
 { 
   unsigned short buf,temp; 
   /* Wait for SPI2 Tx buffer empty */ 
-  while (SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_TXE) == RESET); 
+  while (SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_TXE) == RESET);
   /* Send SPI2 data */ 
   SPI_I2S_SendData(SPI2,0x0000); 
   /* Wait for SPI2 data reception */ 
@@ -309,7 +309,7 @@ uint32_t	getTouchPoint()
 
 	Coordinate * Ptr;
 	if (touch_done) return 0;
-	Ptr=Read_tsc2046();
+	Ptr=Read_tsc2046();//ham tra ve Coordinate
 	if	(Ptr == (void*)0) return 0;
 	/* XD = AX+BY+C */        
     XCoordinate = ( (matrix.An * Ptr->x) + (matrix.Bn * Ptr->y) + matrix.Cn )/ matrix.Divider;
@@ -318,6 +318,7 @@ uint32_t	getTouchPoint()
     YCoordinate = ( (matrix.Dn * Ptr->x) + (matrix.En * Ptr->y) + matrix.Fn )/ matrix.Divider;
 		u32_TSYCoordinate = YCoordinate;
 	touch_done = 1;
+	UARTprintf("getTouchPoint\r\n");
 	return 1;
 }
 
@@ -366,7 +367,7 @@ Coordinate * Ptr;
   LCD_SetBackColor(WHITE);
   LCD_SetTextColor(BLACK);
   LCD_Clear(WHITE);
-  LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), LCD_Width - 25, "Run Calibration.", LCD_FALSE);
+  LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), LCD_Width - 25, (uint8_t *)"Run Calibration.", LCD_FALSE);
 
   touch_done = 0;
 
@@ -600,7 +601,7 @@ DelayUS(50000);
 	matrix.Divider = d;
   LCD_Clear(WHITE);
 	saveCalibrationData();
-  LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), 1 * (LCD_Width / 11), "Calibration done!", LCD_FALSE);
+//  LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), 1 * (LCD_Width / 11), "Calibration done!", LCD_FALSE);
 
 
 	DelayUS(50000);
@@ -737,8 +738,8 @@ uint32_t	readCalibrationValue()
   }
 	else
 	{
-		LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), 1 * (LCD_Width / 11), "Touch screen to ", LCD_TRUE);
-		LCD_DisplayAdjStringLine(5 * (LCD_Height / 7), 1 * (LCD_Width / 11), "start calibrating!", LCD_TRUE);
+		LCD_DisplayAdjStringLine(3 * (LCD_Height / 7), 1 * (LCD_Width / 11), (uint8_t *)"Touch screen to ", LCD_TRUE);
+		LCD_DisplayAdjStringLine(5 * (LCD_Height / 7), 1 * (LCD_Width / 11), (uint8_t *)"start calibrating!", LCD_TRUE);
 		while (i < 10000)
 		{
 			Ptr=Read_tsc2046();

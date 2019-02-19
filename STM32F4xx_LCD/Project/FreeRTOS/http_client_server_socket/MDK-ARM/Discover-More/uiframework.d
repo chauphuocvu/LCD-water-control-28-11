@@ -1,5 +1,4 @@
 .\discover-more\uiframework.o: ..\GUIlib\src\uiframework.c
-.\discover-more\uiframework.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\discover-more\uiframework.o: ..\GUIlib\inc\uiframework.h
 .\discover-more\uiframework.o: ..\Embedded_GUI_Library\inc\graphicObjectTypes.h
 .\discover-more\uiframework.o: ..\Embedded_GUI_HAL\inc\stm32HAL.h
@@ -56,6 +55,9 @@
 .\discover-more\uiframework.o: ..\STM32F4Discovery\stm32f4_discovery_user.h
 .\discover-more\uiframework.o: ..\STM32F4Discovery\fonts.h
 .\discover-more\uiframework.o: ..\inc\SSD1963_Configuration.h
+.\discover-more\uiframework.o: ..\inc\stm32f4xx_uartstdio.h
+.\discover-more\uiframework.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\discover-more\uiframework.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\discover-more\uiframework.o: ..\inc\SSD1963_CMD.h
 .\discover-more\uiframework.o: ..\Embedded_GUI_HAL\inc\TscHal.h
 .\discover-more\uiframework.o: ..\STM32F4Discovery\stm32f4_discovery_tsc2046.h
