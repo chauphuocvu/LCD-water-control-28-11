@@ -1,0 +1,149 @@
+<html>
+	 <head>
+	 <title>Web server</title>
+	 <meta name="description" content="Webserver"/>
+	 <meta name="keyword" content="ubuntu"/>
+	 <meta charset="utf-8"/>
+	 <style>
+	* {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	}
+	body {
+	font-family: "Helvetiaca Neue", Helvetiaca, Arial, sans-serif;
+	font-weight: 300px;
+	color: #333;
+	line-height: 1.254;
+	margin: 0;
+	padding: 0;
+	}
+	a {
+	text-decoration: none;
+	color: #3b8bba;
+	transform: all 0.5s;
+	-moz-transform: all 0.5s;
+	-webkit-transform: all 0.5s;
+	}
+	a:hover, a:visited {
+	color: #265778;
+	}
+	#container {
+	padding-left: 150px;
+	position: relative;
+	left: 0;
+	width: 100%;
+	}
+	#menu {
+	position: fixed;
+	height: 100%;
+	background-color: #191818;
+	width: 150px;
+	left: 0;
+	}
+	#menu {}
+	#menu ul{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	}
+	#menu ul li {
+	line-height: 2.9em;
+	height: 2.9em; 
+	transition: all 1s;
+	-moz-transition: all 1s;
+	-webkit-transition: all 1s;
+	position: relative;
+	}
+	#menu ul li a {
+	display: block;
+	color: #fff;
+	padding: 0 1em;
+	border-bottom: 1px solid #333;
+	}
+	#menu ul li:hover {
+	background-color: #454545;
+	}
+	#menu .sub-menu {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 150px;
+	background-color: #191818;
+	}
+	#menu ul li:hover .sub-menu{
+	display: block;
+	}
+	#content {
+	padding: 1em 8em;
+	}
+	#header, .call-to-action {
+	text-align:  center;
+	}
+	#header {}
+	#header #logo {font-size:40px;}
+	#header #slogan {
+	color: 8997a0;
+	font-size: 0.8em;
+	}
+	.call-to-action {
+	padding: 1.5em 20%;
+	background-color: #f0ffff;
+	border: 1px solid #e8e8e8;
+	}
+	.row {
+	overflow: hidden;
+	margin: 1.5em auto;
+	}
+	.row .col {
+	float: left;
+	width: 40%;
+	margin: 2em;
+	}
+	.row .col:last-child {
+	float: right;
+	margin-right: 0;
+	}
+	.row .col img {
+	float: left;
+	}
+	#footer {
+	font-size: 85%;
+	border-top: 1px solid #e6e6e6;
+	color: #838383;
+	padding: 1em 3em;
+	}
+	#pH { padding:20px; border: 3px solid #ccc; border-radius:16px;text-align: center; }
+	#warningPH, #warningCL {width: 100%;padding: 20px 0;text-align: center;background-color: #EFCD16;margin-top: 20px;font-size: 18px;border-radius: 5px;display:none;}
+
+	</style>
+	 </head>
+	 <body>
+	 <div id=\"container\">
+	 <div id=\"menu\">
+	 <ul>
+	 <li><a href=\"/control\">Homepage</a></li>
+	 <li><a href=\"/setting\">Settings</a></li>
+	// <li><a href=\"#\">LED</a></li>
+	 <li><a href=\"#\">About</a></li>
+	 </ul>
+	 </div>
+	 <div id=\"content\">
+	 <div id=\"header\">
+	 <div id=\"logo\">WebServer for LCD water control</div>
+	 <div id=\"slogan\">
+	 <p>Web control demo for STM32F4xx</p>
+	 </div>
+	 </div><!header>
+	 <div class=\"call-to-action\">
+	 <h3>LCD water control via website</h3>
+	 <p>pH and CHL control</p>
+	 </div><!call-to-action>
+	 <div class=\"row\" id=\"intro\">
+	 <div id=\"box1\" class=\"col\">
+	
+	<div style=\"margin-bottom:80px;border:2px solid;background: azure;border-radius: 5px;\">
+	<h3 style=\"text-align:center;\">pH settings</h3>
+	<p style=\"float:left;font-weight: bold;\">Minimum value: 
+</body>
+</html>

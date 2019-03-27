@@ -171,11 +171,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4100</DriverSelection>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -363,7 +363,7 @@
             <useXO>0</useXO>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>STM32F4XX,USE_STDPERIPH_DRIVER,USE_STM32F4_BRD,_LLONG_AVAILABLE</Define>
+              <Define>STM32F4XX,USE_STDPERIPH_DRIVER,USE_STM32F4_BRD</Define>
               <Undefine></Undefine>
               <IncludePath>..\inc;..\src;..\..\..\..\Libraries\CMSIS\Include;..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc;..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7;..\..\..\..\Utilities\lwip_v1.3.2\src\include;..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4;..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip;..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif;..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS;..\..\..\..\Utilities\FreeRTOSv9.0.0\include;..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F;..\STM32F4Discovery;..\GUIlib\inc;..\Embedded_GUI_HAL\inc;..\Embedded_GUI_Library\inc;..\MDK-ARM</IncludePath>
             </VariousControls>

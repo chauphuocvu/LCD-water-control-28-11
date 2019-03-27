@@ -318,7 +318,7 @@ uint32_t	getTouchPoint()
     YCoordinate = ( (matrix.Dn * Ptr->x) + (matrix.En * Ptr->y) + matrix.Fn )/ matrix.Divider;
 		u32_TSYCoordinate = YCoordinate;
 	touch_done = 1;
-	UARTprintf("getTouchPoint\r\n");
+//	UARTprintf("getTouchPoint\r\n");
 	return 1;
 }
 

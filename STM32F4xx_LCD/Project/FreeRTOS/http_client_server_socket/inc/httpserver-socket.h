@@ -33,6 +33,10 @@
 /* Exported functions ------------------------------------------------------- */
 void http_server_socket_init(void);
 void DynWebPage(int conn);
+void LoginPage(int conn);
+void DynWebPageSettingByVu(int conn);
+void DynWebPageByVu(int conn);
+void GetTimePage(int conn);
 
 #endif /* __HTTPSERVER_SOCKET_H__ */
 

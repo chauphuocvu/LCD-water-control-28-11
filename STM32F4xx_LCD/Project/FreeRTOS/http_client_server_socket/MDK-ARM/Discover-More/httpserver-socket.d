@@ -69,3 +69,14 @@
 .\discover-more\httpserver-socket.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h
 .\discover-more\httpserver-socket.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
 .\discover-more\httpserver-socket.o: ..\inc\debug.h
+.\discover-more\httpserver-socket.o: ..\MDK-ARM\DisplayNumber.h
+.\discover-more\httpserver-socket.o: ..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h
+.\discover-more\httpserver-socket.o: ..\STM32F4Discovery\stm32f4_discovery_user.h
+.\discover-more\httpserver-socket.o: ..\STM32F4Discovery\fonts.h
+.\discover-more\httpserver-socket.o: ..\inc\SSD1963_Configuration.h
+.\discover-more\httpserver-socket.o: ..\GUIlib\inc\uiframework.h
+.\discover-more\httpserver-socket.o: ..\Embedded_GUI_Library\inc\graphicObjectTypes.h
+.\discover-more\httpserver-socket.o: ..\Embedded_GUI_HAL\inc\stm32HAL.h
+.\discover-more\httpserver-socket.o: ..\Embedded_GUI_Library\inc\graphicObject.h
+.\discover-more\httpserver-socket.o: ..\GUIlib\inc\uiappuser.h
+.\discover-more\httpserver-socket.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

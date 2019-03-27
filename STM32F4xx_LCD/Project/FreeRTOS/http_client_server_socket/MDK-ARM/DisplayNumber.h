@@ -17,6 +17,9 @@
 #define mV		8
 #define oC		9
 
+extern uint8_t hour;
+extern uint8_t min;
+extern uint8_t sec;
 void DisplayNumber(void);
 
 

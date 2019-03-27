@@ -61,6 +61,9 @@ void ReadSavedValue(void)
 	CalibrationAir =	ReadDataFromFlash(FLASH_ADDR_CALIBRATION_AIR);
 	CalibrationWater =	ReadDataFromFlash(FLASH_ADDR_CALIBRATION_WATER);
 	RequireValueRedoxpH_Redox =	ReadDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_REDOX);
+	hour =	ReadDataFromFlash(FLASH_ADDR_HOUR);
+	min =	ReadDataFromFlash(FLASH_ADDR_MIN);
+	sec =	ReadDataFromFlash(FLASH_ADDR_SEC);
 	
 	vu_mydata.intdata = Read32bitDataFromFlash(FLASH_ADDR_CALIBRATION_PROBE_PH);
 	if (vu_mydata.intdata == 0xFFFFFFFF)
@@ -78,7 +81,6 @@ void ReadSavedValue(void)
 	if (vu_mydata.intdata == 0xFFFFFFFF)
 		RequireValueCLF = 0.5;
 	else RequireValueCLF =	vu_mydata.floatdata;
-	
 	
 	PoolVolume = ReadDataFromFlash(FLASH_ADDR_POOL_VOLUME);
 	FiltrationPeriod = ReadDataFromFlash(FLASH_ADDR_FILTRATIONPERIOD);
@@ -144,6 +146,12 @@ uint16_t	SaveDataToFlash(void)
 	if (FLASH_ProgramHalfWord(FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY,RequireValueDosepH_DoseDay) != FLASH_COMPLETE)	
 		return 1;
 	if (FLASH_ProgramHalfWord(FLASH_ADDR_LANGUAGE,Languages_Choose) != FLASH_COMPLETE)	
+		return 1;
+	if (FLASH_ProgramHalfWord(FLASH_ADDR_HOUR,hour) != FLASH_COMPLETE)	
+		return 1;
+	if (FLASH_ProgramHalfWord(FLASH_ADDR_MIN,min) != FLASH_COMPLETE)	
+		return 1;
+	if (FLASH_ProgramHalfWord(FLASH_ADDR_SEC,sec) != FLASH_COMPLETE)	
 		return 1;
 		FLASH_Lock(); 	
 	return	0;	

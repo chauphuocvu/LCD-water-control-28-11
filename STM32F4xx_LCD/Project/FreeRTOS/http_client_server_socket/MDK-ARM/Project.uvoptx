@@ -216,270 +216,469 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>280</LineNumber>
+          <LineNumber>151</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134312090</Address>
+          <Address>134229450</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\..\..\..\Utilities\lwip_v1.3.2\src\core\memp.c</Filename>
+          <Filename>.\flash_memory_driver.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>118</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134218790</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\src\main.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\Project\../src/main.c\118</Expression>
+          <Expression>\\Project\flash_memory_driver.c\151</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>ADC1ConvertedValue,0x0A</ItemText>
+          <ItemText>strlen</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>strstr</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>user</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>pass</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
           <count>0</count>
           <WinNumber>2</WinNumber>
-          <ItemText>V_batGet,0x0A</ItemText>
+          <ItemText>user_recv</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>2</WinNumber>
-          <ItemText>power</ItemText>
+          <ItemText>pass_recv</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Probe_pH,0x0A</ItemText>
+          <ItemText>user_recv</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>2</WinNumber>
-          <ItemText>RequireValuepH,0x10</ItemText>
+          <ItemText>pass_recv</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>8</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>9</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>user_recv</ItemText>
         </Ww>
         <Ww>
           <count>10</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>pass_recv</ItemText>
         </Ww>
         <Ww>
           <count>11</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>temp</ItemText>
         </Ww>
         <Ww>
           <count>12</count>
           <WinNumber>2</WinNumber>
-          <ItemText>b</ItemText>
+          <ItemText>dest</ItemText>
         </Ww>
         <Ww>
           <count>13</count>
           <WinNumber>2</WinNumber>
-          <ItemText>b</ItemText>
+          <ItemText>temp</ItemText>
         </Ww>
         <Ww>
           <count>14</count>
           <WinNumber>2</WinNumber>
-          <ItemText>b</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>15</count>
           <WinNumber>2</WinNumber>
-          <ItemText>value</ItemText>
+          <ItemText>temp2</ItemText>
         </Ww>
         <Ww>
           <count>16</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>temp2</ItemText>
         </Ww>
         <Ww>
           <count>17</count>
           <WinNumber>2</WinNumber>
-          <ItemText>value</ItemText>
+          <ItemText>temp + 6</ItemText>
         </Ww>
         <Ww>
           <count>18</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>temp</ItemText>
         </Ww>
         <Ww>
           <count>19</count>
           <WinNumber>2</WinNumber>
-          <ItemText>*ptr</ItemText>
+          <ItemText>temp</ItemText>
         </Ww>
         <Ww>
           <count>20</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>temp</ItemText>
         </Ww>
         <Ww>
           <count>21</count>
           <WinNumber>2</WinNumber>
-          <ItemText>val</ItemText>
+          <ItemText>temp</ItemText>
         </Ww>
         <Ww>
           <count>22</count>
           <WinNumber>2</WinNumber>
-          <ItemText>a</ItemText>
+          <ItemText>recv_buffer[20]</ItemText>
         </Ww>
         <Ww>
           <count>23</count>
           <WinNumber>2</WinNumber>
-          <ItemText>b</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>24</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>25</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>26</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>strspn</ItemText>
         </Ww>
         <Ww>
           <count>27</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>28</count>
           <WinNumber>2</WinNumber>
-          <ItemText>*ptr</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>29</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>30</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>31</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>32</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string[j]</ItemText>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
         <Ww>
           <count>33</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>size</ItemText>
         </Ww>
         <Ww>
           <count>34</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string</ItemText>
+          <ItemText>PAGE_START</ItemText>
         </Ww>
         <Ww>
           <count>35</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Ascii</ItemText>
+          <ItemText>ADC1ConvertedValue,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>36</count>
           <WinNumber>2</WinNumber>
-          <ItemText>string[quantity + j - 2]</ItemText>
+          <ItemText>V_batGet,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>37</count>
           <WinNumber>2</WinNumber>
-          <ItemText>a</ItemText>
+          <ItemText>power</ItemText>
         </Ww>
         <Ww>
           <count>38</count>
           <WinNumber>2</WinNumber>
-          <ItemText>* a</ItemText>
+          <ItemText>Probe_pH,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>39</count>
           <WinNumber>2</WinNumber>
-          <ItemText>*ptr</ItemText>
+          <ItemText>RequireValuepH,0x10</ItemText>
         </Ww>
         <Ww>
           <count>40</count>
           <WinNumber>2</WinNumber>
-          <ItemText>pPageControlObj</ItemText>
+          <ItemText>string</ItemText>
         </Ww>
         <Ww>
           <count>41</count>
           <WinNumber>2</WinNumber>
-          <ItemText>pControlObj</ItemText>
+          <ItemText>string</ItemText>
         </Ww>
         <Ww>
           <count>42</count>
           <WinNumber>2</WinNumber>
-          <ItemText>ADC_SoftwareStartConv(((ADC_TypeDef *) ((((uint32_t)0x40000000) + 0x00010000) + 0x2000)))</ItemText>
+          <ItemText>string</ItemText>
         </Ww>
         <Ww>
           <count>43</count>
           <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>44</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>45</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>46</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>47</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>48</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>b</ItemText>
+        </Ww>
+        <Ww>
+          <count>49</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>b</ItemText>
+        </Ww>
+        <Ww>
+          <count>50</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>b</ItemText>
+        </Ww>
+        <Ww>
+          <count>51</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>value</ItemText>
+        </Ww>
+        <Ww>
+          <count>52</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>53</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>value</ItemText>
+        </Ww>
+        <Ww>
+          <count>54</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>55</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>*ptr</ItemText>
+        </Ww>
+        <Ww>
+          <count>56</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>57</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>val</ItemText>
+        </Ww>
+        <Ww>
+          <count>58</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>a</ItemText>
+        </Ww>
+        <Ww>
+          <count>59</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>b</ItemText>
+        </Ww>
+        <Ww>
+          <count>60</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>61</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>62</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>63</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>64</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>*ptr</ItemText>
+        </Ww>
+        <Ww>
+          <count>65</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>66</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>67</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>68</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string[j]</ItemText>
+        </Ww>
+        <Ww>
+          <count>69</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>70</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string</ItemText>
+        </Ww>
+        <Ww>
+          <count>71</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>Ascii</ItemText>
+        </Ww>
+        <Ww>
+          <count>72</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>string[quantity + j - 2]</ItemText>
+        </Ww>
+        <Ww>
+          <count>73</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>a</ItemText>
+        </Ww>
+        <Ww>
+          <count>74</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>* a</ItemText>
+        </Ww>
+        <Ww>
+          <count>75</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>*ptr</ItemText>
+        </Ww>
+        <Ww>
+          <count>76</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>pPageControlObj</ItemText>
+        </Ww>
+        <Ww>
+          <count>77</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>pControlObj</ItemText>
+        </Ww>
+        <Ww>
+          <count>78</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>ADC_SoftwareStartConv(((ADC_TypeDef *) ((((uint32_t)0x40000000) + 0x00010000) + 0x2000)))</ItemText>
+        </Ww>
+        <Ww>
+          <count>79</count>
+          <WinNumber>2</WinNumber>
           <ItemText>ADC_GetConversionValue(((ADC_TypeDef *) ((((uint32_t)0x40000000) + 0x00010000) + 0x2000)))</ItemText>
+        </Ww>
+        <Ww>
+          <count>80</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>strlen((char*)PAGE_START));</ItemText>
+        </Ww>
+        <Ww>
+          <count>81</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>recv_buffer</ItemText>
+        </Ww>
+        <Ww>
+          <count>82</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>recv_buffer</ItemText>
+        </Ww>
+        <Ww>
+          <count>83</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>recv_buffer</ItemText>
         </Ww>
       </WatchWindow2>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>0</SubType>
-          <ItemText>ADC1ConvertedmV</ItemText>
+          <ItemText>0x08080050</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -819,7 +1018,7 @@
 
   <Group>
     <GroupName>GUI_Library</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -879,7 +1078,7 @@
 
   <Group>
     <GroupName>STM32F4-Discovery</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -952,7 +1151,7 @@
 
   <Group>
     <GroupName>STM32F4xx_StdPeriph_Driver</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1613,7 +1812,7 @@
 
   <Group>
     <GroupName>FreeRTOS</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

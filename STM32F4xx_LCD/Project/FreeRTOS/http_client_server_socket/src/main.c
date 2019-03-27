@@ -50,6 +50,7 @@ void LCDTask(void * pvParameters);
 void ActuatorTask(void * pvParameters);
 void vApplicationStackOverflowHook( TaskHandle_t xTask, signed char *pcTaskName );
 void vApplicationTickHook( void );
+void Clock(void * pvParameters);
 
 
 /* Extern variable -----------------------------------------------*/
@@ -69,8 +70,8 @@ extern float 	 		Probe_pH;
 extern float 	 		Probe_CLF;
 extern float 	 		RequireValuepH;
 extern float 	 		RequireValueCLF;
-extern uint8_t   	RequireValueDosepH_DoseHour_Display;
-extern uint8_t 		RequireValueDosepH_DoseDay_Display;
+extern int8_t   	RequireValueDosepH_DoseHour_Display;
+extern int8_t 		RequireValueDosepH_DoseDay_Display;
 extern uint16_t 	PoolVolume_Display;
 extern uint16_t 	FiltrationPeriod_Display;
 extern uint16_t 	CalibrationAir_Display;
@@ -126,6 +127,7 @@ int main(void)
     
 	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*12, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(ActuatorTask, "ActuatorTask", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
+	xTaskCreate(Clock, "Clock", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
 
 	/* Start scheduler */
   vTaskStartScheduler();
@@ -178,8 +180,22 @@ void ActuatorTask(void * pvParameters)
 		break;
 		default :
 		break;			
-	}
-		
+	}		
+}
+}
+/**
+  * @brief  My task
+  * @param  pvParameters not used
+  * @retval None
+  */
+void Clock(void * pvParameters)
+{
+  for ( ;; ) {
+	sec=sec+1;
+	if(sec>59) {min=min+1; sec=0; } 
+  if(min>59) { hour=hour+1; min=0; } 
+  if(hour>23) { hour=0; min=0; sec=0; }
+	vTaskDelay(1000);
 }
 }
 /**

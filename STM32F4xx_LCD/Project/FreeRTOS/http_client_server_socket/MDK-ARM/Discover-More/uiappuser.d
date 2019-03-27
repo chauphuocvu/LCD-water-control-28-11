@@ -59,3 +59,4 @@
 .\discover-more\uiappuser.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\discover-more\uiappuser.o: ..\inc\SSD1963_CMD.h
 .\discover-more\uiappuser.o: ..\MDK-ARM\flash_memory_driver.h
+.\discover-more\uiappuser.o: ..\MDK-ARM\DisplayNumber.h

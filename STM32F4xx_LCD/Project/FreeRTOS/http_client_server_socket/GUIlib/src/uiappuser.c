@@ -43,8 +43,8 @@ float 	 		Probe_pH;
 float 	 		Probe_CLF;
 float 	 		RequireValuepH;
 float 	 		RequireValueCLF;
-uint8_t   	RequireValueDosepH_DoseHour_Display;
-uint8_t 		RequireValueDosepH_DoseDay_Display;
+int8_t   	RequireValueDosepH_DoseHour_Display;
+int8_t 		RequireValueDosepH_DoseDay_Display;
 uint16_t 		PoolVolume_Display;
 uint16_t 		FiltrationPeriod_Display;
 uint16_t 		CalibrationAir_Display;
@@ -245,17 +245,15 @@ void ParametersPoolVolumeScreen_BackToStart(void)
 void ParametersPoolVolumeScreen_inc(void)
 {
 		PoolVolume_Display +=1;
-	if (PoolVolume_Display > 99)
-		PoolVolume_Display = 99;
+	if (PoolVolume_Display > 50)
+		PoolVolume_Display = 50;
 }
 //////////////////////////////////////////////////////////////
 void ParametersPoolVolumeScreen_dec(void)
 {
+		PoolVolume_Display -=1;
 	if (PoolVolume_Display == 0)
 		PoolVolume_Display = 0;
-	else
-		PoolVolume_Display -=1;
-	
 }
 //////////////////////////////////////////////////////////////
 void ParametersPoolVolumeScreen_OK(void)
@@ -293,10 +291,9 @@ void ParametersFitrationPeriodScreen_inc(void)
 	///////////////////////////////////////////////////////////////
 void ParametersFitrationPeriodScreen_dec(void)
 {	
+	FiltrationPeriod_Display -=1;
 	if (FiltrationPeriod_Display == 6)
-		FiltrationPeriod_Display = 6;
-	else
-		FiltrationPeriod_Display -=1;
+		FiltrationPeriod_Display = 6;		
 }
 	//////////////////////////////////////////////////////////////
 void ParametersFitrationPeriodScreen_OK(void)
@@ -468,11 +465,9 @@ void ParametersRequireValuepHScreen_inc(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValuepHScreen_dec(void)
 {
-	if(RequireValuepH_Display < (float)6.5)
-		RequireValuepH_Display = 6.5;
-	else
 		RequireValuepH_Display -=(float)0.1;
-	
+	if(RequireValuepH_Display < (float)6.5)
+		RequireValuepH_Display = 6.5;	
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValuepHScreen_OK(void)
@@ -511,10 +506,10 @@ void ParametersRequireValueCLFScreen_inc(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueCLFScreen_dec(void)
 {	
+		RequireValueCLF_Display -=(float)0.1;
 	if(RequireValueCLF_Display < (float)0.5)
 		RequireValueCLF_Display = 0.5;
-	else
-		RequireValueCLF_Display -=(float)0.1;
+		
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueCLFScreen_OK(void)
@@ -623,6 +618,7 @@ void CalibrationCLFProbeScreen_inc(void)
 }
 void CalibrationCLFProbeScreen_dec(void)
 {
+		Probe_CLF_Display -=(float)0.1;
 	if(Probe_CLF_Display == RequireValueCLF)
 	{
 		DestroyPage(CurrentScreen);
@@ -630,8 +626,6 @@ void CalibrationCLFProbeScreen_dec(void)
 	}
 	else if (Probe_CLF_Display < (float)0.5)
 		Probe_CLF_Display = 0.5;
-	else
-		Probe_CLF_Display -=(float)0.1;
 }
 void CalibrationCLFProbeScreen_OK(void)
 {
@@ -701,11 +695,9 @@ void ParametersRequireValueRedoxpH_pHScreen_inc(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueRedoxpH_pHScreen_dec(void)
 {
+		RequireValuepH_Display -=(float)0.1;
 	if(RequireValuepH_Display < (float)6.2)
 		RequireValuepH_Display = 6.2;
-	else
-		RequireValuepH_Display -=(float)0.1;
-	
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueRedoxpH_pHScreen_OK(void)
@@ -743,11 +735,9 @@ void ParametersRequireValueDosepH_DoseHourScreen_inc(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHourScreen_dec(void)
 {
-	if(RequireValueDosepH_DoseHour_Display == 0)
-		RequireValueDosepH_DoseHour_Display = 0;
-	else
 		RequireValueDosepH_DoseHour_Display -=1;
-	
+	if(RequireValueDosepH_DoseHour_Display < 0)
+		RequireValueDosepH_DoseHour_Display = 0;	
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHourScreen_OK(void)
@@ -785,10 +775,10 @@ void ParametersRequireValueDosepH_DoseHour_pHScreen_inc(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHour_pHScreen_dec(void)
 {
+		RequireValuepH_Display -=(float)0.1;
 	if(RequireValuepH_Display < (float)6.2)
 		RequireValuepH_Display = 6.2;
-	else
-		RequireValuepH_Display -=(float)0.1;
+		
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHour_pHScreen_OK(void)
@@ -826,10 +816,9 @@ void ParametersRequireValueDosepH_DoseDayScreen_inc(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDayScreen_dec(void)
 {
-	if(RequireValueDosepH_DoseDay_Display == 0)
-		RequireValueDosepH_DoseDay_Display = 0;
-	else
 		RequireValueDosepH_DoseDay_Display -=1;
+	if(RequireValueDosepH_DoseDay_Display < 0)
+		RequireValueDosepH_DoseDay_Display = 0;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDayScreen_OK(void)
@@ -906,10 +895,9 @@ void CalibrationWaterScreen_inc(void)
 //////////////////////////////////////////////////////////////
 void CalibrationWaterScreen_dec(void)
 {
+		CalibrationWater_Display -=1;
 	if(CalibrationWater_Display == 0)
 		CalibrationWater_Display = 0;
-	else 
-		CalibrationWater_Display -=1;
 }
 //////////////////////////////////////////////////////////////
 void CalibrationWaterScreen_OK(void)
@@ -939,12 +927,10 @@ void CalibrationAirScreen_inc(void)
 }
 //////////////////////////////////////////////////////////////
 void CalibrationAirScreen_dec(void)
-{
+{	
+		CalibrationAir_Display -=1;
 	if(CalibrationAir_Display == 0)
 		CalibrationAir_Display = 0;
-	else
-		CalibrationAir_Display -=1;
-	
 }
 //////////////////////////////////////////////////////////////
 void CalibrationAirScreen_OK(void)

@@ -1116,14 +1116,14 @@ GL_ErrStatus AddPageControlObj (uint16_t PosX, uint16_t PosY, GL_PageControls_Ty
 			/*added by Chau Phuoc Vu 9/11/2018*/
 			else if (objPTR->objType == GL_NEWRECTCONTROL)
       {
-				UARTprintf("GetObjSize Newrect\r\n");
+//				UARTprintf("GetObjSize Newrect\r\n");
 		  GL_NewRectControl_TypeDef* pTmp = ((GL_NewRectControl_TypeDef*)(objPTR->objPTR));
 				objCoordinates.MaxX = PosX + pTmp->Width;
         objCoordinates.MaxY = PosY + pTmp->Height;
 				objCoordinates.MinX = PosX;
 				objCoordinates.MinY = PosY;
 				/*added by Chau Phuoc Vu 16/11/2018*/
-				UARTprintf("SetNewRectControlVisible Newrect\r\n");
+//				UARTprintf("SetNewRectControlVisible Newrect\r\n");
           objPTR->SetObjVisible = SetNewRectControlVisible;
           objPTR->ID = pTmp->ID;
         }
@@ -1766,7 +1766,7 @@ GL_ErrStatus DestroyPageControl ( GL_Page_TypeDef* pPage, uint16_t ID )
     {
       GL_NewRectControl_TypeDef* pTmp;
       pTmp = (GL_NewRectControl_TypeDef*)(pPage->PageControls[index]->objPTR);
-			UARTprintf("DestroyPageControl Newrect\r\n");
+//			UARTprintf("DestroyPageControl Newrect\r\n");
             if ( pTmp->ID == ID )
       {
         free(pPage->PageControls[index]->objPTR);
@@ -1871,10 +1871,10 @@ GL_ErrStatus DestroyPage (GL_Page_TypeDef * pPage)
 		/*Added by Chau Phuoc Vu 9/11/2018*/
 		else if (pPage->PageControls[index]->objType == GL_NEWRECTCONTROL)
     {
-			UARTprintf("DestroyPage Newrect\r\n");
+//			UARTprintf("DestroyPage Newrect\r\n");
       GL_NewRectControl_TypeDef* pTmp;
       pTmp = (GL_NewRectControl_TypeDef*)(pPage->PageControls[index]->objPTR);
-			UARTprintf("DestroyPage DestroyPageControl Newrect\r\n");
+//			UARTprintf("DestroyPage DestroyPageControl Newrect\r\n");
       DestroyPageControl( pPage, pTmp->ID );
     }
     index--;
@@ -3754,7 +3754,7 @@ static GL_ObjDimensions_TypeDef GetObjSize(GL_PageControls_TypeDef* pPageControl
 	/*Added by Chau Phuoc Vu 9/11/2018*/
 	else if (pPageControl->objType == GL_NEWRECTCONTROL)
   {
-		UARTprintf("GetObjSize GetObjCoordinates\r\n");
+//		UARTprintf("GetObjSize GetObjCoordinates\r\n");
     GL_NewRectControl_TypeDef* pTmp;
     pTmp = (GL_NewRectControl_TypeDef*)(pPageControl->objPTR);
     dimensions.Length = pTmp->Width ;
@@ -3970,7 +3970,7 @@ static void CallPreEvents(GL_PageControls_TypeDef* pControl)
 			/*Added by chau phuoc vu */
 		case GL_NEWRECTCONTROL:
       pTmp = (GL_NewRectControl_TypeDef*)(pControl->objPTR);
-		UARTprintf("CallPreEvents Newrect\r\n");
+//		UARTprintf("CallPreEvents Newrect\r\n");
       ((GL_NewRectControl_TypeDef*)(pTmp))->isObjectTouched = GL_TRUE;
       pControl->SetObjVisible(pControl, pControl->objCoordinates);
 			GL_Delay(5);
@@ -4151,9 +4151,9 @@ void ProcessInputData(void)
 							if ( CompareCoordinates( tmpCoord.MinX + tmpSize.Length - 1, tmpCoord.MinX, tmpCoord.MinY + tmpSize.Height, tmpCoord.MinY ) )
               {
 //                CursorDraw(Cursor->X, Cursor->Y, CUR_DRAW_BEH);
-								UARTprintf("CallPreEvents\r\n");
+//								UARTprintf("CallPreEvents\r\n");
                 CallPreEvents(PagesList[p_index]->PageControls[c_index]);
-								UARTprintf("CallEvents\r\n");
+//								UARTprintf("CallEvents\r\n");
                 CallEvent(PagesList[p_index]->PageControls[c_index]);
 //                CursorDraw(Cursor->X, Cursor->Y, CUR_READ_DRAW_CUR);
                 u32_TSYCoordinate = 0;
@@ -4211,9 +4211,9 @@ static void CallEvent(GL_PageControls_TypeDef* pControl)
   {
 		/*Added by Chau Phuoc Vu 9/11/2018*/
 		 case GL_NEWRECTCONTROL:
-			 UARTprintf("CallEvent Newrect\r\n");
+//			 UARTprintf("CallEvent Newrect\r\n");
       pTmp = (GL_NewRectControl_TypeDef*)(pControl->objPTR);
-		 UARTprintf("CallEvent Newrect 2\r\n");
+//		 UARTprintf("CallEvent Newrect 2\r\n");
       ((GL_NewRectControl_TypeDef*)pTmp)->EventHandler();
 		 break;
     case GL_BUTTON:
@@ -4337,7 +4337,7 @@ GL_PageControls_TypeDef* NewRectControl (uint16_t ID, uint16_t Width, uint16_t H
 {
   GL_PageControls_TypeDef *pPageControlObj = NULL;
   GL_NewRectControl_TypeDef *pControlObj = NULL;
-	UARTprintf("GL_PageControls_TypeDef\r\n");
+//	UARTprintf("GL_PageControls_TypeDef\r\n");
   pControlObj = (GL_NewRectControl_TypeDef *)malloc(sizeof(GL_NewRectControl_TypeDef));
   if (pControlObj)
   {
@@ -4435,7 +4435,7 @@ static GL_ErrStatus SetNewRectControlVisible(GL_PageControls_TypeDef* pTmp, GL_C
   {
     return GL_ERROR;
   }
-	UARTprintf("in SetNewRectControlVisible Newrect\r\n");
+//	UARTprintf("in SetNewRectControlVisible Newrect\r\n");
   pThis->Control_Visible = GL_TRUE;
 	if (pThis->isObjectTouched == GL_FALSE)
 	{
@@ -4444,17 +4444,17 @@ static GL_ErrStatus SetNewRectControlVisible(GL_PageControls_TypeDef* pTmp, GL_C
 		if ((objCoordinates.MaxY - objCoordinates.MinY) <= 10)
 		{
 			j = 1;
-			UARTprintf("10\r\n");
+//			UARTprintf("10\r\n");
 		}
 		else if ((objCoordinates.MaxY - objCoordinates.MinY) <= 30)
 		{
 			j = 5;
-			UARTprintf("30\r\n");
+//			UARTprintf("30\r\n");
 		}
 		else if ((objCoordinates.MaxY - objCoordinates.MinY) <= 100)
 		{
 			j = 10;
-			UARTprintf("50\r\n");
+//			UARTprintf("50\r\n");
 		}
 		switch(pThis->Color)
 		{
@@ -4507,11 +4507,11 @@ static GL_ErrStatus SetNewRectControlVisible(GL_PageControls_TypeDef* pTmp, GL_C
 		{
 			case BLACK:
 				Color = WHITE;
-			UARTprintf("WHITE\r\n");
+//			UARTprintf("WHITE\r\n");
 				break;
 			case WHITE:
 				Color = BLACK;
-			UARTprintf("BLACK\r\n");
+//			UARTprintf("BLACK\r\n");
 				break;
 			case VU_GREEN:
 				Color = VU_RED;
@@ -4531,7 +4531,7 @@ static GL_ErrStatus SetNewRectControlVisible(GL_PageControls_TypeDef* pTmp, GL_C
 				Color = VU_GRAY;
 				break;
 			case NONE:
-				UARTprintf("NONE\r\n");
+//				UARTprintf("NONE\r\n");
 				Color = NONE;
 				break;
 			case WHITE_BLACK:
@@ -4544,22 +4544,22 @@ static GL_ErrStatus SetNewRectControlVisible(GL_PageControls_TypeDef* pTmp, GL_C
 		if ((objCoordinates.MaxY - objCoordinates.MinY) <= 10)
 		{
 			j = 2;
-			UARTprintf("10\r\n");
+//			UARTprintf("10\r\n");
 		}
 		else if ((objCoordinates.MaxY - objCoordinates.MinY) <= 30)
 		{
 			j = 5;
-			UARTprintf("30\r\n");
+//			UARTprintf("30\r\n");
 		}
 		else if ((objCoordinates.MaxY - objCoordinates.MinY) <= 100)
 		{
 			j = 10;
-			UARTprintf("50\r\n");
+//			UARTprintf("50\r\n");
 		}
 		if (pThis->Color != NONE)
 		{
 			GL_SetTextColor(Color);
-			UARTprintf("COLOR\r\n");
+//			UARTprintf("COLOR\r\n");
 			for (i = 0; i < j; i++)
 			{
 				GL_DrawRectangle(objCoordinates.MaxX, objCoordinates.MinX, objCoordinates.MaxY - i, objCoordinates.MinY + i);
@@ -4567,13 +4567,13 @@ static GL_ErrStatus SetNewRectControlVisible(GL_PageControls_TypeDef* pTmp, GL_C
 		}
 		else ;
 	}		
-	UARTprintf("in SetNewRectControlVisible GL_TRUE Newrect\r\n");
+//	UARTprintf("in SetNewRectControlVisible GL_TRUE Newrect\r\n");
   GL_SetFont(GL_FONT_BIG);
-	UARTprintf("in SetNewRectControlVisible GL_FONT_BIG Newrect\r\n");
+//	UARTprintf("in SetNewRectControlVisible GL_FONT_BIG Newrect\r\n");
   GL_SetBackColor(GL_White);
-	UARTprintf("in SetNewRectControlVisible GL_White Newrect\r\n");
+//	UARTprintf("in SetNewRectControlVisible GL_White Newrect\r\n");
   GL_SetTextColor(GL_Blue);
-	UARTprintf("in SetNewRectControlVisible GL_Blue Newrect\r\n");
+//	UARTprintf("in SetNewRectControlVisible GL_Blue Newrect\r\n");
   return GL_OK;
 }
 

@@ -92,5 +92,6 @@
 .\discover-more\main.o: ..\Embedded_GUI_HAL\inc\LcdHal.h
 .\discover-more\main.o: ..\MDK-ARM\flash_memory_driver.h
 .\discover-more\main.o: ..\MDK-ARM\DisplayNumber.h
+.\discover-more\main.o: ..\MDK-ARM\DisplayNumber.h
 .\discover-more\main.o: ..\MDK-ARM\ADC.h
 .\discover-more\main.o: ..\MDK-ARM\Actuator.h

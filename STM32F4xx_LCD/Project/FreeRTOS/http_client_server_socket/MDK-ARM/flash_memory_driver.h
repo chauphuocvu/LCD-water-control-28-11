@@ -4,6 +4,7 @@
 
 #include "stm32f4xx_flash.h"
 #include "uiappuser.h"
+#include "DisplayNumber.h"
 
 /** @defgroup FLASH_Sectors
   * @{
@@ -60,9 +61,12 @@
 #define FLASH_ADDR_REQUIRE_VALUE_PH									((uint32_t)0x08080030)	
 #define FLASH_ADDR_REQUIRE_VALUE_CLF								((uint32_t)0x08080040)
 #define FLASH_ADDR_REQUIRE_VALUE_REDOX							((uint32_t)0x08080050)
-#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEHOUR 		((uint32_t)0x08080052)
-#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY			((uint32_t)0x08080054)
 #define	FLASH_ADDR_LANGUAGE													((uint32_t)0x08080060)
+#define	FLASH_ADDR_HOUR															((uint32_t)0x08080064)
+#define	FLASH_ADDR_MIN															((uint32_t)0x08080066)
+#define	FLASH_ADDR_SEC															((uint32_t)0x08080068)
+#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY			((uint32_t)0x0808006B)
+#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEHOUR 		((uint32_t)0x08080070)
 
 
 

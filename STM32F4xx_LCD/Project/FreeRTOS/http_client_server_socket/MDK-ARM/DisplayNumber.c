@@ -3,6 +3,10 @@
 */
 #include "DisplayNumber.h"
 
+
+uint8_t hour = 00;
+uint8_t min = 00;
+uint8_t sec = 00;
 ////////////////////////////////////////////////////////////////////////
 void DisplayNumber(void)
 {
@@ -11,7 +15,9 @@ void DisplayNumber(void)
 			case StartScreen_df:
 				LCD_SetColors(WHITE,BLACK);
 				LCD_SetFont(&Font12x12);
-				LCD_DisplayStringLine(20,130,(uint8_t *)"00:00:01");
+				char string[8];
+				sprintf((char *)string,"%2d:%2d:%2d",hour,min,sec);
+				LCD_DisplayStringLine(20,130,(uint8_t *)string);
 // Chon man hinh de hien thi dc set tu Type of Probe
 			switch(TypeofProbe)
 			{
@@ -130,7 +136,7 @@ void DisplayNumber(void)
 			case ParametersRequireValueDosepH_DoseHour_pHScreen_df:
 				LCD_SetColors(BLACK,VU_YELLOW);
 				LCD_SetFont(&Font16x24);
-				DisplayIntegerNumber(100,100,5,2,None);
+				DisplayIntegerNumber(100,100,RequireValueDosepH_DoseHour_Display,2,None);
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
 				DisplayDoubleNumber(100, 330, RequireValuepH_Display, 1, 1, None);
@@ -142,7 +148,7 @@ void DisplayNumber(void)
 			case ParametersRequireValueDosepH_DoseDay_pHScreen_df:
 				LCD_SetColors(BLACK,VU_GRAY);
 				LCD_SetFont(&Font16x24);
-				DisplayIntegerNumber(100,100,5,2,None);
+				DisplayIntegerNumber(100,100,RequireValueDosepH_DoseDay_Display,2,None);
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
 				DisplayDoubleNumber(100, 330, RequireValuepH_Display, 1, 1, None);
@@ -293,7 +299,6 @@ void DisplayDoubleNumber(uint16_t line, uint16_t column, double value, uint8_t n
 	}
 	LCD_DisplayStringLine(line,column,(uint8_t *)string);
 }
-
 
 
 
