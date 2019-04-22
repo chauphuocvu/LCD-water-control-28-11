@@ -97,6 +97,13 @@
 /* Exported functions ------------------------------------------------------- */  
 void Time_Update(void);
 void Delay(uint32_t nCount);
+extern uint16_t counter_delay_us;
+extern float pH_read;
+extern float ORP_read;
+extern float pH_V_read;
+extern float V_pH, V_Clo;
+extern float V_step;  // litter
+extern uint32_t step_pH,step_Clo;
 
 
 #ifdef __cplusplus

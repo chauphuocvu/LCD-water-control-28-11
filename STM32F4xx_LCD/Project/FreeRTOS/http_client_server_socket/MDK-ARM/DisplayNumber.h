@@ -5,6 +5,7 @@
 #include "stm32f4_discovery_LCD_SSD1963.h"
 #include "uiframework.h"
 #include "uiappuser.h"
+#include "main.h"
 
 #define None	0
 #define Time	1
@@ -20,6 +21,7 @@
 extern uint8_t hour;
 extern uint8_t min;
 extern uint8_t sec;
+
 void DisplayNumber(void);
 
 

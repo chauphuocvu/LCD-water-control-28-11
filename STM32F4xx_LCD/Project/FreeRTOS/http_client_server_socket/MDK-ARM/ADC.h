@@ -14,11 +14,11 @@
 
 
 extern __IO uint16_t ADC1ConvertedValue;
-extern __IO uint32_t ADC1ConvertedVoltage;
+extern __IO float ADC1ConvertedVoltage;
 
 
 
-uint32_t GetMiliVoltage(uint8_t Sensor);
+float GetMiliVoltage(uint8_t Sensor);
 /* ADC1 init function */
 void ADC_Config(void);
 

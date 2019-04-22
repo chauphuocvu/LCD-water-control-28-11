@@ -58,12 +58,12 @@ void DisplayNumber(void)
 			case DosingTestScreen_df:
 				LCD_SetColors(BLACK,VU_YELLOW);
 				LCD_SetFont(&Font16x24);
-				DisplayIntegerNumber(120,85,150,3,ml);
+				DisplayIntegerNumber(120,85,V_step*step_Clo,3,ml);
 				LCD_SetFont(&Font12x12);
 				DisplayIntegerNumber(70,155,400,3,ml);
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
-				DisplayIntegerNumber(120,315,150,3,ml);
+				DisplayIntegerNumber(120,315,V_step*step_pH,3,ml);
 				LCD_SetFont(&Font12x12);
 				DisplayIntegerNumber(70, 385, 200,3,ml);
 			break;

@@ -7,7 +7,7 @@
 /* You can monitor the converted value by adding the variable "ADC1ConvertedValue" 
    to the debugger watch window */
 __IO uint16_t ADC1ConvertedValue;
-__IO uint32_t ADC1ConvertedmV = 0;
+__IO float ADC1ConvertedmV = 0;
 
 /* ADC1 init function */
 void ADC_Config(void)
@@ -50,7 +50,7 @@ void ADC_Config(void)
 
 
 
-uint32_t GetMiliVoltage(uint8_t Sensor)
+float GetMiliVoltage(uint8_t Sensor)
 {
 	ADC_RegularChannelConfig(ADC1, Sensor, 1, ADC_SampleTime_84Cycles);
 	// Start ADC conversion

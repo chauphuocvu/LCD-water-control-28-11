@@ -21,6 +21,7 @@
 #include "stm32f4xx.h"
 #include "stm32f4xx_conf.h"
 
+
 #ifndef __cplusplus
 //typedef enum {FALSE = 0, TRUE = !FALSE} bool;
 #endif
@@ -65,6 +66,17 @@
 #define TIMER_DELAY_PERIOD						1000
 #define TIMER_DELAY_PRESCALER					42
 #define TIMER_DELAY_CLOCK							RCC_APB1Periph_TIM4
+
+/*Chau phuoc vu 12/4/2019*/
+#define TIMER_US_DELAY			TIM5
+#define TIMER_US_DELAY_CLOCK	RCC_APB1Periph_TIM5
+#define TIMER_US_DELAY_PERIOD			80
+#define TIMER_US_DELAY_PRESCALER	0
+#define TIMER_US_DELAY_PREEMPTION_PRIORITY				7
+#define TIMER_US_DELAY_SUB_PRIORITY							0
+#define TIMER_US_DELAY_IRQ_CHANNEL								TIM5_IRQn
+#define TIMER_US_DELAY_PREEMPTION_HIGHPRIORITY		6
+#define TIMER_US_DELAY_SUB_HIGHPRIORITY					0
 
 /** 
  * @brief  NVIC definitions 
@@ -116,6 +128,8 @@
 #define TIMER_TIMEOUT_IRQ_HANDLER			 				TIM3_IRQHandler
 
 #define TIMER_DELAY_IRQ_HANDLER								TIM4_IRQHandler
+/*chau phuoc vu 12/04/2019*/
+#define TIMER_US_DELAY_IRQ_HANDLER								TIM5_IRQHandler
 
 /* Exported functions ------------------------------------------------------- */
 void HW_Init(void);
@@ -143,7 +157,8 @@ void StartTimeOut(uint16_t delay);
 void StopTimeOut(void);
 void stm32_systick_disable(void);
 /* External variables --------------------------------------------------------*/
-
+/*Chau phuoc vu 12/04/2019*/
+void decrement_us_delay(void);
 #endif  /*__HW_CONFIG_H*/
 
 /******************* (C) COPYRIGHT 2010 STMicroelectronics *****END OF FILE****/

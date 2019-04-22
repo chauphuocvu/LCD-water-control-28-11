@@ -28,7 +28,8 @@
 //#include "stm32f4xx_flash.h"
 #include "stm32f4xx_exti.h"
 #include "stm32f4xx_tim.h"
-
+/*chau phuoc vu 12/04/2019*/
+#include "main.h"
 /** @addtogroup User
  * 	@{
  */
@@ -245,7 +246,16 @@ NVIC_InitTypeDef NVIC_InitStructure;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority 		= TIMER_DELAY_PREEMPTION_PRIORITY;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority 		 		= TIMER_DELAY_SUB_PRIORITY;
 	NVIC_InitStructure.NVIC_IRQChannelCmd 						= ENABLE;
-	NVIC_Init(&NVIC_InitStructure);						 	
+	NVIC_Init(&NVIC_InitStructure);	
+
+
+/*chau phuoc vu 12/04/2019*/
+NVIC_InitTypeDef NVIC_InitStruct;
+    NVIC_InitStruct.NVIC_IRQChannel = TIMER_US_DELAY_IRQ_CHANNEL;
+    NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = TIMER_US_DELAY_PREEMPTION_PRIORITY;
+    NVIC_InitStruct.NVIC_IRQChannelSubPriority = TIMER_US_DELAY_SUB_PRIORITY;
+    NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStruct);
 }
 
 
@@ -320,6 +330,15 @@ void decrement_delay(void)
 	}
 }
 
+/*chau phuoc vu 12/04/2019*/
+void decrement_us_delay(void)
+{
+	if(counter_delay_us != 0)
+	{
+		/* Decrements the counter */ 
+		counter_delay_us--;
+	}
+}
 /**
  *	@brief  Configures the CR95HF interface pin
  *  @param  None.

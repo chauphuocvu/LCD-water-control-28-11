@@ -37,3 +37,8 @@
 .\discover-more\hw_config.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
 .\discover-more\hw_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\discover-more\hw_config.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\discover-more\hw_config.o: ..\inc\main.h
+.\discover-more\hw_config.o: ..\inc\stm32f4x7_eth_bsp.h
+.\discover-more\hw_config.o: ..\STM32F4Discovery\stm32f4_discovery_user.h
+.\discover-more\hw_config.o: ..\inc\miscellaneous.h
+.\discover-more\hw_config.o: ..\inc\debug.h

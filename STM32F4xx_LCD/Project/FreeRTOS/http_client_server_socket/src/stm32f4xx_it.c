@@ -59,6 +59,9 @@
 /* lwip includes */
 #include "lwip/sys.h"
 
+
+/*chau phuoc vu 12/04/2019*/
+#include "main.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -236,5 +239,12 @@ void TIMER_DELAY_IRQ_HANDLER(void)
 	/* Clear TIMER update interrupt flag */
 //	TIM_ClearITPendingBit(TIMER_DELAY, TIM_IT_Update);
 //	decrement_delay();
+}
+/*chau phuoc vu 12/04/2019*/
+void TIMER_US_DELAY_IRQ_HANDLER(void)
+{
+	/* Clear TIMER update interrupt flag */
+	TIM_ClearITPendingBit(TIMER_US_DELAY, TIM_IT_Update);
+	decrement_us_delay();
 }
 /*********** Portions COPYRIGHT 2012 Embest Tech. Co., Ltd.*****END OF FILE****/
