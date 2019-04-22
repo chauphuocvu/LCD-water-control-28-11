@@ -76,7 +76,10 @@ extern float 	 		RequireValueCLF_Display;
 #define START_STOP						1
 #define STOP_START						2
 #define STOP_STOP							3
- 
+#define CALIBRATION_PH				0
+#define NO_CALIBRATION_PH			1
+#define CALIBRATION_RX				0
+#define NO_CALIBRATION_RX			1
  
 /*Start Screen */
 void StartScreen_Setting(void);

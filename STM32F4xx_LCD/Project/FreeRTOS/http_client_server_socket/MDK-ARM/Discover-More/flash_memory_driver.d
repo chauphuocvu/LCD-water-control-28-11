@@ -59,3 +59,8 @@
 .\discover-more\flash_memory_driver.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h
 .\discover-more\flash_memory_driver.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h
 .\discover-more\flash_memory_driver.o: ..\Embedded_GUI_Library\inc\graphicObject.h
+.\discover-more\flash_memory_driver.o: ..\inc\main.h
+.\discover-more\flash_memory_driver.o: ..\inc\stm32f4x7_eth_bsp.h
+.\discover-more\flash_memory_driver.o: ..\inc\miscellaneous.h
+.\discover-more\flash_memory_driver.o: ..\inc\hw_config.h
+.\discover-more\flash_memory_driver.o: ..\inc\debug.h

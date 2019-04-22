@@ -57,3 +57,8 @@
 .\discover-more\displaynumber.o: ..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h
 .\discover-more\displaynumber.o: ..\Embedded_GUI_Library\inc\graphicObject.h
 .\discover-more\displaynumber.o: ..\GUIlib\inc\uiappuser.h
+.\discover-more\displaynumber.o: ..\inc\main.h
+.\discover-more\displaynumber.o: ..\inc\stm32f4x7_eth_bsp.h
+.\discover-more\displaynumber.o: ..\inc\miscellaneous.h
+.\discover-more\displaynumber.o: ..\inc\hw_config.h
+.\discover-more\displaynumber.o: ..\inc\debug.h

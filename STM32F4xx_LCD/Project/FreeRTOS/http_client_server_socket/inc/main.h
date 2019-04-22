@@ -104,7 +104,7 @@ extern float pH_V_read;
 extern float V_pH, V_Clo;
 extern float V_step;  // litter
 extern uint32_t step_pH,step_Clo;
-
+extern float pH_V_calibration;
 
 #ifdef __cplusplus
 }

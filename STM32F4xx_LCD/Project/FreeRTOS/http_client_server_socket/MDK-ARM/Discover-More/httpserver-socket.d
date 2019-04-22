@@ -79,4 +79,8 @@
 .\discover-more\httpserver-socket.o: ..\Embedded_GUI_HAL\inc\stm32HAL.h
 .\discover-more\httpserver-socket.o: ..\Embedded_GUI_Library\inc\graphicObject.h
 .\discover-more\httpserver-socket.o: ..\GUIlib\inc\uiappuser.h
+.\discover-more\httpserver-socket.o: ..\inc\main.h
+.\discover-more\httpserver-socket.o: ..\inc\stm32f4x7_eth_bsp.h
+.\discover-more\httpserver-socket.o: ..\inc\miscellaneous.h
+.\discover-more\httpserver-socket.o: ..\inc\hw_config.h
 .\discover-more\httpserver-socket.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

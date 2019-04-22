@@ -95,3 +95,4 @@
 .\discover-more\main.o: ..\MDK-ARM\DisplayNumber.h
 .\discover-more\main.o: ..\MDK-ARM\ADC.h
 .\discover-more\main.o: ..\MDK-ARM\Actuator.h
+.\discover-more\main.o: ..\MDK-ARM\Sensor.h

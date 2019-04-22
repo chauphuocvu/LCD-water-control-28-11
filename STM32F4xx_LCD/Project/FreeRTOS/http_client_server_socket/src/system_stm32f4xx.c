@@ -145,9 +145,10 @@
 /******************************************************************************/
 
 /************************* PLL Parameters *************************************/
+/*Chau Phuoc Vu 12/4/2019 */
 /* PLL_VCO = (HSE_VALUE or HSI_VALUE / PLL_M) * PLL_N */
-//#define PLL_M      25 dung cho 25mhz
-#define PLL_M      8 //dung cho 8mhz
+#define PLL_M      25 //dung cho 25mhz
+//#define PLL_M      8 //dung cho 8mhz
 #define PLL_N      336
 //#define PLL_N      16
 
@@ -382,8 +383,7 @@ static void SetSysClock(void)
     RCC->CFGR |= RCC_CFGR_PPRE1_DIV4;
 
     /* Configure the main PLL */
-    RCC->PLLCFGR = PLL_M | (PLL_N << 6) | (((PLL_P >> 1) -1) << 16) |
-                   (RCC_PLLCFGR_PLLSRC_HSE) | (PLL_Q << 24);
+    RCC->PLLCFGR = PLL_M | (PLL_N << 6) | (((PLL_P >> 1) -1) << 16) | (RCC_PLLCFGR_PLLSRC_HSE) | (PLL_Q << 24);
 
     /* Enable the main PLL */
     RCC->CR |= RCC_CR_PLLON;

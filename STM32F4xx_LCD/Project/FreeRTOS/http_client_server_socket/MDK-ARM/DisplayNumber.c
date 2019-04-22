@@ -58,12 +58,12 @@ void DisplayNumber(void)
 			case DosingTestScreen_df:
 				LCD_SetColors(BLACK,VU_YELLOW);
 				LCD_SetFont(&Font16x24);
-				DisplayIntegerNumber(120,85,V_step*step_Clo,3,ml);
+//				DisplayIntegerNumber(120,85,V_step*step_Clo,3,ml);
 				LCD_SetFont(&Font12x12);
 				DisplayIntegerNumber(70,155,400,3,ml);
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
-				DisplayIntegerNumber(120,315,V_step*step_pH,3,ml);
+//				DisplayIntegerNumber(120,315,V_step*step_pH,3,ml);
 				LCD_SetFont(&Font12x12);
 				DisplayIntegerNumber(70, 385, 200,3,ml);
 			break;
@@ -108,6 +108,7 @@ void DisplayNumber(void)
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
 				DisplayDoubleNumber(100, 330, Probe_pH_Display, 1, 1, None);
+//				DisplayDoubleNumber(100, 330, Probe_pH_Display, 1, 1, None);
 				LCD_SetFont(&Font12x12);
 				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
 			break;

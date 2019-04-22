@@ -96,7 +96,7 @@ float pH_V_read;
 float V_pH, V_Clo;
 float V_step = 0.001;  // litter
 uint32_t step_pH,step_Clo;
-
+float pH_V_calibration = 0.0005;
 /* Private functions ---------------------------------------------------------*/
 unsigned int temp;
 void DS18B20_Write1();
@@ -128,43 +128,43 @@ int main(void)
 	GL_SetFont(GL_FONT_BIG);
 	TP_Init();
 	ActuatorConfig();
-//	ADC_Config();
-//  readCalibrationValue();
-//	/*Read value set before*/
-//	ReadSavedValue();	
-//	Show_StartScreen();
-//  /* Configure Ethernet (GPIOs, clocks, MAC, DMA) */ 
-//  ETH_BSP_Config();
-//    
-//  /* Initilaize the LwIP stack */
-//  LwIP_Init();	
-  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4); 
-//  /* Initialize webserver demo */
-//  http_server_socket_init();
-//	/* Initialize http client demo */
-//	//http_client_socket_init();
-	
-	/************************************************************/
-	Interrupts_Config();
-   GPIO_InitTypeDef  GPIO_InitStructure;
-  /* GPIOG Peripheral clock enable */
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
-  /* Configure in output pushpull mode */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-  GPIO_Init(GPIOB, &GPIO_InitStructure);
+	ADC_Config();
+  readCalibrationValue();
+	/*Read value set before*/
+	ReadSavedValue();	
+	Show_StartScreen();
+  /* Configure Ethernet (GPIOs, clocks, MAC, DMA) */ 
+  ETH_BSP_Config();
     
+  /* Initilaize the LwIP stack */
+  LwIP_Init();	
+  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4); 
+  /* Initialize webserver demo */
+  http_server_socket_init();
+	/* Initialize http client demo */
+	//http_client_socket_init();
+//	
+////	/************************************************************/
+////	Interrupts_Config();
+////   GPIO_InitTypeDef  GPIO_InitStructure;
+////  /* GPIOG Peripheral clock enable */
+////  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+////  /* Configure in output pushpull mode */
+////  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+////  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+////  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+////  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+////  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+////  GPIO_Init(GPIOB, &GPIO_InitStructure);
+//    
 #ifdef USE_DHCP
   /* Start DHCPClient */
   xTaskCreate(LwIP_DHCP_task, "DHCPClient", configMINIMAL_STACK_SIZE * 2, NULL,DHCP_TASK_PRIO, NULL);
 #endif
-    
-//	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*12, NULL, LED_TASK_PRIO, NULL);
+//    
+	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*12, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(ActuatorTask, "ActuatorTask", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
-//	xTaskCreate(Clock, "Clock", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
+	xTaskCreate(Clock, "Clock", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
 		xTaskCreate(Read_pH_ORP, "Read_pH_ORP", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
 
 	/* Start scheduler */

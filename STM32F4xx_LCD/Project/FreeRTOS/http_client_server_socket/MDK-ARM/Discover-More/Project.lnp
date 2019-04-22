@@ -14,8 +14,6 @@
 ".\discover-more\adc.o"
 ".\discover-more\actuator.o"
 ".\discover-more\sensor.o"
-".\discover-more\tm_stm32_ds18b20.o"
-".\discover-more\tm_stm32_onewire.o"
 ".\discover-more\pictures.o"
 ".\discover-more\uiappuser.o"
 ".\discover-more\uiframework.o"
