@@ -95,9 +95,9 @@
 
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */  
+void DelayMicro(uint16_t delay);
 void Time_Update(void);
-void Delay(uint32_t nCount);
-extern uint16_t counter_delay_us;
+extern volatile uint16_t counter_delay_us;
 extern float pH_read;
 extern float ORP_read;
 extern float pH_V_read;

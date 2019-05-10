@@ -54,7 +54,9 @@ float 	 		Probe_pH_Display;
 float 		 	Probe_CLF_Display;
 float 		 	RequireValuepH_Display;
 float 		 	RequireValueCLF_Display;
-	 
+/*chau phuoc vu 25/4/2019*/
+uint8_t Calibration_pH_Flag = NO_CALIBRATION_PH;
+uint8_t Calibration_Rx_Flag = NO_CALIBRATION_RX; 
 
 /*Start Screen */
 void StartScreen_Setting(void)
@@ -114,12 +116,16 @@ void SettingsScreen_SaveData(void)
 /*DosingTest Screen */
 void DosingTestScreen_Back(void)
 {
+	DosingTest_Flag = START_START;
+	step_Clo = step_pH = 0; 
 	DestroyPage(CurrentScreen);
 	Show_SettingsScreen();
 }
 //////////////////////////////////////////////////////////////
 void DosingTestScreen_BackToStart(void)
 {
+	DosingTest_Flag = START_START;
+	step_Clo = step_pH = 0; 
 	DestroyPage(CurrentScreen);
 	Show_StartScreen();
 }
@@ -564,16 +570,25 @@ void CalibrationScreen_AirThermometer(void)
 void CalibrationpHProbeScreen_Back(void)
 {
 	DestroyPage(CurrentScreen);
+	/*chau phuoc vu 25/1/2019*/
+	Calibration_pH_Flag = NO_CALIBRATION_PH;
+	
 	Show_CalibrationScreen();
 }
 void CalibrationpHProbeScreen_BackToStart(void)
 {
 	DestroyPage(CurrentScreen);
+	/*chau phuoc vu 25/1/2019*/
+	Calibration_pH_Flag = NO_CALIBRATION_PH;
+	
 	Show_StartScreen();
 }
 void CalibrationpHProbeScreen_inc(void)
 {
-		Probe_pH_Display +=(float)0.1;
+	/*chau phuoc vu 25/1/2019*/
+	Calibration_pH_Flag = CALIBRATION_PH;
+	
+	Probe_pH_Display +=(float)0.1;
 	if(Probe_pH_Display > (float)7.8)
 	{
 		DestroyPage(CurrentScreen);
@@ -583,7 +598,10 @@ void CalibrationpHProbeScreen_inc(void)
 }
 void CalibrationpHProbeScreen_dec(void)
 {
-		Probe_pH_Display -=(float)0.1;
+	/*chau phuoc vu 25/1/2019*/
+	Calibration_pH_Flag = CALIBRATION_PH;
+	
+	Probe_pH_Display -=(float)0.1;
 	if(Probe_pH_Display < (float)6.2)
 	{
 		DestroyPage(CurrentScreen);
@@ -594,6 +612,8 @@ void CalibrationpHProbeScreen_dec(void)
 void CalibrationpHProbeScreen_OK(void)
 {
 	Probe_pH = Probe_pH_Display;
+/*Chau Phuoc Vu 23/4/2019*/
+	pH_V_calibration = pH_V_read;
 }
 
 

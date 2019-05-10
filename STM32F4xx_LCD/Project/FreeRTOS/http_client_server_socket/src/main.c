@@ -28,9 +28,8 @@
 #include "ADC.h"
 #include "Actuator.h"
 #include "Sensor.h"
-//#include "tm_stm32_ds18b20.h"
+#include "ds18b20_mflib.h"
 
-/* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 
 /*--------------- LCD Messages ---------------*/
@@ -42,14 +41,10 @@
 TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 TIM_OCInitTypeDef  TIM_OCInitStructure;
 uint16_t PrescalerValue = 0;
-#define DS18B20_SKIP_ROM			0xCC
-#define DS18B20_CONVERT_T			0x44
-#define DS18B20_READ_SCRATCHPAD	0xBE	
+
 /*--------------- Tasks Priority -------------*/
 #define DHCP_TASK_PRIO   ( tskIDLE_PRIORITY + 2 )      
 #define LED_TASK_PRIO    ( tskIDLE_PRIORITY + 1 )
-
-
 
 
 /* Private function prototypes -----------------------------------------------*/
@@ -93,21 +88,17 @@ extern float 	 		RequireValueCLF_Display;
 float pH_read;
 float ORP_read;
 float pH_V_read;
-float V_pH, V_Clo;
-float V_step = 0.001;  // litter
+/*chau phuoc vu 23/4/2019*/
+float RX_V_read;
+float Volume_pH, Volume_Clo;
+float V_step = 0.1;  // ml
 uint32_t step_pH,step_Clo;
 float pH_V_calibration = 0.0005;
 /* Private functions ---------------------------------------------------------*/
 unsigned int temp;
-void DS18B20_Write1();
-void DS18B20_Write0();
-void DS18B20_Write_Bit(unsigned char b);
-unsigned char DS18B20_Read_Bit();
-void DS18B20_Write_Byte(unsigned char b);
-unsigned char DS18B20_Read_Byte();
-unsigned char DS18B20_Reset();
-void d_us(uint16_t time);
-uint16_t counter_delay_us;
+void DelayMicro(uint16_t delay);
+volatile uint16_t counter_delay_us;
+static void TimerDelay_us_Config( void );
 /**
   * @brief  Main program.
   * @param  None
@@ -145,27 +136,19 @@ int main(void)
 	//http_client_socket_init();
 //	
 ////	/************************************************************/
-////	Interrupts_Config();
-////   GPIO_InitTypeDef  GPIO_InitStructure;
-////  /* GPIOG Peripheral clock enable */
-////  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
-////  /* Configure in output pushpull mode */
-////  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
-////  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-////  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-////  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
-////  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-////  GPIO_Init(GPIOB, &GPIO_InitStructure);
+//	Interrupts_Config();
+
+//	TimerDelay_us_Config();
 //    
 #ifdef USE_DHCP
   /* Start DHCPClient */
   xTaskCreate(LwIP_DHCP_task, "DHCPClient", configMINIMAL_STACK_SIZE * 2, NULL,DHCP_TASK_PRIO, NULL);
 #endif
 //    
-	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*12, NULL, LED_TASK_PRIO, NULL);
+	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(ActuatorTask, "ActuatorTask", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(Clock, "Clock", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
-		xTaskCreate(Read_pH_ORP, "Read_pH_ORP", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
+//  xTaskCreate(Read_pH_ORP, "Read_pH_ORP", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
 
 	/* Start scheduler */
   vTaskStartScheduler();
@@ -194,9 +177,24 @@ Chau phuoc vu 18/4/2019
   */
 void Read_pH_ORP(void * pvParameters)
 {
-  for ( ;; ) {		
+  for ( ;; ) {	
+/**
+Chau phuoc vu 23/4/2019
+  */
 	pH_V_read = (GetMiliVoltage(pHSensor)/1000 - 1.611)/(-5.504464286);
-	pH_read = 7 - (pH_V_read - 0.0005)/slope_pH(30);
+	pH_read = Probe_pH - (pH_V_read - pH_V_calibration)/slope_pH(25);
+	/* chau phuoc vu 25/4/2019*/
+	RX_V_read = (/*GetMiliVoltage(ORPSensor)*/1149/1000 - 0.0741)/(2.31733631);
+	if (Calibration_pH_Flag == NO_CALIBRATION_PH)
+	{
+		Probe_pH_Display = pH_read;
+	}
+	/* chau phuoc vu 27/4/2019*/
+	if (Calibration_Rx_Flag == NO_CALIBRATION_RX)
+	{
+		Probe_CLF_Display = RX_V_read;
+	}
+	vTaskDelay(200);
 }
 }
 
@@ -207,12 +205,12 @@ void Read_pH_ORP(void * pvParameters)
   */
 void ActuatorTask(void * pvParameters)
 {
-  for ( ;; ) {	
+  for ( ;; ) {
 //Control Pump pH and Clo
 	switch(DosingTest_Flag)
 	{
-		case START_START :
-			if (step_Clo < 2000)
+		case STOP_STOP :
+			if (step_Clo < 4000)
 			{
 				ControlActuator(ON,GPIOA, PUMP_RX);
 				step_Clo++;
@@ -222,54 +220,40 @@ void ActuatorTask(void * pvParameters)
 				ControlActuator(ON,GPIOA, PUMP_PH);
 				step_pH++ ;
 			}
-			vTaskDelay(3);
+			vTaskDelay(1);
 			ControlActuator(OFF,GPIOA, PUMP_RX);
 			ControlActuator(OFF,GPIOA, PUMP_PH);
 			vTaskDelay(3);
+		break;
+		case 	STOP_START :
+			if (step_Clo < 4000)
+			{
+				ControlActuator(ON,GPIOA, PUMP_RX);
+				step_Clo++;
+			}
+			vTaskDelay(1);
+			ControlActuator(OFF,GPIOA, PUMP_RX);
+			vTaskDelay(3);
+			ControlActuator(OFF,GPIOA, PUMP_PH);
 		break;
 		case START_STOP	 :
-			if (step_Clo < 2000)
-			{
-				ControlActuator(ON,GPIOA, PUMP_RX);
-				step_Clo++;
-			}
-			vTaskDelay(3);
-			ControlActuator(OFF,GPIOA, PUMP_RX);
-			vTaskDelay(3);
-			ControlActuator(OFF,GPIOA, PUMP_PH);
-		break;
-		case STOP_START	 :
 			ControlActuator(OFF,GPIOA, PUMP_RX);
 			if (step_pH < 2000)
 			{
 				ControlActuator(ON,GPIOA, PUMP_PH);
 				step_pH++ ;
 			}
-			vTaskDelay(3);
+			vTaskDelay(1);
 			ControlActuator(OFF,GPIOA, PUMP_PH);
 			vTaskDelay(3);
 		break;
-		case STOP_STOP	 :
+		case START_START	 :
 			ControlActuator(OFF,GPIOA, PUMP_RX);
 			ControlActuator(OFF,GPIOA, PUMP_PH);
 		break;
 		default :
 		break;			
 	}		
-//while(DS18B20_Reset()){;}
-//		DS18B20_Write_Byte(DS18B20_SKIP_ROM);
-//		DS18B20_Write_Byte(DS18B20_CONVERT_T);
-
-//		vTaskDelay(750);
-
-//		while(DS18B20_Reset());
-//		DS18B20_Write_Byte(DS18B20_SKIP_ROM);
-//		DS18B20_Write_Byte(DS18B20_READ_SCRATCHPAD);
-
-//		temp = DS18B20_Read_Byte();
-//		temp = (DS18B20_Read_Byte() << 8) | temp;
-	DS18B20_Reset();
-
 }
 }
 /**
@@ -284,6 +268,14 @@ void Clock(void * pvParameters)
 	if(sec>59) {min=min+1; sec=0; } 
   if(min>59) { hour=hour+1; min=0; } 
   if(hour>23) { hour=0; min=0; sec=0; }
+//	ds18b20_init_seq();
+//	ds18b20_send_rom_cmd(SKIP_ROM_CMD_BYTE);
+//	ds18b20_send_function_cmd(CONVERT_T_CMD);
+// 	DelayMicro(100);
+//	ds18b20_init_seq();
+//	ds18b20_send_rom_cmd(SKIP_ROM_CMD_BYTE);
+//	ds18b20_send_function_cmd(READ_SCRATCHPAD_CMD);
+//	temp = ds18b20_read_temp();	// returns float value
 	vTaskDelay(1000);
 }
 }
@@ -298,6 +290,16 @@ void GPIO_Config(void)
 	STM_EVAL_LEDInit(LCD_RST); 
 	STM_EVAL_LEDInit(BZ);
 	STM_EVAL_LEDInit(LCD_BL);
+//	   GPIO_InitTypeDef  GPIO_InitStructure;
+//  /* GPIOG Peripheral clock enable */
+//  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+//  /* Configure in output pushpull mode */
+//  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+//  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+//  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+//  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+//  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+//  GPIO_Init(GPIOB, &GPIO_InitStructure);
 }
 
 
@@ -335,7 +337,7 @@ void vApplicationMallocFailedHook( void )
 	to query the size of free heap space that remains (although it does not
 	provide information on how the remaining heap might be fragmented). */
 	taskDISABLE_INTERRUPTS();
-//	UARTprintf("freeHeapsize = %d\n",xPortGetFreeHeapSize());
+	UARTprintf("freeHeapsize = %d\n",xPortGetFreeHeapSize());
 	for( ;; );
 }
 void vApplicationStackOverflowHook( TaskHandle_t xTask,
@@ -345,92 +347,6 @@ void vApplicationStackOverflowHook( TaskHandle_t xTask,
 void vApplicationTickHook( void )
 {
 	TimingDelay_Decrement();
-}
-/*********** Portions COPYRIGHT 2012 Embest Tech. Co., Ltd.*****END OF FILE****/
-// Return 0: Ok
-// Return 1: FAIL
-unsigned char DS18B20_Reset()
-{
-	unsigned char result;
-
-	GPIO_ResetBits(GPIOB, GPIO_Pin_0);
-	d_us(480);
-	
-	GPIO_SetBits(GPIOB, GPIO_Pin_0);
-	d_us(70);
-	
-	result = GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0);
-
-	d_us(410);
-
-	return result;
-}
-void DS18B20_Write1()
-{
-	GPIO_ResetBits(GPIOB, GPIO_Pin_0);
-	d_us(6);
-	GPIO_SetBits(GPIOB, GPIO_Pin_0);
-	d_us(64);
-}
-
-void DS18B20_Write0()
-{
-	GPIO_ResetBits(GPIOB, GPIO_Pin_0);
-	d_us(60);
-	GPIO_SetBits(GPIOB, GPIO_Pin_0);
-	d_us(10);	
-}
-
-void DS18B20_Write_Bit(unsigned char b)
-{
-	if(b == 1)
-	{
-	 	DS18B20_Write1();
-	}
-	else
-	{
-	 	DS18B20_Write0();
-	}
-}
-
-unsigned char DS18B20_Read_Bit()
-{
-	unsigned char result;
-
-	GPIO_ResetBits(GPIOB, GPIO_Pin_0);
-	d_us(6);
-
-	GPIO_SetBits(GPIOB, GPIO_Pin_0);
-	d_us(9);
-
-	result = GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0);
-	d_us(55);
-
-	return result;
-}
-
-void DS18B20_Write_Byte(unsigned char b)
-{
- 	unsigned char i = 8;
-
-	while(i--)
-	{
-		DS18B20_Write_Bit(b & 0x01);
-		b >>= 1;
-	}
-}
-
-unsigned char DS18B20_Read_Byte()
-{
- 	unsigned char i = 8, result = 0;
-
-	while(i--)
-	{
-		result >>= 1;
-		result |= (DS18B20_Read_Bit()<<7);		
-	}
-   	
-	return result;
 }
 
 
@@ -477,10 +393,9 @@ static void TimerDelay_us_Config( void )
 	/* Disable timer	*/
 	TIM_Cmd(TIMER_US_DELAY, DISABLE);
 }
-void d_us(uint16_t delay)
+void DelayMicro(uint16_t delay)
 {
-	counter_delay_us = delay;
-	
+	counter_delay_us = delay;	
 	TimerDelay_us_Config ();
 
 	TIM_SetCounter(TIMER_US_DELAY, 0);

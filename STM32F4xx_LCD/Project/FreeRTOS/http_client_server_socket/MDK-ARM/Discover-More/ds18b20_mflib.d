@@ -36,3 +36,9 @@
 .\discover-more\ds18b20_mflib.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\discover-more\ds18b20_mflib.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h
 .\discover-more\ds18b20_mflib.o: ..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
+.\discover-more\ds18b20_mflib.o: ..\inc\main.h
+.\discover-more\ds18b20_mflib.o: ..\inc\stm32f4x7_eth_bsp.h
+.\discover-more\ds18b20_mflib.o: ..\STM32F4Discovery\stm32f4_discovery_user.h
+.\discover-more\ds18b20_mflib.o: ..\inc\miscellaneous.h
+.\discover-more\ds18b20_mflib.o: ..\inc\hw_config.h
+.\discover-more\ds18b20_mflib.o: ..\inc\debug.h

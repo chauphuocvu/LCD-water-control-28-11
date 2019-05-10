@@ -91,8 +91,9 @@ void ReadSavedValue(void)
  	CalibrationAir_Display = CalibrationAir;
  	CalibrationWater_Display = CalibrationWater;
  	RequireValueRedoxpH_Redox_Display = RequireValueRedoxpH_Redox;
- 	Probe_pH_Display = Probe_pH;
- 	Probe_CLF_Display = Probe_CLF;
+	/*Chau phuoc vu 25/4/2019*/
+// 	Probe_pH_Display = Probe_pH;
+// 	Probe_CLF_Display = Probe_CLF;
  	RequireValuepH_Display = RequireValuepH;
  	RequireValueCLF_Display = RequireValueCLF;
 }

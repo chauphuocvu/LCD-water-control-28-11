@@ -55,6 +55,9 @@ extern float 	 		Probe_pH_Display;
 extern float 	 		Probe_CLF_Display;
 extern float 	 		RequireValuepH_Display;
 extern float 	 		RequireValueCLF_Display;
+/*chau phuoc vu 25/4/2019*/
+extern uint8_t Calibration_pH_Flag;
+extern uint8_t Calibration_Rx_Flag; 
 
 /* Define ----------------------------------------------------------*/
 #define INDOOR								0
@@ -76,6 +79,7 @@ extern float 	 		RequireValueCLF_Display;
 #define START_STOP						1
 #define STOP_START						2
 #define STOP_STOP							3
+/*chau phuoc vu 23/4/2019*/
 #define CALIBRATION_PH				0
 #define NO_CALIBRATION_PH			1
 #define CALIBRATION_RX				0

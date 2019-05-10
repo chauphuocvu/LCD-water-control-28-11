@@ -96,3 +96,5 @@
 .\discover-more\main.o: ..\MDK-ARM\ADC.h
 .\discover-more\main.o: ..\MDK-ARM\Actuator.h
 .\discover-more\main.o: ..\MDK-ARM\Sensor.h
+.\discover-more\main.o: ..\MDK-ARM\ds18b20_mflib.h
+.\discover-more\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

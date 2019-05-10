@@ -493,16 +493,6 @@
               <FileType>1</FileType>
               <FilePath>.\Sensor.c</FilePath>
             </File>
-            <File>
-              <FileName>tm_stm32_ds18b20.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\tm_stm32_ds18b20.c</FilePath>
-            </File>
-            <File>
-              <FileName>tm_stm32_onewire.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\tm_stm32_onewire.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
