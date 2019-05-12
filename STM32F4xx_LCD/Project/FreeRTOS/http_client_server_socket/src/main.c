@@ -93,7 +93,7 @@ float RX_V_read;
 float Volume_pH, Volume_Clo;
 float V_step = 0.1;  // ml
 uint32_t step_pH,step_Clo;
-float pH_V_calibration = 0.0005;
+float pH_V_calibration = 0.11954;
 /* Private functions ---------------------------------------------------------*/
 unsigned int temp;
 void DelayMicro(uint16_t delay);
@@ -136,19 +136,17 @@ int main(void)
 	//http_client_socket_init();
 //	
 ////	/************************************************************/
-//	Interrupts_Config();
-
-//	TimerDelay_us_Config();
-//    
+		Interrupts_Config();
+		TimerDelay_us_Config();
 #ifdef USE_DHCP
   /* Start DHCPClient */
   xTaskCreate(LwIP_DHCP_task, "DHCPClient", configMINIMAL_STACK_SIZE * 2, NULL,DHCP_TASK_PRIO, NULL);
 #endif
-//    
+    
 	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
-	xTaskCreate(ActuatorTask, "ActuatorTask", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
+	xTaskCreate(ActuatorTask, "ActuatorTask", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(Clock, "Clock", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
-//  xTaskCreate(Read_pH_ORP, "Read_pH_ORP", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
+  xTaskCreate(Read_pH_ORP, "Read_pH_ORP", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO + 1, NULL);
 
 	/* Start scheduler */
   vTaskStartScheduler();
@@ -181,6 +179,14 @@ void Read_pH_ORP(void * pvParameters)
 /**
 Chau phuoc vu 23/4/2019
   */
+	ds18b20_init_seq();
+	ds18b20_send_rom_cmd(SKIP_ROM_CMD_BYTE);
+	ds18b20_send_function_cmd(CONVERT_T_CMD);
+ 	DelayMicro(100);
+	ds18b20_init_seq();
+	ds18b20_send_rom_cmd(SKIP_ROM_CMD_BYTE);
+	ds18b20_send_function_cmd(READ_SCRATCHPAD_CMD);
+	temp = ds18b20_read_temp();	// returns float value
 	pH_V_read = (GetMiliVoltage(pHSensor)/1000 - 1.611)/(-5.504464286);
 	pH_read = Probe_pH - (pH_V_read - pH_V_calibration)/slope_pH(25);
 	/* chau phuoc vu 25/4/2019*/
@@ -194,7 +200,7 @@ Chau phuoc vu 23/4/2019
 	{
 		Probe_CLF_Display = RX_V_read;
 	}
-	vTaskDelay(200);
+	vTaskDelay(100);
 }
 }
 
@@ -268,14 +274,6 @@ void Clock(void * pvParameters)
 	if(sec>59) {min=min+1; sec=0; } 
   if(min>59) { hour=hour+1; min=0; } 
   if(hour>23) { hour=0; min=0; sec=0; }
-//	ds18b20_init_seq();
-//	ds18b20_send_rom_cmd(SKIP_ROM_CMD_BYTE);
-//	ds18b20_send_function_cmd(CONVERT_T_CMD);
-// 	DelayMicro(100);
-//	ds18b20_init_seq();
-//	ds18b20_send_rom_cmd(SKIP_ROM_CMD_BYTE);
-//	ds18b20_send_function_cmd(READ_SCRATCHPAD_CMD);
-//	temp = ds18b20_read_temp();	// returns float value
 	vTaskDelay(1000);
 }
 }
@@ -290,16 +288,16 @@ void GPIO_Config(void)
 	STM_EVAL_LEDInit(LCD_RST); 
 	STM_EVAL_LEDInit(BZ);
 	STM_EVAL_LEDInit(LCD_BL);
-//	   GPIO_InitTypeDef  GPIO_InitStructure;
-//  /* GPIOG Peripheral clock enable */
-//  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
-//  /* Configure in output pushpull mode */
-//  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
-//  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-//  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-//  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
-//  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
-//  GPIO_Init(GPIOB, &GPIO_InitStructure);
+	GPIO_InitTypeDef  GPIO_InitStructure;
+  /* GPIOG Peripheral clock enable */
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+  /* Configure in output pushpull mode */
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+  GPIO_Init(GPIOB, &GPIO_InitStructure);
 }
 
 
@@ -399,10 +397,10 @@ void DelayMicro(uint16_t delay)
 	TimerDelay_us_Config ();
 
 	TIM_SetCounter(TIMER_US_DELAY, 0);
-	/* TIM2 enable counter */
+	/* TIM5 enable counter */
 	TIM_Cmd(TIMER_US_DELAY, ENABLE);
 	/* Wait for 'delay' us */
 	while(counter_delay_us != 0);
-	/* TIM2 disable counter */
+	/* TIM5 disable counter */
 	TIM_Cmd(TIMER_US_DELAY, DISABLE);
 }

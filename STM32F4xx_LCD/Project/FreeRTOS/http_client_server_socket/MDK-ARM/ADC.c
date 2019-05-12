@@ -16,13 +16,8 @@ void ADC_Config(void)
   ADC_CommonInitTypeDef ADC_CommonInitStructure;
   GPIO_InitTypeDef      GPIO_InitStructure;
 	/* Enable ADCx, DMA and GPIO clocks ****************************************/ 
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA | RCC_AHB1Periph_GPIOB, ENABLE);  
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);  
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_ADC1, ENABLE);
-	/* Configure the GPIOB pin */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AN;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-  GPIO_Init(GPIOB, &GPIO_InitStructure);
 	/* Configure the GPIOA pin */
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_6;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AN;

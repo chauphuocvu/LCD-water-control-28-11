@@ -14,6 +14,7 @@
 ".\discover-more\adc.o"
 ".\discover-more\actuator.o"
 ".\discover-more\sensor.o"
+".\discover-more\ds18b20_mflib.o"
 ".\discover-more\pictures.o"
 ".\discover-more\uiappuser.o"
 ".\discover-more\uiframework.o"

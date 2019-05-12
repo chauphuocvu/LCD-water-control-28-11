@@ -493,6 +493,11 @@
               <FileType>1</FileType>
               <FilePath>.\Sensor.c</FilePath>
             </File>
+            <File>
+              <FileName>ds18b20_mflib.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ds18b20_mflib.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

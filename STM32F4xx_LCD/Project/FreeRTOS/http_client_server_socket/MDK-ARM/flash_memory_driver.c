@@ -67,7 +67,7 @@ void ReadSavedValue(void)
 	
 	vu_mydata.intdata = Read32bitDataFromFlash(FLASH_ADDR_CALIBRATION_PROBE_PH);
 	if (vu_mydata.intdata == 0xFFFFFFFF)
-		Probe_pH = 6.2;
+		Probe_pH = 4.0;
 	else Probe_pH =	vu_mydata.floatdata;
 	vu_mydata.intdata =	Read32bitDataFromFlash(FLASH_ADDR_CALIBRATION_PROBE_CLF);
 	if (vu_mydata.intdata == 0xFFFFFFFF)

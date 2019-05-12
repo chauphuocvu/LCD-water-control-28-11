@@ -164,7 +164,7 @@ static const unsigned char SETTING[] = {0x3c ,0x68 ,0x74 ,0x6d ,0x6c ,0x3e ,0x0a
   */
 void http_server_serve(int conn) 
 {
-  int buflen = 3000;
+  int buflen = 1500;
   int ret;
   struct fs_file * file;
   unsigned char recv_buffer[1500];
@@ -172,7 +172,7 @@ void http_server_serve(int conn)
 	int i = 0;
 				
   /* Read in the request */
-  ret = read(conn, recv_buffer, buflen); 
+  ret = read(conn, recv_buffer, 1500); 
   if(ret < 0) return;
 
   /* Check if request to get ST.gif */
@@ -757,9 +757,10 @@ void DynWebPageByVu(int conn)
 	strcat((char *) PAGE_BODY2, "</div>");
 	
 /* Region for ADC reading */
-	char *string2 = "500";
+	uint8_t *string2;
+	string2 = ArgumenttoString(500);
 	strcat((char *) PAGE_BODY2, "<h1 id=\"pH\">Redox: <span style=\"color:#009EE2\">");		
-	strcat((char *) PAGE_BODY2, string2) ;
+	strcat((char *) PAGE_BODY2, (char *)string2) ;
 	strcat((char *) PAGE_BODY2, "</span></h1>");
 
 	// if CL >= 0.6. Show a warning.
