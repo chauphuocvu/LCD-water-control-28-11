@@ -583,63 +583,32 @@ void Show_WarningWaterHardnessScreen(void)
 
 
 /*Warning Screen*/
-GL_Page_TypeDef WarningProbeCalibration62_78Screen;
-void Create_WarningProbeCalibration62_78Screen(void)
+GL_Page_TypeDef WarningProbeCalibration30_78Screen;
+void Create_WarningProbeCalibration30_78Screen(void)
 {
-	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,60,30,VU_RED,WarningProbeCalibration62_78Screen_OK);
-	Create_PageObj( &WarningProbeCalibration62_78Screen ); 
-	AddPageControlObj(300,170,DesignButton01,&WarningProbeCalibration62_78Screen);
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,60,30,VU_RED,WarningProbeCalibration30_78Screen_OK);
+	Create_PageObj( &WarningProbeCalibration30_78Screen ); 
+	AddPageControlObj(300,170,DesignButton01,&WarningProbeCalibration30_78Screen);
 }
 ////////////////////////////////////////
-void Show_WarningProbeCalibration62_78Screen(void)
+void Show_WarningProbeCalibration30_78Screen(void)
 {
-	Create_WarningProbeCalibration62_78Screen();
+	Create_WarningProbeCalibration30_78Screen();
 	LCD_DrawFullRect(100,50,280,172,VU_RED);
 	LCD_SetColors(WHITE,VU_RED);
 	LCD_SetFont(&Font8x12_bold);
 	LCD_DisplayStringLine(60,120,(uint8_t *)"PROBE CALIBRATION");
 	LCD_DisplayStringLine(90,120,(uint8_t *)"Probe cannot be calibrate!");
 	LCD_DisplayStringLine(120,120,(uint8_t *)"You are calibrating outside the");
-	LCD_DisplayStringLine(140,120,(uint8_t *)"range of 6.2 - 7.8!");
+	LCD_DisplayStringLine(140,120,(uint8_t *)"range of 3.0 - 7.8!");
 	LCD_SetTextColor(WHITE);
 	LCD_DrawRect(300,170,30,60);
 	LCD_SetColors(WHITE,VU_RED);
 	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
-	WarningProbeCalibration62_78Screen.ShowPage(&WarningProbeCalibration62_78Screen,GL_TRUE);
-	CurrentScreen = &WarningProbeCalibration62_78Screen;
-	Screen = WarningProbeCalibration62_78Screen_df;
+	WarningProbeCalibration30_78Screen.ShowPage(&WarningProbeCalibration30_78Screen,GL_TRUE);
+	CurrentScreen = &WarningProbeCalibration30_78Screen;
+	Screen = WarningProbeCalibration30_78Screen_df;
 }
-
-
-
-/*Warning Screen*/
-GL_Page_TypeDef WarningProbeCalibrationScreen;
-void Create_WarningProbeCalibrationScreen(void)
-{
-	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,60,30,VU_RED,WarningProbeCalibrationScreen_OK);
-	Create_PageObj( &WarningProbeCalibrationScreen ); 
-	AddPageControlObj(300,170,DesignButton01,&WarningProbeCalibrationScreen);
-}
-////////////////////////////////////////
-void Show_WarningProbeCalibrationScreen(void)
-{
-	Create_WarningProbeCalibrationScreen();
-	LCD_DrawFullRect(100,50,280,172,VU_RED);
-	LCD_SetColors(WHITE,VU_RED);
-	LCD_SetFont(&Font8x12_bold);
-	LCD_DisplayStringLine(60,120,(uint8_t *)"PROBE CALIBRATION");
-	LCD_DisplayStringLine(90,120,(uint8_t *)"Probe cannot be calibrate!");
-	LCD_DisplayStringLine(120,120,(uint8_t *)"We are recommended replacing");
-	LCD_DisplayStringLine(140,120,(uint8_t *)"the probe with a new one.");
-	LCD_SetTextColor(WHITE);
-	LCD_DrawRect(300,170,30,60);
-	LCD_SetColors(WHITE,VU_RED);
-	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"OK");
-	WarningProbeCalibrationScreen.ShowPage(&WarningProbeCalibrationScreen,GL_TRUE);
-	CurrentScreen = &WarningProbeCalibrationScreen;
-	Screen = WarningProbeCalibrationScreen_df;
-}
-
 
 
 /*Warning Screen*/
@@ -659,7 +628,7 @@ void Show_WarningProbeCalibration70Screen(void)
 	LCD_SetFont(&Font8x12_bold);
 	LCD_DisplayStringLine(60,120,(uint8_t *)"PROBE CALIBRATION");
 	LCD_DisplayStringLine(90,120,(uint8_t *)"Calibration recommended by");
-	LCD_DisplayStringLine(110,120,(uint8_t *)"using buffer pH 7,0.");
+	LCD_DisplayStringLine(110,120,(uint8_t *)"using buffer pH 4,0 and 7,0.");
 	LCD_SetTextColor(WHITE);
 	LCD_DrawRect(300,170,30,60);
 	LCD_SetColors(WHITE,VU_GREEN);
@@ -1001,8 +970,9 @@ void Show_CalibrationpHProbeScreen(void)
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font8x12_bold);
 	LCD_DisplayStringLine(70,30,(uint8_t *)"Calibration");
-	LCD_DisplayStringLine(90,30,(uint8_t *)"recommended by");
-	LCD_DisplayStringLine(110,30,(uint8_t *)"using buffer pH 7,0.");
+	LCD_DisplayStringLine(90,30,(uint8_t *)"recommended by using");
+	LCD_DisplayStringLine(110,30,(uint8_t *)"buffer pH 4,0 and 7,0 ");
+	LCD_DisplayStringLine(130,30,(uint8_t *)"or pH < 5,0 and pH > 5,0.");
 	LCD_SetBackColor(VU_BLUE);
 	LCD_SetTextColor(BLACK);
 	LCD_SetFont(&Font12x12);
@@ -1660,6 +1630,38 @@ void Show_LanguagesScreen(void)
 	LanguagesScreen.ShowPage(&LanguagesScreen,GL_TRUE);
 	Screen = LanguagesScreen_df;
 	CurrentScreen = &LanguagesScreen;
+}
+
+
+/*chau phuoc vu 20/5/2019*/
+GL_Page_TypeDef WarningProbepHCalibrationScreen;
+void Create_WarningProbepHCalibrationScreen(void)
+{
+	GL_PageControls_TypeDef* DesignButton01= NewRectControl(1,60,30,VU_GREEN,WarningProbepHCalibrationScreen_YES);
+	GL_PageControls_TypeDef* DesignButton02= NewRectControl(2,60,30,VU_GREEN,WarningProbepHCalibrationScreen_NO);
+	Create_PageObj( &WarningProbepHCalibrationScreen ); 
+	AddPageControlObj(300,170,DesignButton01,&WarningProbepHCalibrationScreen);
+	AddPageControlObj(120,170,DesignButton02,&WarningProbepHCalibrationScreen);
+}
+////////////////////////////////////////
+void Show_WarningProbepHCalibrationScreen(void)
+{
+	Create_WarningProbepHCalibrationScreen();
+	LCD_DrawFullRect(100,50,280,172,VU_GREEN);
+	LCD_SetColors(WHITE,VU_GREEN);
+	LCD_SetFont(&Font8x12_bold);
+	LCD_DisplayStringLine(60,120,(uint8_t *)"PROBE CALIBRATION");
+	LCD_DisplayStringLine(90,120,(uint8_t *)"Calibration isn't completed");
+	LCD_DisplayStringLine(110,120,(uint8_t *)"Do you want to quit ?");
+	LCD_SetTextColor(WHITE);
+	LCD_DrawRect(300,170,30,60);
+	LCD_DrawRect(120,170,30,60);
+	LCD_SetColors(WHITE,VU_GREEN);
+	LCD_DisplayStringLineInRect(300,170,60,30,(uint8_t *)"YES");
+	LCD_DisplayStringLineInRect(120,170,60,30,(uint8_t *)"NO");
+	WarningProbepHCalibrationScreen.ShowPage(&WarningProbepHCalibrationScreen,GL_TRUE);
+	CurrentScreen = &WarningProbepHCalibrationScreen;
+	Screen = WarningProbepHCalibrationScreen_df;
 }
 
 

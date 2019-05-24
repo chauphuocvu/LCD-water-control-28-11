@@ -11,8 +11,8 @@
 #define Time	1
 #define pH		2
 #define ml		3
-#define m3		4
-#define h			5
+#define l 		4
+#define m			5
 #define mgl		6
 #define mgh		7
 #define mV		8

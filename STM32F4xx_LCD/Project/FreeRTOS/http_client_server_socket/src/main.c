@@ -29,7 +29,7 @@
 #include "Actuator.h"
 #include "Sensor.h"
 #include "ds18b20_mflib.h"
-
+#include "stdio.h"
 /* Private define ------------------------------------------------------------*/
 
 /*--------------- LCD Messages ---------------*/
@@ -54,7 +54,7 @@ void ActuatorTask(void * pvParameters);
 void vApplicationStackOverflowHook( TaskHandle_t xTask, signed char *pcTaskName );
 void vApplicationTickHook( void );
 void Clock(void * pvParameters);
-void Read_pH_ORP(void * pvParameters);
+void Read_pH_Redox(void * pvParameters);
 
 
 /* Extern variable -----------------------------------------------*/
@@ -67,10 +67,12 @@ extern uint8_t   	RequireValueDosepH_DoseHour;
 extern uint8_t 		RequireValueDosepH_DoseDay;
 extern uint16_t 	PoolVolume;
 extern uint16_t 	FiltrationPeriod;
+uint16_t 					FiltrationPeriod_count;
 extern uint16_t 	CalibrationAir;
 extern uint16_t 	CalibrationWater;
 extern uint16_t 	RequireValueRedoxpH_Redox;
 extern float 	 		Probe_pH;
+extern float			Probe_pH_temp;
 extern float 	 		Probe_CLF;
 extern float 	 		RequireValuepH;
 extern float 	 		RequireValueCLF;
@@ -78,27 +80,34 @@ extern int8_t   	RequireValueDosepH_DoseHour_Display;
 extern int8_t 		RequireValueDosepH_DoseDay_Display;
 extern uint16_t 	PoolVolume_Display;
 extern uint16_t 	FiltrationPeriod_Display;
-extern uint16_t 	CalibrationAir_Display;
-extern uint16_t 	CalibrationWater_Display;
+extern float 			CalibrationAir_Display;
+extern float 			CalibrationWater_Display;
 extern uint16_t 	RequireValueRedoxpH_Redox_Display;
 extern float 	 		Probe_pH_Display;
 extern float 	 		Probe_CLF_Display;
 extern float 	 		RequireValuepH_Display;
 extern float 	 		RequireValueCLF_Display;
-float pH_read;
-float ORP_read;
-float pH_V_read;
+double pH_read;
+double pH_V_read;
 /*chau phuoc vu 23/4/2019*/
-float RX_V_read;
+double Rx_V_read;
 float Volume_pH, Volume_Clo;
 float V_step = 0.1;  // ml
 uint32_t step_pH,step_Clo;
-float pH_V_calibration = 0.11954;
+uint32_t step_pH_pump = 0;
+double pH_V_calibration ;//= 0.11954;
 /* Private functions ---------------------------------------------------------*/
-unsigned int temp;
+float temp;
 void DelayMicro(uint16_t delay);
 volatile uint16_t counter_delay_us;
 static void TimerDelay_us_Config( void );
+/*chau phuoc vu 14/5/2019*/
+float *temp_buffer[5];
+float *pH_V_read_buffer[5];
+float temp_buffer_plus;
+float pH_V_read_buffer_plus;
+extern char stringRedox[4];
+extern char stringpH[4];
 /**
   * @brief  Main program.
   * @param  None
@@ -134,8 +143,7 @@ int main(void)
   http_server_socket_init();
 	/* Initialize http client demo */
 	//http_client_socket_init();
-//	
-////	/************************************************************/
+	/************************************************************/
 		Interrupts_Config();
 		TimerDelay_us_Config();
 #ifdef USE_DHCP
@@ -146,7 +154,7 @@ int main(void)
 	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(ActuatorTask, "ActuatorTask", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(Clock, "Clock", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
-  xTaskCreate(Read_pH_ORP, "Read_pH_ORP", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO + 1, NULL);
+  xTaskCreate(Read_pH_Redox, "Read_pH_Redox", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO + 1, NULL);
 
 	/* Start scheduler */
   vTaskStartScheduler();
@@ -173,12 +181,26 @@ void LCDTask(void * pvParameters)
 /**
 Chau phuoc vu 18/4/2019
   */
-void Read_pH_ORP(void * pvParameters)
+void Read_pH_Redox(void * pvParameters)
 {
+	uint8_t i = 0; 
+	uint8_t j = 0;
   for ( ;; ) {	
-/**
-Chau phuoc vu 23/4/2019
-  */
+
+	/*chau phuoc vu 14/5/2019*/
+	*pH_V_read_buffer[i] = (GetMiliVoltage(pHSensor)/1000 - (double)1.611)/((double)-5.504464286);
+	/* chau phuoc vu 25/4/2019*/
+	Rx_V_read = (GetMiliVoltage(RedoxSensor)/1000 - (double)0.0741)/((double)2.31733631)*1000;
+	if (i < 5)
+		i++;
+	else
+	{
+		i = 0;
+	/*chau phuoc vu 14/5/2019*/
+	for(j = 0; j < 5; j++)
+	{
+		pH_V_read_buffer_plus += *pH_V_read_buffer[j];
+	}
 	ds18b20_init_seq();
 	ds18b20_send_rom_cmd(SKIP_ROM_CMD_BYTE);
 	ds18b20_send_function_cmd(CONVERT_T_CMD);
@@ -186,11 +208,25 @@ Chau phuoc vu 23/4/2019
 	ds18b20_init_seq();
 	ds18b20_send_rom_cmd(SKIP_ROM_CMD_BYTE);
 	ds18b20_send_function_cmd(READ_SCRATCHPAD_CMD);
-	temp = ds18b20_read_temp();	// returns float value
-	pH_V_read = (GetMiliVoltage(pHSensor)/1000 - 1.611)/(-5.504464286);
-	pH_read = Probe_pH - (pH_V_read - pH_V_calibration)/slope_pH(25);
-	/* chau phuoc vu 25/4/2019*/
-	RX_V_read = (/*GetMiliVoltage(ORPSensor)*/1149/1000 - 0.0741)/(2.31733631);
+	temp = 25.0;//ds18b20_read_temp();
+	pH_V_read = pH_V_read_buffer_plus/5;
+	pH_V_read_buffer_plus = 0;
+	pH_read = Probe_pH - (pH_V_read - pH_V_calibration)/slope_pH(temp);
+	/*chau phuoc vu 22/5/2019*/
+	//&stringRedox = (char *)itoa((uint32_t)500,10);
+	sprintf((char*)stringRedox,"%3.0f",Rx_V_read);
+	stringRedox[3] = 0;
+	//stringRedox[0] = (char *)"500";
+	sprintf((char*)stringpH,"%1.1f",pH_read);
+	stringpH[3] = 0;
+	//stringpH = (char *)"7.0";
+	CalibrationAir_Display = CalibrationWater_Display = temp;
+	}
+	/*chau phuoc vu 22/5/2019*/
+	if (FiltrationPeriod_count == 0)
+	{
+		step_pH_pump = 1;
+	}
 	if (Calibration_pH_Flag == NO_CALIBRATION_PH)
 	{
 		Probe_pH_Display = pH_read;
@@ -198,9 +234,9 @@ Chau phuoc vu 23/4/2019
 	/* chau phuoc vu 27/4/2019*/
 	if (Calibration_Rx_Flag == NO_CALIBRATION_RX)
 	{
-		Probe_CLF_Display = RX_V_read;
+		Probe_CLF_Display = Rx_V_read;
 	}
-	vTaskDelay(100);
+	vTaskDelay(50);
 }
 }
 
@@ -212,6 +248,9 @@ Chau phuoc vu 23/4/2019
 void ActuatorTask(void * pvParameters)
 {
   for ( ;; ) {
+switch(Screen)
+{
+	case DosingTestScreen_df:
 //Control Pump pH and Clo
 	switch(DosingTest_Flag)
 	{
@@ -259,7 +298,21 @@ void ActuatorTask(void * pvParameters)
 		break;
 		default :
 		break;			
-	}		
+	}
+	break;
+	default : 
+			if (step_pH_pump > 0)
+			{
+				ControlActuator(ON,GPIOA, PUMP_PH);
+				step_pH_pump-- ;
+			}
+			else FiltrationPeriod_count = FiltrationPeriod ;
+			vTaskDelay(1);
+			ControlActuator(OFF,GPIOA, PUMP_RX);
+			ControlActuator(OFF,GPIOA, PUMP_PH);
+			vTaskDelay(3);
+	break;
+}
 }
 }
 /**
@@ -271,7 +324,16 @@ void Clock(void * pvParameters)
 {
   for ( ;; ) {
 	sec=sec+1;
-	if(sec>59) {min=min+1; sec=0; } 
+	if(sec>59) 
+	{
+		min=min+1; 
+		sec=0; 
+		if (FiltrationPeriod_count > 0)
+		{
+		FiltrationPeriod_count--;
+		}
+		else ;
+	} 
   if(min>59) { hour=hour+1; min=0; } 
   if(hour>23) { hour=0; min=0; sec=0; }
 	vTaskDelay(1000);
@@ -299,9 +361,6 @@ void GPIO_Config(void)
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
   GPIO_Init(GPIOB, &GPIO_InitStructure);
 }
-
-
-
 #ifdef  USE_FULL_ASSERT
 
 /**
@@ -347,29 +406,6 @@ void vApplicationTickHook( void )
 	TimingDelay_Decrement();
 }
 
-
-
-//void d_us(uint16_t time)
-//{
-//  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
-//  
-//  /* Time base configuration */
-//  TIM_TimeBaseStructure.TIM_Prescaler = ((SystemCoreClock/2)/1000000)-1;     // frequency = 1000000
-//  TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-//	TIM_TimeBaseStructure.TIM_Period = 10-1;
-//  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-//  TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure);
-//	TIM_SetCounter(TIM4,0);
-//	TIM_ClearFlag(TIM4,TIM_FLAG_Update);
-//	TIM_Cmd(TIM4, ENABLE);
-//	while(time--)
-//	{
-//		while(TIM_GetFlagStatus(TIM4,TIM_FLAG_Update) == 0);
-//		TIM_ClearFlag(TIM4,TIM_FLAG_Update);
-//	}
-//	TIM_Cmd(TIM4, ENABLE);
-//	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, DISABLE);
-//}
 static void TimerDelay_us_Config( void )
 {
 	// Enable clock for TIM5

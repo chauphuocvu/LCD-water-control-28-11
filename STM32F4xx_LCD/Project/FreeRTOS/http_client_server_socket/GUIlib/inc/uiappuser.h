@@ -48,8 +48,8 @@ extern int8_t   	RequireValueDosepH_DoseHour_Display;
 extern int8_t 		RequireValueDosepH_DoseDay_Display;
 extern uint16_t 	PoolVolume_Display;
 extern uint16_t 	FiltrationPeriod_Display;
-extern uint16_t 	CalibrationAir_Display;
-extern uint16_t 	CalibrationWater_Display;
+extern float 	CalibrationAir_Display;
+extern float 	CalibrationWater_Display;
 extern uint16_t 	RequireValueRedoxpH_Redox_Display;
 extern float 	 		Probe_pH_Display;
 extern float 	 		Probe_CLF_Display;
@@ -58,6 +58,13 @@ extern float 	 		RequireValueCLF_Display;
 /*chau phuoc vu 25/4/2019*/
 extern uint8_t Calibration_pH_Flag;
 extern uint8_t Calibration_Rx_Flag; 
+/*chau phuoc vu 17/5/2019*/
+extern float Probe_pH_less_5;
+extern float Probe_pH_more_5;
+extern float pH_V_calibration_less_5_buffer;
+extern float pH_V_calibration_more_5_buffer;
+extern float Temp_calibration_less_5_buffer;
+extern float Temp_calibration_more_5_buffer;
 
 /* Define ----------------------------------------------------------*/
 #define INDOOR								0
@@ -84,7 +91,10 @@ extern uint8_t Calibration_Rx_Flag;
 #define NO_CALIBRATION_PH			1
 #define CALIBRATION_RX				0
 #define NO_CALIBRATION_RX			1
- 
+/*chau phuoc vu 21/5/2019*/
+#define BACKTOSTART						1
+#define BACK									0
+extern uint8_t status_for_warning;
 /*Start Screen */
 void StartScreen_Setting(void);
 /*Settings Screen */
@@ -151,14 +161,15 @@ void ParametersWaterScreen_VeryHard(void);
 void WarningMaximalSafetyScreen_OK(void);
 void WarningExtremeConditionScreen_OK(void);
 void WarningWaterHardnessScreen_OK(void);
-void WarningProbeCalibration62_78Screen_OK(void);
+void WarningProbeCalibration30_78Screen_OK(void);
 void WarningProbeCalibrationScreen_OK(void);
 void WarningProbeCalibration70Screen_OK(void);
 void WarningProbeCalibrationRequiredValueScreen_OK(void);
 void WarningProbeCalibrationRequiredValueRedScreen_OK(void);
 void WarningProbeCalibrationRequiredValueImpossibleScreen_OK(void);
 void WarningTooRapidChangeScreen_CancelRestictions(void);
-
+void WarningProbepHCalibrationScreen_NO(void);
+void WarningProbepHCalibrationScreen_YES(void); 
 
 
 /*ParametersRequireValuepH Screen */

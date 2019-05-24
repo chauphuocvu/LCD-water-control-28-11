@@ -1,5 +1,5 @@
 Dependencies for Project 'Project', Target 'Discover-More': (DO NOT MODIFY !)
-F (..\src\main.c)(0x5CD836AE)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\main.o --omf_browse .\discover-more\main.crf --depend .\discover-more\main.d)
+F (..\src\main.c)(0x5CE7A1B5)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\main.o --omf_browse .\discover-more\main.crf --depend .\discover-more\main.d)
 I (..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h)(0x5BF91006)
 I (..\inc\stm32f4x7_eth_conf.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
@@ -37,10 +37,10 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
 I (..\inc\netconf.h)(0x5BF91006)
-I (..\inc\main.h)(0x5CD450CB)
+I (..\inc\main.h)(0x5CE7A1B5)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (..\inc\hw_config.h)(0x5CBDD67E)
 I (..\inc\debug.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h)(0x5BF91006)
@@ -75,7 +75,7 @@ I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/pbuf.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/api.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netbuf.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netifapi.h)(0x5BF91006)
-I (..\inc\httpserver-socket.h)(0x5C839D7A)
+I (..\inc\httpserver-socket.h)(0x5CE79F6B)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5476010A)
 I (..\inc\httpclient-socket.h)(0x5BF91006)
@@ -87,14 +87,14 @@ I (..\STM32F4Discovery\stm32f4_discovery_tsc2046.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
 I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
-I (..\GUIlib\inc\uiframework.h)(0x5C3FE807)
-I (..\GUIlib\inc\uiappuser.h)(0x5CC1E751)
+I (..\GUIlib\inc\uiframework.h)(0x5CE33737)
+I (..\GUIlib\inc\uiappuser.h)(0x5CE41C3A)
 I (..\Embedded_GUI_HAL\inc\LcdHal.h)(0x5C407B24)
-I (..\MDK-ARM\flash_memory_driver.h)(0x5C9B7116)
-I (..\MDK-ARM\DisplayNumber.h)(0x5CBD68F8)
-I (..\MDK-ARM\ADC.h)(0x5CB8957A)
+I (..\MDK-ARM\flash_memory_driver.h)(0x5CE5562A)
+I (..\MDK-ARM\DisplayNumber.h)(0x5CDF0554)
+I (..\MDK-ARM\ADC.h)(0x5CDAE19E)
 I (..\MDK-ARM\Actuator.h)(0x5C9B280F)
-I (..\MDK-ARM\Sensor.h)(0x5CB7419A)
+I (..\MDK-ARM\Sensor.h)(0x5CE41B9C)
 I (..\MDK-ARM\ds18b20_mflib.h)(0x5CD450CB)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5476010E)
 F (..\src\system_stm32f4xx.c)(0x5CD83473)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\system_stm32f4xx.o --omf_browse .\discover-more\system_stm32f4xx.crf --depend .\discover-more\system_stm32f4xx.d)
@@ -168,10 +168,10 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5BF91
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
-I (..\inc\main.h)(0x5CD450CB)
+I (..\inc\main.h)(0x5CE7A1B5)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (..\inc\hw_config.h)(0x5CBDD67E)
 I (..\inc\debug.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h)(0x5BF91006)
@@ -222,7 +222,7 @@ I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/udp.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/def.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS\ethernetif.h)(0x5BF91006)
-I (..\inc\main.h)(0x5CD450CB)
+I (..\inc\main.h)(0x5CE7A1B5)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5BF91006)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
@@ -259,7 +259,7 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF9
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (..\inc\hw_config.h)(0x5CBDD67E)
 I (..\inc\debug.h)(0x5BF91006)
 I (..\inc\netconf.h)(0x5BF91006)
@@ -324,8 +324,8 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF9
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\inc\main.h)(0x5CD450CB)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+I (..\inc\main.h)(0x5CE7A1B5)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (..\inc\hw_config.h)(0x5CBDD67E)
 I (..\inc\debug.h)(0x5BF91006)
 F (..\src\fs.c)(0x5BF91006)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\fs.o --omf_browse .\discover-more\fs.crf --depend .\discover-more\fs.d)
@@ -341,7 +341,7 @@ I (..\inc\fs.h)(0x5BF91006)
 I (..\inc\fsdata.h)(0x5BF91006)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54760110)
 I (..\src\fsdata.c)(0x5CD5AE22)
-F (..\src\httpserver-socket.c)(0x5CD69DFC)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\httpserver-socket.o --omf_browse .\discover-more\httpserver-socket.crf --depend .\discover-more\httpserver-socket.d)
+F (..\src\httpserver-socket.c)(0x5CE79F6B)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\httpserver-socket.o --omf_browse .\discover-more\httpserver-socket.crf --depend .\discover-more\httpserver-socket.d)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/opt.h)(0x5BF91006)
 I (..\inc\lwipopts.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/debug.h)(0x5BF91006)
@@ -374,7 +374,7 @@ I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/sockets.h)(0x5BF91006)
 I (..\inc\fs.h)(0x5BF91006)
 I (..\inc\fsdata.h)(0x5BF91006)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54760110)
-I (..\inc\httpserver-socket.h)(0x5C839D7A)
+I (..\inc\httpserver-socket.h)(0x5CE79F6B)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5476010A)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
@@ -411,19 +411,19 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
 I (..\inc\debug.h)(0x5BF91006)
-I (..\MDK-ARM\DisplayNumber.h)(0x5CBD68F8)
+I (..\MDK-ARM\DisplayNumber.h)(0x5CDF0554)
 I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C3F9B9C)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
 I (..\STM32F4Discovery\fonts.h)(0x5C0562A1)
 I (..\inc\SSD1963_Configuration.h)(0x5BF91006)
-I (..\GUIlib\inc\uiframework.h)(0x5C3FE807)
+I (..\GUIlib\inc\uiframework.h)(0x5CE33737)
 I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-I (..\GUIlib\inc\uiappuser.h)(0x5CC1E751)
-I (..\inc\main.h)(0x5CD450CB)
+I (..\GUIlib\inc\uiappuser.h)(0x5CE41C3A)
+I (..\inc\main.h)(0x5CE7A1B5)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (..\inc\hw_config.h)(0x5CBDD67E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54760110)
 F (..\src\httpclient-socket.c)(0x5BF91006)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\httpclient-socket.o --omf_browse .\discover-more\httpclient-socket.crf --depend .\discover-more\httpclient-socket.d)
@@ -493,8 +493,8 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5BF91
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
-F (..\src\miscellaneous.c)(0x5C0E0549)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\miscellaneous.o --omf_browse .\discover-more\miscellaneous.crf --depend .\discover-more\miscellaneous.d)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+F (..\src\miscellaneous.c)(0x5CE41DF2)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\miscellaneous.o --omf_browse .\discover-more\miscellaneous.crf --depend .\discover-more\miscellaneous.d)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5BF91006)
@@ -574,13 +574,13 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF9
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54760110)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54760110)
-I (..\inc\main.h)(0x5CD450CB)
+I (..\inc\main.h)(0x5CE7A1B5)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (..\inc\debug.h)(0x5BF91006)
-F (.\flash_memory_driver.c)(0x5CD6860F)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\flash_memory_driver.o --omf_browse .\discover-more\flash_memory_driver.crf --depend .\discover-more\flash_memory_driver.d)
-I (flash_memory_driver.h)(0x5C9B7116)
+F (.\flash_memory_driver.c)(0x5CE7A276)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\flash_memory_driver.o --omf_browse .\discover-more\flash_memory_driver.crf --depend .\discover-more\flash_memory_driver.d)
+I (flash_memory_driver.h)(0x5CE5562A)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5BF91006)
@@ -615,8 +615,8 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5BF91
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
-I (..\GUIlib\inc\uiappuser.h)(0x5CC1E751)
-I (DisplayNumber.h)(0x5CBD68F8)
+I (..\GUIlib\inc\uiappuser.h)(0x5CE41C3A)
+I (DisplayNumber.h)(0x5CDF0554)
 I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C3F9B9C)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
 I (..\STM32F4Discovery\fonts.h)(0x5C0562A1)
@@ -624,7 +624,7 @@ I (..\inc\SSD1963_Configuration.h)(0x5BF91006)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5476010A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54760110)
-I (..\GUIlib\inc\uiframework.h)(0x5C3FE807)
+I (..\GUIlib\inc\uiframework.h)(0x5CE33737)
 I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h)(0x5BF91006)
@@ -638,14 +638,15 @@ I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\mpu_wrappers.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-I (..\inc\main.h)(0x5CD450CB)
+I (..\inc\main.h)(0x5CE7A1B5)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (..\inc\hw_config.h)(0x5CBDD67E)
 I (..\inc\debug.h)(0x5BF91006)
-F (.\flash_memory_driver.h)(0x5C9B7116)()
-F (.\DisplayNumber.c)(0x5CBDDF6B)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\displaynumber.o --omf_browse .\discover-more\displaynumber.crf --depend .\discover-more\displaynumber.d)
-I (DisplayNumber.h)(0x5CBD68F8)
+I (Sensor.h)(0x5CE41B9C)
+F (.\flash_memory_driver.h)(0x5CE5562A)()
+F (.\DisplayNumber.c)(0x5CE56EB0)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\displaynumber.o --omf_browse .\discover-more\displaynumber.crf --depend .\discover-more\displaynumber.d)
+I (DisplayNumber.h)(0x5CDF0554)
 I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C3F9B9C)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
@@ -687,7 +688,7 @@ I (..\inc\SSD1963_Configuration.h)(0x5BF91006)
 I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5476010A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54760110)
-I (..\GUIlib\inc\uiframework.h)(0x5C3FE807)
+I (..\GUIlib\inc\uiframework.h)(0x5CE33737)
 I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\FreeRTOS.h)(0x5BF91006)
@@ -701,15 +702,15 @@ I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\mpu_wrappers.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-I (..\GUIlib\inc\uiappuser.h)(0x5CC1E751)
-I (..\inc\main.h)(0x5CD450CB)
+I (..\GUIlib\inc\uiappuser.h)(0x5CE41C3A)
+I (..\inc\main.h)(0x5CE7A1B5)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (..\inc\hw_config.h)(0x5CBDD67E)
 I (..\inc\debug.h)(0x5BF91006)
-F (.\DisplayNumber.h)(0x5CBD68F8)()
+F (.\DisplayNumber.h)(0x5CDF0554)()
 F (.\ADC.c)(0x5CD67958)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\adc.o --omf_browse .\discover-more\adc.crf --depend .\discover-more\adc.d)
-I (ADC.h)(0x5CB8957A)
+I (ADC.h)(0x5CDAE19E)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5BF91006)
@@ -783,8 +784,48 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5BF91
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
-F (.\Sensor.c)(0x5CD684A3)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\sensor.o --omf_browse .\discover-more\sensor.crf --depend .\discover-more\sensor.d)
-I (Sensor.h)(0x5CB7419A)
+F (.\Sensor.c)(0x5CE44024)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\sensor.o --omf_browse .\discover-more\sensor.crf --depend .\discover-more\sensor.d)
+I (Sensor.h)(0x5CE41B9C)
+I (..\inc\main.h)(0x5CE7A1B5)
+I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
+I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5BF91006)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
+I (..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5BF91006)
+I (..\..\..\..\Libraries\CMSIS\Include\core_cmFunc.h)(0x5BF91006)
+I (..\..\..\..\Libraries\CMSIS\Include\core_cm4_simd.h)(0x5BF91006)
+I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5BF91006)
+I (..\inc\stm32f4xx_conf.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
+I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
+I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
+I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
+I (..\inc\hw_config.h)(0x5CBDD67E)
+I (..\inc\debug.h)(0x5BF91006)
 F (.\ds18b20_mflib.c)(0x5CD44E83)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\ds18b20_mflib.o --omf_browse .\discover-more\ds18b20_mflib.crf --depend .\discover-more\ds18b20_mflib.d)
 I (ds18b20_mflib.h)(0x5CD450CB)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5476010E)
@@ -822,15 +863,15 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h)(0x5BF91
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
-I (..\inc\main.h)(0x5CD450CB)
+I (..\inc\main.h)(0x5CE7A1B5)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (..\inc\hw_config.h)(0x5CBDD67E)
 I (..\inc\debug.h)(0x5BF91006)
 F (..\GUIlib\src\pictures.c)(0x5BF91006)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\pictures.o --omf_browse .\discover-more\pictures.crf --depend .\discover-more\pictures.d)
-F (..\GUIlib\src\uiappuser.c)(0x5CD6860F)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\uiappuser.o --omf_browse .\discover-more\uiappuser.crf --depend .\discover-more\uiappuser.d)
-I (..\GUIlib\inc\uiframework.h)(0x5C3FE807)
+F (..\GUIlib\src\uiappuser.c)(0x5CE56E19)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\uiappuser.o --omf_browse .\discover-more\uiappuser.crf --depend .\discover-more\uiappuser.d)
+I (..\GUIlib\inc\uiframework.h)(0x5CE33737)
 I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
@@ -878,7 +919,7 @@ I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\mpu_wrappers.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-I (..\GUIlib\inc\uiappuser.h)(0x5CC1E751)
+I (..\GUIlib\inc\uiappuser.h)(0x5CE41C3A)
 I (..\Embedded_GUI_HAL\inc\LcdHal.h)(0x5C407B24)
 I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C3F9B9C)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
@@ -888,15 +929,16 @@ I (..\inc\stm32f4xx_uartstdio.h)(0x5BF91006)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5476010A)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54760110)
 I (..\inc\SSD1963_CMD.h)(0x5C409DF2)
-I (..\MDK-ARM\flash_memory_driver.h)(0x5C9B7116)
-I (..\MDK-ARM\DisplayNumber.h)(0x5CBD68F8)
-I (..\inc\main.h)(0x5CD450CB)
+I (..\MDK-ARM\flash_memory_driver.h)(0x5CE5562A)
+I (..\MDK-ARM\DisplayNumber.h)(0x5CDF0554)
+I (..\inc\main.h)(0x5CE7A1B5)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (..\inc\hw_config.h)(0x5CBDD67E)
 I (..\inc\debug.h)(0x5BF91006)
-F (..\GUIlib\src\uiframework.c)(0x5C40B9AA)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\uiframework.o --omf_browse .\discover-more\uiframework.crf --depend .\discover-more\uiframework.d)
-I (..\GUIlib\inc\uiframework.h)(0x5C3FE807)
+I (..\MDK-ARM\Sensor.h)(0x5CE41B9C)
+F (..\GUIlib\src\uiframework.c)(0x5CE2CE83)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\uiframework.o --omf_browse .\discover-more\uiframework.crf --depend .\discover-more\uiframework.d)
+I (..\GUIlib\inc\uiframework.h)(0x5CE33737)
 I (..\Embedded_GUI_Library\inc\graphicObjectTypes.h)(0x5C0799EC)
 I (..\Embedded_GUI_HAL\inc\stm32HAL.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
@@ -944,7 +986,7 @@ I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\mpu_wrappers.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\task.h)(0x5BF91006)
 I (..\..\..\..\Utilities\FreeRTOSv9.0.0\include\list.h)(0x5BF91006)
 I (..\Embedded_GUI_Library\inc\graphicObject.h)(0x5BF99803)
-I (..\GUIlib\inc\uiappuser.h)(0x5CC1E751)
+I (..\GUIlib\inc\uiappuser.h)(0x5CE41C3A)
 I (C:\Keil_v5\ARM\ARMCC\include\float.h)(0x54760110)
 I (..\Embedded_GUI_HAL\inc\LcdHal.h)(0x5C407B24)
 I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C3F9B9C)
@@ -1229,7 +1271,7 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h)(0x5BF
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54760110)
-F (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.c)(0x5C40B757)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\stm32f4_discovery_lcd_ssd1963.o --omf_browse .\discover-more\stm32f4_discovery_lcd_ssd1963.crf --depend .\discover-more\stm32f4_discovery_lcd_ssd1963.d)
+F (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.c)(0x5CD83720)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I..\inc -I..\src -I..\..\..\..\Libraries\CMSIS\Include -I..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include -I..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc -I..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4 -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip -I..\..\..\..\Utilities\lwip_v1.3.2\src\include\netif -I..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS -I..\..\..\..\Utilities\FreeRTOSv9.0.0\include -I..\..\..\..\Utilities\FreeRTOSv9.0.0\portable\RVDS\ARM_CM4F -I..\STM32F4Discovery -I..\GUIlib\inc -I..\Embedded_GUI_HAL\inc -I..\Embedded_GUI_Library\inc -I..\MDK-ARM-I "D:\STM 32\LCD-water-control-28-11\STM32F4xx_LCD\Project\FreeRTOS\http_client_server_socket\MDK-ARM\RTE"-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0-D__UVISION_VERSION="513" -D_RTE_ -DSTM32F407xx -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -DUSE_STM32F4_BRD-o .\discover-more\stm32f4_discovery_lcd_ssd1963.o --omf_browse .\discover-more\stm32f4_discovery_lcd_ssd1963.crf --depend .\discover-more\stm32f4_discovery_lcd_ssd1963.d)
 I (..\STM32F4Discovery\stm32f4_discovery_LCD_SSD1963.h)(0x5C3F9B9C)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
@@ -2792,7 +2834,7 @@ I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/inet.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\lwip/netif.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\src\include\ipv4\lwip/ip.h)(0x5BF91006)
 I (..\..\..\..\Utilities\lwip_v1.3.2\port\STM32F4x7\FreeRTOS\ethernetif.h)(0x5BF91006)
-I (..\inc\main.h)(0x5CD450CB)
+I (..\inc\main.h)(0x5CE7A1B5)
 I (..\..\..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5CD7C3FD)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cm4.h)(0x5BF91006)
 I (..\..\..\..\Libraries\CMSIS\Include\core_cmInstr.h)(0x5BF91006)
@@ -2828,7 +2870,7 @@ I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5BF9
 I (..\..\..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5BF91006)
 I (..\inc\stm32f4x7_eth_bsp.h)(0x5BF91006)
 I (..\STM32F4Discovery\stm32f4_discovery_user.h)(0x5BF91006)
-I (..\inc\miscellaneous.h)(0x5C0E0549)
+I (..\inc\miscellaneous.h)(0x5CE0C8B8)
 I (..\inc\hw_config.h)(0x5CBDD67E)
 I (..\inc\debug.h)(0x5BF91006)
 I (..\..\..\..\Libraries\STM32F4x7_ETH_Driver\inc\stm32f4x7_eth.h)(0x5BF91006)

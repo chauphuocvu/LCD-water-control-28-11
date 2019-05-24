@@ -5,8 +5,8 @@
 
 
 #include "flash_memory_driver.h"
-
-
+#include "main.h"
+#include "Sensor.h"
 
 
 union	data
@@ -67,29 +67,45 @@ void ReadSavedValue(void)
 	
 	vu_mydata.intdata = Read32bitDataFromFlash(FLASH_ADDR_CALIBRATION_PROBE_PH);
 	if (vu_mydata.intdata == 0xFFFFFFFF)
-		Probe_pH = 4.0;
+		Probe_pH = (double)4.0;
 	else Probe_pH =	vu_mydata.floatdata;
 	vu_mydata.intdata =	Read32bitDataFromFlash(FLASH_ADDR_CALIBRATION_PROBE_CLF);
 	if (vu_mydata.intdata == 0xFFFFFFFF)
-		Probe_CLF = 0.5;
+		Probe_CLF = (float)0.5;
 	else Probe_CLF =	vu_mydata.floatdata;
 	vu_mydata.intdata =	Read32bitDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_PH);
 	if (vu_mydata.intdata == 0xFFFFFFFF)
-		RequireValuepH = 6.2;
+		RequireValuepH = (float)6.2;
 	else RequireValuepH =	vu_mydata.floatdata;
 	vu_mydata.intdata =	Read32bitDataFromFlash(FLASH_ADDR_REQUIRE_VALUE_CLF);
 	if (vu_mydata.intdata == 0xFFFFFFFF)
-		RequireValueCLF = 0.5;
+		RequireValueCLF = (float)0.5;
 	else RequireValueCLF =	vu_mydata.floatdata;
+	/*Chau phuoc vu 17/5/2019*/
+	vu_mydata.intdata =	Read32bitDataFromFlash(FLASH_ADDR_TEMP_CALIBRATION);
+	if (vu_mydata.intdata == 0xFFFFFFFF)
+		Probe_pH_temp = (float)25.0;
+	else Probe_pH_temp =	vu_mydata.floatdata;
+	//vu_mydata.intdata =	Read32bitDataFromFlash(FLASH_ADDR_PH_V_CALIBRATION);
+	//if (vu_mydata.intdata == 0xFFFFFFFF)
+		pH_V_calibration = (double)0.11954;
+	//else pH_V_calibration =	vu_mydata.floatdata;
+	vu_mydata.intdata =	Read32bitDataFromFlash(FLASH_ADDR_SLOPE_CALIBRATION);
+	if (vu_mydata.intdata == 0xFFFFFFFF)
+		slope_calibration = (float)0.04669;
+	else slope_calibration =	vu_mydata.floatdata;
 	
 	PoolVolume = ReadDataFromFlash(FLASH_ADDR_POOL_VOLUME);
 	FiltrationPeriod = ReadDataFromFlash(FLASH_ADDR_FILTRATIONPERIOD);
+	/*Chau Phuoc Vu 21/5/2019*/
+	FiltrationPeriod_count = FiltrationPeriod;
+	//
 	RequireValueDosepH_DoseHour_Display = RequireValueDosepH_DoseHour;
 	RequireValueDosepH_DoseDay_Display = RequireValueDosepH_DoseDay;
  	PoolVolume_Display = PoolVolume;
  	FiltrationPeriod_Display = FiltrationPeriod;
- 	CalibrationAir_Display = CalibrationAir;
- 	CalibrationWater_Display = CalibrationWater;
+// 	CalibrationAir_Display = CalibrationAir;
+// 	CalibrationWater_Display = CalibrationWater;
  	RequireValueRedoxpH_Redox_Display = RequireValueRedoxpH_Redox;
 	/*Chau phuoc vu 25/4/2019*/
 // 	Probe_pH_Display = Probe_pH;
@@ -140,6 +156,17 @@ uint16_t	SaveDataToFlash(void)
 	vu_mydata.floatdata = RequireValueCLF;
 	if (FLASH_ProgramWord(FLASH_ADDR_REQUIRE_VALUE_CLF,vu_mydata.intdata) != FLASH_COMPLETE)	
 		return 1;
+	/*chau phuoc vu 21/5/2019*/
+	vu_mydata.floatdata = Probe_pH_temp;
+	if (FLASH_ProgramWord(FLASH_ADDR_TEMP_CALIBRATION,vu_mydata.intdata) != FLASH_COMPLETE)	
+		return 1;
+	vu_mydata.floatdata = pH_V_calibration;
+	if (FLASH_ProgramWord(FLASH_ADDR_PH_V_CALIBRATION,vu_mydata.intdata) != FLASH_COMPLETE)	
+		return 1;
+	vu_mydata.floatdata = slope_calibration;
+	if (FLASH_ProgramWord(FLASH_ADDR_SLOPE_CALIBRATION,vu_mydata.intdata) != FLASH_COMPLETE)	
+		return 1;
+//
 	if (FLASH_ProgramHalfWord(FLASH_ADDR_REQUIRE_VALUE_REDOX,RequireValueRedoxpH_Redox) != FLASH_COMPLETE)	
 		return 1;
 	if (FLASH_ProgramHalfWord(FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEHOUR,RequireValueDosepH_DoseHour) != FLASH_COMPLETE)	

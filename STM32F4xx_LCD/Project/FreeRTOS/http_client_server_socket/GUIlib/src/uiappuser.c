@@ -23,9 +23,10 @@
 #include "LcdHal.h"
 #include "stm32f4xx_uartstdio.h"
 #include "flash_memory_driver.h"
-
-
-
+#include "Sensor.h"
+/*Chau Phuoc Vu 21/5/2019*/
+uint8_t 		status_for_warning = BACK;
+//
 uint8_t 		DosingTest_Flag = START_START;
 uint8_t 		Languages_Choose;
 uint8_t 		PoolSelect;
@@ -40,6 +41,7 @@ uint16_t 		CalibrationAir;
 uint16_t 		CalibrationWater;
 uint16_t 		RequireValueRedoxpH_Redox;
 float 	 		Probe_pH;
+float				Probe_pH_temp;
 float 	 		Probe_CLF;
 float 	 		RequireValuepH;
 float 	 		RequireValueCLF;
@@ -47,8 +49,8 @@ int8_t   	RequireValueDosepH_DoseHour_Display;
 int8_t 		RequireValueDosepH_DoseDay_Display;
 uint16_t 		PoolVolume_Display;
 uint16_t 		FiltrationPeriod_Display;
-uint16_t 		CalibrationAir_Display;
-uint16_t 		CalibrationWater_Display;
+float 		CalibrationAir_Display;
+float 		CalibrationWater_Display;
 uint16_t 		RequireValueRedoxpH_Redox_Display;
 float 	 		Probe_pH_Display;
 float 		 	Probe_CLF_Display;
@@ -57,6 +59,13 @@ float 		 	RequireValueCLF_Display;
 /*chau phuoc vu 25/4/2019*/
 uint8_t Calibration_pH_Flag = NO_CALIBRATION_PH;
 uint8_t Calibration_Rx_Flag = NO_CALIBRATION_RX; 
+/*chau phuoc vu 17/5/2019*/
+float Probe_pH_less_5 = 0;
+float Probe_pH_more_5 = 0;
+float pH_V_calibration_less_5_buffer = 0;
+float pH_V_calibration_more_5_buffer = 0;
+float Temp_calibration_less_5_buffer = 0;
+float Temp_calibration_more_5_buffer = 0;
 
 /*Start Screen */
 void StartScreen_Setting(void)
@@ -402,7 +411,7 @@ void WarningWaterHardnessScreen_OK(void)
 }
 
 
-void WarningProbeCalibration62_78Screen_OK(void)
+void WarningProbeCalibration30_78Screen_OK(void)
 {
 	DestroyPage(CurrentScreen);
 	Show_CalibrationpHProbeScreen();
@@ -418,6 +427,16 @@ void WarningProbeCalibrationScreen_OK(void)
 void WarningProbeCalibration70Screen_OK(void)
 {
 	DestroyPage(CurrentScreen);
+	/*Chau phuoc vu 14/5/2019*/
+	Calibration_pH_Flag = CALIBRATION_PH;
+	Probe_pH_Display = 4.0;
+	/*Chau phuoc vu 20/5/2019*/
+	Probe_pH_less_5 = 0;
+	Probe_pH_more_5 = 0;
+  pH_V_calibration_less_5_buffer = 0;
+  pH_V_calibration_more_5_buffer = 0;
+  Temp_calibration_less_5_buffer = 0;
+  Temp_calibration_more_5_buffer = 0;
 	Show_CalibrationpHProbeScreen();
 }
 
@@ -572,16 +591,40 @@ void CalibrationpHProbeScreen_Back(void)
 	DestroyPage(CurrentScreen);
 	/*chau phuoc vu 25/1/2019*/
 	Calibration_pH_Flag = NO_CALIBRATION_PH;
-	
-	Show_CalibrationScreen();
+	/*chau phuoc vu 21/5/2019*/
+	if ((pH_V_calibration_less_5_buffer == 0)||(pH_V_calibration_more_5_buffer == 0))
+	{
+		Show_WarningProbepHCalibrationScreen();
+		status_for_warning = BACK;
+	}
+	else 
+	{
+		Probe_pH = Probe_pH_more_5;
+		pH_V_calibration = pH_V_calibration_more_5_buffer;
+		slope_calibration = (pH_V_calibration_more_5_buffer - pH_V_calibration_less_5_buffer)/(Probe_pH_more_5 - Probe_pH_less_5);
+		Probe_pH_temp = Temp_calibration_more_5_buffer;
+		Show_CalibrationScreen();
+	}
 }
 void CalibrationpHProbeScreen_BackToStart(void)
 {
 	DestroyPage(CurrentScreen);
 	/*chau phuoc vu 25/1/2019*/
 	Calibration_pH_Flag = NO_CALIBRATION_PH;
-	
-	Show_StartScreen();
+	/*chau phuoc vu 21/5/2019*/
+	if ((pH_V_calibration_less_5_buffer == 0)||(pH_V_calibration_more_5_buffer == 0))
+	{
+		Show_WarningProbepHCalibrationScreen();
+		status_for_warning = BACKTOSTART;
+	}
+	else 
+	{
+		Probe_pH = Probe_pH_more_5;
+		pH_V_calibration = pH_V_calibration_more_5_buffer;
+		slope_calibration = (pH_V_calibration_more_5_buffer - pH_V_calibration_less_5_buffer)/(Probe_pH_more_5 - Probe_pH_less_5);
+		Probe_pH_temp = Temp_calibration_more_5_buffer;
+		Show_StartScreen();
+	}
 }
 void CalibrationpHProbeScreen_inc(void)
 {
@@ -592,7 +635,7 @@ void CalibrationpHProbeScreen_inc(void)
 	if(Probe_pH_Display > (float)7.8)
 	{
 		DestroyPage(CurrentScreen);
-		Show_WarningProbeCalibration62_78Screen();
+		Show_WarningProbeCalibration30_78Screen();
 		Probe_pH_Display = 7.8;
 	}
 }
@@ -602,18 +645,31 @@ void CalibrationpHProbeScreen_dec(void)
 	Calibration_pH_Flag = CALIBRATION_PH;
 	
 	Probe_pH_Display -=(float)0.1;
-	if(Probe_pH_Display < (float)6.2)
+	if(Probe_pH_Display < (float)3.0)
 	{
 		DestroyPage(CurrentScreen);
-		Show_WarningProbeCalibration62_78Screen();
-		Probe_pH_Display = 6.2;
+		Show_WarningProbeCalibration30_78Screen();
+		Probe_pH_Display = 3.0;
 	}
 }
 void CalibrationpHProbeScreen_OK(void)
 {
-	Probe_pH = Probe_pH_Display;
-/*Chau Phuoc Vu 23/4/2019*/
-	pH_V_calibration = pH_V_read;
+//	Probe_pH = Probe_pH_Display;
+///*Chau Phuoc Vu 23/4/2019*/
+//	pH_V_calibration = pH_V_read;
+	/*Chau phuoc vu 16/5/2019*/
+	if (Probe_pH_Display < (float)5.0)
+	{
+		Probe_pH_less_5 = Probe_pH_Display;
+		pH_V_calibration_less_5_buffer = pH_V_read;
+		Temp_calibration_less_5_buffer = temp;
+	}
+	else 
+	{
+		Probe_pH_more_5 = Probe_pH_Display;
+		pH_V_calibration_more_5_buffer = pH_V_read;
+		Temp_calibration_more_5_buffer = temp;
+	}
 }
 
 
@@ -908,21 +964,23 @@ void CalibrationWaterScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void CalibrationWaterScreen_inc(void)
 {
-		CalibrationWater_Display +=1;
-	if(CalibrationWater_Display < 40)
-		CalibrationWater_Display = 40;
+	/*Chau phuoc vu 14/5/2019*/
+//		CalibrationWater_Display +=1;
+//	if(CalibrationWater_Display < 40)
+//		CalibrationWater_Display = 40;
 }
 //////////////////////////////////////////////////////////////
 void CalibrationWaterScreen_dec(void)
 {
-		CalibrationWater_Display -=1;
-	if(CalibrationWater_Display == 0)
-		CalibrationWater_Display = 0;
+/*Chau phuoc vu 14/5/2019*/
+//		CalibrationWater_Display -=1;
+//	if(CalibrationWater_Display == 0)
+//		CalibrationWater_Display = 0;
 }
 //////////////////////////////////////////////////////////////
 void CalibrationWaterScreen_OK(void)
 {
-	CalibrationWater = CalibrationWater_Display;
+//	CalibrationWater = CalibrationWater_Display;
 }
 
 
@@ -941,21 +999,23 @@ void CalibrationAirScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void CalibrationAirScreen_inc(void)
 {
-		CalibrationAir_Display +=1;
-	if(CalibrationAir_Display > 40)
-		CalibrationAir_Display = 40;	
+/*Chau phuoc vu 14/5/2019*/
+//		CalibrationAir_Display +=1;
+//	if(CalibrationAir_Display > 40)
+//		CalibrationAir_Display = 40;	
 }
 //////////////////////////////////////////////////////////////
 void CalibrationAirScreen_dec(void)
 {	
-		CalibrationAir_Display -=1;
-	if(CalibrationAir_Display == 0)
-		CalibrationAir_Display = 0;
+/*Chau phuoc vu 14/5/2019*/
+//		CalibrationAir_Display -=1;
+//	if(CalibrationAir_Display == 0)
+//		CalibrationAir_Display = 0;
 }
 //////////////////////////////////////////////////////////////
 void CalibrationAirScreen_OK(void)
 {
-	CalibrationAir = CalibrationAir_Display;
+//	CalibrationAir = CalibrationAir_Display;
 }
 
 
@@ -1002,4 +1062,33 @@ void LanguagesScreen_Vietnamese(void)
 void LanguagesScreen_English(void)
 {
 	Languages_Choose = ENGLISH;
+}
+
+/*chau phuoc vu*/
+void WarningProbepHCalibrationScreen_YES(void)
+{
+	DestroyPage(CurrentScreen);
+	if (status_for_warning == BACK)
+	{
+		Show_CalibrationScreen();
+	}
+	else if (status_for_warning == BACKTOSTART)
+	{
+		Show_StartScreen();
+	}
+	else ;
+}
+
+void WarningProbepHCalibrationScreen_NO(void)
+{
+	DestroyPage(CurrentScreen);
+	Calibration_pH_Flag = CALIBRATION_PH;
+	Probe_pH_Display = 4.0;
+	Probe_pH_less_5 = 0;
+	Probe_pH_more_5 = 0;
+  pH_V_calibration_less_5_buffer = 0;
+  pH_V_calibration_more_5_buffer = 0;
+  Temp_calibration_less_5_buffer = 0;
+  Temp_calibration_more_5_buffer = 0;
+	Show_CalibrationpHProbeScreen();
 }

@@ -45,7 +45,8 @@ char *pass="123";
 uint8_t security;
 #define SAFE	0
 #define UNSAFE	1
-
+char stringRedox[4];
+char stringpH[4];
 /* Format of dynamic web page: the page header */
 static const unsigned char PAGE_START[] = {
 /*
@@ -717,8 +718,7 @@ void DynWebPageByVu(int conn)
 	strcat((char *) PAGE_BODY2, "<h3 style=\"text-align:center;\">pH</h3>");
 	strcat((char *) PAGE_BODY2, "</div>");
 	strcat((char *) PAGE_BODY2, "<h1 id=\"pH\">pH: <span style=\"color:#009EE2\">");
-			char *string = "7.0";
-	strcat((char *) PAGE_BODY2, string) ;
+	strcat((char *) PAGE_BODY2, (char *)stringpH);
 	strcat((char *) PAGE_BODY2, "</span></h1>");
 			
 	// if pH >= 8.0. Show a warning.
@@ -757,10 +757,8 @@ void DynWebPageByVu(int conn)
 	strcat((char *) PAGE_BODY2, "</div>");
 	
 /* Region for ADC reading */
-	uint8_t *string2;
-	string2 = ArgumenttoString(500);
 	strcat((char *) PAGE_BODY2, "<h1 id=\"pH\">Redox: <span style=\"color:#009EE2\">");		
-	strcat((char *) PAGE_BODY2, (char *)string2) ;
+	strcat((char *) PAGE_BODY2, (char *)stringRedox) ;
 	strcat((char *) PAGE_BODY2, "</span></h1>");
 
 	// if CL >= 0.6. Show a warning.

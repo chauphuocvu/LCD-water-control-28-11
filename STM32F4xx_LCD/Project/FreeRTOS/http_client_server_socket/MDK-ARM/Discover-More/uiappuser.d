@@ -65,3 +65,4 @@
 .\discover-more\uiappuser.o: ..\inc\miscellaneous.h
 .\discover-more\uiappuser.o: ..\inc\hw_config.h
 .\discover-more\uiappuser.o: ..\inc\debug.h
+.\discover-more\uiappuser.o: ..\MDK-ARM\Sensor.h

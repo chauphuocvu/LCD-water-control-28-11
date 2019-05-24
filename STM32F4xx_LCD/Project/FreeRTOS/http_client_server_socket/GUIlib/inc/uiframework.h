@@ -48,7 +48,7 @@ extern uint16_t		Screen;
 #define	ParametersWaterScreen_df																		10
 #define	WarningMaximalSafetyScreen_df																11
 #define	WarningExtremeConditionScreen_df														12
-#define	WarningProbeCalibration62_78Screen_df												13
+#define	WarningProbeCalibration30_78Screen_df												13
 #define	WarningWaterHardnessScreen_df																14
 #define	WarningProbeCalibrationScreen_df														15
 #define	WarningProbeCalibration70Screen_df													16
@@ -68,6 +68,7 @@ extern uint16_t		Screen;
 #define ParametersRequireValueDosepH_DoseDayScreen_df								30
 #define ParametersRequireValueDosepH_DoseDay_pHScreen_df						31
 #define CalibrationWaterScreen_df  																	32
+#define WarningProbepHCalibrationScreen_df													33
 
 
 /*Added by chau phuoc vu 14/11/2018*/
@@ -91,7 +92,7 @@ void Create_ParametersWaterScreen(void);
 void Create_WarningMaximalSafetyScreen(void);
 void Create_WarningExtremeConditionScreen(void);
 void Create_WarningWaterHardnessScreen(void);
-void Create_WarningProbeCalibration62_78Screen(void);
+void Create_WarningProbeCalibration30_78Screen(void);
 void Create_WarningProbeCalibrationScreen(void);
 void Create_WarningProbeCalibration70Screen(void);
 void Create_WarningProbeCalibrationRequiredValueScreen(void);
@@ -126,7 +127,7 @@ void Show_ParametersWaterScreen(void);
 void Show_WarningMaximalSafetyScreen(void);
 void Show_WarningExtremeConditionScreen(void);
 void Show_WarningWaterHardnessScreen(void);
-void Show_WarningProbeCalibration62_78Screen(void);
+void Show_WarningProbeCalibration30_78Screen(void);
 void Show_WarningProbeCalibrationScreen(void);
 void Show_WarningProbeCalibration70Screen(void);
 void Show_WarningProbeCalibrationRequiredValueScreen(void);
@@ -148,6 +149,7 @@ void Show_CalibrationWaterScreen(void);
 void Show_CalibrationAirScreen(void);
 void Show_TypeOfProbeScreen(void);
 void Show_LanguagesScreen(void);
+void Show_WarningProbepHCalibrationScreen(void);
 
 #ifdef __cplusplus
 }

@@ -37,7 +37,9 @@ void LoginPage(int conn);
 void DynWebPageSettingByVu(int conn);
 void DynWebPageByVu(int conn);
 void GetTimePage(int conn);
-
+/*chau phuoc vu 22/5/2019*/
+extern char stringRedox[4];
+extern char stringpH[4];
 #endif /* __HTTPSERVER_SOCKET_H__ */
 
 /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/

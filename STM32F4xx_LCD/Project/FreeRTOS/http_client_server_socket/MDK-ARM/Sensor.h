@@ -1,3 +1,4 @@
 /* CHAU PHUOC VU*/
-extern float slope_24;
-float slope_pH(float temp);
+#include <main.h>
+extern float slope_calibration;
+float slope_pH(float temp_subfunction);

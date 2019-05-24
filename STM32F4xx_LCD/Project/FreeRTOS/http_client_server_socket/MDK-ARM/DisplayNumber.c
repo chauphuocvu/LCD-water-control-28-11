@@ -31,7 +31,7 @@ void DisplayNumber(void)
 				case REDOXPROBE:
 					LCD_SetColors(BLACK,VU_YELLOW);
 					LCD_SetFont(&Font16x24);
-					DisplayIntegerNumber(130, 100, RequireValueRedoxpH_Redox_Display, 3, None);
+					DisplayIntegerNumber(130, 100, Rx_V_read, 3, None);
 					LCD_SetFont(&Font12x12);
 					DisplayIntegerNumber(80, 135, RequireValueRedoxpH_Redox_Display, 3, mV);
 					break;
@@ -50,7 +50,7 @@ void DisplayNumber(void)
 			}
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
-				DisplayDoubleNumber(130, 330, RequireValuepH_Display, 1, 1, None);
+				DisplayDoubleNumber(130, 330, pH_read, 1, 1, None);
 				LCD_SetFont(&Font12x12);
 				DisplayDoubleNumber(80, 400, RequireValuepH_Display, 1, 1, None);
 				break;
@@ -72,10 +72,10 @@ void DisplayNumber(void)
 			case ParametersFitrationPeriodScreen_df:
 				LCD_SetColors(WHITE,VU_GRAY);
 				LCD_SetFont(&Font16x24);
-				DisplayIntegerNumber(100,105,PoolVolume_Display,2,m3);
+				DisplayIntegerNumber(100,105,PoolVolume_Display,2,l);
 				LCD_SetColors(WHITE,VU_GRAY);
 				LCD_SetFont(&Font16x24);
-				DisplayIntegerNumber(100, 315, FiltrationPeriod_Display,2,h);
+				DisplayIntegerNumber(100, 315, FiltrationPeriod_Display,2,m);
 			break;
 /*****************************************************************************************/
 			case WarningMaximalSafetyScreen_df:
@@ -108,7 +108,6 @@ void DisplayNumber(void)
 				LCD_SetColors(BLACK,VU_BLUE);
 				LCD_SetFont(&Font16x24);
 				DisplayDoubleNumber(100, 330, Probe_pH_Display, 1, 1, None);
-//				DisplayDoubleNumber(100, 330, Probe_pH_Display, 1, 1, None);
 				LCD_SetFont(&Font12x12);
 				LCD_DisplayStringLine(110,395,(uint8_t *)"pH");
 			break;
@@ -160,19 +159,20 @@ void DisplayNumber(void)
 			case CalibrationWaterScreen_df:
 				LCD_SetColors(WHITE,VU_GRAY);
 				LCD_SetFont(&Font16x24);
-				DisplayIntegerNumber(100,330,CalibrationWater_Display,2,oC);
+	//			DisplayIntegerNumber(100,330,CalibrationWater_Display,2,oC);
+				DisplayDoubleNumber(100,330,CalibrationWater_Display,2,1,oC);
 			break;
 /*****************************************************************************************/
 			case CalibrationAirScreen_df:
 				LCD_SetColors(WHITE,VU_GRAY);
 				LCD_SetFont(&Font16x24);
-				DisplayIntegerNumber(100,330,CalibrationAir_Display,2,oC);
+				DisplayDoubleNumber(100,330,CalibrationAir_Display,2,1,oC);
 			break;
 /*****************************************************************************************/
 			case CalibrationScreen_df:
 			case TypeOfProbeScreen_df:
 			case WarningWaterHardnessScreen_df:
-			case WarningProbeCalibration62_78Screen_df:
+			case WarningProbeCalibration30_78Screen_df:
 			case WarningProbeCalibrationScreen_df:
 			case WarningProbeCalibration70Screen_df:
 			case WarningProbeCalibrationRequiredValueScreen_df:
@@ -182,6 +182,7 @@ void DisplayNumber(void)
 			case SettingsScreen_df:
 			case ParametersScreen_df:
 			case ParametersWaterScreen_df:
+			case WarningProbepHCalibrationScreen_df:
 			break;
 			default :
 			break;
@@ -195,8 +196,6 @@ void DisplayIntegerNumber(uint16_t line, uint16_t column, uint16_t value, uint8_
 	switch(unit)
 	{
 		case ml:
-		case m3:
-		case oC:
 		case mV:
 			j = 4;
 		break;
@@ -204,7 +203,8 @@ void DisplayIntegerNumber(uint16_t line, uint16_t column, uint16_t value, uint8_
 		case mgh:
 			j = 6;
 		break;
-		case h:
+		case m:
+		case l:
 			j = 3;
 		break;
 		case None:
@@ -222,15 +222,9 @@ void DisplayIntegerNumber(uint16_t line, uint16_t column, uint16_t value, uint8_
 			string[quantity + j - 3] = 'm';
 			string[quantity + j - 4] = ' ';
 		break;
-		case m3:
-			string[quantity + j - 2] = '3';
-			string[quantity + j - 3] = 'm';
-			string[quantity + j - 4] = ' ';
-		break;
-		case oC:
-			string[quantity + j - 2] = 'C';
-			string[quantity + j - 3] = 'o';
-			string[quantity + j - 4] = ' ';
+		case l:
+			string[quantity + j - 2] = 'L';
+			string[quantity + j - 3] = ' ';
 		break;
 		case mV:
 			string[quantity + j - 2] = 'V';
@@ -251,8 +245,8 @@ void DisplayIntegerNumber(uint16_t line, uint16_t column, uint16_t value, uint8_
 			string[quantity + j - 5] = 'm';
 			string[quantity + j - 6] = ' ';
 		break;
-		case h:
-			string[quantity + j - 2] = 'h';
+		case m:
+			string[quantity + j - 2] = 'm';
 			string[quantity + j - 3] = ' ';
 		break;
 		case None:
@@ -280,6 +274,9 @@ void DisplayDoubleNumber(uint16_t line, uint16_t column, double value, uint8_t n
 		case pH:
 			j = 4;
 		break;
+		case oC:
+			j = 5;
+		break;
 		case None:
 			j = 1;
 		break;
@@ -294,6 +291,9 @@ void DisplayDoubleNumber(uint16_t line, uint16_t column, double value, uint8_t n
 		break;
 		case None:
 			sprintf((char *)string,"%1.1f",value);
+		break;
+		case oC:
+			sprintf((char *)string,"%1.1foC",value);
 		break;
 		default:
 		break;

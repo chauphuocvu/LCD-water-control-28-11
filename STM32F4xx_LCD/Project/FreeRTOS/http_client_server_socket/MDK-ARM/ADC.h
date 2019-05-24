@@ -7,7 +7,6 @@
 #define ADC1_DR_ADDRESS			0x4001204C
 #define pHSensor		ADC_Channel_0
 #define RedoxSensor	ADC_Channel_6
-#define TempSensor	ADC_Channel_8
 #define ProxSensor 	ADC_Channel_9
 
 

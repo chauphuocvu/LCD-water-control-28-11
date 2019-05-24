@@ -86,6 +86,9 @@
 #define	FLASH_ADDR_HOUR															((uint32_t)0x08080064)
 #define	FLASH_ADDR_MIN															((uint32_t)0x08080066)
 #define	FLASH_ADDR_SEC															((uint32_t)0x08080068)
+#define	FLASH_ADDR_TEMP_CALIBRATION									((uint32_t)0x08080070)
+#define	FLASH_ADDR_PH_V_CALIBRATION									((uint32_t)0x08080080)
+#define	FLASH_ADDR_SLOPE_CALIBRATION								((uint32_t)0x08080090)
 
 
 

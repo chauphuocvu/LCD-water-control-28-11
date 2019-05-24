@@ -64,3 +64,4 @@
 .\discover-more\flash_memory_driver.o: ..\inc\miscellaneous.h
 .\discover-more\flash_memory_driver.o: ..\inc\hw_config.h
 .\discover-more\flash_memory_driver.o: ..\inc\debug.h
+.\discover-more\flash_memory_driver.o: Sensor.h
