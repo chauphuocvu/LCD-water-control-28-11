@@ -65,47 +65,45 @@ extern uint8_t 		WaterHardnessSelect;
 extern uint8_t 		TypeofProbe;
 extern uint8_t   	RequireValueDosepH_DoseHour;
 extern uint8_t 		RequireValueDosepH_DoseDay;
-extern uint16_t 	PoolVolume;
-extern uint16_t 	FiltrationPeriod;
-uint16_t 					FiltrationPeriod_count;
-extern uint16_t 	CalibrationAir;
-extern uint16_t 	CalibrationWater;
+extern uint8_t 	PoolVolume;
+extern uint8_t 	FiltrationPeriod;
+uint8_t 					FiltrationPeriod_count;
 extern uint16_t 	RequireValueRedoxpH_Redox;
-extern float 	 		Probe_pH;
-extern float			Probe_pH_temp;
-extern float 	 		Probe_CLF;
-extern float 	 		RequireValuepH;
-extern float 	 		RequireValueCLF;
-extern int8_t   	RequireValueDosepH_DoseHour_Display;
-extern int8_t 		RequireValueDosepH_DoseDay_Display;
-extern uint16_t 	PoolVolume_Display;
-extern uint16_t 	FiltrationPeriod_Display;
+extern double 	 		Probe_pH;
+extern double			Probe_pH_temp;
+extern double 	 		Probe_CLF;
+extern double 	 		RequireValuepH;
+extern double 	 		RequireValueCLF;
+extern uint8_t   	RequireValueDosepH_DoseHour_Display;
+extern uint8_t 		RequireValueDosepH_DoseDay_Display;
+extern uint8_t 		PoolVolume_Display;
+extern uint8_t 		FiltrationPeriod_Display;
 extern float 			CalibrationAir_Display;
 extern float 			CalibrationWater_Display;
 extern uint16_t 	RequireValueRedoxpH_Redox_Display;
-extern float 	 		Probe_pH_Display;
-extern float 	 		Probe_CLF_Display;
-extern float 	 		RequireValuepH_Display;
-extern float 	 		RequireValueCLF_Display;
+extern double 	 		Probe_pH_Display;
+extern double 	 		Probe_CLF_Display;
+extern double 	 		RequireValuepH_Display;
+extern double 	 		RequireValueCLF_Display;
 double pH_read;
 double pH_V_read;
 /*chau phuoc vu 23/4/2019*/
-double Rx_V_read;
+uint16_t Rx_V_read;
 float Volume_pH, Volume_Clo;
 float V_step = 0.1;  // ml
 uint32_t step_pH,step_Clo;
 uint32_t step_pH_pump = 0;
 double pH_V_calibration ;//= 0.11954;
 /* Private functions ---------------------------------------------------------*/
-float temp;
+double temp;
 void DelayMicro(uint16_t delay);
 volatile uint16_t counter_delay_us;
 static void TimerDelay_us_Config( void );
 /*chau phuoc vu 14/5/2019*/
-float *temp_buffer[5];
-float *pH_V_read_buffer[5];
-float temp_buffer_plus;
-float pH_V_read_buffer_plus;
+double *temp_buffer[5];
+double *pH_V_read_buffer[5];
+double temp_buffer_plus;
+double pH_V_read_buffer_plus;
 extern char stringRedox[4];
 extern char stringpH[4];
 /**
@@ -154,7 +152,7 @@ int main(void)
 	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(ActuatorTask, "ActuatorTask", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(Clock, "Clock", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
-  xTaskCreate(Read_pH_Redox, "Read_pH_Redox", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO + 1, NULL);
+  xTaskCreate(Read_pH_Redox, "Read_pH_Redox", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
 
 	/* Start scheduler */
   vTaskStartScheduler();
@@ -190,7 +188,7 @@ void Read_pH_Redox(void * pvParameters)
 	/*chau phuoc vu 14/5/2019*/
 	*pH_V_read_buffer[i] = (GetMiliVoltage(pHSensor)/1000 - (double)1.611)/((double)-5.504464286);
 	/* chau phuoc vu 25/4/2019*/
-	Rx_V_read = (GetMiliVoltage(RedoxSensor)/1000 - (double)0.0741)/((double)2.31733631)*1000;
+	Rx_V_read = (uint16_t)((GetMiliVoltage(RedoxSensor)/1000 - 0.0741)/(2.31733631)*1000);
 	if (i < 5)
 		i++;
 	else
@@ -208,13 +206,13 @@ void Read_pH_Redox(void * pvParameters)
 	ds18b20_init_seq();
 	ds18b20_send_rom_cmd(SKIP_ROM_CMD_BYTE);
 	ds18b20_send_function_cmd(READ_SCRATCHPAD_CMD);
-	temp = 25.0;//ds18b20_read_temp();
+	temp = ds18b20_read_temp();
 	pH_V_read = pH_V_read_buffer_plus/5;
 	pH_V_read_buffer_plus = 0;
 	pH_read = Probe_pH - (pH_V_read - pH_V_calibration)/slope_pH(temp);
 	/*chau phuoc vu 22/5/2019*/
 	//&stringRedox = (char *)itoa((uint32_t)500,10);
-	sprintf((char*)stringRedox,"%3.0f",Rx_V_read);
+	sprintf((char*)stringRedox,"%3d",Rx_V_read);
 	stringRedox[3] = 0;
 	//stringRedox[0] = (char *)"500";
 	sprintf((char*)stringpH,"%1.1f",pH_read);
@@ -227,16 +225,7 @@ void Read_pH_Redox(void * pvParameters)
 	{
 		step_pH_pump = 1;
 	}
-	if (Calibration_pH_Flag == NO_CALIBRATION_PH)
-	{
-		Probe_pH_Display = pH_read;
-	}
-	/* chau phuoc vu 27/4/2019*/
-	if (Calibration_Rx_Flag == NO_CALIBRATION_RX)
-	{
-		Probe_CLF_Display = Rx_V_read;
-	}
-	vTaskDelay(50);
+	vTaskDelay(100);
 }
 }
 

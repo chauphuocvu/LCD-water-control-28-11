@@ -29,42 +29,44 @@ extern "C" {
 
 /* Extern variable -------------------------------------------------------------*/
 extern uint8_t 		Languages_Choose;
+
+
+extern uint8_t 	  PoolVolume;
+extern uint8_t 	  FiltrationPeriod;
+extern uint8_t   	RequireValueDosepH_DoseHour;
+extern uint8_t 		RequireValueDosepH_DoseDay;
 extern uint8_t		PoolSelect;
 extern uint8_t 		Temperature;
 extern uint8_t 		WaterHardnessSelect;
 extern uint8_t 		TypeofProbe;
-extern uint8_t   	RequireValueDosepH_DoseHour;
-extern uint8_t 		RequireValueDosepH_DoseDay;
-extern uint16_t 	PoolVolume;
-extern uint16_t 	FiltrationPeriod;
-extern uint16_t 	CalibrationAir;
-extern uint16_t 	CalibrationWater;
+extern uint8_t   	RequireValueDosepH_DoseHour_Display;
+extern uint8_t 		RequireValueDosepH_DoseDay_Display;
+extern uint8_t 		PoolVolume_Display;
+extern uint8_t 		FiltrationPeriod_Display;
+
 extern uint16_t 	RequireValueRedoxpH_Redox;
-extern float 	 		Probe_pH;
-extern float 	 		Probe_CLF;
-extern float 	 		RequireValuepH;
-extern float 	 		RequireValueCLF;
-extern int8_t   	RequireValueDosepH_DoseHour_Display;
-extern int8_t 		RequireValueDosepH_DoseDay_Display;
-extern uint16_t 	PoolVolume_Display;
-extern uint16_t 	FiltrationPeriod_Display;
-extern float 	CalibrationAir_Display;
-extern float 	CalibrationWater_Display;
 extern uint16_t 	RequireValueRedoxpH_Redox_Display;
-extern float 	 		Probe_pH_Display;
-extern float 	 		Probe_CLF_Display;
-extern float 	 		RequireValuepH_Display;
-extern float 	 		RequireValueCLF_Display;
+
+extern double 	 		Probe_pH;
+extern double 	 		Probe_CLF;
+extern double 	 		RequireValuepH;
+extern double 	 		RequireValueCLF;
+extern uint16_t   RequireValueRedoxpH_Redox;
+extern float 			CalibrationAir_Display;
+extern float 			CalibrationWater_Display;
+extern double 	 		Probe_pH_Display;
+extern double 	 		Probe_CLF_Display;
+extern double 	 		RequireValuepH_Display;
+extern double 	 		RequireValueCLF_Display;
 /*chau phuoc vu 25/4/2019*/
-extern uint8_t Calibration_pH_Flag;
-extern uint8_t Calibration_Rx_Flag; 
+
 /*chau phuoc vu 17/5/2019*/
-extern float Probe_pH_less_5;
-extern float Probe_pH_more_5;
-extern float pH_V_calibration_less_5_buffer;
-extern float pH_V_calibration_more_5_buffer;
-extern float Temp_calibration_less_5_buffer;
-extern float Temp_calibration_more_5_buffer;
+extern double 			Probe_pH_less_5;
+extern double 			Probe_pH_more_5;
+extern double 			pH_V_calibration_less_5_buffer;
+extern double 			pH_V_calibration_more_5_buffer;
+extern double 			Temp_calibration_less_5_buffer;
+extern double 			Temp_calibration_more_5_buffer;
 
 /* Define ----------------------------------------------------------*/
 #define INDOOR								0

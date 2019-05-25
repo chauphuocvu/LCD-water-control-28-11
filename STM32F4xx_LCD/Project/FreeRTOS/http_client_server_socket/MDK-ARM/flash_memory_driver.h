@@ -31,8 +31,6 @@
                                    (((ADDRESS) >= 0x1FFF7800) && ((ADDRESS) < 0x1FFF7A0F))) 
 
 
-#define ADDR_FLASH_POOL        ((uint32_t)0x08080000) //luu gia tri thiet lap ve pool trong water parameter
-
 /* Base address of the Flash sectors */
 #define ADDR_FLASH_SECTOR_0     ((uint32_t)0x08000000) /* Base @ of Sector 0, 16 Kbytes */
 #define ADDR_FLASH_SECTOR_1     ((uint32_t)0x08004000) /* Base @ of Sector 1, 16 Kbytes */
@@ -48,55 +46,38 @@
 #define ADDR_FLASH_SECTOR_11    ((uint32_t)0x080E0000) /* Base @ of Sector 11, 128 Kbytes */
 
 
-//#define	FLASH_ADDR_POOL_VOLUME											((uint32_t)0x08080000)
-//#define	FLASH_ADDR_FILTRATIONPERIOD									((uint32_t)0x08080002)
-//#define	FLASH_ADDR_POOL_SELECT											((uint32_t)0x08080004)
-//#define	FLASH_ADDR_TEMP_SELECT											((uint32_t)0x08080006)
-//#define	FLASH_ADDR_WATER_HARDNESS_SELECT						((uint32_t)0x08080008)	
-//#define	FLASH_ADDR_TYPE_OF_PROBE										((uint32_t)0x0808000A)
-//#define	FLASH_ADDR_CALIBRATION_AIR									((uint32_t)0x0808000C)
-//#define	FLASH_ADDR_CALIBRATION_WATER								((uint32_t)0x0808000E)
-//#define	FLASH_ADDR_CALIBRATION_PROBE_PH							((uint32_t)0x08080010)	
-//#define	FLASH_ADDR_CALIBRATION_PROBE_CLF						((uint32_t)0x08080020)	
-//#define FLASH_ADDR_REQUIRE_VALUE_PH									((uint32_t)0x08080030)	
-//#define FLASH_ADDR_REQUIRE_VALUE_CLF								((uint32_t)0x08080040)
-//#define FLASH_ADDR_REQUIRE_VALUE_REDOX							((uint32_t)0x08080050)
-//#define	FLASH_ADDR_LANGUAGE													((uint32_t)0x08080060)
-//#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY			((uint32_t)0x0808006B)
-//#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEHOUR 		((uint32_t)0x08080070)
-
 
 
 #define	FLASH_ADDR_POOL_VOLUME											((uint32_t)0x08080000)
-#define	FLASH_ADDR_FILTRATIONPERIOD									((uint32_t)0x08080002)
+#define	FLASH_ADDR_FILTRATIONPERIOD									((uint32_t)0x08080001)
+#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEHOUR 		((uint32_t)0x08080002)
+#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY			((uint32_t)0x08080003)
 #define	FLASH_ADDR_POOL_SELECT											((uint32_t)0x08080004)
-#define	FLASH_ADDR_TEMP_SELECT											((uint32_t)0x08080006)
-#define	FLASH_ADDR_WATER_HARDNESS_SELECT						((uint32_t)0x08080008)	
-#define	FLASH_ADDR_TYPE_OF_PROBE										((uint32_t)0x0808000A)
-#define	FLASH_ADDR_CALIBRATION_AIR									((uint32_t)0x0808000C)
-#define	FLASH_ADDR_CALIBRATION_WATER								((uint32_t)0x0808000E)
-#define	FLASH_ADDR_CALIBRATION_PROBE_PH							((uint32_t)0x08080010)	
-#define	FLASH_ADDR_CALIBRATION_PROBE_CLF						((uint32_t)0x08080020)	
-#define FLASH_ADDR_REQUIRE_VALUE_PH									((uint32_t)0x08080030)	
-#define FLASH_ADDR_REQUIRE_VALUE_CLF								((uint32_t)0x08080040)
-#define FLASH_ADDR_REQUIRE_VALUE_REDOX							((uint32_t)0x08080050)
-#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEHOUR 		((uint32_t)0x08080052)
-#define FLASH_ADDR_REQUIRE_VALUE_DOSEPH_DOSEDAY			((uint32_t)0x08080054)
-#define	FLASH_ADDR_LANGUAGE													((uint32_t)0x08080060)
-#define	FLASH_ADDR_HOUR															((uint32_t)0x08080064)
-#define	FLASH_ADDR_MIN															((uint32_t)0x08080066)
-#define	FLASH_ADDR_SEC															((uint32_t)0x08080068)
-#define	FLASH_ADDR_TEMP_CALIBRATION									((uint32_t)0x08080070)
-#define	FLASH_ADDR_PH_V_CALIBRATION									((uint32_t)0x08080080)
-#define	FLASH_ADDR_SLOPE_CALIBRATION								((uint32_t)0x08080090)
+#define	FLASH_ADDR_TEMP_SELECT											((uint32_t)0x08080005)
+#define	FLASH_ADDR_WATER_HARDNESS_SELECT						((uint32_t)0x08080006)	
+#define	FLASH_ADDR_TYPE_OF_PROBE										((uint32_t)0x08080007)
+#define	FLASH_ADDR_LANGUAGE													((uint32_t)0x08080008)
+#define	FLASH_ADDR_HOUR															((uint32_t)0x08080009)
+#define	FLASH_ADDR_MIN															((uint32_t)0x0808000A)
+#define	FLASH_ADDR_SEC															((uint32_t)0x0808000B)
+#define	FLASH_ADDR_CALIBRATION_PROBE_PH							((uint32_t)0x0808000C)	
+#define	FLASH_ADDR_CALIBRATION_PROBE_CLF						((uint32_t)0x08080014)	
+#define FLASH_ADDR_REQUIRE_VALUE_PH									((uint32_t)0x0808001C)	
+#define FLASH_ADDR_REQUIRE_VALUE_CLF								((uint32_t)0x08080024)
+#define FLASH_ADDR_REQUIRE_VALUE_REDOX							((uint32_t)0x0808002C)
+#define	FLASH_ADDR_TEMP_PH_CALIBRATION							((uint32_t)0x08080034)
+#define	FLASH_ADDR_PH_V_CALIBRATION									((uint32_t)0x0808003C)
+#define	FLASH_ADDR_SLOPE_CALIBRATION								((uint32_t)0x08080044)
 
 
 
 
-uint16_t	ReadDataFromFlash(uint32_t Address);
+uint8_t	  Read8bitDataFromFlash(uint32_t Address);
+uint16_t	Read16bitDataFromFlash(uint32_t Address);
 uint32_t	Read32bitDataFromFlash(uint32_t Address);
-uint16_t	ReadDataFromFlashForSelect(uint32_t Address);
+uint64_t	Read64bitDataFromFlash(uint32_t Address_H, uint32_t Address_L);
+uint8_t	  ReadDataFromFlashForSelect(uint32_t Address);
 /********************Write data for new chip*****************************/
 void ReadSavedValue(void);
 /****************************************************************/
-uint16_t	SaveDataToFlash(void);
+uint8_t	SaveDataToFlash(void);

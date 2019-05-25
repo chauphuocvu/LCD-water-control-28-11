@@ -250,12 +250,12 @@ NVIC_InitTypeDef NVIC_InitStructure;
 
 
 /*chau phuoc vu 12/04/2019*/
-NVIC_InitTypeDef NVIC_InitStruct;
-    NVIC_InitStruct.NVIC_IRQChannel = TIMER_US_DELAY_IRQ_CHANNEL;
-    NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = TIMER_US_DELAY_PREEMPTION_PRIORITY;
-    NVIC_InitStruct.NVIC_IRQChannelSubPriority = TIMER_US_DELAY_SUB_PRIORITY;
-    NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
-    NVIC_Init(&NVIC_InitStruct);
+	NVIC_InitTypeDef NVIC_InitStruct;
+  NVIC_InitStruct.NVIC_IRQChannel = TIMER_US_DELAY_IRQ_CHANNEL;
+  NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = TIMER_US_DELAY_PREEMPTION_PRIORITY;
+  NVIC_InitStruct.NVIC_IRQChannelSubPriority = TIMER_US_DELAY_SUB_PRIORITY;
+  NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStruct);
 }
 
 

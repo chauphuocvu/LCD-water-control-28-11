@@ -35,37 +35,33 @@ uint8_t 		WaterHardnessSelect;
 uint8_t 		TypeofProbe;
 uint8_t   	RequireValueDosepH_DoseHour;
 uint8_t 		RequireValueDosepH_DoseDay;
-uint16_t 		PoolVolume;
-uint16_t 		FiltrationPeriod;
-uint16_t 		CalibrationAir;
-uint16_t 		CalibrationWater;
+uint8_t 		PoolVolume;
+uint8_t 		FiltrationPeriod;
 uint16_t 		RequireValueRedoxpH_Redox;
-float 	 		Probe_pH;
-float				Probe_pH_temp;
-float 	 		Probe_CLF;
-float 	 		RequireValuepH;
-float 	 		RequireValueCLF;
-int8_t   	RequireValueDosepH_DoseHour_Display;
-int8_t 		RequireValueDosepH_DoseDay_Display;
-uint16_t 		PoolVolume_Display;
-uint16_t 		FiltrationPeriod_Display;
-float 		CalibrationAir_Display;
-float 		CalibrationWater_Display;
+double 	 		Probe_pH;
+double				Probe_pH_temp;
+double 	 		Probe_CLF;
+double 	 		RequireValuepH;
+double 	 		RequireValueCLF;
+uint8_t   	RequireValueDosepH_DoseHour_Display;
+uint8_t 		RequireValueDosepH_DoseDay_Display;
+uint8_t 		PoolVolume_Display;
+uint8_t 		FiltrationPeriod_Display;
+float 			CalibrationAir_Display;
+float 			CalibrationWater_Display;
 uint16_t 		RequireValueRedoxpH_Redox_Display;
-float 	 		Probe_pH_Display;
-float 		 	Probe_CLF_Display;
-float 		 	RequireValuepH_Display;
-float 		 	RequireValueCLF_Display;
-/*chau phuoc vu 25/4/2019*/
-uint8_t Calibration_pH_Flag = NO_CALIBRATION_PH;
-uint8_t Calibration_Rx_Flag = NO_CALIBRATION_RX; 
+double 	 		Probe_pH_Display;
+double 		 	Probe_CLF_Display;
+double 		 	RequireValuepH_Display;
+double 		 	RequireValueCLF_Display;
+
 /*chau phuoc vu 17/5/2019*/
-float Probe_pH_less_5 = 0;
-float Probe_pH_more_5 = 0;
-float pH_V_calibration_less_5_buffer = 0;
-float pH_V_calibration_more_5_buffer = 0;
-float Temp_calibration_less_5_buffer = 0;
-float Temp_calibration_more_5_buffer = 0;
+double Probe_pH_less_5 = 0;
+double Probe_pH_more_5 = 0;
+double pH_V_calibration_less_5_buffer = 0;
+double pH_V_calibration_more_5_buffer = 0;
+double Temp_calibration_less_5_buffer = 0;
+double Temp_calibration_more_5_buffer = 0;
 
 /*Start Screen */
 void StartScreen_Setting(void)
@@ -279,6 +275,7 @@ void ParametersPoolVolumeScreen_OK(void)
 void ParametersPoolVolumeScreen_FiltrationPeriod(void)
 {
 	DestroyPage(CurrentScreen);
+	PoolVolume_Display = PoolVolume;
 	Show_ParametersFitrationPeriodScreen();
 }
 
@@ -319,6 +316,7 @@ void ParametersFitrationPeriodScreen_OK(void)
 void ParametersFitrationPeriodScreen_PoolVolume(void)
 {
 	DestroyPage(CurrentScreen);
+	FiltrationPeriod_Display = FiltrationPeriod;
 	Show_ParametersPoolVolumeScreen();
 }
 
@@ -427,8 +425,6 @@ void WarningProbeCalibrationScreen_OK(void)
 void WarningProbeCalibration70Screen_OK(void)
 {
 	DestroyPage(CurrentScreen);
-	/*Chau phuoc vu 14/5/2019*/
-	Calibration_pH_Flag = CALIBRATION_PH;
 	Probe_pH_Display = 4.0;
 	/*Chau phuoc vu 20/5/2019*/
 	Probe_pH_less_5 = 0;
@@ -443,6 +439,7 @@ void WarningProbeCalibration70Screen_OK(void)
 void WarningProbeCalibrationRequiredValueScreen_OK(void)
 {
 	DestroyPage(CurrentScreen);
+	Probe_CLF_Display = RequireValueCLF;
 	Show_CalibrationCLFProbeScreen();
 }
 
@@ -483,15 +480,15 @@ void ParametersRequireValuepHScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValuepHScreen_inc(void)
 {
-		RequireValuepH_Display +=(float)0.1;
-	if(RequireValuepH_Display > (float)7.6)
+		RequireValuepH_Display +=0.1;
+	if(RequireValuepH_Display > 7.6)
 		RequireValuepH_Display = 7.6;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValuepHScreen_dec(void)
 {
-		RequireValuepH_Display -=(float)0.1;
-	if(RequireValuepH_Display < (float)6.5)
+		RequireValuepH_Display -=0.1;
+	if(RequireValuepH_Display < 6.5)
 		RequireValuepH_Display = 6.5;	
 }
 //////////////////////////////////////////////////////////////
@@ -524,15 +521,15 @@ void ParametersRequireValueCLFScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueCLFScreen_inc(void)
 {
-		RequireValueCLF_Display +=(float)0.1;
-	if(RequireValueCLF_Display > (float)1.2)
+		RequireValueCLF_Display +=0.1;
+	if(RequireValueCLF_Display > 1.2)
 		RequireValueCLF_Display = 1.2;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueCLFScreen_dec(void)
 {	
-		RequireValueCLF_Display -=(float)0.1;
-	if(RequireValueCLF_Display < (float)0.5)
+		RequireValueCLF_Display -=0.1;
+	if(RequireValueCLF_Display < 0.5)
 		RequireValueCLF_Display = 0.5;
 		
 }
@@ -589,8 +586,6 @@ void CalibrationScreen_AirThermometer(void)
 void CalibrationpHProbeScreen_Back(void)
 {
 	DestroyPage(CurrentScreen);
-	/*chau phuoc vu 25/1/2019*/
-	Calibration_pH_Flag = NO_CALIBRATION_PH;
 	/*chau phuoc vu 21/5/2019*/
 	if ((pH_V_calibration_less_5_buffer == 0)||(pH_V_calibration_more_5_buffer == 0))
 	{
@@ -609,8 +604,6 @@ void CalibrationpHProbeScreen_Back(void)
 void CalibrationpHProbeScreen_BackToStart(void)
 {
 	DestroyPage(CurrentScreen);
-	/*chau phuoc vu 25/1/2019*/
-	Calibration_pH_Flag = NO_CALIBRATION_PH;
 	/*chau phuoc vu 21/5/2019*/
 	if ((pH_V_calibration_less_5_buffer == 0)||(pH_V_calibration_more_5_buffer == 0))
 	{
@@ -628,29 +621,23 @@ void CalibrationpHProbeScreen_BackToStart(void)
 }
 void CalibrationpHProbeScreen_inc(void)
 {
-	/*chau phuoc vu 25/1/2019*/
-	Calibration_pH_Flag = CALIBRATION_PH;
-	
-	Probe_pH_Display +=(float)0.1;
-	if(Probe_pH_Display > (float)7.8)
+	if(Probe_pH_Display > 7.8)
 	{
 		DestroyPage(CurrentScreen);
-		Show_WarningProbeCalibration30_78Screen();
 		Probe_pH_Display = 7.8;
+		Show_WarningProbeCalibration30_78Screen();
 	}
+	else Probe_pH_Display +=0.1;
 }
 void CalibrationpHProbeScreen_dec(void)
-{
-	/*chau phuoc vu 25/1/2019*/
-	Calibration_pH_Flag = CALIBRATION_PH;
-	
-	Probe_pH_Display -=(float)0.1;
-	if(Probe_pH_Display < (float)3.0)
+{	
+	if(Probe_pH_Display < 3.0)
 	{
 		DestroyPage(CurrentScreen);
-		Show_WarningProbeCalibration30_78Screen();
 		Probe_pH_Display = 3.0;
+		Show_WarningProbeCalibration30_78Screen();
 	}
+	else Probe_pH_Display -=0.1;
 }
 void CalibrationpHProbeScreen_OK(void)
 {
@@ -658,7 +645,7 @@ void CalibrationpHProbeScreen_OK(void)
 ///*Chau Phuoc Vu 23/4/2019*/
 //	pH_V_calibration = pH_V_read;
 	/*Chau phuoc vu 16/5/2019*/
-	if (Probe_pH_Display < (float)5.0)
+	if (Probe_pH_Display < 5.0)
 	{
 		Probe_pH_less_5 = Probe_pH_Display;
 		pH_V_calibration_less_5_buffer = pH_V_read;
@@ -688,20 +675,19 @@ void CalibrationCLFProbeScreen_BackToStart(void)
 }
 void CalibrationCLFProbeScreen_inc(void)
 {
-	Probe_CLF_Display +=(float)0.1;
-	if (Probe_CLF_Display > (float)1.2)
+	Probe_CLF_Display +=0.1;
+	if (Probe_CLF_Display > 1.2)
 		Probe_CLF_Display = 1.2;
 }
 void CalibrationCLFProbeScreen_dec(void)
 {
-		Probe_CLF_Display -=(float)0.1;
-	if(Probe_CLF_Display == RequireValueCLF)
+	if(Probe_CLF_Display < RequireValueCLF)
 	{
 		DestroyPage(CurrentScreen);
+		Probe_CLF_Display = RequireValueCLF;
 		Show_WarningProbeCalibrationrequiredValueRedScreen();
 	}
-	else if (Probe_CLF_Display < (float)0.5)
-		Probe_CLF_Display = 0.5;
+	else Probe_CLF_Display -=0.1;
 }
 void CalibrationCLFProbeScreen_OK(void)
 {
@@ -764,15 +750,15 @@ void ParametersRequireValueRedoxpH_pHScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueRedoxpH_pHScreen_inc(void)
 {
-		RequireValuepH_Display +=(float)0.1;
-	if(RequireValuepH_Display > (float)7.8)
+		RequireValuepH_Display +=0.1;
+	if(RequireValuepH_Display > 7.8)
 		RequireValuepH_Display = 7.8;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueRedoxpH_pHScreen_dec(void)
 {
-		RequireValuepH_Display -=(float)0.1;
-	if(RequireValuepH_Display < (float)6.2)
+		RequireValuepH_Display -=0.1;
+	if(RequireValuepH_Display < 6.2)
 		RequireValuepH_Display = 6.2;
 }
 //////////////////////////////////////////////////////////////
@@ -811,9 +797,8 @@ void ParametersRequireValueDosepH_DoseHourScreen_inc(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHourScreen_dec(void)
 {
+	if(RequireValueDosepH_DoseHour_Display > 0)
 		RequireValueDosepH_DoseHour_Display -=1;
-	if(RequireValueDosepH_DoseHour_Display < 0)
-		RequireValueDosepH_DoseHour_Display = 0;	
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHourScreen_OK(void)
@@ -844,15 +829,15 @@ void ParametersRequireValueDosepH_DoseHour_pHScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHour_pHScreen_inc(void)
 {
-		RequireValuepH_Display +=(float)0.1;
-	if(RequireValuepH_Display > (float)7.8)
+		RequireValuepH_Display +=0.1;
+	if(RequireValuepH_Display > 7.8)
 		RequireValuepH_Display = 7.8;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseHour_pHScreen_dec(void)
 {
-		RequireValuepH_Display -=(float)0.1;
-	if(RequireValuepH_Display < (float)6.2)
+		RequireValuepH_Display -=0.1;
+	if(RequireValuepH_Display < 6.2)
 		RequireValuepH_Display = 6.2;
 		
 }
@@ -892,9 +877,8 @@ void ParametersRequireValueDosepH_DoseDayScreen_inc(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDayScreen_dec(void)
 {
+	if(RequireValueDosepH_DoseDay_Display > 0)
 		RequireValueDosepH_DoseDay_Display -=1;
-	if(RequireValueDosepH_DoseDay_Display < 0)
-		RequireValueDosepH_DoseDay_Display = 0;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDayScreen_OK(void)
@@ -925,15 +909,15 @@ void ParametersRequireValueDosepH_DoseDay_pHScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDay_pHScreen_inc(void)
 {
-		RequireValuepH_Display +=(float)0.1;
-	if(RequireValuepH_Display > (float)7.8)
+		RequireValuepH_Display +=0.1;
+	if(RequireValuepH_Display > 7.8)
 		RequireValuepH_Display = 7.8;
 }
 //////////////////////////////////////////////////////////////
 void ParametersRequireValueDosepH_DoseDay_pHScreen_dec(void)
 {
-		RequireValuepH_Display -=(float)0.1;
-	if(RequireValuepH_Display < (float)6.2)
+		RequireValuepH_Display -=0.1;
+	if(RequireValuepH_Display < 6.2)
 		RequireValuepH_Display = 6.2;
 }
 //////////////////////////////////////////////////////////////
@@ -964,23 +948,17 @@ void CalibrationWaterScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void CalibrationWaterScreen_inc(void)
 {
-	/*Chau phuoc vu 14/5/2019*/
-//		CalibrationWater_Display +=1;
-//	if(CalibrationWater_Display < 40)
-//		CalibrationWater_Display = 40;
+
 }
 //////////////////////////////////////////////////////////////
 void CalibrationWaterScreen_dec(void)
 {
-/*Chau phuoc vu 14/5/2019*/
-//		CalibrationWater_Display -=1;
-//	if(CalibrationWater_Display == 0)
-//		CalibrationWater_Display = 0;
+
 }
 //////////////////////////////////////////////////////////////
 void CalibrationWaterScreen_OK(void)
 {
-//	CalibrationWater = CalibrationWater_Display;
+
 }
 
 
@@ -999,23 +977,17 @@ void CalibrationAirScreen_BackToStart(void)
 //////////////////////////////////////////////////////////////
 void CalibrationAirScreen_inc(void)
 {
-/*Chau phuoc vu 14/5/2019*/
-//		CalibrationAir_Display +=1;
-//	if(CalibrationAir_Display > 40)
-//		CalibrationAir_Display = 40;	
+
 }
 //////////////////////////////////////////////////////////////
 void CalibrationAirScreen_dec(void)
 {	
-/*Chau phuoc vu 14/5/2019*/
-//		CalibrationAir_Display -=1;
-//	if(CalibrationAir_Display == 0)
-//		CalibrationAir_Display = 0;
+
 }
 //////////////////////////////////////////////////////////////
 void CalibrationAirScreen_OK(void)
 {
-//	CalibrationAir = CalibrationAir_Display;
+
 }
 
 
@@ -1082,7 +1054,6 @@ void WarningProbepHCalibrationScreen_YES(void)
 void WarningProbepHCalibrationScreen_NO(void)
 {
 	DestroyPage(CurrentScreen);
-	Calibration_pH_Flag = CALIBRATION_PH;
 	Probe_pH_Display = 4.0;
 	Probe_pH_less_5 = 0;
 	Probe_pH_more_5 = 0;

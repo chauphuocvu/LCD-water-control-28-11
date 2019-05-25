@@ -45,7 +45,7 @@ void Show_HomeScreen(void)
 GL_Page_TypeDef StartScreen;
 void Create_StartScreen(void)
 {
-	GL_PageControls_TypeDef* StartScreen_DesignButton02= NewRectControl(1,210,32,WHITE,StartScreen_Setting);
+	GL_PageControls_TypeDef* StartScreen_DesignButton02= NewRectControl(1,210,30,WHITE,StartScreen_Setting);
 	Create_PageObj( &StartScreen ); 
 	AddPageControlObj(250,240,StartScreen_DesignButton02,&StartScreen);
 }
@@ -57,7 +57,7 @@ void Show_StartScreen(void)
 	/*VE CAC NUT DIEU KHIEN*/
 	LCD_DrawFullRect(250,240,210,32,WHITE);//ve nut button
 	LCD_SetFont(&Font12x12);
-	LCD_DisplayStringLineInRect(250,240,210,32,(uint8_t *)"SETTINGS");
+	LCD_DisplayStringLineInRect(250,240,210,30,(uint8_t *)"SETTINGS");
 	LCDSD_DrawColorBMP((uint8_t *)logobk,20,5);
 	LCD_SetColors(WHITE,BLACK);
 	LCD_SetFont(&Font12x12);
