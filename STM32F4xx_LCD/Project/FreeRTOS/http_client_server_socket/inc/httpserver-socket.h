@@ -31,6 +31,8 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+#define SAFE	0
+#define UNSAFE	1
 void http_server_socket_init(void);
 void DynWebPage(int conn);
 void LoginPage(int conn);
@@ -40,6 +42,8 @@ void GetTimePage(int conn);
 /*chau phuoc vu 22/5/2019*/
 extern char stringRedox[4];
 extern char stringpH[4];
+extern uint8_t time_out;
+extern uint8_t security;
 #endif /* __HTTPSERVER_SOCKET_H__ */
 
 /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/

@@ -9,13 +9,13 @@
 #include "Sensor.h"
 
 typedef struct {
-uint32_t data_h;
-uint32_t data_l;
+int32_t data_h;
+int32_t data_l;
 } struct_64;
 
 union	doubledata
 {
-	uint64_t int64bitdata;
+	int64_t int64bitdata;
 	struct_64 struct64bit;
 	double	doubledata;
 }vu_doubledata;
@@ -50,17 +50,17 @@ uint32_t	Read32bitDataFromFlash(uint32_t Address)
 }
 
 
-uint64_t	Read64bitDataFromFlash(uint32_t Address_H, uint32_t Address_L)
+int64_t	Read64bitDataFromFlash(uint32_t Address_H, uint32_t Address_L)
 {
-	uint64_t data = 0;
-	uint32_t data_buf = 0;
+	int64_t data_Read64bitDataFromFlash = 0x00000000;
+
+	int32_t data_buf = 0U;
 	data_buf = *(__IO uint32_t*)Address_H;
-	data = data_buf;
-	data = data<<32;
-	//Address += 4;
+	data_Read64bitDataFromFlash = data_buf;
+	data_Read64bitDataFromFlash = data_Read64bitDataFromFlash<<32;
 	data_buf = *(__IO uint32_t*)Address_L;
-	data |= data_buf;
-	return data;
+	data_Read64bitDataFromFlash |= data_buf;
+	return data_Read64bitDataFromFlash;
 }
 
 
@@ -196,28 +196,28 @@ uint8_t	SaveDataToFlash(void)
 		return 1;
 	if (FLASH_ProgramByte(FLASH_ADDR_SEC,sec) != FLASH_COMPLETE)	
 		return 1;
-//	vu_doubledata.doubledata = Probe_pH;
+	vu_doubledata.doubledata = Probe_pH;
 	if (FLASH_Program64bitData(FLASH_ADDR_CALIBRATION_PROBE_PH,Probe_pH) != FLASH_COMPLETE)	
 		return 1;
-//	vu_mydata.floatdata = Probe_CLF;
+	vu_doubledata.doubledata = Probe_CLF;
 	if (FLASH_Program64bitData(FLASH_ADDR_CALIBRATION_PROBE_CLF,Probe_CLF) != FLASH_COMPLETE)	
 		return 1;
-//	vu_mydata.floatdata = RequireValuepH;
+	vu_doubledata.doubledata = RequireValuepH;
 	if (FLASH_Program64bitData(FLASH_ADDR_REQUIRE_VALUE_PH,RequireValuepH) != FLASH_COMPLETE)	
 		return 1;	
-//	vu_mydata.floatdata = RequireValueCLF;
+	vu_doubledata.doubledata = RequireValueCLF;
 	if (FLASH_Program64bitData(FLASH_ADDR_REQUIRE_VALUE_CLF,RequireValueCLF) != FLASH_COMPLETE)	
 		return 1;
 	if (FLASH_ProgramHalfWord(FLASH_ADDR_REQUIRE_VALUE_REDOX,RequireValueRedoxpH_Redox) != FLASH_COMPLETE)	
 		return 1;
 	/*chau phuoc vu 21/5/2019*/
-//	vu_mydata.floatdata = Probe_pH_temp;
+	vu_doubledata.doubledata = Probe_pH_temp;
 	if (FLASH_Program64bitData(FLASH_ADDR_TEMP_PH_CALIBRATION,Probe_pH_temp) != FLASH_COMPLETE)	
 		return 1;
-//	vu_mydata.floatdata = pH_V_calibration;
+	vu_doubledata.doubledata = pH_V_calibration;
 	if (FLASH_Program64bitData(FLASH_ADDR_PH_V_CALIBRATION,pH_V_calibration) != FLASH_COMPLETE)	
 		return 1;
-//	vu_mydata.floatdata = slope_calibration;
+	vu_doubledata.doubledata = slope_calibration;
 	if (FLASH_Program64bitData(FLASH_ADDR_SLOPE_CALIBRATION,slope_calibration) != FLASH_COMPLETE)	
 		return 1;	
 	FLASH_Lock(); 	

@@ -99,13 +99,13 @@ void DelayMicro(uint16_t delay);
 void Time_Update(void);
 extern volatile uint16_t counter_delay_us;
 extern double pH_read;
-extern uint16_t Rx_V_read;
+extern double Rx_V_read;
 extern double pH_V_read;
 extern float V_pH, V_Clo;
 extern float V_step;  // litter
 extern uint32_t step_pH,step_Clo;
 extern double pH_V_calibration;
-extern double temp;
+extern double temperature;
 extern double Probe_pH_temp;
 extern uint8_t FiltrationPeriod_count;
 #ifdef __cplusplus

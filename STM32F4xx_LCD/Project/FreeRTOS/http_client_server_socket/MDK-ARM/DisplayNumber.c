@@ -2,7 +2,7 @@
 			CHAU PHUOC VU
 */
 #include "DisplayNumber.h"
-
+#include "httpserver-socket.h"
 
 uint8_t hour = 00;
 uint8_t min = 00;
@@ -31,7 +31,8 @@ void DisplayNumber(void)
 				case REDOXPROBE:
 					LCD_SetColors(BLACK,VU_YELLOW);
 					LCD_SetFont(&Font16x24);
-					DisplayIntegerNumber(130, 100, Rx_V_read, 3, None);
+					//DisplayDoubleNumber(130, 100, Rx_V_read, 3,0, None);
+					LCD_DisplayStringLine(130, 100, (uint8_t *)stringRedox);
 					LCD_SetFont(&Font12x12);
 					DisplayIntegerNumber(80, 135, RequireValueRedoxpH_Redox_Display, 3, mV);
 					break;

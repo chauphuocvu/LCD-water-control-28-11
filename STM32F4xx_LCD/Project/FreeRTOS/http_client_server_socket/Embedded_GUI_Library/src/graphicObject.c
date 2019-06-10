@@ -3973,7 +3973,7 @@ static void CallPreEvents(GL_PageControls_TypeDef* pControl)
 //		UARTprintf("CallPreEvents Newrect\r\n");
       ((GL_NewRectControl_TypeDef*)(pTmp))->isObjectTouched = GL_TRUE;
       pControl->SetObjVisible(pControl, pControl->objCoordinates);
-			GL_Delay(5);
+			GL_Delay(20);
       ((GL_NewRectControl_TypeDef*)(pTmp))->isObjectTouched = GL_FALSE;
       pControl->SetObjVisible(pControl, pControl->objCoordinates);
 		break;

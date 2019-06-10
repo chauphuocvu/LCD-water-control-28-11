@@ -39,7 +39,7 @@ uint8_t 		PoolVolume;
 uint8_t 		FiltrationPeriod;
 uint16_t 		RequireValueRedoxpH_Redox;
 double 	 		Probe_pH;
-double				Probe_pH_temp;
+double			Probe_pH_temp;
 double 	 		Probe_CLF;
 double 	 		RequireValuepH;
 double 	 		RequireValueCLF;
@@ -649,13 +649,13 @@ void CalibrationpHProbeScreen_OK(void)
 	{
 		Probe_pH_less_5 = Probe_pH_Display;
 		pH_V_calibration_less_5_buffer = pH_V_read;
-		Temp_calibration_less_5_buffer = temp;
+		Temp_calibration_less_5_buffer = temperature;
 	}
 	else 
 	{
 		Probe_pH_more_5 = Probe_pH_Display;
 		pH_V_calibration_more_5_buffer = pH_V_read;
-		Temp_calibration_more_5_buffer = temp;
+		Temp_calibration_more_5_buffer = temperature;
 	}
 }
 

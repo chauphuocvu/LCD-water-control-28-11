@@ -43,10 +43,9 @@ char update = 0;
 char *user="123";
 char *pass="123";
 uint8_t security;
-#define SAFE	0
-#define UNSAFE	1
 char stringRedox[4];
 char stringpH[4];
+uint8_t time_out = 0;
 /* Format of dynamic web page: the page header */
 static const unsigned char PAGE_START[] = {
 /*
@@ -180,7 +179,6 @@ void http_server_serve(int conn)
   if (strncmp((char *)recv_buffer,"GET /STM32F4x7_files/ST.gif",27)==0)
   {
     file = fs_open("/STM32F4x7_files/ST.gif"); 
-		UARTprintf((const char *)recv_buffer);
     write(conn, (const unsigned char*)(file->data), (size_t)file->len);
     if(file) fs_close(file);
   }
@@ -188,7 +186,6 @@ void http_server_serve(int conn)
   else if (strncmp((char *)recv_buffer,"GET /STM32F4x7_files/stm32.jpg",30)==0)
   {
     file = fs_open("/STM32F4x7_files/stm32.jpg"); 
-		UARTprintf((const char *)recv_buffer);
     write(conn, (const unsigned char*)(file->data), (size_t)file->len);
     if(file) fs_close(file);
   }
@@ -196,21 +193,18 @@ void http_server_serve(int conn)
   else if (strncmp((char *)recv_buffer,"GET /STM32F4x7_files/logo.jpg", 29) == 0)
   {
     file = fs_open("/STM32F4x7_files/logo.jpg"); 
-		UARTprintf((const char *)recv_buffer);
     write(conn, (const unsigned char*)(file->data), (size_t)file->len);
     if(file) fs_close(file);
   }
   else if(strncmp((char *)recv_buffer, "GET /STM32F4x7TASKS.html", 24) == 0)
   {
     /* Load dynamic page */
-		UARTprintf((const char *)recv_buffer);
     DynWebPage(conn);
   }
   else if((strncmp((char *)recv_buffer, "GET /STM32F4x7.html", 19) == 0))
   {
     /* Load STM32F4x7 page */
     file = fs_open("/STM32F4x7.html"); 
-		UARTprintf((const char *)recv_buffer);
     write(conn, (const unsigned char*)(file->data), (size_t)file->len);
     if(file) fs_close(file);
   }
@@ -232,6 +226,7 @@ void http_server_serve(int conn)
 		{
 			DynWebPageByVu(conn);
 			security = SAFE;
+			time_out = 5;
 		}
 		else 
 		{
@@ -240,20 +235,45 @@ void http_server_serve(int conn)
 		}
 	}
 	//chau phuoc vu 11/5/2019
-	else if((strncmp((char *)recv_buffer, "GET /setting", 12) == 0))
+	else if((strncmp((char *)recv_buffer, "GET /setting", 12) == 0)&&(security == SAFE))
 	{
 		DynWebPageSettingByVu(conn);
+		time_out = 15;
 	}
-	else if((strncmp((char *)recv_buffer, "GET /home", 9) == 0)||(strncmp((char *)recv_buffer, "GET /login", 10) == 0))
+	else if(((strncmp((char *)recv_buffer, "GET /home", 9) == 0)||(strncmp((char *)recv_buffer, "GET /valueset", 13) == 0)||(strncmp((char *)recv_buffer, "GET /login", 10) == 0))&&(security == SAFE))
 	{
 		DynWebPageByVu(conn);
+		time_out = 5;
 	}
-	else if ((strstr((char *)recv_buffer,"pH=") != NULL))
+	else if ((strstr((char *)recv_buffer,"pH=") != NULL)&&(strstr((char *)recv_buffer,"&REDOX=") != NULL))
 	{
-		LoginPage(conn);
+		char valueset[4];
+		double value_recv;
+		temp = strstr((char *)recv_buffer,"pH=") + 3;
+		memset(valueset, '\0', sizeof(valueset));
+		strncpy(valueset, temp, strstr((char *)recv_buffer,"&REDOX") - temp);
+		value_recv = atof(valueset);
+		if (6.0 <= value_recv <= 8.0)
+			RequireValuepH = RequireValuepH_Display = value_recv;
+		else 
+			LoginPage(conn);		
+		temp = strstr((char *)recv_buffer,"&REDOX=") + 7;
+		memset(valueset, '\0', sizeof(valueset));
+		strcpy(valueset, temp);
+		value_recv = atoi(valueset);
+		if (500 <= value_recv <= 700)
+		{
+			RequireValueRedoxpH_Redox = RequireValueRedoxpH_Redox_Display = value_recv;
+			DynWebPageByVu(conn);
+			time_out = 5;
+		}
+		else
+		LoginPage(conn);		
+		time_out = 5;
 	}
 	else if ((strstr((char *)recv_buffer,"hour=") != NULL)&& (strstr((char *)recv_buffer,"&minute=")!= NULL)&& (strstr((char *)recv_buffer,"&second=") != NULL))
 	{
+		LoginPage(conn);
 		if (update == 0)
 		{
 		char recv[2]; 
@@ -269,14 +289,12 @@ void http_server_serve(int conn)
 		sec = atoi(recv);
 		update = 1;
 		}
-		else ;
-		LoginPage(conn);		
+		else ;		
 	}
   else
   {
     /* Load 404 page */
     file = fs_open("/404.html"); 
-		UARTprintf((const char *)recv_buffer);
     write(conn, (const unsigned char*)(file->data), (size_t)file->len);
     if(file) fs_close(file);
   }
@@ -384,184 +402,6 @@ void LoginPage(int conn)
 portCHAR PAGE_BODY2[3500];
 void DynWebPageSettingByVu(int conn)
 {	
-//	memset(PAGE_BODY2, 0,3500);
-//	strcat((char *) PAGE_BODY2, "<html>" );
-//	strcat((char *) PAGE_BODY2, " <head>" );
-//	strcat((char *) PAGE_BODY2, " <title>Web server</title>" );
-//	strcat((char *) PAGE_BODY2, " <meta name=\"description\" content=\"Webserver\"/>" );
-//	strcat((char *) PAGE_BODY2, " <meta name=\"keyword\" content=\"ubuntu\"/>" );
-//	strcat((char *) PAGE_BODY2, " <meta charset=\"utf-8\"/>" );
-//	strcat((char *) PAGE_BODY2, " <style>" );
-//	strcat((char *) PAGE_BODY2, "* {" );
-//	strcat((char *) PAGE_BODY2, "box-sizing: border-box;" );
-//	strcat((char *) PAGE_BODY2, "-moz-box-sizing: border-box;" );
-//	strcat((char *) PAGE_BODY2, "-webkit-box-sizing: border-box;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "body {" );
-//	strcat((char *) PAGE_BODY2, "font-family: \"Helvetiaca Neue\", Helvetiaca, Arial, sans-serif;" );
-//	strcat((char *) PAGE_BODY2, "font-weight: 300px;" );
-//	strcat((char *) PAGE_BODY2, "color: #333;" );
-//	strcat((char *) PAGE_BODY2, "line-height: 1.254;" );
-//	strcat((char *) PAGE_BODY2, "margin: 0;" );
-//	strcat((char *) PAGE_BODY2, "padding: 0;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "a {" );
-//	strcat((char *) PAGE_BODY2, "text-decoration: none;" );
-//	strcat((char *) PAGE_BODY2, "color: #3b8bba;" );
-//	strcat((char *) PAGE_BODY2, "transform: all 0.5s;" );
-//	strcat((char *) PAGE_BODY2, "-moz-transform: all 0.5s;" );
-//	strcat((char *) PAGE_BODY2, "-webkit-transform: all 0.5s;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "a:hover, a:visited {" );
-//	strcat((char *) PAGE_BODY2, "color: #265778;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "#container {" );
-//	strcat((char *) PAGE_BODY2, "padding-left: 150px;" );
-//	strcat((char *) PAGE_BODY2, "position: relative;" );
-//	strcat((char *) PAGE_BODY2, "left: 0;" );
-//	strcat((char *) PAGE_BODY2, "width: 100%;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "#menu {" );
-//	strcat((char *) PAGE_BODY2, "position: fixed;" );
-//	strcat((char *) PAGE_BODY2, "height: 100%;" );
-//	strcat((char *) PAGE_BODY2, "background-color: #191818;" );
-//	strcat((char *) PAGE_BODY2, "width: 150px;" );
-//	strcat((char *) PAGE_BODY2, "left: 0;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "#menu {}" );
-//	strcat((char *) PAGE_BODY2, "#menu ul{" );
-//	strcat((char *) PAGE_BODY2, "list-style-type: none;" );
-//	strcat((char *) PAGE_BODY2, "padding: 0;" );
-//	strcat((char *) PAGE_BODY2, "margin: 0;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "#menu ul li {" );
-//	strcat((char *) PAGE_BODY2, "line-height: 2.9em;" );
-//	strcat((char *) PAGE_BODY2, "height: 2.9em; " );
-//	strcat((char *) PAGE_BODY2, "transition: all 1s;" );
-//	strcat((char *) PAGE_BODY2, "-moz-transition: all 1s;" );
-//	strcat((char *) PAGE_BODY2, "-webkit-transition: all 1s;" );
-//	strcat((char *) PAGE_BODY2, "position: relative;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "#menu ul li a {" );
-//	strcat((char *) PAGE_BODY2, "display: block;" );
-//	strcat((char *) PAGE_BODY2, "color: #fff;" );
-//	strcat((char *) PAGE_BODY2, "padding: 0 1em;" );
-//	strcat((char *) PAGE_BODY2, "border-bottom: 1px solid #333;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "#menu ul li:hover {" );
-//	strcat((char *) PAGE_BODY2, "background-color: #454545;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "#menu .sub-menu {" );
-//	strcat((char *) PAGE_BODY2, "display: none;" );
-//	strcat((char *) PAGE_BODY2, "position: absolute;" );
-//	strcat((char *) PAGE_BODY2, "top: 0;" );
-//	strcat((char *) PAGE_BODY2, "left: 150px;" );
-//	strcat((char *) PAGE_BODY2, "background-color: #191818;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "#menu ul li:hover .sub-menu{" );
-//	strcat((char *) PAGE_BODY2, "display: block;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "#content {" );
-//	strcat((char *) PAGE_BODY2, "padding: 1em 8em;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "#header, .call-to-action {" );
-//	strcat((char *) PAGE_BODY2, "text-align:  center;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "#header {}" );
-//	strcat((char *) PAGE_BODY2, "#header #logo {font-size:40px;}" );
-//	strcat((char *) PAGE_BODY2, "#header #slogan {" );
-//	strcat((char *) PAGE_BODY2, "color: 8997a0;" );
-//	strcat((char *) PAGE_BODY2, "font-size: 0.8em;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, ".call-to-action {" );
-//	strcat((char *) PAGE_BODY2, "padding: 1.5em 20%;" );
-//	strcat((char *) PAGE_BODY2, "background-color: #f0ffff;" );
-//	strcat((char *) PAGE_BODY2, "border: 1px solid #e8e8e8;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, ".row {" );
-//	strcat((char *) PAGE_BODY2, "overflow: hidden;" );
-//	strcat((char *) PAGE_BODY2, "margin: 1.5em auto;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, ".row .col {" );
-//	strcat((char *) PAGE_BODY2, "float: left;" );
-//	strcat((char *) PAGE_BODY2, "width: 40%;" );
-//	strcat((char *) PAGE_BODY2, "margin: 2em;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, ".row .col:last-child {" );
-//	strcat((char *) PAGE_BODY2, "float: right;" );
-//	strcat((char *) PAGE_BODY2, "margin-right: 0;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, ".row .col img {" );
-//	strcat((char *) PAGE_BODY2, "float: left;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "" );
-//	strcat((char *) PAGE_BODY2, "#footer {" );
-//	strcat((char *) PAGE_BODY2, "font-size: 85%;" );
-//	strcat((char *) PAGE_BODY2, "border-top: 1px solid #e6e6e6;" );
-//	strcat((char *) PAGE_BODY2, "color: #838383;" );
-//	strcat((char *) PAGE_BODY2, "padding: 1em 3em;" );
-//	strcat((char *) PAGE_BODY2, "}" );
-//	strcat((char *) PAGE_BODY2, "input[type=text], select {width: 180px;padding: 12px 20px; margin: 8px 5px 0 0; \
-//															display: inline-block;border: 1px solid #ccc;border-radius: 4px;box-sizing: border-box;}" );
-//	strcat((char *) PAGE_BODY2, "input[type=submit] {width: 80px;background-color: #4CAF50;color: white; \
-//                           		padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;}" );
-//	strcat((char *) PAGE_BODY2, "input[type=submit]:hover {background-color: #45a049;}" );
-//	
-//	strcat((char *) PAGE_BODY2, "</style>" );
-//	strcat((char *) PAGE_BODY2, " </head>" );
-//	strcat((char *) PAGE_BODY2, " <body>" );
-//	strcat((char *) PAGE_BODY2, " <div id=\"container\">" );
-//	strcat((char *) PAGE_BODY2, " <div id=\"menu\">" );
-//	strcat((char *) PAGE_BODY2, " <ul>" );
-//	strcat((char *) PAGE_BODY2, " <li><a href=\"/control\">Homepage</a></li>" );
-//	strcat((char *) PAGE_BODY2, " <li><a href=\"/setting\">Settings</a></li>" );
-//	strcat((char *) PAGE_BODY2, " <li><a href=\"#\">About</a></li>" );
-//	strcat((char *) PAGE_BODY2, " </ul>" );
-//	strcat((char *) PAGE_BODY2, " </div><!menu>" );
-//	strcat((char *) PAGE_BODY2, " <div id=\"content\">" );
-//	strcat((char *) PAGE_BODY2, " <div id=\"header\">" );
-//	strcat((char *) PAGE_BODY2, " <div id=\"logo\">WebServer for LCD water control</div>" );
-//	strcat((char *) PAGE_BODY2, " <div id=\"slogan\">" );
-//	strcat((char *) PAGE_BODY2, " <p>Web control demo for STM32F4xx</p>" );
-//	strcat((char *) PAGE_BODY2, " </div>" );
-//	strcat((char *) PAGE_BODY2, " </div><!header>" );
-//	strcat((char *) PAGE_BODY2, " <div class=\"call-to-action\">" );
-//	strcat((char *) PAGE_BODY2, " <h3>LCD water control via website</h3>" );
-//	strcat((char *) PAGE_BODY2, " <p>pH and CHL control</p>" );
-//	strcat((char *) PAGE_BODY2, " </div><!call-to-action>" );
-//	strcat((char *) PAGE_BODY2, " <div class=\"row\" id=\"intro\">" );
-//	strcat((char *) PAGE_BODY2, " <div id=\"box1\" class=\"col\">" );
-///* Region for Setting form */	
-//	strcat((char *) PAGE_BODY2, "<div style=\"padding:10px;border:2px solid;background: azure;border-radius: 5px; text-align:center;margin-bottom: 7px;\">pH settings</div>");
-//  strcat((char *) PAGE_BODY2, "<form action=\"/phvalue\" method=\"GET\">" );
-//  strcat((char *) PAGE_BODY2, " <input type=\"text\" id=\"fname\" name=\"ph_min\" placeholder=\"Min value ...\" required>" );
-//	strcat((char *) PAGE_BODY2, " <input type=\"text\" id=\"fname\" name=\"ph_max\" placeholder=\"Max value ...\" required>" );
-//  strcat((char *) PAGE_BODY2, " <input type=\"submit\" value=\"Submit\">" );
-//	strcat((char *) PAGE_BODY2, "</form>" );
-//	strcat((char *) PAGE_BODY2, "<p><strong>Note</strong>: Please enter the pH value between 0.0 and 14.0</p>");
-///* Region for Setting reading */
-//	strcat((char *) PAGE_BODY2, " </div>" );
-//	strcat((char *) PAGE_BODY2, " <div id=\"box2\" class=\"col\">" );
-///* Region for ADC reading */
-//	strcat((char *) PAGE_BODY2, "<div style=\"padding:10px;border:2px solid;background: azure;border-radius: 5px; text-align:center;margin-bottom: 7px;\">CL settings</div>");
-//  strcat((char *) PAGE_BODY2, "<form action=\"/clvalue\" method=\"GET\">" );
-//  strcat((char *) PAGE_BODY2, " <input type=\"text\" id=\"fname\" name=\"cl_min\" placeholder=\"Min value ...\" required>" );
-//	strcat((char *) PAGE_BODY2, " <input type=\"text\" id=\"fname\" name=\"cl_max\" placeholder=\"Max value ...\" required>" );
-//  strcat((char *) PAGE_BODY2, " <input type=\"submit\" value=\"Submit\">" );
-//	strcat((char *) PAGE_BODY2, "</form>" );	
-//	strcat((char *) PAGE_BODY2, "<p><strong>Note</strong>: Please enter the CL value between 0.0 and 1.0</p>");
-///* Region for ADC reading */
-//	strcat((char *) PAGE_BODY2, " </div>" );
-//	strcat((char *) PAGE_BODY2, " </div><!row>" );
-//	strcat((char *) PAGE_BODY2, " <div id=\"footer\">" );
-//	strcat((char *) PAGE_BODY2, " <p>Copyright &copy; Chau Phuoc Vu</p>" );
-//	strcat((char *) PAGE_BODY2, " </div>" );
-//	strcat((char *) PAGE_BODY2, " </div><!content>" );
-//	strcat((char *) PAGE_BODY2, " </div><!container>" );
-//	strcat((char *) PAGE_BODY2, " </body>" );
-//	strcat((char *) PAGE_BODY2, " </html>" );
-
-//  write(conn, PAGE_BODY2, strlen(PAGE_BODY2));
 	/* Send the dynamically generated page */
   write(conn, SETTING, strlen((const char *)SETTING));
 }
@@ -697,7 +537,6 @@ void DynWebPageByVu(int conn)
 	strcat((char *) PAGE_BODY2, " <ul>" );
 	strcat((char *) PAGE_BODY2, " <li><a href=\"/home\">Homepage</a></li>" );
 	strcat((char *) PAGE_BODY2, " <li><a href=\"/setting\">Settings</a></li>" );
-	strcat((char *) PAGE_BODY2, " <li><a href=\"#\">About</a></li>" );
 	strcat((char *) PAGE_BODY2, " </ul>" );
 	strcat((char *) PAGE_BODY2, " </div>" );
 	strcat((char *) PAGE_BODY2, " <div id=\"content\">" );

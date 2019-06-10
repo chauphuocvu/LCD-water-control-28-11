@@ -62,3 +62,4 @@
 .\discover-more\displaynumber.o: ..\inc\miscellaneous.h
 .\discover-more\displaynumber.o: ..\inc\hw_config.h
 .\discover-more\displaynumber.o: ..\inc\debug.h
+.\discover-more\displaynumber.o: ..\inc\httpserver-socket.h

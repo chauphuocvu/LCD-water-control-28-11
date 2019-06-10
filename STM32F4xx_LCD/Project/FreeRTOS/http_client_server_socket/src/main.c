@@ -29,7 +29,8 @@
 #include "Actuator.h"
 #include "Sensor.h"
 #include "ds18b20_mflib.h"
-#include "stdio.h"
+#include <stdio.h>
+#include <math.h>
 /* Private define ------------------------------------------------------------*/
 
 /*--------------- LCD Messages ---------------*/
@@ -43,7 +44,7 @@ TIM_OCInitTypeDef  TIM_OCInitStructure;
 uint16_t PrescalerValue = 0;
 
 /*--------------- Tasks Priority -------------*/
-#define DHCP_TASK_PRIO   ( tskIDLE_PRIORITY + 2 )      
+#define DHCP_TASK_PRIO   ( tskIDLE_PRIORITY + 3 )      
 #define LED_TASK_PRIO    ( tskIDLE_PRIORITY + 1 )
 
 
@@ -65,15 +66,15 @@ extern uint8_t 		WaterHardnessSelect;
 extern uint8_t 		TypeofProbe;
 extern uint8_t   	RequireValueDosepH_DoseHour;
 extern uint8_t 		RequireValueDosepH_DoseDay;
-extern uint8_t 	PoolVolume;
-extern uint8_t 	FiltrationPeriod;
+extern uint8_t 		PoolVolume;
+extern uint8_t 		FiltrationPeriod;
 uint8_t 					FiltrationPeriod_count;
 extern uint16_t 	RequireValueRedoxpH_Redox;
-extern double 	 		Probe_pH;
+extern double 	 	Probe_pH;
 extern double			Probe_pH_temp;
-extern double 	 		Probe_CLF;
-extern double 	 		RequireValuepH;
-extern double 	 		RequireValueCLF;
+extern double 	 	Probe_CLF;
+extern double 	 	RequireValuepH;
+extern double 	 	RequireValueCLF;
 extern uint8_t   	RequireValueDosepH_DoseHour_Display;
 extern uint8_t 		RequireValueDosepH_DoseDay_Display;
 extern uint8_t 		PoolVolume_Display;
@@ -81,28 +82,28 @@ extern uint8_t 		FiltrationPeriod_Display;
 extern float 			CalibrationAir_Display;
 extern float 			CalibrationWater_Display;
 extern uint16_t 	RequireValueRedoxpH_Redox_Display;
-extern double 	 		Probe_pH_Display;
-extern double 	 		Probe_CLF_Display;
-extern double 	 		RequireValuepH_Display;
-extern double 	 		RequireValueCLF_Display;
+extern double 	 	Probe_pH_Display;
+extern double 	 	Probe_CLF_Display;
+extern double 	 	RequireValuepH_Display;
+extern double 	 	RequireValueCLF_Display;
+uint32_t step_pH,step_Clo;
 double pH_read;
 double pH_V_read;
 /*chau phuoc vu 23/4/2019*/
-uint16_t Rx_V_read;
-float Volume_pH, Volume_Clo;
-float V_step = 0.1;  // ml
-uint32_t step_pH,step_Clo;
+double Rx_V_read;
+float V_step = 0.085;  // ml
+float liquid_pH = 10.0;
 uint32_t step_pH_pump = 0;
 double pH_V_calibration ;//= 0.11954;
 /* Private functions ---------------------------------------------------------*/
-double temp;
+double temperature;
 void DelayMicro(uint16_t delay);
 volatile uint16_t counter_delay_us;
 static void TimerDelay_us_Config( void );
 /*chau phuoc vu 14/5/2019*/
-double *temp_buffer[5];
-double *pH_V_read_buffer[5];
-double temp_buffer_plus;
+double Rx_V_read_buffer[5];
+double pH_V_read_buffer[5];
+double Rx_V_read_buffer_plus;
 double pH_V_read_buffer_plus;
 extern char stringRedox[4];
 extern char stringpH[4];
@@ -128,6 +129,9 @@ int main(void)
 	ActuatorConfig();
 	ADC_Config();
   readCalibrationValue();
+/************************************************************/
+	Interrupts_Config();
+	TimerDelay_us_Config();
 	/*Read value set before*/
 	ReadSavedValue();	
 	Show_StartScreen();
@@ -141,9 +145,7 @@ int main(void)
   http_server_socket_init();
 	/* Initialize http client demo */
 	//http_client_socket_init();
-	/************************************************************/
-		Interrupts_Config();
-		TimerDelay_us_Config();
+
 #ifdef USE_DHCP
   /* Start DHCPClient */
   xTaskCreate(LwIP_DHCP_task, "DHCPClient", configMINIMAL_STACK_SIZE * 2, NULL,DHCP_TASK_PRIO, NULL);
@@ -152,7 +154,7 @@ int main(void)
 	xTaskCreate(LCDTask, "LCDTask", configMINIMAL_STACK_SIZE*2, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(ActuatorTask, "ActuatorTask", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
 	xTaskCreate(Clock, "Clock", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
-  xTaskCreate(Read_pH_Redox, "Read_pH_Redox", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO, NULL);
+  xTaskCreate(Read_pH_Redox, "Read_pH_Redox", configMINIMAL_STACK_SIZE, NULL, LED_TASK_PRIO + 1, NULL);
 
 	/* Start scheduler */
   vTaskStartScheduler();
@@ -184,12 +186,11 @@ void Read_pH_Redox(void * pvParameters)
 	uint8_t i = 0; 
 	uint8_t j = 0;
   for ( ;; ) {	
-
 	/*chau phuoc vu 14/5/2019*/
-	*pH_V_read_buffer[i] = (GetMiliVoltage(pHSensor)/1000 - (double)1.611)/((double)-5.504464286);
+	pH_V_read_buffer[i] = (GetMiliVoltage(pHSensor)/1000 - (double)1.611)/((double)-5.504464286);
 	/* chau phuoc vu 25/4/2019*/
-	Rx_V_read = (uint16_t)((GetMiliVoltage(RedoxSensor)/1000 - 0.0741)/(2.31733631)*1000);
-	if (i < 5)
+	Rx_V_read_buffer[i] = ((GetMiliVoltage(RedoxSensor) - 74.1)/(2.31733631));
+	if (i < 4)
 		i++;
 	else
 	{
@@ -197,7 +198,8 @@ void Read_pH_Redox(void * pvParameters)
 	/*chau phuoc vu 14/5/2019*/
 	for(j = 0; j < 5; j++)
 	{
-		pH_V_read_buffer_plus += *pH_V_read_buffer[j];
+		pH_V_read_buffer_plus += pH_V_read_buffer[j];
+		Rx_V_read_buffer_plus += Rx_V_read_buffer[j];
 	}
 	ds18b20_init_seq();
 	ds18b20_send_rom_cmd(SKIP_ROM_CMD_BYTE);
@@ -206,26 +208,26 @@ void Read_pH_Redox(void * pvParameters)
 	ds18b20_init_seq();
 	ds18b20_send_rom_cmd(SKIP_ROM_CMD_BYTE);
 	ds18b20_send_function_cmd(READ_SCRATCHPAD_CMD);
-	temp = ds18b20_read_temp();
+	temperature = ds18b20_read_temp();
 	pH_V_read = pH_V_read_buffer_plus/5;
-	pH_V_read_buffer_plus = 0;
-	pH_read = Probe_pH - (pH_V_read - pH_V_calibration)/slope_pH(temp);
+	Rx_V_read = Rx_V_read_buffer_plus/5;
+	pH_V_read_buffer_plus = Rx_V_read_buffer_plus = 0;
+	pH_read = Probe_pH + (pH_V_read - pH_V_calibration)/slope_pH(temperature);
 	/*chau phuoc vu 22/5/2019*/
 	//&stringRedox = (char *)itoa((uint32_t)500,10);
-	sprintf((char*)stringRedox,"%3d",Rx_V_read);
+	sprintf((char*)stringRedox,"%3f",Rx_V_read);
 	stringRedox[3] = 0;
-	//stringRedox[0] = (char *)"500";
 	sprintf((char*)stringpH,"%1.1f",pH_read);
 	stringpH[3] = 0;
-	//stringpH = (char *)"7.0";
-	CalibrationAir_Display = CalibrationWater_Display = temp;
+	CalibrationAir_Display = CalibrationWater_Display = temperature;
 	}
 	/*chau phuoc vu 22/5/2019*/
-	if (FiltrationPeriod_count == 0)
+	if ((FiltrationPeriod_count == 0)&&(step_pH_pump == 0))
 	{
-		step_pH_pump = 1;
+			step_pH_pump = PoolVolume*(pow(10,-pH_read)-pow(10,-RequireValuepH))/(pow(10,-RequireValuepH) + pow(10,-14+liquid_pH))/V_step;
 	}
-	vTaskDelay(100);
+	else ;
+	vTaskDelay(50);
 }
 }
 
@@ -244,12 +246,12 @@ switch(Screen)
 	switch(DosingTest_Flag)
 	{
 		case STOP_STOP :
-			if (step_Clo < 4000)
+			if (step_Clo*V_step < 400)
 			{
 				ControlActuator(ON,GPIOA, PUMP_RX);
 				step_Clo++;
 			}
-			if (step_pH < 2000)
+			if (step_pH*V_step < 200)
 			{
 				ControlActuator(ON,GPIOA, PUMP_PH);
 				step_pH++ ;
@@ -260,7 +262,7 @@ switch(Screen)
 			vTaskDelay(3);
 		break;
 		case 	STOP_START :
-			if (step_Clo < 4000)
+			if (step_Clo*V_step < 400)
 			{
 				ControlActuator(ON,GPIOA, PUMP_RX);
 				step_Clo++;
@@ -272,7 +274,7 @@ switch(Screen)
 		break;
 		case START_STOP	 :
 			ControlActuator(OFF,GPIOA, PUMP_RX);
-			if (step_pH < 2000)
+			if (step_pH*V_step < 200)
 			{
 				ControlActuator(ON,GPIOA, PUMP_PH);
 				step_pH++ ;
@@ -295,7 +297,7 @@ switch(Screen)
 				ControlActuator(ON,GPIOA, PUMP_PH);
 				step_pH_pump-- ;
 			}
-			else FiltrationPeriod_count = FiltrationPeriod ;
+			else;
 			vTaskDelay(1);
 			ControlActuator(OFF,GPIOA, PUMP_RX);
 			ControlActuator(OFF,GPIOA, PUMP_PH);
@@ -313,6 +315,9 @@ void Clock(void * pvParameters)
 {
   for ( ;; ) {
 	sec=sec+1;
+	if (time_out > 0)
+		time_out--;
+	else security = UNSAFE;
 	if(sec>59) 
 	{
 		min=min+1; 
@@ -321,7 +326,8 @@ void Clock(void * pvParameters)
 		{
 		FiltrationPeriod_count--;
 		}
-		else ;
+		else 
+			FiltrationPeriod_count = FiltrationPeriod;
 	} 
   if(min>59) { hour=hour+1; min=0; } 
   if(hour>23) { hour=0; min=0; sec=0; }
