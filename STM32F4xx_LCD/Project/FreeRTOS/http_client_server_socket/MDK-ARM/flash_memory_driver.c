@@ -9,13 +9,13 @@
 #include "Sensor.h"
 
 typedef struct {
-int32_t data_h;
-int32_t data_l;
+__IO int32_t data_h;
+__IO int32_t data_l;
 } struct_64;
 
 union	doubledata
 {
-	int64_t int64bitdata;
+	__IO int64_t int64bitdata;
 	struct_64 struct64bit;
 	double	doubledata;
 }vu_doubledata;
@@ -50,11 +50,10 @@ uint32_t	Read32bitDataFromFlash(uint32_t Address)
 }
 
 
-int64_t	Read64bitDataFromFlash(uint32_t Address_H, uint32_t Address_L)
+int64_t	Read64bitDataFromFlash(uint32_t Address_L, uint32_t Address_H)
 {
-	int64_t data_Read64bitDataFromFlash = 0x00000000;
-
-	int32_t data_buf = 0U;
+	__IO int64_t data_Read64bitDataFromFlash = 0U;
+	__IO uint32_t data_buf = 0U;
 	data_buf = *(__IO uint32_t*)Address_H;
 	data_Read64bitDataFromFlash = data_buf;
 	data_Read64bitDataFromFlash = data_Read64bitDataFromFlash<<32;
@@ -81,7 +80,6 @@ FLASH_Status FLASH_Program64bitData(uint32_t Address, double data)
 		return 1;
 	if (FLASH_ProgramWord(Address + 4,vu_doubledata.struct64bit.data_l) != FLASH_COMPLETE)	
 		return 1;
-	else return 1;
 }
 
 

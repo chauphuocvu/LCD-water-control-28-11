@@ -75,7 +75,7 @@
 uint8_t	  Read8bitDataFromFlash(uint32_t Address);
 uint16_t	Read16bitDataFromFlash(uint32_t Address);
 uint32_t	Read32bitDataFromFlash(uint32_t Address);
-int64_t	Read64bitDataFromFlash(uint32_t Address_H, uint32_t Address_L);
+int64_t		Read64bitDataFromFlash(uint32_t Address_L, uint32_t Address_H);
 uint8_t	  ReadDataFromFlashForSelect(uint32_t Address);
 /********************Write data for new chip*****************************/
 void ReadSavedValue(void);

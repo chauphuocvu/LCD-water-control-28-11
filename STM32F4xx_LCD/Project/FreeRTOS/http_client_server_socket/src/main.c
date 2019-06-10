@@ -224,7 +224,9 @@ void Read_pH_Redox(void * pvParameters)
 	/*chau phuoc vu 22/5/2019*/
 	if ((FiltrationPeriod_count == 0)&&(step_pH_pump == 0))
 	{
-			step_pH_pump = PoolVolume*(pow(10,-pH_read)-pow(10,-RequireValuepH))/(pow(10,-RequireValuepH) + pow(10,-14+liquid_pH))/V_step;
+		if (((pow(10,-pH_read)-pow(10,-RequireValuepH))/(pow(10,-RequireValuepH) + pow(10,-14+liquid_pH))/V_step*1000) > 0)
+			step_pH_pump = PoolVolume*(pow(10,-pH_read)-pow(10,-RequireValuepH))/(pow(10,-RequireValuepH) + pow(10,-14+liquid_pH))/V_step*1000;
+		else step_pH_pump = 0;
 	}
 	else ;
 	vTaskDelay(50);

@@ -414,8 +414,8 @@ GL_Page_TypeDef ParametersWaterScreen;
 void Create_ParametersWaterScreen(void)
 {
 	GL_RadioButtonGrp_TypeDef* Pool=NewRadioButtonGrp(1);
-	GL_RadioButtonGrp_TypeDef* AverageWaterTemperature= NewRadioButtonGrp(2);
-	GL_RadioButtonGrp_TypeDef* WaterHardness=NewRadioButtonGrp(3);
+	GL_RadioButtonGrp_TypeDef* AverageWaterTemperature= NewRadioButtonGrp(3);
+	GL_RadioButtonGrp_TypeDef* WaterHardness=NewRadioButtonGrp(2);
 	GL_PageControls_TypeDef* DesignButton01= NewRectControl(4,210,30,WHITE,ParametersWaterScreen_Back);
 	GL_PageControls_TypeDef* DesignButton02= NewRectControl(5,210,30,WHITE,ParametersWaterScreen_BackToStart);
 	GL_PageControls_TypeDef* CheckBoxIndoor= RADIO_BUTTON_ADD(Pool,(const uint8_t *)"",ParametersWaterScreen_Indoor);

@@ -304,7 +304,7 @@ void ParametersFitrationPeriodScreen_inc(void)
 void ParametersFitrationPeriodScreen_dec(void)
 {	
 	FiltrationPeriod_Display -=1;
-	if (FiltrationPeriod_Display == 6)
+	if (FiltrationPeriod_Display < 6)
 		FiltrationPeriod_Display = 6;		
 }
 	//////////////////////////////////////////////////////////////
